@@ -1,0 +1,546 @@
+﻿id;kode_pwk;nama_provinsi;nama_pemda
+1;PW01;Provinsi Aceh;Provinsi Aceh
+2;PW01;Provinsi Aceh;Kab Aceh Besar
+3;PW01;Provinsi Aceh;Kab Pidie
+4;PW01;Provinsi Aceh;Kab Pidie Jaya
+5;PW01;Provinsi Aceh;Kab Bireuen
+6;PW01;Provinsi Aceh;Kab Bener Meriah
+7;PW01;Provinsi Aceh;Kab Aceh Tengah
+8;PW01;Provinsi Aceh;Kab Aceh Utara
+9;PW01;Provinsi Aceh;Kab Aceh Timur
+10;PW01;Provinsi Aceh;Kab Aceh Tamiang
+11;PW01;Provinsi Aceh;Kab Aceh Jaya
+12;PW01;Provinsi Aceh;Kab Nagan Raya
+13;PW01;Provinsi Aceh;Kab Aceh Barat
+14;PW01;Provinsi Aceh;Kab Aceh Barat Daya
+15;PW01;Provinsi Aceh;Kab Aceh Tenggara
+16;PW01;Provinsi Aceh;Kab Gayo Lues
+17;PW01;Provinsi Aceh;Kab Aceh Singkil
+18;PW01;Provinsi Aceh;Kab Aceh Selatan
+19;PW01;Provinsi Aceh;Kab Simeulue
+20;PW01;Provinsi Aceh;Kota Sabang
+21;PW01;Provinsi Aceh;Kota Banda Aceh
+22;PW01;Provinsi Aceh;Kota Lhokseumawe
+23;PW01;Provinsi Aceh;Kota Langsa
+24;PW01;Provinsi Aceh;Kota Subulussalam
+25;PW02;Provinsi Sumatera Utara;Provinsi Sumatera Utara
+26;PW02;Provinsi Sumatera Utara;Kab Asahan
+27;PW02;Provinsi Sumatera Utara;kab Batu Bara
+28;PW02;Provinsi Sumatera Utara;Kab Dairi
+29;PW02;Provinsi Sumatera Utara;Kab Deli Serdang
+30;PW02;Provinsi Sumatera Utara;Kab Humbang Hasundutan
+31;PW02;Provinsi Sumatera Utara;Kab Karo
+32;PW02;Provinsi Sumatera Utara;Kab Labuhanbatu
+33;PW02;Provinsi Sumatera Utara;Kab Labuhanbatu Selatan
+34;PW02;Provinsi Sumatera Utara;Kab Labuhanbatu Utara
+35;PW02;Provinsi Sumatera Utara;Kab Langkat
+36;PW02;Provinsi Sumatera Utara;Kab Serdang Bedagai
+37;PW02;Provinsi Sumatera Utara;Kab Simalungun
+38;PW02;Provinsi Sumatera Utara;Kab Tapanuli Selatan
+39;PW02;Provinsi Sumatera Utara;Kab Tapanuli Tengah
+40;PW02;Provinsi Sumatera Utara;Kab Tapanuli Utara
+41;PW02;Provinsi Sumatera Utara;Kab Mandailing Natal
+42;PW02;Provinsi Sumatera Utara;Kab Nias
+43;PW02;Provinsi Sumatera Utara;Kab Nias Barat
+44;PW02;Provinsi Sumatera Utara;Kab Nias Selatan
+45;PW02;Provinsi Sumatera Utara;Kab Nias Utara
+46;PW02;Provinsi Sumatera Utara;Kab Padang Lawas
+47;PW02;Provinsi Sumatera Utara;Kab Padang Lawas Utara
+48;PW02;Provinsi Sumatera Utara;Kab Pakpak Bharat
+49;PW02;Provinsi Sumatera Utara;Kab Samosir
+50;PW02;Provinsi Sumatera Utara;Kab Toba Samosir
+51;PW02;Provinsi Sumatera Utara;Kota Binjai
+52;PW02;Provinsi Sumatera Utara;Kota Gunungsitoli
+53;PW02;Provinsi Sumatera Utara;Kota Medan
+54;PW02;Provinsi Sumatera Utara;Kota Padang Sidempuan
+55;PW02;Provinsi Sumatera Utara;Kota Pematang Siantar
+56;PW02;Provinsi Sumatera Utara;Kota Sibolga
+57;PW02;Provinsi Sumatera Utara;Kota Tanjung Balai
+58;PW02;Provinsi Sumatera Utara;Kota Tebing Tinggi
+59;PW03;Provinsi Sumatera Barat;Provinsi Sumatera Barat
+60;PW03;Provinsi Sumatera Barat;Kab Agam
+61;PW03;Provinsi Sumatera Barat;Kab Dharmasraya
+62;PW03;Provinsi Sumatera Barat;Kab Kepulauan Mentawai
+63;PW03;Provinsi Sumatera Barat;Kab Limapuluh Kota
+64;PW03;Provinsi Sumatera Barat;Kab Padang Pariaman
+65;PW03;Provinsi Sumatera Barat;Kab Pasaman
+66;PW03;Provinsi Sumatera Barat;Kab Pasaman Barat
+67;PW03;Provinsi Sumatera Barat;Kab Pesisir Selatan
+68;PW03;Provinsi Sumatera Barat;Kab Sijunjung
+69;PW03;Provinsi Sumatera Barat;Kab Solok
+70;PW03;Provinsi Sumatera Barat;Kab Solok Selatan
+71;PW03;Provinsi Sumatera Barat;Kab Tanah Datar
+72;PW03;Provinsi Sumatera Barat;Kota Bukittinggi
+73;PW03;Provinsi Sumatera Barat;Kota Padang
+74;PW03;Provinsi Sumatera Barat;Kota Padang Panjang
+75;PW03;Provinsi Sumatera Barat;Kota Pariaman
+76;PW03;Provinsi Sumatera Barat;Kota Payakumbuh
+77;PW03;Provinsi Sumatera Barat;Kota Sawahlunto
+78;PW03;Provinsi Sumatera Barat;Kota Solok
+79;PW04;Provinsi Riau;Provinsi Riau
+80;PW04;Provinsi Riau;Kab Bengkalis
+81;PW04;Provinsi Riau;Kab Indragiri Hilir
+82;PW04;Provinsi Riau;Kab Indragiri Hulu
+83;PW04;Provinsi Riau;Kab Kampar
+84;PW04;Provinsi Riau;Kab Kuantan Singingi
+85;PW04;Provinsi Riau;Kab Pelalawan
+86;PW04;Provinsi Riau;Kab Rokan Hilir
+87;PW04;Provinsi Riau;Kab Rokan Hulu
+88;PW04;Provinsi Riau;Kab Siak
+89;PW04;Provinsi Riau;Kota Dumai
+90;PW04;Provinsi Riau;Kota Pekanbaru
+91;PW04;Provinsi Riau;Kab Kepulauan Meranti
+92;PW05;Provinsi Jambi;Provinsi Jambi
+93;PW05;Provinsi Jambi;Kab Batang Hari
+94;PW05;Provinsi Jambi;Kab Bungo
+95;PW05;Provinsi Jambi;Kab Kerinci
+96;PW05;Provinsi Jambi;Kab Merangin
+97;PW05;Provinsi Jambi;Kab Muaro Jambi
+98;PW05;Provinsi Jambi;Kab Sarolangun
+99;PW05;Provinsi Jambi;Kab Tanjung Jabung Barat
+100;PW05;Provinsi Jambi;Kab Tanjung Jabung Timur
+101;PW05;Provinsi Jambi;Kab Tebo
+102;PW05;Provinsi Jambi;Kota Jambi
+103;PW05;Provinsi Jambi;Kota Sungai Penuh
+104;PW06;Provinsi Bengkulu;Provinsi Bengkulu
+105;PW06;Provinsi Bengkulu;Kota Bengkulu
+106;PW06;Provinsi Bengkulu;Kab Bengkulu Tengah
+107;PW06;Provinsi Bengkulu;Kab Bengkulu Utara
+108;PW06;Provinsi Bengkulu;Kab Seluma
+109;PW06;Provinsi Bengkulu;Kab Kepahiang
+110;PW06;Provinsi Bengkulu;Kab Rejang Lebong
+111;PW06;Provinsi Bengkulu;Kab Lebong
+112;PW06;Provinsi Bengkulu;Kab Kaur
+113;PW06;Provinsi Bengkulu;Kab Mukomuko
+114;PW06;Provinsi Bengkulu;Kab Bengkulu Selatan
+115;PW07;Provinsi Sumatera Selatan;Provinsi Sumatera Selatan
+116;PW07;Provinsi Sumatera Selatan;Kab Lahat
+117;PW07;Provinsi Sumatera Selatan;Kab Musi Banyuasin
+118;PW07;Provinsi Sumatera Selatan;Kab Musi Rawas
+119;PW07;Provinsi Sumatera Selatan;Kab Muara Enim
+120;PW07;Provinsi Sumatera Selatan;Kab Ogan Komering Ilir
+121;PW07;Provinsi Sumatera Selatan;Kab Ogan Komering Ulu
+122;PW07;Provinsi Sumatera Selatan;Kota Palembang
+123;PW07;Provinsi Sumatera Selatan;Kota Prabumulih
+124;PW07;Provinsi Sumatera Selatan;Kota Pagar Alam
+125;PW07;Provinsi Sumatera Selatan;Kota Lubuk Linggau
+126;PW07;Provinsi Sumatera Selatan;Kab Banyuasin
+127;PW07;Provinsi Sumatera Selatan;Kab Ogan Ilir
+128;PW07;Provinsi Sumatera Selatan;Kab Ogan Komering Ulu Timur
+129;PW07;Provinsi Sumatera Selatan;Kab Ogan Komering Ulu Selatan
+130;PW07;Provinsi Sumatera Selatan;Kab Empat Lawang
+131;PW07;Provinsi Sumatera Selatan;Kab Penukal Abab Lematang Ilir
+132;PW07;Provinsi Sumatera Selatan;Kab Musi Rawas Utara
+133;PW08;Provinsi Lampung;Provinsi Lampung
+134;PW08;Provinsi Lampung;Kab Lampung Barat
+135;PW08;Provinsi Lampung;Kab Lampung Selatan
+136;PW08;Provinsi Lampung;Kab Lampung Tengah
+137;PW08;Provinsi Lampung;Kab Lampung Utara
+138;PW08;Provinsi Lampung;Kab Lampung Timur
+139;PW08;Provinsi Lampung;Kab Tanggamus
+140;PW08;Provinsi Lampung;Kab Tulang Bawang
+141;PW08;Provinsi Lampung;Kab Way Kanan
+142;PW08;Provinsi Lampung;Kota Bandar Lampung
+143;PW08;Provinsi Lampung;Kota Metro
+144;PW08;Provinsi Lampung;Kab Pesawaran
+145;PW08;Provinsi Lampung;Kab Pringsewu
+146;PW08;Provinsi Lampung;Kab Mesuji
+147;PW08;Provinsi Lampung;Kab Tulang Bawang Barat
+148;PW08;Provinsi Lampung;Kab Pesisir Barat
+149;PW09;Provinsi DKI Jakarta;Provinsi DKI Jakarta
+150;PW10;Provinsi Jawa Barat;Provinsi Jawa Barat
+151;PW10;Provinsi Jawa Barat;Kab Bandung
+152;PW10;Provinsi Jawa Barat;Kab Bekasi
+153;PW10;Provinsi Jawa Barat;Kab Bogor
+154;PW10;Provinsi Jawa Barat;Kab Ciamis
+155;PW10;Provinsi Jawa Barat;Kab Cianjur
+156;PW10;Provinsi Jawa Barat;Kab Cirebon
+157;PW10;Provinsi Jawa Barat;Kab Garut
+158;PW10;Provinsi Jawa Barat;Kab Indramayu
+159;PW10;Provinsi Jawa Barat;Kab Karawang
+160;PW10;Provinsi Jawa Barat;Kab Kuningan
+161;PW10;Provinsi Jawa Barat;Kab Majalengka
+162;PW10;Provinsi Jawa Barat;Kab Purwakarta
+163;PW10;Provinsi Jawa Barat;Kab Subang
+164;PW10;Provinsi Jawa Barat;Kab Sukabumi
+165;PW10;Provinsi Jawa Barat;Kab Sumedang
+166;PW10;Provinsi Jawa Barat;Kab Tasikmalaya
+167;PW10;Provinsi Jawa Barat;Kota Bandung
+168;PW10;Provinsi Jawa Barat;Kota Bekasi
+169;PW10;Provinsi Jawa Barat;Kota Bogor
+170;PW10;Provinsi Jawa Barat;Kota Cirebon
+171;PW10;Provinsi Jawa Barat;Kota Depok
+172;PW10;Provinsi Jawa Barat;Kota Sukabumi
+173;PW10;Provinsi Jawa Barat;Kota Tasikmalaya
+174;PW10;Provinsi Jawa Barat;Kota Cimahi
+175;PW10;Provinsi Jawa Barat;Kota Banjar
+176;PW10;Provinsi Jawa Barat;Kab Bandung Barat
+177;PW10;Provinsi Jawa Barat;Kab Pangandaran
+178;PW11;Provinsi Jawa Tengah;Provinsi Jawa Tengah
+179;PW11;Provinsi Jawa Tengah;Kota Surakarta
+180;PW11;Provinsi Jawa Tengah;Kota Salatiga
+181;PW11;Provinsi Jawa Tengah;Kota Semarang
+182;PW11;Provinsi Jawa Tengah;Kota Pekalongan
+183;PW11;Provinsi Jawa Tengah;Kota Tegal
+184;PW11;Provinsi Jawa Tengah;Kab Banyumas
+185;PW11;Provinsi Jawa Tengah;Kab Purbalingga
+186;PW11;Provinsi Jawa Tengah;Kab Banjarnegara
+187;PW11;Provinsi Jawa Tengah;Kab Wonosobo
+188;PW11;Provinsi Jawa Tengah;Kab Boyolali
+189;PW11;Provinsi Jawa Tengah;Kab Sukoharjo
+190;PW11;Provinsi Jawa Tengah;Kab Wonogiri
+191;PW11;Provinsi Jawa Tengah;Kab Karanganyar
+192;PW11;Provinsi Jawa Tengah;Kab Sragen
+193;PW11;Provinsi Jawa Tengah;Kab Grobogan
+194;PW11;Provinsi Jawa Tengah;Kab Blora
+195;PW11;Provinsi Jawa Tengah;Kab Rembang
+196;PW11;Provinsi Jawa Tengah;Kab Pati
+197;PW11;Provinsi Jawa Tengah;Kab Kudus
+198;PW11;Provinsi Jawa Tengah;Kab Jepara
+199;PW11;Provinsi Jawa Tengah;Kab Demak
+200;PW11;Provinsi Jawa Tengah;Kab Semarang
+201;PW11;Provinsi Jawa Tengah;Kab Temanggung
+202;PW11;Provinsi Jawa Tengah;Kab Kendal
+203;PW11;Provinsi Jawa Tengah;Kab Batang
+204;PW11;Provinsi Jawa Tengah;Kab Pekalongan
+205;PW11;Provinsi Jawa Tengah;Kab Pemalang
+206;PW11;Provinsi Jawa Tengah;Kab Tegal
+207;PW11;Provinsi Jawa Tengah;Kab Brebes
+208;PW11;Provinsi Jawa Tengah;Kota Magelang
+209;PW11;Provinsi Jawa Tengah;Kab Magelang
+210;PW11;Provinsi Jawa Tengah;Kab Klaten
+211;PW11;Provinsi Jawa Tengah;Kab Purworejo
+212;PW11;Provinsi Jawa Tengah;Kab Kebumen
+213;PW11;Provinsi Jawa Tengah;Kab Cilacap
+214;PW12;Provinsi DI Yogyakarta;Provinsi DI Yogyakarta
+215;PW12;Provinsi DI Yogyakarta;Kab Bantul
+216;PW12;Provinsi DI Yogyakarta;Kab Gunung Kidul
+217;PW12;Provinsi DI Yogyakarta;Kab Kulon Progo
+218;PW12;Provinsi DI Yogyakarta;Kab Sleman
+219;PW12;Provinsi DI Yogyakarta;Kota Yogyakarta
+220;PW13;Provinsi Jawa Timur;Provinsi Jawa Timur
+221;PW13;Provinsi Jawa Timur;Kab Bangkalan
+222;PW13;Provinsi Jawa Timur;Kab Banyuwangi
+223;PW13;Provinsi Jawa Timur;Kab Blitar
+224;PW13;Provinsi Jawa Timur;Kab Bojonegoro
+225;PW13;Provinsi Jawa Timur;Kab Bondowoso
+226;PW13;Provinsi Jawa Timur;Kab Gresik
+227;PW13;Provinsi Jawa Timur;Kab Jember
+228;PW13;Provinsi Jawa Timur;Kab Jombang
+229;PW13;Provinsi Jawa Timur;Kab Kediri
+230;PW13;Provinsi Jawa Timur;Kab Lamongan
+231;PW13;Provinsi Jawa Timur;Kab Lumajang
+232;PW13;Provinsi Jawa Timur;Kab Madiun
+233;PW13;Provinsi Jawa Timur;Kab Magetan
+234;PW13;Provinsi Jawa Timur;Kab Malang
+235;PW13;Provinsi Jawa Timur;Kab Mojokerto
+236;PW13;Provinsi Jawa Timur;Kab Nganjuk
+237;PW13;Provinsi Jawa Timur;Kab Ngawi
+238;PW13;Provinsi Jawa Timur;Kab Pacitan
+239;PW13;Provinsi Jawa Timur;Kab Pamekasan
+240;PW13;Provinsi Jawa Timur;Kab Pasuruan
+241;PW13;Provinsi Jawa Timur;Kab Ponorogo
+242;PW13;Provinsi Jawa Timur;Kab Probolinggo
+243;PW13;Provinsi Jawa Timur;Kab Sampang
+244;PW13;Provinsi Jawa Timur;Kab Sidoarjo
+245;PW13;Provinsi Jawa Timur;Kab Situbondo
+246;PW13;Provinsi Jawa Timur;Kab Sumenep
+247;PW13;Provinsi Jawa Timur;Kab Trenggalek
+248;PW13;Provinsi Jawa Timur;Kab Tuban
+249;PW13;Provinsi Jawa Timur;Kab Tulungagung
+250;PW13;Provinsi Jawa Timur;Kota Batu
+251;PW13;Provinsi Jawa Timur;Kota Blitar
+252;PW13;Provinsi Jawa Timur;Kota Kediri
+253;PW13;Provinsi Jawa Timur;Kota Madiun
+254;PW13;Provinsi Jawa Timur;Kota Malang
+255;PW13;Provinsi Jawa Timur;Kota Mojokerto
+256;PW13;Provinsi Jawa Timur;Kota Pasuruan
+257;PW13;Provinsi Jawa Timur;Kota Probolinggo
+258;PW13;Provinsi Jawa Timur;Kota Surabaya
+259;PW14;Provinsi Kalimantan Barat;Provinsi Kalimantan Barat
+260;PW14;Provinsi Kalimantan Barat;Kab Bengkayang
+261;PW14;Provinsi Kalimantan Barat;Kab Landak
+262;PW14;Provinsi Kalimantan Barat;Kab Kapuas Hulu
+263;PW14;Provinsi Kalimantan Barat;Kab Ketapang
+264;PW14;Provinsi Kalimantan Barat;Kab Mempawah
+265;PW14;Provinsi Kalimantan Barat;Kab Sambas
+266;PW14;Provinsi Kalimantan Barat;Kab Sanggau
+267;PW14;Provinsi Kalimantan Barat;Kab Sintang
+268;PW14;Provinsi Kalimantan Barat;Kota Pontianak
+269;PW14;Provinsi Kalimantan Barat;Kota Singkawang
+270;PW14;Provinsi Kalimantan Barat;Kab Sekadau
+271;PW14;Provinsi Kalimantan Barat;Kab Melawi
+272;PW14;Provinsi Kalimantan Barat;Kab Kayong Utara
+273;PW14;Provinsi Kalimantan Barat;Kab Kubu Raya
+274;PW15;Provinsi Kalimantan Tengah;Provinsi Kalimantan Tengah
+275;PW15;Provinsi Kalimantan Tengah;Kab Barito Selatan
+276;PW15;Provinsi Kalimantan Tengah;Kab Barito Utara
+277;PW15;Provinsi Kalimantan Tengah;Kab Kapuas
+278;PW15;Provinsi Kalimantan Tengah;Kab Kotawaringin Barat
+279;PW15;Provinsi Kalimantan Tengah;Kab Kotawaringin Timur
+280;PW15;Provinsi Kalimantan Tengah;Kota Palangkaraya
+281;PW15;Provinsi Kalimantan Tengah;Kab Katingan
+282;PW15;Provinsi Kalimantan Tengah;Kab Seruyan
+283;PW15;Provinsi Kalimantan Tengah;Kab Sukamara
+284;PW15;Provinsi Kalimantan Tengah;Kab Lamandau
+285;PW15;Provinsi Kalimantan Tengah;Kab Gunung Mas
+286;PW15;Provinsi Kalimantan Tengah;Kab Pulang Pisau
+287;PW15;Provinsi Kalimantan Tengah;Kab Murung Raya
+288;PW15;Provinsi Kalimantan Tengah;Kab Barito Timur
+289;PW16;Provinsi Kalimantan Selatan;Kab Banjar
+290;PW16;Provinsi Kalimantan Selatan;Provinsi Kalimantan Selatan
+291;PW16;Provinsi Kalimantan Selatan;Kab Barito Kuala
+292;PW16;Provinsi Kalimantan Selatan;Kab Hulu Sungai Selatan
+293;PW16;Provinsi Kalimantan Selatan;Kab Hulu Sungai Tengah
+294;PW16;Provinsi Kalimantan Selatan;Kab Hulu Sungai Utara
+295;PW16;Provinsi Kalimantan Selatan;Kab Kotabaru
+296;PW16;Provinsi Kalimantan Selatan;Kab Tabalong
+297;PW16;Provinsi Kalimantan Selatan;Kab Tanah Laut
+298;PW16;Provinsi Kalimantan Selatan;Kab Tapin
+299;PW16;Provinsi Kalimantan Selatan;Kota Banjarbaru
+300;PW16;Provinsi Kalimantan Selatan;Kota Banjarmasin
+301;PW16;Provinsi Kalimantan Selatan;Kab Balangan
+302;PW16;Provinsi Kalimantan Selatan;Kab Tanah Bumbu
+303;PW17;Provinsi Kalimantan Timur;Provinsi Kalimantan Timur
+304;PW17;Provinsi Kalimantan Timur;Kab Berau
+305;PW17;Provinsi Kalimantan Timur;Kab Kutai Kartanegara
+306;PW17;Provinsi Kalimantan Timur;Kab Kutai Barat
+307;PW17;Provinsi Kalimantan Timur;Kab Kutai Timur
+308;PW17;Provinsi Kalimantan Timur;Kab Paser
+309;PW17;Provinsi Kalimantan Timur;Kota Balikpapan
+310;PW17;Provinsi Kalimantan Timur;Kota Bontang
+311;PW17;Provinsi Kalimantan Timur;Kota Samarinda
+312;PW17;Provinsi Kalimantan Timur;Kab Penajam Paser Utara
+313;PW17;Provinsi Kalimantan Timur;Kab Mahakam Ulu
+314;PW18;Provinsi Sulawesi Utara;Provinsi Sulawesi Utara
+315;PW18;Provinsi Sulawesi Utara;Kab Minahasa
+316;PW18;Provinsi Sulawesi Utara;Kab Minahasa Selatan
+317;PW18;Provinsi Sulawesi Utara;Kab Bolaang Mongondow Timur
+318;PW18;Provinsi Sulawesi Utara;Kab Bolaang Mongondow Selatan
+319;PW18;Provinsi Sulawesi Utara;Kota Manado
+320;PW18;Provinsi Sulawesi Utara;Kota Tomohon
+321;PW18;Provinsi Sulawesi Utara;Kota Bitung
+322;PW18;Provinsi Sulawesi Utara;Kota Kotamobagu
+323;PW18;Provinsi Sulawesi Utara;Kab Bolaang Mongondow
+324;PW18;Provinsi Sulawesi Utara;Kab Bolaang Mongondow Utara
+325;PW18;Provinsi Sulawesi Utara;Kab Kep. Siau Tagulandang Biaro
+326;PW18;Provinsi Sulawesi Utara;Kab Kepulauan Sangihe
+327;PW18;Provinsi Sulawesi Utara;Kab Kepulauan Talaud
+328;PW18;Provinsi Sulawesi Utara;Kab Minahasa Utara
+329;PW18;Provinsi Sulawesi Utara;Kab Minahasa Tenggara
+330;PW19;Provinsi Sulawesi Tengah;Provinsi Sulawesi Tengah
+331;PW19;Provinsi Sulawesi Tengah;Kab Banggai
+332;PW19;Provinsi Sulawesi Tengah;Kab Banggai Kepulauan
+333;PW19;Provinsi Sulawesi Tengah;Kab Buol
+334;PW19;Provinsi Sulawesi Tengah;kab Toli-Toli
+335;PW19;Provinsi Sulawesi Tengah;Kab Donggala
+336;PW19;Provinsi Sulawesi Tengah;Kab Morowali
+337;PW19;Provinsi Sulawesi Tengah;Kab Poso
+338;PW19;Provinsi Sulawesi Tengah;Kota Palu
+339;PW19;Provinsi Sulawesi Tengah;Kab Parigi Moutong
+340;PW19;Provinsi Sulawesi Tengah;Kab Tojo Una Una
+341;PW19;Provinsi Sulawesi Tengah;Kab Sigi
+342;PW19;Provinsi Sulawesi Tengah;Kab Banggai Laut
+343;PW19;Provinsi Sulawesi Tengah;Kab Morowali Utara
+344;PW20;Provinsi Sulawesi Tenggara;Provinsi Sulawesi Tenggara
+345;PW20;Provinsi Sulawesi Tenggara;Kab Buton
+346;PW20;Provinsi Sulawesi Tenggara;Kab Konawe
+347;PW20;Provinsi Sulawesi Tenggara;Kab Kolaka
+348;PW20;Provinsi Sulawesi Tenggara;Kab Muna
+349;PW20;Provinsi Sulawesi Tenggara;Kota Kendari
+350;PW20;Provinsi Sulawesi Tenggara;Kota Bau-bau
+351;PW20;Provinsi Sulawesi Tenggara;Kab Konawe Selatan
+352;PW20;Provinsi Sulawesi Tenggara;Kab Bombana
+353;PW20;Provinsi Sulawesi Tenggara;Kab Wakatobi
+354;PW20;Provinsi Sulawesi Tenggara;Kab Kolaka Utara
+355;PW20;Provinsi Sulawesi Tenggara;Kab Konawe Utara
+356;PW20;Provinsi Sulawesi Tenggara;Kab Buton Utara
+357;PW20;Provinsi Sulawesi Tenggara;Kab Konawe Kepulauan
+358;PW20;Provinsi Sulawesi Tenggara;Kab Kolaka Timur
+359;PW20;Provinsi Sulawesi Tenggara;Kab Muna Barat
+360;PW20;Provinsi Sulawesi Tenggara;Kab Buton Tengah
+361;PW20;Provinsi Sulawesi Tenggara;Kab Buton Selatan
+362;PW21;Provinsi Sulawesi Selatan;Provinsi Sulawesi Selatan
+363;PW21;Provinsi Sulawesi Selatan;Kota Makassar
+364;PW21;Provinsi Sulawesi Selatan;Kota Palopo
+365;PW21;Provinsi Sulawesi Selatan;Kota Parepare
+366;PW21;Provinsi Sulawesi Selatan;Kab Bantaeng
+367;PW21;Provinsi Sulawesi Selatan;Kab Barru
+368;PW21;Provinsi Sulawesi Selatan;Kab Bone
+369;PW21;Provinsi Sulawesi Selatan;Kab Bulukumba
+370;PW21;Provinsi Sulawesi Selatan;Kab Enrekang
+371;PW21;Provinsi Sulawesi Selatan;Kab Gowa
+372;PW21;Provinsi Sulawesi Selatan;Kab Jeneponto
+373;PW21;Provinsi Sulawesi Selatan;Kab Kep. Selayar
+374;PW21;Provinsi Sulawesi Selatan;Kab Luwu
+375;PW21;Provinsi Sulawesi Selatan;Kab Luwu Timur
+376;PW21;Provinsi Sulawesi Selatan;Kab Luwu Utara
+377;PW21;Provinsi Sulawesi Selatan;Kab Maros
+378;PW21;Provinsi Sulawesi Selatan;Kab Pangkajene dan Kepulauan
+379;PW21;Provinsi Sulawesi Selatan;Kab Pinrang
+380;PW21;Provinsi Sulawesi Selatan;Kab Sidrap
+381;PW21;Provinsi Sulawesi Selatan;Kab Sinjai
+382;PW21;Provinsi Sulawesi Selatan;Kab Soppeng
+383;PW21;Provinsi Sulawesi Selatan;Kab Takalar
+384;PW21;Provinsi Sulawesi Selatan;Kab Tana Toraja
+385;PW21;Provinsi Sulawesi Selatan;Kab Toraja Utara
+386;PW21;Provinsi Sulawesi Selatan;Kab Wajo
+387;PW22;Provinsi Bali;Provinsi Bali
+388;PW22;Provinsi Bali;Kab Badung
+389;PW22;Provinsi Bali;Kab Bangli
+390;PW22;Provinsi Bali;Kab Buleleng
+391;PW22;Provinsi Bali;Kab Gianyar
+392;PW22;Provinsi Bali;Kab Jembrana
+393;PW22;Provinsi Bali;Kab Karangasem
+394;PW22;Provinsi Bali;Kab Klungkung
+395;PW22;Provinsi Bali;Kab Tabanan
+396;PW22;Provinsi Bali;Kota Denpasar
+397;PW23;Provinsi Nusa Tenggara Barat;Provinsi Nusa Tenggara Barat
+398;PW23;Provinsi Nusa Tenggara Barat;Kab Lombok Barat
+399;PW23;Provinsi Nusa Tenggara Barat;Kab Lombok Timur
+400;PW23;Provinsi Nusa Tenggara Barat;Kab Lombok Tengah
+401;PW23;Provinsi Nusa Tenggara Barat;Kab Lombok Utara
+402;PW23;Provinsi Nusa Tenggara Barat;Kab Sumbawa
+403;PW23;Provinsi Nusa Tenggara Barat;Kab Sumbawa Barat
+404;PW23;Provinsi Nusa Tenggara Barat;Kab Bima
+405;PW23;Provinsi Nusa Tenggara Barat;Kab Dompu
+406;PW23;Provinsi Nusa Tenggara Barat;Kota Bima
+407;PW23;Provinsi Nusa Tenggara Barat;Kota Mataram
+408;PW24;Provinsi Nusa Tenggara Timur;Provinsi Nusa Tenggara Timur
+409;PW24;Provinsi Nusa Tenggara Timur;Kab Alor
+410;PW24;Provinsi Nusa Tenggara Timur;Kab Belu
+411;PW24;Provinsi Nusa Tenggara Timur;Kab Ende
+412;PW24;Provinsi Nusa Tenggara Timur;Kab Flores Timur
+413;PW24;Provinsi Nusa Tenggara Timur;Kab Kupang
+414;PW24;Provinsi Nusa Tenggara Timur;Kab Lembata
+415;PW24;Provinsi Nusa Tenggara Timur;Kab Manggarai
+416;PW24;Provinsi Nusa Tenggara Timur;Kab Ngada
+417;PW24;Provinsi Nusa Tenggara Timur;Kab Sikka
+418;PW24;Provinsi Nusa Tenggara Timur;Kab Sumba Barat
+419;PW24;Provinsi Nusa Tenggara Timur;Kab Sumba Timur
+420;PW24;Provinsi Nusa Tenggara Timur;Kab Timor Tengah Selatan
+421;PW24;Provinsi Nusa Tenggara Timur;Kab Timor Tengah Utara
+422;PW24;Provinsi Nusa Tenggara Timur;Kota Kupang
+423;PW24;Provinsi Nusa Tenggara Timur;Kab Rote Ndao
+424;PW24;Provinsi Nusa Tenggara Timur;Kab Manggarai Barat
+425;PW24;Provinsi Nusa Tenggara Timur;Kab Nagekeo
+426;PW24;Provinsi Nusa Tenggara Timur;Kab Sumba Barat Daya
+427;PW24;Provinsi Nusa Tenggara Timur;Kab Sumba Tengah
+428;PW24;Provinsi Nusa Tenggara Timur;Kab Manggarai Timur
+429;PW24;Provinsi Nusa Tenggara Timur;Kab Sabu Raijua
+430;PW24;Provinsi Nusa Tenggara Timur;Kab Malaka
+431;PW25;Provinsi Maluku;Provinsi Maluku
+432;PW25;Provinsi Maluku;Kab Kepulauan Tanimbar
+433;PW25;Provinsi Maluku;Kab Maluku Tengah
+434;PW25;Provinsi Maluku;Kab Maluku Tenggara
+435;PW25;Provinsi Maluku;Kab Buru
+436;PW25;Provinsi Maluku;Kota Ambon
+437;PW25;Provinsi Maluku;Kab Seram Bagian Barat
+438;PW25;Provinsi Maluku;Kab Seram Bagian Timur
+439;PW25;Provinsi Maluku;Kab Kepulauan Aru
+440;PW25;Provinsi Maluku;Kota Tual
+441;PW25;Provinsi Maluku;Kab Maluku Barat Daya
+442;PW25;Provinsi Maluku;Kab Buru Selatan
+443;PW26;Provinsi Papua;Provinsi Papua
+444;PW26;Provinsi Papua;Kab Biak Numfor
+445;PW26;Provinsi Papua;Kab Jayapura
+446;PW26;Provinsi Papua;Kab Kepulauan Yapen
+447;PW26;Provinsi Papua;Kota Jayapura
+448;PW26;Provinsi Papua;Kab Sarmi
+449;PW26;Provinsi Papua;Kab Keerom
+450;PW26;Provinsi Papua;Kab Waropen
+451;PW26;Provinsi Papua;Kab Supiori
+452;PW26;Provinsi Papua;Kab Mamberamo Raya
+453;PW27;Provinsi Papua Barat;Provinsi Papua Barat
+454;PW27;Provinsi Papua Barat;Kab Fak Fak
+455;PW27;Provinsi Papua Barat;Kab Manokwari
+456;PW27;Provinsi Papua Barat;Kab Sorong
+457;PW27;Provinsi Papua Barat;Kota Sorong
+458;PW27;Provinsi Papua Barat;Kab Raja Ampat
+459;PW27;Provinsi Papua Barat;Kab Sorong Selatan
+460;PW27;Provinsi Papua Barat;Kab Teluk Bintuni
+461;PW27;Provinsi Papua Barat;Kab Teluk Wondama
+462;PW27;Provinsi Papua Barat;Kab Kaimana
+463;PW27;Provinsi Papua Barat;Kab Maybrat
+464;PW27;Provinsi Papua Barat;Kab Tambrauw
+465;PW27;Provinsi Papua Barat;Kab Manokwari Selatan
+466;PW27;Provinsi Papua Barat;Kab Pegunungan Arfak
+467;PW28;Provinsi Kepulauan Riau;Provinsi Kepulauan Riau
+468;PW28;Provinsi Kepulauan Riau;Kota Tanjung Pinang
+469;PW28;Provinsi Kepulauan Riau;Kota Batam
+470;PW28;Provinsi Kepulauan Riau;Kab Bintan
+471;PW28;Provinsi Kepulauan Riau;Kab Karimun
+472;PW28;Provinsi Kepulauan Riau;Kab Lingga
+473;PW28;Provinsi Kepulauan Riau;Kab Natuna
+474;PW28;Provinsi Kepulauan Riau;Kab Kepulauan Anambas
+475;PW29;Provinsi Bangka Belitung;Provinsi Bangka Belitung
+476;PW29;Provinsi Bangka Belitung;Kab Bangka
+477;PW29;Provinsi Bangka Belitung;Kab Belitung
+478;PW29;Provinsi Bangka Belitung;Kota Pangkal Pinang
+479;PW29;Provinsi Bangka Belitung;Kab Bangka Selatan
+480;PW29;Provinsi Bangka Belitung;Kab Bangka Tengah
+481;PW29;Provinsi Bangka Belitung;Kab Bangka Barat
+482;PW29;Provinsi Bangka Belitung;Kab Belitung Timur
+483;PW30;Provinsi Banten;Provinsi Banten
+484;PW30;Provinsi Banten;Kab Lebak
+485;PW30;Provinsi Banten;Kab Pandeglang
+486;PW30;Provinsi Banten;Kab Serang
+487;PW30;Provinsi Banten;Kab Tangerang
+488;PW30;Provinsi Banten;Kota Cilegon
+489;PW30;Provinsi Banten;Kota Tangerang
+490;PW30;Provinsi Banten;Kota Serang
+491;PW30;Provinsi Banten;Kota Tangerang Selatan
+492;PW31;Provinsi Gorontalo;Provinsi Gorontalo
+493;PW31;Provinsi Gorontalo;Kota Gorontalo
+494;PW31;Provinsi Gorontalo;Kab Boalemo
+495;PW31;Provinsi Gorontalo;Kab Bone Bolango
+496;PW31;Provinsi Gorontalo;Kab Gorontalo
+497;PW31;Provinsi Gorontalo;Kab Gorontalo Utara
+498;PW31;Provinsi Gorontalo;Kab Pohuwato
+499;PW32;Provinsi Sulawesi Barat;Provinsi Sulawesi Barat
+500;PW32;Provinsi Sulawesi Barat;Kab Majene
+501;PW32;Provinsi Sulawesi Barat;Kab Mamuju
+502;PW32;Provinsi Sulawesi Barat;Kab Polewali Mandar
+503;PW32;Provinsi Sulawesi Barat;Kab Mamasa
+504;PW32;Provinsi Sulawesi Barat;Kab Pasangkayu
+505;PW32;Provinsi Sulawesi Barat;Kab Mamuju Tengah
+506;PW33;Provinsi Maluku Utara;Provinsi Maluku Utara
+507;PW33;Provinsi Maluku Utara;Kota Ternate
+508;PW33;Provinsi Maluku Utara;Kota Tidore Kepulauan
+509;PW33;Provinsi Maluku Utara;Kab Halmahera Utara
+510;PW33;Provinsi Maluku Utara;Kab Halmahera Barat
+511;PW33;Provinsi Maluku Utara;Kab Halmahera Timur
+512;PW33;Provinsi Maluku Utara;Kab Halmahera Tengah
+513;PW33;Provinsi Maluku Utara;Kab Halmahera Selatan
+514;PW33;Provinsi Maluku Utara;Kab Kepulauan Sula
+515;PW33;Provinsi Maluku Utara;Kab Pulau Taliabu
+516;PW33;Provinsi Maluku Utara;Kab Pulau Morotai
+517;PW34;Provinsi Kalimantan Utara;Provinsi Kalimantan Utara
+518;PW34;Provinsi Kalimantan Utara;Kota Tarakan
+519;PW34;Provinsi Kalimantan Utara;Kab Bulungan
+520;PW34;Provinsi Kalimantan Utara;Kab Malinau
+521;PW34;Provinsi Kalimantan Utara;Kab Nunukan
+522;PW34;Provinsi Kalimantan Utara;Kab Tana Tidung
+523;PW26;Provinsi Papua;Provinsi Papua Selatan
+524;PW26;Provinsi Papua;Kab Merauke
+525;PW26;Provinsi Papua;Kab Boven Digoel
+526;PW26;Provinsi Papua;Kab Mappi
+527;PW26;Provinsi Papua;Kab Asmat
+528;PW26;Provinsi Papua;Provinsi Papua Tengah
+529;PW26;Provinsi Papua;Kab Mimika
+530;PW26;Provinsi Papua;Kab Nabire
+531;PW26;Provinsi Papua;Kab Paniai
+532;PW26;Provinsi Papua;Kab Puncak Jaya
+533;PW26;Provinsi Papua;Kab Dogiyai
+534;PW26;Provinsi Papua;Kab Puncak
+535;PW26;Provinsi Papua;Kab Intan Jaya
+536;PW26;Provinsi Papua;Kab Deiyai
+537;PW26;Provinsi Papua;Provinsi Papua Pegunungan
+538;PW26;Provinsi Papua;Kab Jayawijaya
+539;PW26;Provinsi Papua;Kab Yahukimo
+540;PW26;Provinsi Papua;Kab Pegunungan Bintang
+541;PW26;Provinsi Papua;Kab Tolikara
+542;PW26;Provinsi Papua;Kab Mamberamo Tengah
+543;PW26;Provinsi Papua;Kab Yalimo
+544;PW26;Provinsi Papua;Kab Lanny Jaya
+545;PW26;Provinsi Papua;Kab Nduga
