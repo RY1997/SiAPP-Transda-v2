@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ParameterBidangTkd extends Migration
+class ParameterTkd extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ParameterBidangTkd extends Migration
      */
     public function up()
     {
-        Schema::create('pm_bidang', function (Blueprint $table) {
+        Schema::create('pm_tkd', function (Blueprint $table) {
             $table->id();
             $table->string('jenis_tkd');
             $table->string('bidang_tkd');
@@ -29,6 +29,6 @@ class ParameterBidangTkd extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pm_bidang');
+        Schema::dropIfExists('pm_tkd');
     }
 }
