@@ -6,6 +6,7 @@ use App\Http\Requests\CreateParameterTkdRequest;
 use App\Http\Requests\UpdateParameterTkdRequest;
 use App\Repositories\ParameterTkdRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\ParameterTkd;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,7 +30,7 @@ class ParameterTkdController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $parameterTkds = $this->parameterTkdRepository->all();
+        $parameterTkds = ParameterTkd::orderBy('jenis_tkd')->paginate(20);
 
         return view('parameter_tkds.index')
             ->with('parameterTkds', $parameterTkds);

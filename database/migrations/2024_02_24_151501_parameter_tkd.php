@@ -17,7 +17,7 @@ class ParameterTkd extends Migration
             $table->id();
             $table->string('jenis_tkd');
             $table->string('bidang_tkd');
-            $table->decimal('alokasi_minimal',3,2);
+            $table->decimal('alokasi_minimal',8,2);
             $table->timestamps();
         });
     }

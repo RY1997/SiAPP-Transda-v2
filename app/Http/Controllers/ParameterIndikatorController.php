@@ -6,6 +6,7 @@ use App\Http\Requests\CreateParameterIndikatorRequest;
 use App\Http\Requests\UpdateParameterIndikatorRequest;
 use App\Repositories\ParameterIndikatorRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\ParameterIndikator;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,7 +30,7 @@ class ParameterIndikatorController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $parameterIndikators = $this->parameterIndikatorRepository->all();
+        $parameterIndikators = ParameterIndikator::orderBy('jenis_tkd')->paginate(20);
 
         return view('parameter_indikators.index')
             ->with('parameterIndikators', $parameterIndikators);

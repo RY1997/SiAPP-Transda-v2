@@ -6,6 +6,7 @@ use App\Http\Requests\CreateParameterLaporanRequest;
 use App\Http\Requests\UpdateParameterLaporanRequest;
 use App\Repositories\ParameterLaporanRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\ParameterLaporan;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,7 +30,7 @@ class ParameterLaporanController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $parameterLaporans = $this->parameterLaporanRepository->all();
+        $parameterLaporans = ParameterLaporan::orderBy('jenis_tkd')->paginate(20);
 
         return view('parameter_laporans.index')
             ->with('parameterLaporans', $parameterLaporans);

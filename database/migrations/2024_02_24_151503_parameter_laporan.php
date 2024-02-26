@@ -17,6 +17,7 @@ class ParameterLaporan extends Migration
             $table->id();
             $table->string('jenis_tkd');
             $table->string('bidang_tkd');
+            $table->string('tahun_laporan');
             $table->string('nama_laporan');
             $table->string('batas_penyampaian');
             $table->timestamps();

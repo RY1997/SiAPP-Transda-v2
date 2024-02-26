@@ -19,6 +19,7 @@ class ParameterLaporanRepository extends BaseRepository
     protected $fieldSearchable = [
         'jenis_tkd',
         'bidang_tkd',
+        'tahun_laporan',
         'nama_laporan',
         'batas_penyampaian'
     ];

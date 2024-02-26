@@ -1,3 +1,16 @@
+<li class="nav-item">
+    <a href="#"
+       class="nav-link">
+        <p>Dashboard</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="#"
+       class="nav-link">
+        <p>Ringkasan TKD</p>
+    </a>
+</li>
 
 <li class="nav-item">
     <a href="{{ route('users.index') }}"

@@ -6,6 +6,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,10 +30,17 @@ class UserController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $users = $this->userRepository->paginate(10);
+        $users = User::where('name', 'like', '%' . $request->query('name') . '%')
+        ->where('username', 'like', '%' . $request->query('username') . '%')
+        ->paginate(10);
+
+        $search = [
+            'name' => $request->query('name'),
+            'username' => $request->query('username'),
+        ];
 
         return view('users.index')
-            ->with('users', $users);
+            ->with(['users' => $users , 'search' => $search]);
     }
 
     /**

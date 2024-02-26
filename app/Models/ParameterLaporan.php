@@ -32,6 +32,7 @@ class ParameterLaporan extends Model
     public $fillable = [
         'jenis_tkd',
         'bidang_tkd',
+        'tahun_laporan',
         'nama_laporan',
         'batas_penyampaian'
     ];
@@ -45,6 +46,7 @@ class ParameterLaporan extends Model
         'id' => 'integer',
         'jenis_tkd' => 'string',
         'bidang_tkd' => 'string',
+        'tahun_laporan' => 'string',
         'nama_laporan' => 'string',
         'batas_penyampaian' => 'string'
     ];
@@ -57,6 +59,7 @@ class ParameterLaporan extends Model
     public static $rules = [
         'jenis_tkd' => 'required|string|max:255',
         'bidang_tkd' => 'required|string|max:255',
+        'tahun_laporan' => 'required|string|max:255',
         'nama_laporan' => 'required|string|max:255',
         'batas_penyampaian' => 'required|string|max:255',
         'created_at' => 'nullable',
