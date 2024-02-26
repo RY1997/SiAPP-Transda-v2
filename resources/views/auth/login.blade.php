@@ -44,11 +44,11 @@
                     @csrf
 
                     <div class="input-group mb-3">
-                        <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" class="form-control @error('email') is-invalid @enderror">
+                        <input type="text" name="username" value="{{ old('username') }}" placeholder="Username" class="form-control @error('username') is-invalid @enderror">
                         <div class="input-group-append">
-                            <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                            <div class="input-group-text"><span class="fas fa-user"></span></div>
                         </div>
-                        @error('email')
+                        @error('username')
                         <span class="error invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
@@ -67,7 +67,8 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <select class="form-control @error('jenis_tkd') is-invalid @enderror" aria-label="Jenis TKD" name="jenis_tkd" required>
+                        <select class="form-control @error('jenis_tkd') is-invalid @enderror" aria-label="Jenis TKD" name="jenis_tkd">
+                            <option selected disabled>Pilih</option>
                             <option value="Otsus">Dana Otonomi Khusus</option>
                             <option value="DAU">Dana Alokasi Umum</option>
                         </select>

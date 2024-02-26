@@ -39,6 +39,20 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'jenis_tkd' => 'required|string',
+        ]);
+    }
+
+    public function username()
+    {
+        return 'username';
+    }
+
     protected function authenticated(Request $request, $user)
     {
         // Menambahkan 'jenis_tkd' pada session
