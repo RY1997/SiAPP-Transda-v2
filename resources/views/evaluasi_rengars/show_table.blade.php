@@ -2,6 +2,7 @@
     <table class="table m-0" id="evaluasiRengars-table">
         <thead class="text-center bg-secondary">
             <tr>
+                <th>#</th>
                 <th>Kode Program</th>
                 <th>Nama Program</th>
                 <th>Kode Kegiatan</th>
@@ -17,8 +18,10 @@
             </tr>
         </thead>
         <tbody>
+            @if ($evaluasiRengars->count() > 0)
             @foreach($evaluasiRengars as $evaluasiRengar)
             <tr>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $evaluasiRengar->kode_program }}</td>
                 <td>{{ $evaluasiRengar->nama_program }}</td>
                 <td>{{ $evaluasiRengar->kode_kegiatan }}</td>
@@ -39,6 +42,11 @@
                 </td>
             </tr>
             @endforeach
+            @else
+            <tr>
+                <td colspan="13">Tidak ada data</td>
+            </tr>
+            @endif
         </tbody>
     </table>
 </div>

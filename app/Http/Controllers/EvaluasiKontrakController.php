@@ -6,6 +6,8 @@ use App\Http\Requests\CreateEvaluasiKontrakRequest;
 use App\Http\Requests\UpdateEvaluasiKontrakRequest;
 use App\Repositories\EvaluasiKontrakRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\EvaluasiKontrak;
+use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -31,8 +33,14 @@ class EvaluasiKontrakController extends AppBaseController
     {
         $evaluasiKontraks = $this->evaluasiKontrakRepository->all();
 
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->paginate(20);
+        $evaluasiKontraks = EvaluasiKontrak::where('jenis_tkd', session('jenis_tkd'))->get();
+
         return view('evaluasi_kontraks.index')
-            ->with('evaluasiKontraks', $evaluasiKontraks);
+            ->with([
+                'suratTugas' => $suratTugas,
+                'evaluasiKontraks' => $evaluasiKontraks
+            ]);
     }
 
     /**
@@ -40,9 +48,16 @@ class EvaluasiKontrakController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create($st_id, $tahun)
     {
-        return view('evaluasi_kontraks.create');
+        $suratTugas = SuratTugas::find($st_id);
+        $evaluasiKontrak = [];
+        return view('evaluasi_kontraks.create')
+            ->with([
+                'suratTugas' => $suratTugas,
+                'tahun'      => $tahun,
+                'evaluasiKontrak' => $evaluasiKontrak
+            ]);
     }
 
     /**
