@@ -22,6 +22,7 @@
             <div class="card-body">
                 <div class="row">
                     @include('evaluasi_rengars.show_fields')
+                    @include('evaluasi_rengars.show_table')
                 </div>
             </div>
         </div>

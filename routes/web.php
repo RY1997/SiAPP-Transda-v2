@@ -60,6 +60,7 @@ Route::resource('monitoringTls', App\Http\Controllers\MonitoringTlController::cl
 
 
 Route::resource('evaluasiRengars', App\Http\Controllers\EvaluasiRengarController::class);
+Route::get('evaluasiRengars/{st_id}/{tahun}', [App\Http\Controllers\EvaluasiRengarController::class, 'show']);
 
 
 Route::resource('evaluasiKontraks', App\Http\Controllers\EvaluasiKontrakController::class);
