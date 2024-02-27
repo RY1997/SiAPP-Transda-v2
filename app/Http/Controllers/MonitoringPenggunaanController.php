@@ -6,6 +6,9 @@ use App\Http\Requests\CreateMonitoringPenggunaanRequest;
 use App\Http\Requests\UpdateMonitoringPenggunaanRequest;
 use App\Repositories\MonitoringPenggunaanRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DaftarPemda;
+use App\Models\MonitoringPenggunaan;
+use App\Models\ParameterTkd;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,10 +32,14 @@ class MonitoringPenggunaanController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $nama_pemda = $request->query('nama_pemda');
+
+        $daftarPemdas = DaftarPemda::where('nama_pemda', 'like', '%' . $nama_pemda . '%')->paginate(10);
+        
         $monitoringPenggunaans = $this->monitoringPenggunaanRepository->all();
 
         return view('monitoring_penggunaans.index')
-            ->with('monitoringPenggunaans', $monitoringPenggunaans);
+            ->with(['monitoringPenggunaans' => $monitoringPenggunaans , 'daftarPemdas' => $daftarPemdas , 'nama_pemda' => $nama_pemda]);
     }
 
     /**
@@ -40,9 +47,18 @@ class MonitoringPenggunaanController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create($pemda_id, $tahun)
     {
-        return view('monitoring_penggunaans.create');
+        $pemda = DaftarPemda::find($pemda_id);
+        $bidang_tkds = ParameterTkd::where('jenis_tkd', session('jenis_tkd'))->get();
+        $monitoringPenggunaan = [];
+        return view('monitoring_penggunaans.create')
+            ->with([
+                'pemda' => $pemda,
+                'tahun' => $tahun,
+                'bidang_tkds' => $bidang_tkds,
+                'monitoringPenggunaan' => $monitoringPenggunaan
+            ]);
     }
 
     /**

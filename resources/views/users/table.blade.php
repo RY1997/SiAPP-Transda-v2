@@ -1,12 +1,12 @@
-<div class="table-responsive">
-    <table class="table" id="users-table">
-        <thead>
+<div class="table-responsive table-bordered">
+    <table class="table m-0" id="users-table">
+        <thead class="text-center bg-secondary">
             <tr>
                 <th>#</th>
                 <th>Name</th>
                 <th>Username</th>
                 <th>Role</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

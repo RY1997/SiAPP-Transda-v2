@@ -20,9 +20,9 @@ class MonitoringPenggunaan extends Migration
             $table->string('nama_pemda');
             $table->string('jenis_tkd');
             $table->string('bidang_tkd');
-            $table->string('alokasi_id');
-            $table->decimal('penggunaan_tkd', 20, 2);
-            $table->text('penyebab_kurang_guna')->nullable();
+            $table->decimal('anggaran_tkd', 20, 2);
+            $table->decimal('realisasi_tkd', 20, 2);
+            $table->text('penyebab_kurang_serap')->nullable();
             $table->timestamps();
         });
     }

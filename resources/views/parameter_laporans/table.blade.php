@@ -1,14 +1,14 @@
-<div class="table-responsive">
-    <table class="table" id="parameterLaporans-table">
-        <thead>
+<div class="table-responsive table-bordered">
+    <table class="table m-0" id="parameterLaporans-table">
+        <thead class="text-center bg-secondary">
             <tr>
                 <th>#</th>
-                <th>Jenis Tkd</th>
-                <th>Bidang Tkd</th>
+                <th>Jenis TKD</th>
+                <th>Bidang TKD</th>
                 <th>Tahun Laporan</th>
                 <th>Nama Laporan</th>
                 <th>Batas Penyampaian</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

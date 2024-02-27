@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="evaluasiIndikators-table">
+    <table class="table m-0" id="evaluasiIndikators-table">
         <thead>
         <tr>
             <th>Tahun</th>
@@ -11,7 +11,7 @@
         <th>Cutoff Capaian</th>
         <th>Sumber Data</th>
         <th>Keterangan</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

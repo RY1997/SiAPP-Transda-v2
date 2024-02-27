@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="kebijakanOtsuses-table">
+    <table class="table m-0" id="kebijakanOtsuses-table">
         <thead>
         <tr>
             <th>Tahun</th>
@@ -9,7 +9,7 @@
         <th>Dasar Penetapan</th>
         <th>Tgl Penetapan</th>
         <th>Simpulan Penetapan</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

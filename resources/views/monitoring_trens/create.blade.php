@@ -4,14 +4,9 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Create Monitoring Penggunaan</h1>
+                <div class="col-sm-12">
+                    <h1>Create Monitoring Alokasi</h1>
                 </div>
-                <div class="col-sm-6">
-                <a class="btn btn-default float-right" href="{{ url('monitoringTrens/'.$pemda->id.'/'.$tahun) }}">
-                    Back
-                </a>
-            </div>
             </div>
         </div>
     </section>
@@ -22,19 +17,19 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'monitoringPenggunaans.store']) !!}
+            {!! Form::open(['route' => 'monitoringAlokasis.store']) !!}
 
             <div class="card-body">
 
                 <div class="row">
-                    @include('monitoring_penggunaans.fields')
+                    @include('monitoring_alokasis.fields')
                 </div>
 
             </div>
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ url('monitoringTrens/'.$pemda->id.'/'.$tahun) }}" class="btn btn-default">Cancel</a>
+                <a href="{{ route('monitoringAlokasis.index') }}" class="btn btn-default">Cancel</a>
             </div>
 
             {!! Form::close() !!}

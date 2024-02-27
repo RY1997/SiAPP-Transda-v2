@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="evaluasiKontraks-table">
+    <table class="table m-0" id="evaluasiKontraks-table">
         <thead>
         <tr>
             <th>Kode Pwk</th>
@@ -73,7 +73,7 @@
         <th>Uraian Manfaat7</th>
         <th>Manfaat8</th>
         <th>Uraian Manfaat8</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

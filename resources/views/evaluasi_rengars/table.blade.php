@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="evaluasiRengars-table">
+    <table class="table m-0" id="evaluasiRengars-table">
         <thead>
         <tr>
             <th>Tahun</th>
@@ -27,7 +27,7 @@
         <th>Nilai Realisasi</th>
         <th>Relevansi Subkegiatan</th>
         <th>Pelaksanaan Subkegiatan</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

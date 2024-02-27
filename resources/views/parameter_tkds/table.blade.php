@@ -1,12 +1,12 @@
-<div class="table-responsive">
-    <table class="table" id="parameterTkds-table">
-        <thead>
+<div class="table-responsive table-bordered">
+    <table class="table m-0" id="parameterTkds-table">
+        <thead class="text-center bg-secondary">
             <tr>
                 <th>#</th>
-                <th>Jenis Tkd</th>
-                <th>Bidang Tkd</th>
+                <th>Jenis TKD</th>
+                <th>Bidang TKD</th>
                 <th>Alokasi Minimal</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

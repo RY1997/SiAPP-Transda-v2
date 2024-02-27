@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="monitoringPenggunaans-table">
+    <table class="table m-0" id="monitoringPenggunaans-table">
         <thead>
         <tr>
             <th>Tahun</th>
@@ -10,7 +10,7 @@
         <th>Alokasi Id</th>
         <th>Penggunaan Tkd</th>
         <th>Penyebab Kurang Guna</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

@@ -1,13 +1,13 @@
-<div class="table-responsive">
-    <table class="table" id="parameterIndikators-table">
-        <thead>
+<div class="table-responsive table-bordered">
+    <table class="table m-0" id="parameterIndikators-table">
+        <thead class="text-center bg-secondary">
             <tr>
                 <th>#</th>
-                <th>Jenis Tkd</th>
-                <th>Bidang Tkd</th>
+                <th>Jenis TKD</th>
+                <th>Bidang TKD</th>
                 <th>Uraian Indikator</th>
                 <th>Satuan Indikator</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

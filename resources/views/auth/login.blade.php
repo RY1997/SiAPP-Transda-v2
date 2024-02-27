@@ -69,8 +69,8 @@
                     <div class="input-group mb-3">
                         <select class="form-control @error('jenis_tkd') is-invalid @enderror" aria-label="Jenis TKD" name="jenis_tkd">
                             <option selected disabled>Pilih</option>
-                            <option value="Otsus">Dana Otonomi Khusus</option>
-                            <option value="DAU">Dana Alokasi Umum</option>
+                            <option value="Dana Otonomi Khusus">Dana Otonomi Khusus</option>
+                            <option value="Dana Alokasi Umum">Dana Alokasi Umum</option>
                         </select>
                         @error('jenis_tkd')
                         <span class="error invalid-feedback">{{ $message }}</span>

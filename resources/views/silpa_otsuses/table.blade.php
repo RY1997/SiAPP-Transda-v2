@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="silpaOtsuses-table">
+    <table class="table m-0" id="silpaOtsuses-table">
         <thead>
         <tr>
             <th>Tahun</th>
@@ -10,7 +10,7 @@
         <th>Dianggarkan Relevan</th>
         <th>Dianggarkan Tidak Relevan</th>
         <th>Tidak Dianggarkan</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

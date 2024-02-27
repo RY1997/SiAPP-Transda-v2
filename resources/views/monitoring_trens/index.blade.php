@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Monitoring Alokasis</h1>
+                <h1>Monitoring Tren {{ session('jenis_tkd') }}</h1>
             </div>
             <div class="col-sm-6">
                 <a class="btn btn-primary float-right" href="{{ route('monitoringAlokasis.create') }}">
@@ -24,7 +24,7 @@
 
     <div class="card">
         <div class="card-body p-3">
-            @include('monitoring_alokasis.table')
+            @include('monitoring_trens.table')
 
             <div class="card-footer clearfix">
                 <div class="float-right">

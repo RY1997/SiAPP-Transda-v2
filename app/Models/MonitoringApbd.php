@@ -110,7 +110,7 @@ class MonitoringApbd extends Model
         'penerimaan_pembiayaan' => 'required|numeric',
         'pengeluaran_pembiayaan' => 'required|numeric',
         'silpa' => 'required|numeric',
-        'silpa_tkd' => 'required|numeric',
+        'silpa_tkd' => 'nullable|numeric',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

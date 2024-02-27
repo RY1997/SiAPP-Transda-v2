@@ -19,7 +19,6 @@ class MonitoringPenyaluran extends Migration
             $table->string('kode_pwk');
             $table->string('nama_pemda');
             $table->string('jenis_tkd');
-            $table->string('alokasi_id');
             $table->string('tahap_salur');
             $table->decimal('penyaluran_tkd', 20, 2);
             $table->string('tepat_jumlah');

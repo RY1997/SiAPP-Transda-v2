@@ -7,11 +7,14 @@ use App\Http\Requests\UpdateMonitoringAlokasiRequest;
 use App\Repositories\MonitoringAlokasiRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
+use App\Models\MonitoringAlokasi;
+use App\Models\MonitoringPenggunaan;
+use App\Models\MonitoringPenyaluran;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class MonitoringAlokasiController extends AppBaseController
+class MonitoringTrenController extends AppBaseController
 {
     /** @var MonitoringAlokasiRepository $monitoringAlokasiRepository*/
     private $monitoringAlokasiRepository;
@@ -34,10 +37,18 @@ class MonitoringAlokasiController extends AppBaseController
 
         $daftarPemdas = DaftarPemda::where('nama_pemda', 'like', '%' . $nama_pemda . '%')->paginate(10);
 
-        $monitoringAlokasis = $this->monitoringAlokasiRepository->all();
+        $monitoringAlokasis = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'))->get();
+        $monitoringPenyalurans = MonitoringPenyaluran::where('jenis_tkd', session('jenis_tkd'))->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('jenis_tkd', session('jenis_tkd'))->get();
 
-        return view('monitoring_alokasis.index')
-            ->with(['monitoringAlokasis' => $monitoringAlokasis , 'daftarPemdas' => $daftarPemdas , 'nama_pemda' => $nama_pemda]);
+        return view('monitoring_trens.index')
+            ->with([
+                'monitoringAlokasis' => $monitoringAlokasis,
+                'monitoringPenyalurans' => $monitoringPenyalurans,
+                'monitoringPenggunaans' => $monitoringPenggunaans,
+                'daftarPemdas' => $daftarPemdas,
+                'nama_pemda' => $nama_pemda
+            ]);
     }
 
     /**
@@ -75,17 +86,39 @@ class MonitoringAlokasiController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
-    {
-        $monitoringAlokasi = $this->monitoringAlokasiRepository->find($id);
+    // public function show($id)
+    // {
+    //     $monitoringAlokasi = $this->monitoringAlokasiRepository->find($id);
 
-        if (empty($monitoringAlokasi)) {
+    //     if (empty($monitoringAlokasi)) {
+    //         Flash::error('Monitoring Alokasi not found');
+
+    //         return redirect(route('monitoringAlokasis.index'));
+    //     }
+
+    //     return view('monitoring_alokasis.show')->with('monitoringAlokasi', $monitoringAlokasi);
+    // }
+
+    public function show($pemda_id , $tahun)
+    {
+        $pemda = DaftarPemda::find($pemda_id);
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
+        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
+
+        if (empty($monitoringAlokasis)) {
             Flash::error('Monitoring Alokasi not found');
 
             return redirect(route('monitoringAlokasis.index'));
         }
 
-        return view('monitoring_alokasis.show')->with('monitoringAlokasi', $monitoringAlokasi);
+        return view('monitoring_trens.show')->with([
+            'pemda' => $pemda,
+            'tahun' => $tahun,
+            'monitoringAlokasis' => $monitoringAlokasis,
+            'monitoringPenyalurans' => $monitoringPenyalurans,
+            'monitoringPenggunaans' => $monitoringPenggunaans,
+        ]);
     }
 
     /**
