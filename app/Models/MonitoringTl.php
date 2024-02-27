@@ -77,9 +77,9 @@ class MonitoringTl extends Model
      */
     public static $rules = [
         'tahun' => 'required|string|max:255',
-        'kode_pwk' => 'required|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
         'nama_pemda' => 'required|string|max:255',
-        'jenis_tkd' => 'required|string|max:255',
+        'jenis_tkd' => 'nullable|string|max:255',
         'kelompok_permasalahan' => 'required|string|max:255',
         'uraian_permasalahan' => 'required|string',
         'nilai_permasalahan' => 'required|numeric',

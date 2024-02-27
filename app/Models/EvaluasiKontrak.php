@@ -256,10 +256,10 @@ class EvaluasiKontrak extends Model
      * @var array
      */
     public static $rules = [
-        'kode_pwk' => 'required|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
         'nama_pemda' => 'required|string|max:255',
         'tahun' => 'required|string|max:255',
-        'jenis_tkd' => 'required|string|max:255',
+        'jenis_tkd' => 'nullable|string|max:255',
         'nomor_kontrak' => 'required|string|max:255',
         'tanggal_kontrak' => 'required',
         'uraian_kontrak' => 'required|string',
