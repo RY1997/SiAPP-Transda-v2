@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="evaluasiLaporans-table">
+    <table class="table m-0" id="evaluasiLaporans-table">
         <thead>
         <tr>
             <th>Tahun</th>
@@ -12,7 +12,7 @@
         <th>Tgl Laporan</th>
         <th>Tgl Penyampaian</th>
         <th>Penyebab Tidak Tepat Waktu</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

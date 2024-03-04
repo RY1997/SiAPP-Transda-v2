@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="monitoringPenyalurans-table">
+    <table class="table m-0" id="monitoringPenyalurans-table">
         <thead>
         <tr>
             <th>Tahun</th>
@@ -14,7 +14,7 @@
         <th>Tgl Salur</th>
         <th>Tepat Waktu</th>
         <th>Penyebab Tidak Tepat Waktu</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="urusanBersamaOtsuses-table">
+    <table class="table m-0" id="urusanBersamaOtsuses-table">
         <thead>
         <tr>
             <th>Tahun</th>
@@ -8,7 +8,7 @@
         <th>Jenis Tkd</th>
         <th>Urusan Bersama</th>
         <th>Anggaran</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

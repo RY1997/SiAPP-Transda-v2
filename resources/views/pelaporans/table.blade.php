@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="pelaporans-table">
+    <table class="table m-0" id="pelaporans-table">
         <thead>
         <tr>
             <th>Kode Pwk</th>
@@ -9,7 +9,7 @@
         <th>Nama Pemda</th>
         <th>Status Laporan</th>
         <th>File Laporan</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

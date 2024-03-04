@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="suratTugas-table">
+    <table class="table m-0" id="suratTugas-table">
         <thead>
         <tr>
             <th>Kode Pwk</th>
@@ -14,7 +14,7 @@
         <th>File St</th>
         <th>Tw Penugasan</th>
         <th>Tahun Penugasan</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

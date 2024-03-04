@@ -1,36 +1,36 @@
 ﻿id;name;username;email;role;kode_pwk;password
-1;Administrator;admin;transda@tes.com;admin;admin;adminTransda
-2;Perwakilan BPKP Provinsi Aceh;pwk01;pwk01@tes.com;pwk;PW01;password
-3;Perwakilan BPKP Provinsi Sumatera Utara;pwk02;pwk02@tes.com;pwk;PW02;password
-4;Perwakilan BPKP Provinsi Sumatera Barat;pwk03;pwk03@tes.com;pwk;PW03;password
-5;Perwakilan BPKP Provinsi Riau;pwk04;pwk04@tes.com;pwk;PW04;password
-6;Perwakilan BPKP Provinsi Jambi;pwk05;pwk05@tes.com;pwk;PW05;password
-7;Perwakilan BPKP Provinsi Bengkulu;pwk06;pwk06@tes.com;pwk;PW06;password
-8;Perwakilan BPKP Provinsi Sumatera Selatan;pwk07;pwk07@tes.com;pwk;PW07;password
-9;Perwakilan BPKP Provinsi Lampung;pwk08;pwk08@tes.com;pwk;PW08;password
-10;Perwakilan BPKP Provinsi DKI Jakarta;pwk09;pwk09@tes.com;pwk;PW09;password
-11;Perwakilan BPKP Provinsi Jawa Barat;pwk10;pwk10@tes.com;pwk;PW10;password
-12;Perwakilan BPKP Provinsi Jawa Tengah;pwk11;pwk11@tes.com;pwk;PW11;password
-13;Perwakilan BPKP Provinsi Daerah Istimewa Yogyakarta;pwk12;pwk12@tes.com;pwk;PW12;password
-14;Perwakilan BPKP Provinsi Jawa Timur;pwk13;pwk13@tes.com;pwk;PW13;password
-15;Perwakilan BPKP Provinsi Kalimantan Barat;pwk14;pwk14@tes.com;pwk;PW14;password
-16;Perwakilan BPKP Provinsi Kalimantan Tengah;pwk15;pwk15@tes.com;pwk;PW15;password
-17;Perwakilan BPKP Provinsi Kalimantan Selatan;pwk16;pwk16@tes.com;pwk;PW16;password
-18;Perwakilan BPKP Provinsi Kalimantan Timur;pwk17;pwk17@tes.com;pwk;PW17;password
-19;Perwakilan BPKP Provinsi Sulawesi Utara;pwk18;pwk18@tes.com;pwk;PW18;password
-20;Perwakilan BPKP Provinsi Sulawesi Tengah;pwk19;pwk19@tes.com;pwk;PW19;password
-21;Perwakilan BPKP Provinsi Sulawesi Tenggara;pwk20;pwk20@tes.com;pwk;PW20;password
-22;Perwakilan BPKP Provinsi Sulawesi Selatan;pwk21;pwk21@tes.com;pwk;PW21;password
-23;Perwakilan BPKP Provinsi Bali;pwk22;pwk22@tes.com;pwk;PW22;password
-24;Perwakilan BPKP Provinsi Nusa Tenggara Barat;pwk23;pwk23@tes.com;pwk;PW23;password
-25;Perwakilan BPKP Provinsi Nusa Tenggara Timur;pwk24;pwk24@tes.com;pwk;PW24;password
-26;Perwakilan BPKP Provinsi Maluku;pwk25;pwk25@tes.com;pwk;PW25;password
-27;Perwakilan BPKP Provinsi Papua;pwk26;pwk26@tes.com;pwk;PW26;password
-28;Perwakilan BPKP Provinsi Papua Barat;pwk27;pwk27@tes.com;pwk;PW27;password
-29;Perwakilan BPKP Provinsi Kepulauan Riau;pwk28;pwk28@tes.com;pwk;PW28;password
-30;Perwakilan BPKP Provinsi Bangka Belitung;pwk29;pwk29@tes.com;pwk;PW29;password
-31;Perwakilan BPKP Provinsi Banten;pwk30;pwk30@tes.com;pwk;PW30;password
-32;Perwakilan BPKP Provinsi Gorontalo;pwk31;pwk31@tes.com;pwk;PW31;password
-33;Perwakilan BPKP Provinsi Sulawesi Barat;pwk32;pwk32@tes.com;pwk;PW32;password
-34;Perwakilan BPKP Provinsi Maluku Utara;pwk33;pwk33@tes.com;pwk;PW33;password
-35;Perwakilan BPKP Provinsi Kalimantan Utara;pwk34;pwk34@tes.com;pwk;PW34;password
+1;Administrator;admin;transda@tes.com;Admin;admin;adminTransda
+2;Perwakilan BPKP Provinsi Aceh;pwk01;pwk01@tes.com;Perwakilan;PW01;password
+3;Perwakilan BPKP Provinsi Sumatera Utara;pwk02;pwk02@tes.com;Perwakilan;PW02;password
+4;Perwakilan BPKP Provinsi Sumatera Barat;pwk03;pwk03@tes.com;Perwakilan;PW03;password
+5;Perwakilan BPKP Provinsi Riau;pwk04;pwk04@tes.com;Perwakilan;PW04;password
+6;Perwakilan BPKP Provinsi Jambi;pwk05;pwk05@tes.com;Perwakilan;PW05;password
+7;Perwakilan BPKP Provinsi Bengkulu;pwk06;pwk06@tes.com;Perwakilan;PW06;password
+8;Perwakilan BPKP Provinsi Sumatera Selatan;pwk07;pwk07@tes.com;Perwakilan;PW07;password
+9;Perwakilan BPKP Provinsi Lampung;pwk08;pwk08@tes.com;Perwakilan;PW08;password
+10;Perwakilan BPKP Provinsi DKI Jakarta;pwk09;pwk09@tes.com;Perwakilan;PW09;password
+11;Perwakilan BPKP Provinsi Jawa Barat;pwk10;pwk10@tes.com;Perwakilan;PW10;password
+12;Perwakilan BPKP Provinsi Jawa Tengah;pwk11;pwk11@tes.com;Perwakilan;PW11;password
+13;Perwakilan BPKP Provinsi Daerah Istimewa Yogyakarta;pwk12;pwk12@tes.com;Perwakilan;PW12;password
+14;Perwakilan BPKP Provinsi Jawa Timur;pwk13;pwk13@tes.com;Perwakilan;PW13;password
+15;Perwakilan BPKP Provinsi Kalimantan Barat;pwk14;pwk14@tes.com;Perwakilan;PW14;password
+16;Perwakilan BPKP Provinsi Kalimantan Tengah;pwk15;pwk15@tes.com;Perwakilan;PW15;password
+17;Perwakilan BPKP Provinsi Kalimantan Selatan;pwk16;pwk16@tes.com;Perwakilan;PW16;password
+18;Perwakilan BPKP Provinsi Kalimantan Timur;pwk17;pwk17@tes.com;Perwakilan;PW17;password
+19;Perwakilan BPKP Provinsi Sulawesi Utara;pwk18;pwk18@tes.com;Perwakilan;PW18;password
+20;Perwakilan BPKP Provinsi Sulawesi Tengah;pwk19;pwk19@tes.com;Perwakilan;PW19;password
+21;Perwakilan BPKP Provinsi Sulawesi Tenggara;pwk20;pwk20@tes.com;Perwakilan;PW20;password
+22;Perwakilan BPKP Provinsi Sulawesi Selatan;pwk21;pwk21@tes.com;Perwakilan;PW21;password
+23;Perwakilan BPKP Provinsi Bali;pwk22;pwk22@tes.com;Perwakilan;PW22;password
+24;Perwakilan BPKP Provinsi Nusa Tenggara Barat;pwk23;pwk23@tes.com;Perwakilan;PW23;password
+25;Perwakilan BPKP Provinsi Nusa Tenggara Timur;pwk24;pwk24@tes.com;Perwakilan;PW24;password
+26;Perwakilan BPKP Provinsi Maluku;pwk25;pwk25@tes.com;Perwakilan;PW25;password
+27;Perwakilan BPKP Provinsi Papua;pwk26;pwk26@tes.com;Perwakilan;PW26;password
+28;Perwakilan BPKP Provinsi Papua Barat;pwk27;pwk27@tes.com;Perwakilan;PW27;password
+29;Perwakilan BPKP Provinsi Kepulauan Riau;pwk28;pwk28@tes.com;Perwakilan;PW28;password
+30;Perwakilan BPKP Provinsi Bangka Belitung;pwk29;pwk29@tes.com;Perwakilan;PW29;password
+31;Perwakilan BPKP Provinsi Banten;pwk30;pwk30@tes.com;Perwakilan;PW30;password
+32;Perwakilan BPKP Provinsi Gorontalo;pwk31;pwk31@tes.com;Perwakilan;PW31;password
+33;Perwakilan BPKP Provinsi Sulawesi Barat;pwk32;pwk32@tes.com;Perwakilan;PW32;password
+34;Perwakilan BPKP Provinsi Maluku Utara;pwk33;pwk33@tes.com;Perwakilan;PW33;password
+35;Perwakilan BPKP Provinsi Kalimantan Utara;pwk34;pwk34@tes.com;Perwakilan;PW34;password

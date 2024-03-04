@@ -44,19 +44,27 @@ Route::resource('monitoringApbds', App\Http\Controllers\MonitoringApbdController
 Route::resource('monitoringAlokasis', App\Http\Controllers\MonitoringAlokasiController::class);
 
 
+Route::resource('monitoringTrens', App\Http\Controllers\MonitoringTrenController::class);
+Route::get('monitoringTrens/{pemda_id}/{tahun}', [App\Http\Controllers\MonitoringTrenController::class, 'show']);
+
+
 Route::resource('monitoringPenyalurans', App\Http\Controllers\MonitoringPenyaluranController::class);
+Route::get('monitoringPenyalurans/{pemda_id}/{tahun}/create', [App\Http\Controllers\MonitoringPenyaluranController::class, 'create']);
 
 
 Route::resource('monitoringPenggunaans', App\Http\Controllers\MonitoringPenggunaanController::class);
+Route::get('monitoringPenggunaans/{pemda_id}/{tahun}/create', [App\Http\Controllers\MonitoringPenggunaanController::class, 'create']);
 
 
 Route::resource('monitoringTls', App\Http\Controllers\MonitoringTlController::class);
 
 
 Route::resource('evaluasiRengars', App\Http\Controllers\EvaluasiRengarController::class);
+Route::get('evaluasiRengars/{st_id}/{tahun}', [App\Http\Controllers\EvaluasiRengarController::class, 'show']);
 
 
 Route::resource('evaluasiKontraks', App\Http\Controllers\EvaluasiKontrakController::class);
+Route::get('evaluasiKontraks/{st_id}/{tahun}/create', [App\Http\Controllers\EvaluasiKontrakController::class, 'create']);
 
 
 Route::resource('evaluasiIndikators', App\Http\Controllers\EvaluasiIndikatorController::class);

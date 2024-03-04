@@ -95,7 +95,7 @@ class MonitoringApbd extends Model
      */
     public static $rules = [
         'tahun' => 'required|string|max:255',
-        'kode_pwk' => 'required|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
         'nama_pemda' => 'required|string|max:255',
         'belanja_daerah' => 'required|numeric',
         'belanja_pegawai' => 'required|numeric',
@@ -110,7 +110,7 @@ class MonitoringApbd extends Model
         'penerimaan_pembiayaan' => 'required|numeric',
         'pengeluaran_pembiayaan' => 'required|numeric',
         'silpa' => 'required|numeric',
-        'silpa_tkd' => 'required|numeric',
+        'silpa_tkd' => 'nullable|numeric',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

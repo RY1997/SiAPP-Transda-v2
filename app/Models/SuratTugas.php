@@ -79,7 +79,7 @@ class SuratTugas extends Model
      * @var array
      */
     public static $rules = [
-        'kode_pwk' => 'required|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
         'no_st' => 'required|string|max:255',
         'tgl_st' => 'required',
         'nama_penugasan' => 'required|string|max:255',

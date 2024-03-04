@@ -6,6 +6,8 @@ use App\Http\Requests\CreateEvaluasiRengarRequest;
 use App\Http\Requests\UpdateEvaluasiRengarRequest;
 use App\Repositories\EvaluasiRengarRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\EvaluasiRengar;
+use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,10 +31,14 @@ class EvaluasiRengarController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $evaluasiRengars = $this->evaluasiRengarRepository->all();
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->paginate(20);
+        $evaluasiRengars = EvaluasiRengar::where('sumber_dana', session('jenis_tkd'))->get();
 
         return view('evaluasi_rengars.index')
-            ->with('evaluasiRengars', $evaluasiRengars);
+            ->with([
+                'suratTugas' => $suratTugas,
+                'evaluasiRengars' => $evaluasiRengars
+            ]);
     }
 
     /**
@@ -92,7 +98,8 @@ class EvaluasiRengarController extends AppBaseController
      */
     public function edit($id)
     {
-        $evaluasiRengar = $this->evaluasiRengarRepository->find($id);
+        $evaluasiRengar = EvaluasiRengar::find($id);
+        $st_id = SuratTugas::where('nama_pemda', $evaluasiRengar->nama_pemda)->first()->pluck('id');
 
         if (empty($evaluasiRengar)) {
             Flash::error('Evaluasi Rengar not found');
@@ -100,7 +107,11 @@ class EvaluasiRengarController extends AppBaseController
             return redirect(route('evaluasiRengars.index'));
         }
 
-        return view('evaluasi_rengars.edit')->with('evaluasiRengar', $evaluasiRengar);
+        return view('evaluasi_rengars.edit')
+            ->with([
+                'st_id' => $st_id,
+                'evaluasiRengar' => $evaluasiRengar
+            ]);
     }
 
     /**

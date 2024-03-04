@@ -42,7 +42,6 @@ class MonitoringPenyaluran extends Model
         'kode_pwk',
         'nama_pemda',
         'jenis_tkd',
-        'alokasi_id',
         'tahap_salur',
         'penyaluran_tkd',
         'tepat_jumlah',
@@ -63,7 +62,6 @@ class MonitoringPenyaluran extends Model
         'kode_pwk' => 'string',
         'nama_pemda' => 'string',
         'jenis_tkd' => 'string',
-        'alokasi_id' => 'string',
         'tahap_salur' => 'string',
         'penyaluran_tkd' => 'decimal:2',
         'tepat_jumlah' => 'string',
@@ -80,10 +78,9 @@ class MonitoringPenyaluran extends Model
      */
     public static $rules = [
         'tahun' => 'required|string|max:255',
-        'kode_pwk' => 'required|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
         'nama_pemda' => 'required|string|max:255',
-        'jenis_tkd' => 'required|string|max:255',
-        'alokasi_id' => 'required|string|max:255',
+        'jenis_tkd' => 'nullable|string|max:255',
         'tahap_salur' => 'required|string|max:255',
         'penyaluran_tkd' => 'required|numeric',
         'tepat_jumlah' => 'required|string|max:255',

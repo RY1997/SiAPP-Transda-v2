@@ -6,6 +6,7 @@ use App\Http\Requests\CreateMonitoringApbdRequest;
 use App\Http\Requests\UpdateMonitoringApbdRequest;
 use App\Repositories\MonitoringApbdRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DaftarPemda;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,10 +30,13 @@ class MonitoringApbdController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $nama_pemda = $request->query('nama_pemda');
+        $daftarPemdas = DaftarPemda::where('nama_pemda', 'like', '%' . $nama_pemda . '%')->paginate(10);
+
         $monitoringApbds = $this->monitoringApbdRepository->all();
 
         return view('monitoring_apbds.index')
-            ->with('monitoringApbds', $monitoringApbds);
+            ->with(['monitoringApbds' => $monitoringApbds , 'daftarPemdas' => $daftarPemdas , 'nama_pemda' => $nama_pemda]);
     }
 
     /**

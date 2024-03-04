@@ -18,6 +18,7 @@ class SuratTugas extends Migration
             $table->string('kode_pwk');
             $table->string('no_st');
             $table->date('tgl_st');
+            $table->string('jenis_tkd');
             $table->string('nama_penugasan');
             $table->string('jenis_penugasan');
             $table->string('nama_pemda');

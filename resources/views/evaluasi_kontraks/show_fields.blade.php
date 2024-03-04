@@ -1,25 +1,19 @@
-<!-- Kode Pwk Field -->
-<div class="col-sm-12">
-    {!! Form::label('kode_pwk', 'Kode Pwk:') !!}
-    <p>{{ $evaluasiKontrak->kode_pwk }}</p>
-</div>
-
 <!-- Nama Pemda Field -->
 <div class="col-sm-12">
     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
-    <p>{{ $evaluasiKontrak->nama_pemda }}</p>
+    <input type="text" name="nama_pemda" id="nama_pemda" value="{{ $suratTugas->nama_pemda }}" class="form-control" readonly>
 </div>
 
 <!-- Tahun Field -->
 <div class="col-sm-12">
     {!! Form::label('tahun', 'Tahun:') !!}
-    <p>{{ $evaluasiKontrak->tahun }}</p>
+    <input type="text"  name="tahun" id="tahun" value="{{ $tahun }}" readonly/>
 </div>
 
 <!-- Jenis Tkd Field -->
 <div class="col-sm-12">
     {!! Form::label('jenis_tkd', 'Jenis Tkd:') !!}
-    <p>{{ $evaluasiKontrak->jenis_tkd }}</p>
+    <input type="text" name= "jenis_tkd" id="jenis_tkd" value="{{ session('jenis_tkd') }}" readonly />
 </div>
 
 <!-- Nomor Kontrak Field -->

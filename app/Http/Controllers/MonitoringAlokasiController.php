@@ -6,6 +6,7 @@ use App\Http\Requests\CreateMonitoringAlokasiRequest;
 use App\Http\Requests\UpdateMonitoringAlokasiRequest;
 use App\Repositories\MonitoringAlokasiRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DaftarPemda;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,10 +30,14 @@ class MonitoringAlokasiController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $nama_pemda = $request->query('nama_pemda');
+
+        $daftarPemdas = DaftarPemda::where('nama_pemda', 'like', '%' . $nama_pemda . '%')->paginate(10);
+
         $monitoringAlokasis = $this->monitoringAlokasiRepository->all();
 
         return view('monitoring_alokasis.index')
-            ->with('monitoringAlokasis', $monitoringAlokasis);
+            ->with(['monitoringAlokasis' => $monitoringAlokasis , 'daftarPemdas' => $daftarPemdas , 'nama_pemda' => $nama_pemda]);
     }
 
     /**

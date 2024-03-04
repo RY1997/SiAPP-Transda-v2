@@ -64,7 +64,7 @@ class Pelaporan extends Model
      * @var array
      */
     public static $rules = [
-        'kode_pwk' => 'required|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
         'id_st' => 'required|string|max:255',
         'no_laporan' => 'required|string|max:255',
         'tgl_laporan' => 'required',

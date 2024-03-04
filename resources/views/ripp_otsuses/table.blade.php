@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="rippOtsuses-table">
+    <table class="table m-0" id="rippOtsuses-table">
         <thead>
         <tr>
             <th>Tahun</th>
@@ -9,7 +9,7 @@
         <th>Item Ripp</th>
         <th>Uraian Ripp</th>
         <th>Penyebab Ripp</th>
-            <th colspan="3">Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

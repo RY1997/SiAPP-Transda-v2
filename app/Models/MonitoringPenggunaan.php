@@ -39,8 +39,8 @@ class MonitoringPenggunaan extends Model
         'nama_pemda',
         'jenis_tkd',
         'bidang_tkd',
-        'alokasi_id',
-        'penggunaan_tkd',
+        'anggaran_tkd',
+        'realisasi_tkd',
         'penyebab_kurang_guna'
     ];
 
@@ -56,8 +56,8 @@ class MonitoringPenggunaan extends Model
         'nama_pemda' => 'string',
         'jenis_tkd' => 'string',
         'bidang_tkd' => 'string',
-        'alokasi_id' => 'string',
-        'penggunaan_tkd' => 'decimal:2',
+        'anggaran_tkd' => 'decimal:2',
+        'realisasi_tkd' => 'decimal:2',
         'penyebab_kurang_guna' => 'string'
     ];
 
@@ -68,12 +68,12 @@ class MonitoringPenggunaan extends Model
      */
     public static $rules = [
         'tahun' => 'required|string|max:255',
-        'kode_pwk' => 'required|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
         'nama_pemda' => 'required|string|max:255',
-        'jenis_tkd' => 'required|string|max:255',
+        'jenis_tkd' => 'nullable|string|max:255',
         'bidang_tkd' => 'required|string|max:255',
-        'alokasi_id' => 'required|string|max:255',
-        'penggunaan_tkd' => 'required|numeric',
+        'anggaran_tkd' => 'required|numeric',
+        'realisasi_tkd' => 'required|numeric',
         'penyebab_kurang_guna' => 'nullable|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'

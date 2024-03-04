@@ -29,7 +29,7 @@ class MonitoringTlController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $monitoringTls = $this->monitoringTlRepository->all();
+        $monitoringTls = $this->monitoringTlRepository->paginate(20);
 
         return view('monitoring_tls.index')
             ->with('monitoringTls', $monitoringTls);

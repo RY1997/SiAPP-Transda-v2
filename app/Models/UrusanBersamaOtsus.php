@@ -62,9 +62,9 @@ class UrusanBersamaOtsus extends Model
      */
     public static $rules = [
         'tahun' => 'required|string|max:255',
-        'kode_pwk' => 'required|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
         'nama_pemda' => 'required|string|max:255',
-        'jenis_tkd' => 'required|string|max:255',
+        'jenis_tkd' => 'nullable|string|max:255',
         'urusan_bersama' => 'required|string|max:255',
         'anggaran' => 'nullable|numeric',
         'created_at' => 'nullable',

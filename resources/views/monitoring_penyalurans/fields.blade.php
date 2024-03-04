@@ -1,81 +1,89 @@
 <!-- Tahun Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4">
     {!! Form::label('tahun', 'Tahun:') !!}
-    {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
-
-<!-- Kode Pwk Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('kode_pwk', 'Kode Pwk:') !!}
-    {!! Form::text('kode_pwk', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+<div class="form-group col-sm-8">
+    <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $tahun }}" readonly>
 </div>
 
 <!-- Nama Pemda Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4">
     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+</div>
+<div class="form-group col-sm-8">
+    <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $pemda->nama_pemda }}" readonly>
 </div>
 
-<!-- Jenis Tkd Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('jenis_tkd', 'Jenis Tkd:') !!}
-    {!! Form::text('jenis_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
-<!-- Alokasi Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('alokasi_id', 'Alokasi Id:') !!}
-    {!! Form::text('alokasi_id', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+<div class="col-sm-12 mt-2">
+    <h5>A. Informasi Penyaluran</h5>
 </div>
 
 <!-- Tahap Salur Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4">
     {!! Form::label('tahap_salur', 'Tahap Salur:') !!}
-    {!! Form::text('tahap_salur', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
-
-<!-- Penyaluran Tkd Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('penyaluran_tkd', 'Penyaluran Tkd:') !!}
-    {!! Form::number('penyaluran_tkd', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Tepat Jumlah Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('tepat_jumlah', 'Tepat Jumlah:') !!}
-    {!! Form::text('tepat_jumlah', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
-<!-- Penyebab Tidak Tepat Jumlah Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('penyebab_tidak_tepat_jumlah', 'Penyebab Tidak Tepat Jumlah:') !!}
-    {!! Form::textarea('penyebab_tidak_tepat_jumlah', null, ['class' => 'form-control']) !!}
+<div class="form-group col-sm-8">
+    {!! Form::select('tahap_salur', ['' => 'Pilih', 'Tahap I' => 'Tahap I', 'Tahap II' => 'Tahap II', 'Tahap III' => 'Tahap III'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <!-- Tgl Salur Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4">
     {!! Form::label('tgl_salur', 'Tgl Salur:') !!}
+</div>
+<div class="form-group col-sm-8">
     {!! Form::text('tgl_salur', null, ['class' => 'form-control','id'=>'tgl_salur']) !!}
 </div>
 
 @push('page_scripts')
-    <script type="text/javascript">
-        $('#tgl_salur').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: true,
-            sideBySide: true
-        })
-    </script>
+<script type="text/javascript">
+    $('#tgl_salur').datetimepicker({
+        format: 'YYYY-MM-DD',
+        useCurrent: false,
+        sideBySide: true
+    })
+</script>
 @endpush
 
+<!-- Penyaluran Tkd Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('penyaluran_tkd', 'Nilai Penyaluran:') !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::number('penyaluran_tkd', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="col-sm-12 mt-2">
+    <h5>B. Pengujian Penyaluran</h5>
+</div>
+
 <!-- Tepat Waktu Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('tepat_waktu', 'Tepat Waktu:') !!}
-    {!! Form::text('tepat_waktu', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+<div class="form-group col-sm-4">
+    {!! Form::label('tepat_waktu', 'Ketepatan Waktu Penyaluran:') !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::select('tepat_waktu', ['' => 'Pilih', 'Tepat Waktu' => 'Tepat Waktu', 'Tidak Tepat Waktu' => 'Tidak Tepat Waktu'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <!-- Penyebab Tidak Tepat Waktu Field -->
-<div class="form-group col-sm-12 col-lg-12">
+<div class="form-group col-sm-4">
     {!! Form::label('penyebab_tidak_tepat_waktu', 'Penyebab Tidak Tepat Waktu:') !!}
-    {!! Form::textarea('penyebab_tidak_tepat_waktu', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::textarea('penyebab_tidak_tepat_waktu', null, ['class' => 'form-control', 'rows' => '2']) !!}
+</div>
+
+<!-- Tepat Jumlah Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('tepat_jumlah', 'Ketepatan Jumlah Penyaluran:') !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::select('tepat_jumlah', ['' => 'Pilih', 'Tepat Jumlah' => 'Tepat Jumlah', 'Tidak Tepat Jumlah' => 'Tidak Tepat Jumlah'], null, ['class' => 'form-control custom-select']) !!}
+</div>
+
+<!-- Penyebab Tidak Tepat Jumlah Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('penyebab_tidak_tepat_jumlah', 'Penyebab Tidak Tepat Jumlah:') !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::textarea('penyebab_tidak_tepat_jumlah', null, ['class' => 'form-control', 'rows' => '2']) !!}
 </div>
