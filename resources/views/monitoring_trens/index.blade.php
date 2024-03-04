@@ -8,9 +8,6 @@
                 <h1>Monitoring Tren {{ session('jenis_tkd') }}</h1>
             </div>
             <div class="col-sm-6">
-                <a class="btn btn-primary float-right" href="{{ route('monitoringAlokasis.create') }}">
-                    Add New
-                </a>
             </div>
         </div>
     </div>

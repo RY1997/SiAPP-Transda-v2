@@ -6,8 +6,12 @@ use App\Http\Requests\CreateEvaluasiIndikatorRequest;
 use App\Http\Requests\UpdateEvaluasiIndikatorRequest;
 use App\Repositories\EvaluasiIndikatorRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\EvaluasiIndikator;
+use App\Models\ParameterIndikator;
+use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class EvaluasiIndikatorController extends AppBaseController
@@ -29,7 +33,25 @@ class EvaluasiIndikatorController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $evaluasiIndikators = $this->evaluasiIndikatorRepository->all();
+        if (Auth::user()->role != 'Admin') {
+            $suratTugas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk)->where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->get();
+            $parameterIndikator = ParameterIndikator::where('jenis_tkd', session('jenis_tkd'))->get();
+            EvaluasiIndikator::updateOrCreate([
+                'nama_pemda' => $suratTugas->nama_pemda,
+                'tahun' => '2023',
+                'kode_pwk' => $suratTugas->kode_pwk,
+                'jenis_tkd' => $suratTugas->jenis_tkd,
+                'uraian_indikator' => $parameterIndikator->uraian_indikator
+            ], [
+                'target' => NULL,
+                'realisasi' => NULL,
+                'cutoff_capaian' => NULL,
+                'sumber_data' => NULL,
+                'keterangan' => NULL
+            ]);
+        }
+
+        $evaluasiIndikators = $this->evaluasiIndikatorRepository->paginate(20);
 
         return view('evaluasi_indikators.index')
             ->with('evaluasiIndikators', $evaluasiIndikators);

@@ -16,6 +16,19 @@
     </a>
 </li>
 
+<li class="nav-header">ADMINISTRASI</li>
+
+<li class="nav-item">
+    <a href="{{ route('suratTugas.index') }}" class="nav-link {{ Request::is('suratTugas*') ? 'active' : '' }}">
+        <p>Surat Tugas</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('pelaporans.index') }}" class="nav-link {{ Request::is('pelaporans*') ? 'active' : '' }}">
+        <p>Pelaporan</p>
+    </a>
+</li>
 
 <li class="nav-header">PARAMETER</li>
 
@@ -124,7 +137,7 @@
 </li>
 
 
-<li class="nav-item">
+<!-- <li class="nav-item">
     <a href="{{ route('kebijakanOtsuses.index') }}" class="nav-link {{ Request::is('kebijakanOtsuses*') ? 'active' : '' }}">
         <p>Kebijakan Otsuses</p>
     </a>
@@ -149,18 +162,4 @@
     <a href="{{ route('silpaOtsuses.index') }}" class="nav-link {{ Request::is('silpaOtsuses*') ? 'active' : '' }}">
         <p>Silpa Otsuses</p>
     </a>
-</li>
-
-
-<li class="nav-item">
-    <a href="{{ route('suratTugas.index') }}" class="nav-link {{ Request::is('suratTugas*') ? 'active' : '' }}">
-        <p>Surat Tugas</p>
-    </a>
-</li>
-
-
-<li class="nav-item">
-    <a href="{{ route('pelaporans.index') }}" class="nav-link {{ Request::is('pelaporans*') ? 'active' : '' }}">
-        <p>Pelaporans</p>
-    </a>
-</li>
+</li> -->

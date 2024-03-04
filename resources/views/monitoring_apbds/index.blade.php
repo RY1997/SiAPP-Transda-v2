@@ -8,10 +8,6 @@
                     <h1>Monitoring Apbds</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('monitoringApbds.create') }}">
-                        Add New
-                    </a>
                 </div>
             </div>
         </div>

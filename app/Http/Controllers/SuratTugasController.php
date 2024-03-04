@@ -6,8 +6,10 @@ use App\Http\Requests\CreateSuratTugasRequest;
 use App\Http\Requests\UpdateSuratTugasRequest;
 use App\Repositories\SuratTugasRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class SuratTugasController extends AppBaseController
@@ -29,7 +31,11 @@ class SuratTugasController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $suratTugas = $this->suratTugasRepository->all();
+        if (Auth::user()->role == 'Admin') {
+            $suratTugas = SuratTugas::paginate(20);
+        } else {
+            $suratTugas = SuratTugas::where('kd_pwk', Auth::user()->kd_pwk)->paginate(20);
+        }
 
         return view('surat_tugas.index')
             ->with('suratTugas', $suratTugas);
