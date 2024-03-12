@@ -8,10 +8,6 @@
                     <h1>Evaluasi Laporans</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('evaluasiLaporans.create') }}">
-                        Add New
-                    </a>
                 </div>
             </div>
         </div>
@@ -24,12 +20,12 @@
         <div class="clearfix"></div>
 
         <div class="card">
-            <div class="card-body p-0">
-                @include('evaluasi_laporans.table')
+            <div class="card-body p-3">
+                @include('evaluasi_laporans.index_table')
 
                 <div class="card-footer clearfix">
                     <div class="float-right">
-                        
+                    @include('adminlte-templates::common.paginate', ['records' => $evaluasiLaporans])
                     </div>
                 </div>
             </div>

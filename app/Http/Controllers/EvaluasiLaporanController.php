@@ -29,7 +29,7 @@ class EvaluasiLaporanController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $evaluasiLaporans = $this->evaluasiLaporanRepository->all();
+        $evaluasiLaporans = $this->evaluasiLaporanRepository->paginate(20);
 
         return view('evaluasi_laporans.index')
             ->with('evaluasiLaporans', $evaluasiLaporans);
