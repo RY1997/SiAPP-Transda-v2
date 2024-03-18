@@ -39,7 +39,8 @@
                 <td rowspan="5">{{ $loop->iteration }}</td>
                 <td rowspan="5">{{ $daftarPemda->nama_pemda }}</td>
                 @foreach($monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda) as $monitoringApbd)
-                <td class="text-center">{{ $monitoringApbd->tahun }}</td>
+                @for($tahun = 2020; $tahun <= 2024; $tahun++)
+                <td class="text-center">{{ $tahun }}</td>
                 <td>{{ $monitoringApbd->pendapatan_daerah }}</td>
                 <td>{{ $monitoringApbd->pendapatan_pad }}</td>
                 <td>{{ $monitoringApbd->pendapatan_transfer }}</td>
@@ -61,6 +62,7 @@
                     </div>
                 </td>
             </tr>
+            @endfor
             @endforeach
             @endforeach
         </tbody>
