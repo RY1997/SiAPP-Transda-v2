@@ -55,7 +55,7 @@
                 <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('silpa') }}</td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ route('monitoringApbds.edit', [$monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->get('id')]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('monitoringApbds.edit', [$monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->select('id')]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>
