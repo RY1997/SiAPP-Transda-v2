@@ -40,19 +40,19 @@
                 <td rowspan="5">{{ $daftarPemda->nama_pemda }}</td>
                 @for($tahun = 2020; $tahun <= 2024; $tahun++)
                 <td class="text-center">{{ $tahun }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_daerah') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_pad') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_transfer') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_lainnya') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_daerah') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_pegawai') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_barjas') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_modal') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_hibah') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_lainnya') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('penerimaan_pembiayaan') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pengeluaran_pembiayaan') }}</td>
-                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('silpa') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_daerah') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_pad') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_transfer') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_lainnya') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_daerah') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_pegawai') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_barjas') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_modal') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_hibah') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_lainnya') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('penerimaan_pembiayaan') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pengeluaran_pembiayaan') }}</td>
+                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('silpa') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringApbds.edit', [$monitoringApbd->id]) }}" class='btn btn-default btn-xs'>
