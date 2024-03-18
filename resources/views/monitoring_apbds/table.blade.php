@@ -38,22 +38,21 @@
             <tr>
                 <td rowspan="5">{{ $loop->iteration }}</td>
                 <td rowspan="5">{{ $daftarPemda->nama_pemda }}</td>
-                @foreach($monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda) as $monitoringApbd)
                 @for($tahun = 2020; $tahun <= 2024; $tahun++)
                 <td class="text-center">{{ $tahun }}</td>
-                <td>{{ $monitoringApbd->pendapatan_daerah }}</td>
-                <td>{{ $monitoringApbd->pendapatan_pad }}</td>
-                <td>{{ $monitoringApbd->pendapatan_transfer }}</td>
-                <td>{{ $monitoringApbd->pendapatan_lainnya }}</td>
-                <td>{{ $monitoringApbd->belanja_daerah }}</td>
-                <td>{{ $monitoringApbd->belanja_pegawai }}</td>
-                <td>{{ $monitoringApbd->belanja_barjas }}</td>
-                <td>{{ $monitoringApbd->belanja_modal }}</td>
-                <td>{{ $monitoringApbd->belanja_hibah }}</td>
-                <td>{{ $monitoringApbd->belanja_lainnya }}</td>
-                <td>{{ $monitoringApbd->penerimaan_pembiayaan }}</td>
-                <td>{{ $monitoringApbd->pengeluaran_pembiayaan }}</td>
-                <td>{{ $monitoringApbd->silpa }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_daerah') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_pad') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_transfer') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_lainnya') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_daerah') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_pegawai') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_barjas') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_modal') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_hibah') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_lainnya') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('penerimaan_pembiayaan') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pengeluaran_pembiayaan') }}</td>
+                <td>{{ $monitoringApbd->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('silpa') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringApbds.edit', [$monitoringApbd->id]) }}" class='btn btn-default btn-xs'>
@@ -63,7 +62,6 @@
                 </td>
             </tr>
             @endfor
-            @endforeach
             @endforeach
         </tbody>
     </table>
