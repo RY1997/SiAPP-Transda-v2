@@ -29,10 +29,10 @@
                 <td rowspan="5">{{ $daftarPemda->nama_pemda }}</td>
                 @for($tahun = 2020; $tahun <= 2024; $tahun++)
                 <td class="text-center">{{ $tahun }}</td>
-                <td>{{ $monitoringAlokasis->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->where('jenis_tkd', session('jenis_tkd'))->sum('alokasi_tkd') }}</td>
-                <td>{{ $monitoringPenyalurans->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->where('jenis_tkd', session('jenis_tkd'))->sum('penyaluran_tkd') }}</td>
-                <td>{{ $monitoringPenggunaans->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->where('jenis_tkd', session('jenis_tkd'))->sum('anggaran_tkd') }}</td>
-                <td>{{ $monitoringPenggunaans->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->where('jenis_tkd', session('jenis_tkd'))->sum('realisasi_tkd') }}</td>
+                <td class="text-right">{{ number_format($monitoringAlokasis->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('alokasi_tkd'), 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenyalurans->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('penyaluran_tkd'), 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenggunaans->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('anggaran_tkd'), 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenggunaans->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('realisasi_tkd'), 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ url('monitoringTrens/'.$daftarPemda->id.'/'.$tahun) }}" class='btn btn-default btn-xs'>

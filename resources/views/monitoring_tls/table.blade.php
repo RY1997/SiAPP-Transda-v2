@@ -7,10 +7,10 @@
                 <th>Tahun</th>
                 <th>Kelompok Permasalahan</th>
                 <th>Uraian Permasalahan</th>
-                <th>Nilai Permasalahan</th>
+                <!-- <th>Nilai Permasalahan</th> -->
                 <th>Uraian Rekomendasi</th>
                 <th>Uraian TL</th>
-                <th>Nilai TL</th>
+                <!-- <th>Nilai TL</th> -->
                 <th>Simpulan TL</th>
                 <th>Action</th>
             </tr>
@@ -24,17 +24,14 @@
                 <td>{{ $monitoringTl->tahun }}</td>
                 <td>{{ $monitoringTl->kelompok_permasalahan }}</td>
                 <td>{{ $monitoringTl->uraian_permasalahan }}</td>
-                <td>{{ $monitoringTl->nilai_permasalahan }}</td>
+                <!-- <td>{{ $monitoringTl->nilai_permasalahan }}</td> -->
                 <td>{{ $monitoringTl->uraian_rekomendasi }}</td>
                 <td>{{ $monitoringTl->uraian_tl }}</td>
-                <td>{{ $monitoringTl->nilai_tl }}</td>
+                <!-- <td>{{ $monitoringTl->nilai_tl }}</td> -->
                 <td>{{ $monitoringTl->simpulan_tl }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['monitoringTls.destroy', $monitoringTl->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('monitoringTls.show', [$monitoringTl->id]) }}" class='btn btn-default btn-xs'>
-                            <i class="far fa-eye"></i>
-                        </a>
                         <a href="{{ route('monitoringTls.edit', [$monitoringTl->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
@@ -46,7 +43,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="11" class="text-center">Belum ada data</td>
+                <td colspan="9" class="text-center">Belum ada data</td>
             </tr>
             @endif
         </tbody>

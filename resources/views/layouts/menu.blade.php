@@ -136,30 +136,31 @@
     </a>
 </li>
 
+<li class="nav-header">KHUSUS OTSUS</li>
 
-<!-- <li class="nav-item">
+<li class="nav-item">
     <a href="{{ route('kebijakanOtsuses.index') }}" class="nav-link {{ Request::is('kebijakanOtsuses*') ? 'active' : '' }}">
-        <p>Kebijakan Otsuses</p>
+        <p>Kebijakan</p>
     </a>
 </li>
 
 
 <li class="nav-item">
     <a href="{{ route('rippOtsuses.index') }}" class="nav-link {{ Request::is('rippOtsuses*') ? 'active' : '' }}">
-        <p>Ripp Otsuses</p>
+        <p>RIPP</p>
     </a>
 </li>
 
 
 <li class="nav-item">
     <a href="{{ route('urusanBersamaOtsuses.index') }}" class="nav-link {{ Request::is('urusanBersamaOtsuses*') ? 'active' : '' }}">
-        <p>Urusan Bersama Otsuses</p>
+        <p>Urusan Bersama</p>
     </a>
 </li>
 
 
 <li class="nav-item">
     <a href="{{ route('silpaOtsuses.index') }}" class="nav-link {{ Request::is('silpaOtsuses*') ? 'active' : '' }}">
-        <p>Silpa Otsuses</p>
+        <p>Silpa</p>
     </a>
-</li> -->
+</li>

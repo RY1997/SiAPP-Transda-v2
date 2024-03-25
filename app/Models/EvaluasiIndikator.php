@@ -39,11 +39,11 @@ class EvaluasiIndikator extends Model
         'kode_pwk',
         'nama_pemda',
         'uraian_indikator',
-        'target',
+        'target', //dak usah
         'realisasi',
         'cutoff_capaian',
-        'sumber_data',
-        'keterangan'
+        'sumber_data', //dak usah
+        'keterangan' //penyebab
     ];
 
     /**

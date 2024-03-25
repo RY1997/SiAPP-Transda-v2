@@ -15,53 +15,51 @@
                 <th colspan="4">Pendapatan Daerah</th>
                 <th colspan="6">Belanja Daerah</th>
                 <th colspan="2">Pembiayaan Daerah</th>
-                <th rowspan="2" style="min-width: 250px;">SiLPA</th>
+                <th rowspan="2" style="min-width: 200px;">SiLPA</th>
                 <th rowspan="2" colspan="3">Action</th>
             </tr>
             <tr>
-                <th style="min-width: 250px;">Total</th>
-                <th style="min-width: 250px;">PAD</th>
-                <th style="min-width: 250px;">Transfer</th>
-                <th style="min-width: 250px;">Lainnya</th>
-                <th style="min-width: 250px;">Total</th>
-                <th style="min-width: 250px;">Pegawai</th>
-                <th style="min-width: 250px;">Barang dan Jasa</th>
-                <th style="min-width: 250px;">Modal</th>
-                <th style="min-width: 250px;">Hibah</th>
-                <th style="min-width: 250px;">Lainnya</th>
-                <th style="min-width: 250px;">Penerimaan Pembiayaan</th>
-                <th style="min-width: 250px;">Pengeluaran Pembiayaan</th>
+                <th style="min-width: 200px;">Total</th>
+                <th style="min-width: 200px;">PAD</th>
+                <th style="min-width: 200px;">Transfer</th>
+                <th style="min-width: 200px;">Lainnya</th>
+                <th style="min-width: 200px;">Total</th>
+                <th style="min-width: 200px;">Pegawai</th>
+                <th style="min-width: 200px;">Barang dan Jasa</th>
+                <th style="min-width: 200px;">Modal</th>
+                <th style="min-width: 200px;">Hibah</th>
+                <th style="min-width: 200px;">Lainnya</th>
+                <th style="min-width: 200px;">Penerimaan Pembiayaan</th>
+                <th style="min-width: 200px;">Pengeluaran Pembiayaan</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($daftarPemdas as $daftarPemda)
+            @foreach($monitoringApbds as $monitoringApbd)
             <tr>
-                <td rowspan="5">{{ $loop->iteration }}</td>
-                <td rowspan="5">{{ $daftarPemda->nama_pemda }}</td>
-                @for($tahun = 2020; $tahun <= 2024; $tahun++)
-                <td class="text-center">{{ $tahun }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_daerah') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_pad') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_transfer') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pendapatan_lainnya') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_daerah') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_pegawai') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_barjas') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_modal') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_hibah') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('belanja_lainnya') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('penerimaan_pembiayaan') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('pengeluaran_pembiayaan') }}</td>
-                <td>{{ $monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->sum('silpa') }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td>
+                <td>{{ $monitoringApbd->nama_pemda }}</td>
+                <td class="text-center">{{ $monitoringApbd->tahun }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->pendapatan_daerah, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->pendapatan_pad, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->pendapatan_transfer, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->pendapatan_lainnya, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->belanja_daerah, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->belanja_pegawai, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->belanja_barjas, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->belanja_modal, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->belanja_hibah, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->belanja_lainnya, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->penerimaan_pembiayaan, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->pengeluaran_pembiayaan, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->silpa, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ route('monitoringApbds.edit', [$monitoringApbds->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->pluck('id')]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('monitoringApbds.edit', $monitoringApbd->id) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>
                 </td>
             </tr>
-            @endfor
             @endforeach
         </tbody>
     </table>

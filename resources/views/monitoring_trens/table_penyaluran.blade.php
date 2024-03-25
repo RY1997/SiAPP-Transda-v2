@@ -22,7 +22,7 @@
             <tr>
                 <td>{{ $monitoringPenyaluran->tahap_salur }}</td>
                 <td>{{ $monitoringPenyaluran->tgl_salur }}</td>
-                <td>{{ $monitoringPenyaluran->penyaluran_tkd }}</td>
+                <td>{{ number_format($monitoringPenyaluran->penyaluran_tkd, 2, ',', '.') }}</td>
                 <td>{{ $monitoringPenyaluran->tepat_waktu }}</td>
                 <td>{{ $monitoringPenyaluran->penyebab_tidak_tepat_waktu }}</td>
                 <td>{{ $monitoringPenyaluran->tepat_jumlah }}</td>

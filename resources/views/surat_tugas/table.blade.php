@@ -3,17 +3,11 @@
         <thead class="text-center bg-secondary">
             <tr>
                 <th>#</th>
-                <th>No St</th>
-                <th>Tgl St</th>
+                <th>No ST</th>
+                <th>Tgl ST</th>
                 <th>Nama Penugasan</th>
                 <th>Jenis Penugasan</th>
                 <th>Nama Pemda</th>
-                <th>Tgl Mulai</th>
-                <th>Tgl Akhir</th>
-                <th>Status St</th>
-                <th>File St</th>
-                <th>Tw Penugasan</th>
-                <th>Tahun Penugasan</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -23,16 +17,10 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $suratTugas->no_st }}</td>
-                <td>{{ $suratTugas->tgl_st }}</td>
+                <td>{{ $suratTugas->tgl_st->format('d-m-Y') }}</td>
                 <td>{{ $suratTugas->nama_penugasan }}</td>
                 <td>{{ $suratTugas->jenis_penugasan }}</td>
                 <td>{{ $suratTugas->nama_pemda }}</td>
-                <td>{{ $suratTugas->tgl_mulai }}</td>
-                <td>{{ $suratTugas->tgl_akhir }}</td>
-                <td>{{ $suratTugas->status_st }}</td>
-                <td>{{ $suratTugas->file_st }}</td>
-                <td>{{ $suratTugas->tw_penugasan }}</td>
-                <td>{{ $suratTugas->tahun_penugasan }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['suratTugas.destroy', $suratTugas->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

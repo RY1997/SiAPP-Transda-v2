@@ -48,16 +48,10 @@ class EvaluasiKontrakController extends AppBaseController
      *
      * @return Response
      */
-    public function create($st_id, $tahun)
+    public function create()
     {
-        $suratTugas = SuratTugas::find($st_id);
-        $evaluasiKontrak = [];
-        return view('evaluasi_kontraks.create')
-            ->with([
-                'suratTugas' => $suratTugas,
-                'tahun'      => $tahun,
-                'evaluasiKontrak' => $evaluasiKontrak
-            ]);
+        
+        return view('evaluasi_kontraks.create');
     }
 
     /**

@@ -13,7 +13,7 @@
             <tr>
                 <td>{{ $monitoringAlokasi->tipe_tkd }}</td>
                 <td>{{ $monitoringAlokasi->bidang_tkd }}</td>
-                <td>{{ $monitoringAlokasi->alokasi_tkd }}</td>
+                <td class="text-right">{{ number_format($monitoringAlokasi->alokasi_tkd, 2, ',', '.') }}</td>
             </tr>
             @endforeach
             @else

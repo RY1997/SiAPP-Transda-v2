@@ -19,15 +19,12 @@
             <tr>
                 <td>{{ $monitoringPenggunaan->bidang_tkd }}</td>
                 <td>Alokasi</td>
-                <td>{{ $monitoringPenggunaan->anggaran_tkd }}</td>
-                <td>{{ $monitoringPenggunaan->realisasi_tkd }}</td>
+                <td>{{ number_format($monitoringPenggunaan->anggaran_tkd, 2, ',', '.') }}</td>
+                <td>{{ number_format($monitoringPenggunaan->realisasi_tkd, 2, ',', '.') }}</td>
                 <td>{{ $monitoringPenggunaan->penyebab_kurang_guna }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['monitoringPenggunaans.destroy', $monitoringPenggunaan->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('monitoringPenggunaans.show', [$monitoringPenggunaan->id]) }}" class='btn btn-default btn-xs'>
-                            <i class="far fa-eye"></i>
-                        </a>
                         <a href="{{ route('monitoringPenggunaans.edit', [$monitoringPenggunaan->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
