@@ -3,10 +3,10 @@
         <thead class="text-center bg-secondary">
             <tr>
                 <th rowspan="2" style="min-width: 100px;">Tahap Salur</th>
-                <th rowspan="2" style="min-width: 100px;">Tanggal Penyaluran</th>
                 <th rowspan="2" style="min-width: 250px;">Nilai Penyaluran</th>
-                <th colspan="2">Ketepatan Waktu</th>
+                <th rowspan="2" style="min-width: 100px;">Tanggal Penyaluran</th>
                 <th colspan="2">Ketepatan Jumlah</th>
+                <th colspan="2">Ketepatan Waktu</th>
                 <th rowspan="2">Action</th>
             </tr>
             <tr>
@@ -21,12 +21,12 @@
             @foreach($monitoringPenyalurans as $monitoringPenyaluran)
             <tr>
                 <td>{{ $monitoringPenyaluran->tahap_salur }}</td>
-                <td>{{ $monitoringPenyaluran->tgl_salur }}</td>
                 <td>{{ number_format($monitoringPenyaluran->penyaluran_tkd, 2, ',', '.') }}</td>
-                <td>{{ $monitoringPenyaluran->tepat_waktu }}</td>
-                <td>{{ $monitoringPenyaluran->penyebab_tidak_tepat_waktu }}</td>
+                <td>{{ $monitoringPenyaluran->tgl_salur }}</td>
                 <td>{{ $monitoringPenyaluran->tepat_jumlah }}</td>
                 <td>{{ $monitoringPenyaluran->penyebab_tidak_tepat_jumlah }}</td>
+                <td>{{ $monitoringPenyaluran->tepat_waktu }}</td>
+                <td>{{ $monitoringPenyaluran->penyebab_tidak_tepat_waktu }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['monitoringPenyalurans.destroy', $monitoringPenyaluran->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

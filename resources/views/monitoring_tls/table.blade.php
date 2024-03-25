@@ -30,14 +30,11 @@
                 <!-- <td>{{ $monitoringTl->nilai_tl }}</td> -->
                 <td>{{ $monitoringTl->simpulan_tl }}</td>
                 <td width="120">
-                    {!! Form::open(['route' => ['monitoringTls.destroy', $monitoringTl->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('monitoringTls.edit', [$monitoringTl->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
-                    {!! Form::close() !!}
                 </td>
             </tr>
             @endforeach

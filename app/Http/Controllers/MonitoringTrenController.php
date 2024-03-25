@@ -10,8 +10,10 @@ use App\Models\DaftarPemda;
 use App\Models\MonitoringAlokasi;
 use App\Models\MonitoringPenggunaan;
 use App\Models\MonitoringPenyaluran;
+use App\Models\ParameterTkd;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class MonitoringTrenController extends AppBaseController
@@ -102,13 +104,47 @@ class MonitoringTrenController extends AppBaseController
     public function show($pemda_id , $tahun)
     {
         $pemda = DaftarPemda::find($pemda_id);
+
+        if (session('jenis_tkd') == 'Dana Otonomi Khusus') {
+            $tahap = [
+                ['tahap_salur' => 'Tahap I'],
+                ['tahap_salur' => 'Tahap II'],
+                ['tahap_salur' => 'Tahap III'],
+            ];
+        }
+
+        $bidang = ParameterTkd::where('jenis_tkd', session('jenis_tkd'))->get();
+
+        foreach ($tahap as $item) {
+            MonitoringPenyaluran::updateOrCreate([
+                'kode_pwk' => $pemda->kode_pwk,
+                'tahun' => $tahun,
+                'nama_pemda' => $pemda->nama_pemda,
+                'jenis_tkd' => session('jenis_tkd'),
+                'tahap_salur' => $item['tahap_salur']
+            ],[
+                'penyaluran_tkd' => 0
+            ]);
+        }
+
+        foreach ($bidang as $item) {
+            MonitoringPenggunaan::updateOrCreate([
+                'kode_pwk' => $pemda->kode_pwk,
+                'tahun' => $tahun,
+                'nama_pemda' => $pemda->nama_pemda,
+                'jenis_tkd' => session('jenis_tkd'),
+                'bidang_tkd' => $item->bidang_tkd
+            ],[
+                'anggaran_tkd' => 0
+            ]);
+        }
+
         $monitoringAlokasis = MonitoringAlokasi::where('tahun', $tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
         $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
         $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
 
         if (empty($monitoringAlokasis)) {
             Flash::error('Monitoring Alokasi not found');
-
             return redirect(route('monitoringAlokasis.index'));
         }
 

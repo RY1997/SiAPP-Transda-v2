@@ -53,22 +53,22 @@
                 <div class="col-sm-8 mb-2">
                     <h5>B. Penyaluran Transfer ke Daerah</h5>
                 </div>
-                <div class="col-sm-4 mb-2">
+                <!-- <div class="col-sm-4 mb-2">
                     <a class="btn btn-primary float-right" href="{{ url('monitoringPenyalurans/'.$pemda->id.'/'.$tahun.'/create') }}">
                         + Penyaluran
                     </a>
-                </div>
+                </div> -->
                 <div class="col-sm-12 mb-2">
                     @include('monitoring_trens.table_penyaluran')
                 </div>
                 <div class="col-sm-8 mb-2">
                     <h5>C. Penggunaan Transfer ke Daerah</h5>
                 </div>
-                <div class="col-sm-4 mb-2">
+                <!-- <div class="col-sm-4 mb-2">
                     <a class="btn btn-primary float-right" href="{{ url('monitoringPenggunaans/'.$pemda->id.'/'.$tahun.'/create') }}">
                         + Penggunaan
                     </a>
-                </div>
+                </div> -->
                 <div class="col-sm-12 mb-2">
                     @include('monitoring_trens.table_penggunaan')
                 </div>
