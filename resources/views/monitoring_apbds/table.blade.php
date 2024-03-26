@@ -36,8 +36,10 @@
         <tbody>
             @foreach($monitoringApbds as $monitoringApbd)
             <tr>
-                <td class="text-center">{{ $loop->iteration }}</td>
-                <td>{{ $monitoringApbd->nama_pemda }}</td>
+                @if ($monitoringApbd->tahun == '2020')
+                <td rowspan="5" class="text-center">{{ $loop->iteration }}</td>
+                <td rowspan="5">{{ $monitoringApbd->nama_pemda }}</td>
+                @endif
                 <td class="text-center">{{ $monitoringApbd->tahun }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->pendapatan_daerah, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->pendapatan_pad, 2, ',', '.') }}</td>

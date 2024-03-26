@@ -64,6 +64,7 @@ Route::get('evaluasiRengars/{st_id}/{tahun}', [App\Http\Controllers\EvaluasiReng
 
 
 Route::resource('evaluasiKontraks', App\Http\Controllers\EvaluasiKontrakController::class);
+Route::get('evaluasiKontraks/{st_id}/{tahun}', [App\Http\Controllers\EvaluasiKontrakController::class, 'show']);
 Route::get('evaluasiKontraks/{st_id}/{tahun}/create', [App\Http\Controllers\EvaluasiKontrakController::class, 'create']);
 
 

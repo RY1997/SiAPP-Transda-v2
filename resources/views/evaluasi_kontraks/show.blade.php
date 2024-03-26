@@ -21,32 +21,29 @@
         <div class="card-body">
             <div class="row">
                 <!-- Nama Pemda Field -->
-                <div class="col-sm-4 bt-2">
+                <div class="col-sm-4 mb-2">
                     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
                 </div>
-                <div class="col-sm-8 bt-2">
-                    <input type="text" name="nama_pemda" id="nama_pemda" value="{{ $suratTugas->nama_pemda }}" class="form-control" readonly>
+                <div class="col-sm-8 mb-2">
+                    <input type="text" name="nama_pemda" id="nama_pemda" value="{{ $suratTugas->nama_pemda }}" class="form-control mb-1" readonly>
                 </div>
 
                 <!-- Tahun Field -->
-                <div class="col-sm-4 bt-2">
+                <div class="col-sm-4 mb-2">
                     {!! Form::label('tahun', 'Tahun:') !!}
                 </div>
-                <div class="col-sm-8 bt-2">
-                    <input type="text" name="tahun" id="tahun" value="{{ $tahun }}" readonly />
+                <div class="col-sm-8 mb-2">
+                    <input type="text" class="form-control" name="tahun" id="tahun" value="{{ $tahun }}" readonly />
                 </div>
 
                 <!-- Jenis Tkd Field -->
-                <div class="col-sm-4 bt-2">
+                <div class="col-sm-4 mb-2">
                     {!! Form::label('jenis_tkd', 'Jenis TKD:') !!}
                 </div>
-                <div class="col-sm-8 bt-2">
-                    <input type="text" name="jenis_tkd" id="jenis_tkd" value="{{ session('jenis_tkd') }}" readonly />
+                <div class="col-sm-8 mb-2">
+                    <input type="text" class="form-control" name="jenis_tkd" id="jenis_tkd" value="{{ session('jenis_tkd') }}" readonly />
                 </div>
-
-                <div class="col-sm-12 bt-2">
-                    @include('evaluasi_kontraks.show_table')
-                </div>
+                @include('evaluasi_kontraks.show_table')
             </div>
         </div>
     </div>

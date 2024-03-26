@@ -48,7 +48,7 @@ class EvaluasiKontrakController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create($st_id, $tahun)
     {
         
         return view('evaluasi_kontraks.create');
@@ -79,17 +79,12 @@ class EvaluasiKontrakController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show($st_id, $tahun)
     {
-        $evaluasiKontrak = $this->evaluasiKontrakRepository->find($id);
+        $suratTugas = SuratTugas::find($st_id);
+        $evaluasiKontraks = EvaluasiKontrak::where('nama_pemda', $suratTugas->nama_pemda)->where('tahun', $tahun)->paginate(20);
 
-        if (empty($evaluasiKontrak)) {
-            Flash::error('Evaluasi Kontrak not found');
-
-            return redirect(route('evaluasiKontraks.index'));
-        }
-
-        return view('evaluasi_kontraks.show')->with('evaluasiKontrak', $evaluasiKontrak);
+        return view('evaluasi_kontraks.show')->with(['suratTugas' => $suratTugas, 'tahun' => $tahun, 'evaluasiKontraks' => $evaluasiKontraks]);
     }
 
     /**
