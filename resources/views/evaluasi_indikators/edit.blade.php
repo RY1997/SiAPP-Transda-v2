@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($evaluasiIndikator, ['route' => ['evaluasiIndikators.update', $evaluasiIndikator->id], 'method' => 'patch']) !!}
+            {!! Form::model($evaluasiIndikator2023, ['route' => ['evaluasiIndikators.update', $evaluasiIndikator2023->id], 'method' => 'put']) !!}
 
             <div class="card-body">
                 <div class="row">

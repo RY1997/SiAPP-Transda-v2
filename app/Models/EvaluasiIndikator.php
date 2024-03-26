@@ -37,13 +37,13 @@ class EvaluasiIndikator extends Model
     public $fillable = [
         'tahun',
         'kode_pwk',
+        'jenis_tkd',
         'nama_pemda',
         'uraian_indikator',
-        'target', //dak usah
+        'target',
         'realisasi',
-        'cutoff_capaian',
-        'sumber_data', //dak usah
-        'keterangan' //penyebab
+        'cutoff_capaian',        
+        'keterangan'
     ];
 
     /**
@@ -55,10 +55,11 @@ class EvaluasiIndikator extends Model
         'id' => 'integer',
         'tahun' => 'string',
         'kode_pwk' => 'string',
+        'jenis_tkd' => 'string',
         'nama_pemda' => 'string',
         'uraian_indikator' => 'string',
-        'target' => 'integer',
-        'realisasi' => 'integer',
+        'target' => 'decimal:2',
+        'realisasi' => 'decimal:2',
         'cutoff_capaian' => 'date',
         'sumber_data' => 'string',
         'keterangan' => 'string'
@@ -70,15 +71,6 @@ class EvaluasiIndikator extends Model
      * @var array
      */
     public static $rules = [
-        'tahun' => 'required|string|max:255',
-        'kode_pwk' => 'nullable|string|max:255',
-        'nama_pemda' => 'required|string|max:255',
-        'uraian_indikator' => 'nullable|string|max:255',
-        'target' => 'nullable|integer',
-        'realisasi' => 'nullable|integer',
-        'cutoff_capaian' => 'nullable',
-        'sumber_data' => 'required|string|max:255',
-        'keterangan' => 'nullable|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

@@ -33,25 +33,34 @@ class EvaluasiIndikatorController extends AppBaseController
      */
     public function index(Request $request)
     {
-        if (Auth::user()->role != 'Admin') {
-            $suratTugas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk)->where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->get();
-            $parameterIndikator = ParameterIndikator::where('jenis_tkd', session('jenis_tkd'))->get();
-            EvaluasiIndikator::updateOrCreate([
-                'nama_pemda' => $suratTugas->nama_pemda,
-                'tahun' => '2023',
-                'kode_pwk' => $suratTugas->kode_pwk,
-                'jenis_tkd' => $suratTugas->jenis_tkd,
-                'uraian_indikator' => $parameterIndikator->uraian_indikator
-            ], [
-                'target' => NULL,
-                'realisasi' => NULL,
-                'cutoff_capaian' => NULL,
-                'sumber_data' => NULL,
-                'keterangan' => NULL
-            ]);
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Audit')->get();
+        $parameterIndikator = ParameterIndikator::where('jenis_tkd', session('jenis_tkd'))->get();
+
+        foreach ($suratTugas as $st) {
+            foreach ($parameterIndikator as $indikator) {
+                EvaluasiIndikator::updateOrCreate([
+                    'nama_pemda' => $st->nama_pemda,
+                    'tahun' => '2023',
+                    'kode_pwk' => $st->kode_pwk,
+                    'jenis_tkd' => $st->jenis_tkd,
+                    'uraian_indikator' => $indikator->uraian_indikator
+                ], [
+                    'sumber_data' => NULL
+                ]);
+
+                EvaluasiIndikator::updateOrCreate([
+                    'nama_pemda' => $st->nama_pemda,
+                    'tahun' => '2024',
+                    'kode_pwk' => $st->kode_pwk,
+                    'jenis_tkd' => $st->jenis_tkd,
+                    'uraian_indikator' => $indikator->uraian_indikator
+                ], [
+                    'sumber_data' => NULL
+                ]);
+            }
         }
 
-        $evaluasiIndikators = $this->evaluasiIndikatorRepository->paginate(20);
+        $evaluasiIndikators = EvaluasiIndikator::where('jenis_tkd', session('jenis_tkd'))->orderBy('nama_pemda')->orderBy('tahun')->paginate(20);
 
         return view('evaluasi_indikators.index')
             ->with('evaluasiIndikators', $evaluasiIndikators);
@@ -98,7 +107,6 @@ class EvaluasiIndikatorController extends AppBaseController
 
         if (empty($evaluasiIndikator)) {
             Flash::error('Evaluasi Indikator not found');
-
             return redirect(route('evaluasiIndikators.index'));
         }
 
@@ -114,15 +122,11 @@ class EvaluasiIndikatorController extends AppBaseController
      */
     public function edit($id)
     {
-        $evaluasiIndikator = $this->evaluasiIndikatorRepository->find($id);
+        $evaluasiIndikator2023 = EvaluasiIndikator::where('id', $id)->first();
+        $evaluasiIndikator2024 = EvaluasiIndikator::where('tahun', '2024')->where('jenis_tkd', session('jenis_tkd'))
+            ->where('nama_pemda', $evaluasiIndikator2023->nama_pemda)->where('uraian_indikator', $evaluasiIndikator2023->uraian_indikator)->first();
 
-        if (empty($evaluasiIndikator)) {
-            Flash::error('Evaluasi Indikator not found');
-
-            return redirect(route('evaluasiIndikators.index'));
-        }
-
-        return view('evaluasi_indikators.edit')->with('evaluasiIndikator', $evaluasiIndikator);
+        return view('evaluasi_indikators.edit')->with(['evaluasiIndikator2023' => $evaluasiIndikator2023, 'evaluasiIndikator2024' => $evaluasiIndikator2024]);
     }
 
     /**
@@ -135,20 +139,45 @@ class EvaluasiIndikatorController extends AppBaseController
      */
     public function update($id, UpdateEvaluasiIndikatorRequest $request)
     {
-        $evaluasiIndikator = $this->evaluasiIndikatorRepository->find($id);
+        $evaluasiIndikator2023 = EvaluasiIndikator::find($id);
 
-        if (empty($evaluasiIndikator)) {
+        if (!$evaluasiIndikator2023) {
             Flash::error('Evaluasi Indikator not found');
-
             return redirect(route('evaluasiIndikators.index'));
         }
 
-        $evaluasiIndikator = $this->evaluasiIndikatorRepository->update($request->all(), $id);
+        $evaluasiIndikator2024 = EvaluasiIndikator::where('tahun', '2024')
+            ->where('jenis_tkd', session('jenis_tkd'))
+            ->where('nama_pemda', $evaluasiIndikator2023->nama_pemda)
+            ->where('uraian_indikator', $evaluasiIndikator2023->uraian_indikator)
+            ->first();
+
+        if (!$evaluasiIndikator2024) {
+            Flash::error('Evaluasi Indikator not found');
+            return redirect(route('evaluasiIndikators.index'));
+        }
+
+        // Update for 2023
+        $data2023 = [
+            'target' => $request->target_2023 ?: null,
+            'realisasi' => $request->realisasi_2023 ?: null,
+            'keterangan' => $request->keterangan_2023 ?: null
+        ];
+        $evaluasiIndikator2023->update($data2023);
+
+        // Update for 2024
+        $data2024 = [
+            'target' => $request->target_2024 ?: null,
+            'realisasi' => $request->realisasi_2024 ?: null,
+            'keterangan' => $request->keterangan_2024 ?: null
+        ];
+        $evaluasiIndikator2024->update($data2024);
 
         Flash::success('Evaluasi Indikator updated successfully.');
-
         return redirect(route('evaluasiIndikators.index'));
     }
+
+
 
     /**
      * Remove the specified EvaluasiIndikator from storage.

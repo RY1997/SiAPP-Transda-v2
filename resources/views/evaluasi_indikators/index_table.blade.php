@@ -2,32 +2,40 @@
     <table class="table m-0" id="evaluasiIndikators-table">
         <thead class="text-center bg-secondary">
             <tr>
-                <td>#</td>
-                <th style="min-width: 150px;">Nama Pemda</th>
-                <th style="min-width: 100px;">Tahun</th>
-                <th style="min-width: 150px;">Uraian Indikator</th>
-                <th style="min-width: 100px;">Target</th>
-                <th style="min-width: 100px;">Realisasi</th>
-                <th style="min-width: 100px;">Cutoff Capaian</th>
-                <th style="min-width: 100px;">Sumber Data</th>
-                <th style="min-width: 200px;">Keterangan</th>
-                <th>Action</th>
+                <td rowspan="2" width="50">#</td>
+                <th rowspan="2" width="200">Nama Pemda</th>
+                <th rowspan="2" width="250">Uraian Indikator</th>
+                <th colspan="4">Capaian 2023</th>
+                <th colspan="4">Capaian 2024</th>
+                <th rowspan="2" width="50">Action</th>
+            </tr>
+            <tr>
+                <th width="100">Target</th>
+                <th width="100">Realisasi</th>
+                <th width="100">Capaian (%)</th>
+                <th width="200">Penyebab Capaian Rendah</th>
+                <th width="100">Target</th>
+                <th width="100">Realisasi</th>
+                <th width="100">Capaian (%)</th>
+                <th width="200">Penyebab Capaian Rendah</th>
             </tr>
         </thead>
         <tbody>
             @if ($evaluasiIndikators->count() > 0)
-            @foreach($evaluasiIndikators as $evaluasiIndikator)
+            @foreach($evaluasiIndikators->where('tahun', '2023') as $evaluasiIndikator)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $evaluasiIndikator->nama_pemda }}</td>
-                <td>{{ $evaluasiIndikator->tahun }}</td>
                 <td>{{ $evaluasiIndikator->uraian_indikator }}</td>
-                <td>{{ $evaluasiIndikator->target }}</td>
-                <td>{{ $evaluasiIndikator->realisasi }}</td>
-                <td>{{ $evaluasiIndikator->cutoff_capaian }}</td>
-                <td>{{ $evaluasiIndikator->sumber_data }}</td>
+                <td class="text-center">{{ number_format($evaluasiIndikator->target, 2, ',', '.') }}</td>
+                <td class="text-center">{{ number_format($evaluasiIndikator->realisasi, 2, ',', '.') }}</td>
+                <td class="text-center">{{ $evaluasiIndikator->target > 0 ? (number_format($evaluasiIndikator->realisasi / $evaluasiIndikator->target * 100, 2, ',', '.')) : '0,00' }}</td>
                 <td>{{ $evaluasiIndikator->keterangan }}</td>
-                <td width="120">
+                <td class="text-center">{{ number_format($evaluasiIndikators->where('tahun', '2024')->sum('target'), 2, ',', '.') }}</td>
+                <td class="text-center">{{ number_format($evaluasiIndikators->where('tahun', '2024')->sum('realisasi'), 2, ',', '.') }}</td>
+                <td class="text-center">{{ $evaluasiIndikators->where('tahun', '2024')->sum('target') > 0 ? (number_format($evaluasiIndikators->where('tahun', '2024')->sum('realisasi') / $evaluasiIndikators->where('tahun', '2024')->sum('target') * 100, 2, ',', '.')) : '0,00' }}</td>
+                <td>{{ $evaluasiIndikator->keterangan }}</td>
+                <td>
                     <div class='btn-group'>
                         <a href="{{ route('evaluasiIndikators.edit', [$evaluasiIndikator->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
