@@ -19,13 +19,19 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $suratTugas->nama_pemda }}</td>
                 <td>{{ $tahun }}</td>
-                <td>{{ $evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('nilai_anggaran') }}</td>
-                <td>{{ $evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('nilai_realisasi') }}</td>
-                <td>{{ $evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->whereNull('relevansi_subkegiatan')->count() ? 'Belum Lengkap' : 'Lengkap' }}</td>
+                <td class="text-right">{{ number_format($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('nilai_anggaran'), 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('nilai_realisasi'), 2, ',', '.') }}</td>
+                <td>
+                    @if ($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('nilai_anggaran') > 0)
+                    {{ $evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->whereNull('relevansi_subkegiatan')->count() > 0 ? 'Belum Lengkap' : 'Lengkap' }}
+                    @else
+                    Belum ada data
+                    @endif
+                </td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ url('evaluasiRengars/'.$suratTugas->id.'/'.$tahun) }}" class='btn btn-default btn-xs'>
-                            <i class="far fa-eye"></i>
+                            <i class="far fa-edit"></i>
                         </a>
                     </div>
                 </td>

@@ -33,18 +33,7 @@
     {!! Form::text('kode_kegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 <div class="form-group col-sm-6">
-    {!! Form::text('nama_kegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
-</div>
-
-<!-- Kode Subkegiatan Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('nama_subkegiatan', 'Subkegiatan:') !!}
-</div>
-<div class="form-group col-sm-2">
-    {!! Form::text('kode_subkegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
-</div>
-<div class="form-group col-sm-6">
-    {!! Form::text('nama_subkegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
+    {!! Form::textarea('nama_kegiatan', null, ['class' => 'form-control','rows' => 3, 'readonly disabled']) !!}
 </div>
 
 <!-- Sumber Dana Field -->
@@ -55,42 +44,53 @@
     {!! Form::text('sumber_dana', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
-<!-- Nilai Anggaran Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('nilai_anggaran', 'Nilai Anggaran:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::number('nilai_anggaran', null, ['class' => 'form-control', 'readonly disabled']) !!}
-</div>
-
 <!-- Urusan Subkegiatan Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('urusan_subkegiatan', 'Dukungan Urusan:') !!}
+    {!! Form::label('urusan_subkegiatan', 'Dukungan Urusan Bersama:') !!}
 </div>
 <div class="form-group col-sm-8">
     {!! Form::text('urusan_subkegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
-<!-- Nilai Realisasi Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('nilai_realisasi', 'Nilai Realisasi:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::number('nilai_realisasi', null, ['class' => 'form-control']) !!}
+<div class="col-sm-12">
+    <h5>Pengujian Subkegiatan</h5>
 </div>
 
-<!-- Relevansi Subkegiatan Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('relevansi_subkegiatan', 'Relevansi Subkegiatan:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::text('relevansi_subkegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
-<!-- Pelaksanaan Subkegiatan Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('pelaksanaan_subkegiatan', 'Pelaksanaan Subkegiatan:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::text('pelaksanaan_subkegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+<div class="table-responsive">
+    <table class="table table-bordered" id="subkegiatanTable">
+        <thead class="text-center bg-secondary">
+            <tr>
+                <th width="50">#</th>
+                <th width="300">Nama Subkegiatan</th>
+                <th width="150">Anggaran</th>
+                <th width="150">Realisasi</th>
+                <th width="100">Relevansi</th>
+                <th width="100">Pelaksanaan</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($subKegiatans as $subKegiatan)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $subKegiatan->kode_subkegiatan . ' ' . $subKegiatan->nama_subkegiatan }}</td>
+                <td class="text-right">{{ number_format($subKegiatan->nilai_anggaran, 2, ',', '.') }}</td>
+                <td>
+                    <input type="number" name="nilai_realisasi" class="form-control" step="0.01" value="{{ $subKegiatan->nilai_realisasi }}" required>
+                </td>
+                <td class="text-center">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Relevan" name="relevansi-{{ $subKegiatan->id }}" id="relevansi-{{ $subKegiatan->id }}">
+                        <label class="form-check-label" for="relevansi-{{ $subKegiatan->id }}"> Relevan</label>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Dilaksanakan" name="pelaksanaan-{{ $subKegiatan->id }}" id="pelaksanaan-{{ $subKegiatan->id }}">
+                        <label class="form-check-label" for="pelaksanaan-{{ $subKegiatan->id }}"> Dilaksanakan</label>
+                    </div>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>

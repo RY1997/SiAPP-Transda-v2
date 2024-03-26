@@ -31,7 +31,7 @@ class EvaluasiRengarController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->paginate(20);
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Audit')->paginate(20);
         $evaluasiRengars = EvaluasiRengar::where('sumber_dana', session('jenis_tkd'))->get();
 
         return view('evaluasi_rengars.index')
@@ -76,17 +76,12 @@ class EvaluasiRengarController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show($id, $tahun)
     {
-        $evaluasiRengar = $this->evaluasiRengarRepository->find($id);
+        $suratTugas = SuratTugas::where('id', $id)->first();
+        $evaluasiRengars = EvaluasiRengar::where('nama_pemda', $suratTugas->nama_pemda)->where('tahun', $tahun)->where('sumber_dana', session('jenis_tkd'))->groupBy('nama_kegiatan')->selectRaw('*, sum(nilai_anggaran) as total_anggaran, sum(nilai_realisasi) as total_realisasi')->paginate(20);
 
-        if (empty($evaluasiRengar)) {
-            Flash::error('Evaluasi Rengar not found');
-
-            return redirect(route('evaluasiRengars.index'));
-        }
-
-        return view('evaluasi_rengars.show')->with('evaluasiRengar', $evaluasiRengar);
+        return view('evaluasi_rengars.show')->with(['suratTugas' => $suratTugas, 'evaluasiRengars' => $evaluasiRengars, 'tahun' => $tahun]);
     }
 
     /**
@@ -99,18 +94,19 @@ class EvaluasiRengarController extends AppBaseController
     public function edit($id)
     {
         $evaluasiRengar = EvaluasiRengar::find($id);
-        $st_id = SuratTugas::where('nama_pemda', $evaluasiRengar->nama_pemda)->first()->pluck('id');
+        $st_id = SuratTugas::where('nama_pemda', $evaluasiRengar->nama_pemda)->first();
+        $subKegiatans = EvaluasiRengar::where('kode_kegiatan', $evaluasiRengar->kode_kegiatan)->get();
 
         if (empty($evaluasiRengar)) {
             Flash::error('Evaluasi Rengar not found');
-
             return redirect(route('evaluasiRengars.index'));
         }
 
         return view('evaluasi_rengars.edit')
             ->with([
                 'st_id' => $st_id,
-                'evaluasiRengar' => $evaluasiRengar
+                'evaluasiRengar' => $evaluasiRengar,
+                'subKegiatans' => $subKegiatans
             ]);
     }
 

@@ -27,7 +27,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ url('evaluasiRengars/'.$st_id.'/'.$evaluasiRengar->tahun) }}" class="btn btn-default">Cancel</a>
+                <a href="{{ url('evaluasiRengars/'.$st_id->id.'/'.$evaluasiRengar->tahun) }}" class="btn btn-default">Cancel</a>
             </div>
 
             {!! Form::close() !!}

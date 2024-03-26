@@ -33,7 +33,7 @@
                     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
                 </div>
                 <div class="col-sm-8 mb-2">
-                    <input type="text" name="nama_pemda" id="nama_pemda" value="{{ $nama_pemda }}" class="form-control" readonly>
+                    <input type="text" name="nama_pemda" id="nama_pemda" value="{{ $suratTugas->nama_pemda }}" class="form-control" readonly>
                 </div>
 
                 <!-- Sumber Dana Field -->
@@ -44,6 +44,11 @@
                     <input type="text" name="jenis_tkd" id="jenis_tkd" value="{{ session('jenis_tkd') }}" class="form-control" readonly>
                 </div>
                 @include('evaluasi_rengars.show_table')
+            </div>
+        </div>
+        <div class="card-footer clearfix">
+            <div class="float-right">
+                @include('adminlte-templates::common.paginate', ['records' => $evaluasiRengars])
             </div>
         </div>
     </div>

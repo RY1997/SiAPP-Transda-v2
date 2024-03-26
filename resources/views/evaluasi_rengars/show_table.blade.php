@@ -2,19 +2,15 @@
     <table class="table m-0" id="evaluasiRengars-table">
         <thead class="text-center bg-secondary">
             <tr>
-                <th>#</th>
-                <th>Kode Program</th>
-                <th>Nama Program</th>
-                <th>Kode Kegiatan</th>
-                <th>Nama Kegiatan</th>
-                <th>Kode Subkegiatan</th>
-                <th>Nama Subkegiatan</th>
-                <th>Nilai Anggaran</th>
-                <th>Urusan Subkegiatan</th>
-                <th>Nilai Realisasi</th>
-                <th>Relevansi Subkegiatan</th>
-                <th>Pelaksanaan Subkegiatan</th>
-                <th>Action</th>
+                <th width="50">#</th>
+                <th width="250">Nama Program</th>
+                <th width="250">Nama Kegiatan</th>
+                <th>Urusan Bersama</th>
+                <th width="150">Nilai Anggaran</th>
+                <th width="150">Nilai Realisasi</th>
+                <th width="100">Relevansi Subkegiatan</th>
+                <th width="100">Pelaksanaan Subkegiatan</th>
+                <th width="80">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -22,21 +18,23 @@
             @foreach($evaluasiRengars as $evaluasiRengar)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $evaluasiRengar->kode_program }}</td>
-                <td>{{ $evaluasiRengar->nama_program }}</td>
-                <td>{{ $evaluasiRengar->kode_kegiatan }}</td>
-                <td>{{ $evaluasiRengar->nama_kegiatan }}</td>
-                <td>{{ $evaluasiRengar->kode_subkegiatan }}</td>
-                <td>{{ $evaluasiRengar->nama_subkegiatan }}</td>
-                <td>{{ $evaluasiRengar->nilai_anggaran }}</td>
+                <td>
+                    {{ $evaluasiRengar->kode_program }}<br>
+                    {{ $evaluasiRengar->nama_program }}
+                </td>
+                <td>
+                    {{ $evaluasiRengar->kode_kegiatan }}<br>
+                    {{ $evaluasiRengar->nama_kegiatan }}
+                </td>
                 <td>{{ $evaluasiRengar->urusan_subkegiatan }}</td>
-                <td>{{ $evaluasiRengar->nilai_realisasi }}</td>
+                <td class="text-right">{{ number_format($evaluasiRengar->total_anggaran, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($evaluasiRengar->total_realisasi, 2, ',', '.') }}</td>
                 <td>{{ $evaluasiRengar->relevansi_subkegiatan }}</td>
                 <td>{{ $evaluasiRengar->pelaksanaan_subkegiatan }}</td>
-                <td width="120">
+                <td>
                     <div class='btn-group'>
                         <a href="{{ route('evaluasiRengars.edit', [$evaluasiRengar->id]) }}" class='btn btn-default btn-xs'>
-                            <i class="far fa-edit"></i>
+                            <i class="far fa-edit"> Uji </i>
                         </a>
                     </div>
                 </td>
