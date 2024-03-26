@@ -124,21 +124,22 @@ class MonitoringTrenController extends AppBaseController
                 'nama_pemda' => $pemda->nama_pemda,
                 'jenis_tkd' => session('jenis_tkd'),
                 'tahap_salur' => $item['tahap_salur']
-            ], [
-                'penyaluran_tkd' => 0
             ]);
         }
 
-        foreach ($bidang as $item) {
-            MonitoringPenggunaan::updateOrCreate([
-                'kode_pwk' => $pemda->kode_pwk,
-                'tahun' => $pemda->tahun,
-                'nama_pemda' => $pemda->nama_pemda,
-                'jenis_tkd' => session('jenis_tkd'),
-                'bidang_tkd' => $item->bidang_tkd
-            ], [
-                'anggaran_tkd' => 0
-            ]);
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
+
+        foreach ($monitoringAlokasis as $alokasi) {
+            foreach ($bidang as $item) {
+                MonitoringPenggunaan::updateOrCreate([
+                    'kode_pwk' => $pemda->kode_pwk,
+                    'tahun' => $pemda->tahun,
+                    'nama_pemda' => $pemda->nama_pemda,
+                    'jenis_tkd' => session('jenis_tkd'),
+                    'tipe_tkd' => $alokasi->tipe_tkd,
+                    'bidang_tkd' => $item->bidang_tkd
+                ]);
+            }
         }
 
         $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->get();

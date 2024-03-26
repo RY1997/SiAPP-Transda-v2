@@ -7,12 +7,6 @@
                 <div class="col-sm-6">
                     <h1>Ripp Otsuses</h1>
                 </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('rippOtsuses.create') }}">
-                        Add New
-                    </a>
-                </div>
             </div>
         </div>
     </section>

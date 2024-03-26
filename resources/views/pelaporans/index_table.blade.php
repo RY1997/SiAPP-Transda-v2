@@ -18,8 +18,8 @@
             @foreach($pelaporans as $pelaporan)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $pelaporan->id_st }}</td>
-                <td>{{ $pelaporan->id_st }}</td>
+                <td>{{ $pelaporan->st_id }}</td>
+                <td>{{ $pelaporan->st_id }}</td>
                 <td>{{ $pelaporan->nama_pemda }}</td>
                 <td>{{ $pelaporan->no_laporan }}</td>
                 <td>{{ $pelaporan->tgl_laporan }}</td>

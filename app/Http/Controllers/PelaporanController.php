@@ -6,6 +6,8 @@ use App\Http\Requests\CreatePelaporanRequest;
 use App\Http\Requests\UpdatePelaporanRequest;
 use App\Repositories\PelaporanRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Pelaporan;
+use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,7 +31,17 @@ class PelaporanController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $pelaporans = $this->pelaporanRepository->all();
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->get();
+
+        foreach ($suratTugas as $item) {
+            Pelaporan::updateOrCreate([
+                'kode_pwk' => $item->kode_pwk,
+                'id_st' => $item->id,
+                'nama_pemda' => $item->nama_pemda
+            ]);
+        }
+        
+        $pelaporans = Pelaporan::with('st')->get();
 
         return view('pelaporans.index')
             ->with('pelaporans', $pelaporans);

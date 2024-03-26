@@ -7,12 +7,6 @@
                 <div class="col-sm-6">
                     <h1>Silpa Otsuses</h1>
                 </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('silpaOtsuses.create') }}">
-                        Add New
-                    </a>
-                </div>
             </div>
         </div>
     </section>
@@ -24,7 +18,7 @@
         <div class="clearfix"></div>
 
         <div class="card">
-            <div class="card-body p-0">
+            <div class="card-body p-3">
                 @include('silpa_otsuses.table')
 
                 <div class="card-footer clearfix">

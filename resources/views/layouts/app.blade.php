@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name') }}</title>
+    <title>SiAPP Transda</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Font Awesome -->
@@ -95,13 +95,7 @@
 
     <!-- Main Footer -->
     <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.1.0
-        </div>
-        <strong>
-           Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.
-        </strong>
-        All rights reserved.
+    SiAPP Transda 2.0 &copy; 2024 | Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral Pembangunan Daerah
     </footer>
 </div>
 

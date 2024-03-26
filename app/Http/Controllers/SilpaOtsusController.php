@@ -6,6 +6,8 @@ use App\Http\Requests\CreateSilpaOtsusRequest;
 use App\Http\Requests\UpdateSilpaOtsusRequest;
 use App\Repositories\SilpaOtsusRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\SilpaOtsus;
+use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,7 +31,38 @@ class SilpaOtsusController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $silpaOtsuses = $this->silpaOtsusRepository->all();
+        $suratTugas = SuratTugas::where('jenis_penugasan', 'Audit')->where('jenis_tkd', session('jenis_tkd'))->get();
+
+        foreach ($suratTugas as $item) {
+            SilpaOtsus::updateOrCreate([
+                'tahun' => '2023',
+                'kode_pwk' => $item->kode_pwk,
+                'jenis_tkd' => $item->jenis_tkd,
+                'nama_pemda' => $item->nama_pemda
+            ]);
+            SilpaOtsus::updateOrCreate([
+                'tahun' => '2024',
+                'kode_pwk' => $item->kode_pwk,
+                'jenis_tkd' => $item->jenis_tkd,
+                'nama_pemda' => $item->nama_pemda
+            ]);
+            if ($item->kode_pwk == 'PW26' || $item->kode_pwk == 'PW27') {
+                SilpaOtsus::updateOrCreate([
+                    'tahun' => '2023',
+                    'kode_pwk' => $item->kode_pwk,
+                    'jenis_tkd' => 'Dana Tambahan Infrastruktur (DTI)',
+                    'nama_pemda' => $item->nama_pemda
+                ]);
+                SilpaOtsus::updateOrCreate([
+                    'tahun' => '2024',
+                    'kode_pwk' => $item->kode_pwk,
+                    'jenis_tkd' => 'Dana Tambahan Infrastruktur (DTI)',
+                    'nama_pemda' => $item->nama_pemda
+                ]);
+            }
+        }
+
+        $silpaOtsuses = SilpaOtsus::orderBy('nama_pemda')->orderBy('tahun')->orderBy('jenis_tkd')->paginate(20);
 
         return view('silpa_otsuses.index')
             ->with('silpaOtsuses', $silpaOtsuses);

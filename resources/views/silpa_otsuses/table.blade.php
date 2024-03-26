@@ -1,46 +1,49 @@
 <div class="table-responsive">
-    <table class="table m-0" id="silpaOtsuses-table">
-        <thead>
-        <tr>
-            <th>Tahun</th>
-        <th>Kode Pwk</th>
-        <th>Nama Pemda</th>
-        <th>Jenis Tkd</th>
-        <th>Nilai Silpa</th>
-        <th>Dianggarkan Relevan</th>
-        <th>Dianggarkan Tidak Relevan</th>
-        <th>Tidak Dianggarkan</th>
-            <th>Action</th>
-        </tr>
+    <table class="table table-bordered text-sm" id="silpaOtsuses-table">
+        <thead class="text-center bg-secondary">
+            <tr>
+                <th rowspan="2" width="50">Nama Pemda</th>
+                <th rowspan="2" width="150">Nama Pemda</th>
+                <th rowspan="2" width="100">Tahun</th>
+                <th rowspan="2" width="150">Jenis Tkd</th>
+                <th rowspan="2" width="200">Nilai Silpa</th>
+                <th colspan="3">Dianggarkan kembali TA Berikutnya</th>
+                <th rowspan="2" width="200">Tidak Dianggarkan</th>
+                <th rowspan="2" width="50">Action</th>
+            </tr>
+            <tr>
+                <th width="200">Dianggarkan Relevan</th>
+                <th width="200">Dianggarkan Tidak Relevan</th>
+                <th width="200">Jumlah</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach($silpaOtsuses as $silpaOtsus)
+            @if ($silpaOtsuses->count() > 0)
+            @foreach($silpaOtsuses as $silpaOtsus)
             <tr>
-                <td>{{ $silpaOtsus->tahun }}</td>
-            <td>{{ $silpaOtsus->kode_pwk }}</td>
-            <td>{{ $silpaOtsus->nama_pemda }}</td>
-            <td>{{ $silpaOtsus->jenis_tkd }}</td>
-            <td>{{ $silpaOtsus->nilai_silpa }}</td>
-            <td>{{ $silpaOtsus->dianggarkan_relevan }}</td>
-            <td>{{ $silpaOtsus->dianggarkan_tidak_relevan }}</td>
-            <td>{{ $silpaOtsus->tidak_dianggarkan }}</td>
-                <td width="120">
-                    {!! Form::open(['route' => ['silpaOtsuses.destroy', $silpaOtsus->id], 'method' => 'delete']) !!}
+                <td class="text-center">{{ $loop->iteration }}</td>
+                <td>{{ $silpaOtsus->nama_pemda }}</td>
+                <td class="text-center">{{ $silpaOtsus->tahun }}</td>
+                <td>{{ $silpaOtsus->jenis_tkd }}</td>
+                <td class="text-right">{{ number_format($silpaOtsus->nilai_silpa, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($silpaOtsus->dianggarkan_relevan, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($silpaOtsus->dianggarkan_tidak_relevan, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($silpaOtsus->dianggarkan_relevan + $silpaOtsus->dianggarkan_tidak_relevan, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($silpaOtsus->tidak_dianggarkan, 2, ',', '.') }}</td>
+                <td>
                     <div class='btn-group'>
-                        <a href="{{ route('silpaOtsuses.show', [$silpaOtsus->id]) }}"
-                           class='btn btn-default btn-xs'>
-                            <i class="far fa-eye"></i>
-                        </a>
-                        <a href="{{ route('silpaOtsuses.edit', [$silpaOtsus->id]) }}"
-                           class='btn btn-default btn-xs'>
+                        <a href="{{ route('silpaOtsuses.edit', [$silpaOtsus->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
-                    {!! Form::close() !!}
                 </td>
             </tr>
-        @endforeach
+            @endforeach
+            @else
+            <tr>
+                <td>Surat Tugas belum diinput</td>
+            </tr>
+            @endif
         </tbody>
     </table>
 </div>

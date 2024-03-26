@@ -2,6 +2,7 @@
     <table class="table m-0" id="monitoringPenggunaans-table">
         <thead class="text-center bg-secondary">
             <tr>
+                <th rowspan="2" style="min-width: 100px;">Tipe TKD</th>
                 <th rowspan="2" style="min-width: 100px;">Bidang TKD</th>
                 <th rowspan="2" style="min-width: 100px;">Alokasi</th>
                 <th colspan="2">Penggunaan TKD</th>
@@ -17,6 +18,7 @@
             @if ($monitoringPenggunaans->count() > 0)
             @foreach($monitoringPenggunaans as $monitoringPenggunaan)
             <tr>
+                <td>{{ $monitoringPenggunaan->tipe_tkd }}</td>
                 <td>{{ $monitoringPenggunaan->bidang_tkd }}</td>
                 <td>Alokasi</td>
                 <td>{{ number_format($monitoringPenggunaan->anggaran_tkd, 2, ',', '.') }}</td>

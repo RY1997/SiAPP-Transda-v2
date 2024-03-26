@@ -12,12 +12,11 @@
         <tbody>
             @foreach($urusanBersamaOtsuses2024 as $urusanBersamaOtsus2024)
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $urusanBersamaOtsus2024->tahun }}</td>
-                <td>{{ $urusanBersamaOtsus2024->nama_pemda }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td>
+                <td>{{ $urusanBersamaOtsus2024->first()->nama_pemda }}</td>
                 <td>{{ $urusanBersamaOtsus2024->urusan_subkegiatan }}</td>
-                <td>{{ $urusanBersamaOtsus2024->total_nilai_anggaran }}</td>
-                <td>{{ $urusanBersamaOtsuses2023->where('urusan_subkegiatan', $urusanBersamaOtsus2024->urusan_subkegiatan)->total_nilai_anggaran }}</td>
+                <td class="text-right">0,00</td>
+                <td class="text-right">0,00</td>
             </tr>
             @endforeach
         </tbody>

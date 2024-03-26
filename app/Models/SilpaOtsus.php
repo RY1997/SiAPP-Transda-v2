@@ -67,11 +67,11 @@ class SilpaOtsus extends Model
      * @var array
      */
     public static $rules = [
-        'tahun' => 'required|string|max:255',
+        'tahun' => 'nullable|string|max:255',
         'kode_pwk' => 'nullable|string|max:255',
-        'nama_pemda' => 'required|string|max:255',
+        'nama_pemda' => 'nullable|string|max:255',
         'jenis_tkd' => 'nullable|string|max:255',
-        'nilai_silpa' => 'required|numeric',
+        'nilai_silpa' => 'nullable|numeric',
         'dianggarkan_relevan' => 'nullable|numeric',
         'dianggarkan_tidak_relevan' => 'nullable|numeric',
         'tidak_dianggarkan' => 'nullable|numeric',

@@ -75,5 +75,9 @@ class Pelaporan extends Model
         'updated_at' => 'nullable'
     ];
 
+    public function st()
+    {
+        return $this->hasOne(\App\Models\SuratTugas::class, 'id', 'st_id');
+    }
     
 }

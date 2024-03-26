@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }} | Login</title>
+    <title>SiAPP Transda | Login</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -30,7 +30,8 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
+            <img class="my-1" src="https://upload.wikimedia.org/wikipedia/commons/1/11/BPKP_Logo.png" width="100">
+            <a class="my-3"><b>SiAPP Transda</b></a>
         </div>
 
         <!-- /.login-logo -->
@@ -92,12 +93,12 @@
                     </div>
                 </form>
 
-                <p class="mb-1">
+                <!-- <p class="mb-1">
                     <a href="{{ route('password.request') }}">I forgot my password</a>
                 </p>
                 <p class="mb-0">
                     <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
-                </p>
+                </p> -->
             </div>
             <!-- /.login-card-body -->
         </div>
