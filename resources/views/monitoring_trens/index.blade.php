@@ -25,7 +25,7 @@
 
             <div class="card-footer clearfix">
                 <div class="float-right">
-                    @include('adminlte-templates::common.paginate', ['records' => $daftarPemdas])
+                    @include('adminlte-templates::common.paginate', ['records' => $monitoringTrens])
                 </div>
             </div>
         </div>

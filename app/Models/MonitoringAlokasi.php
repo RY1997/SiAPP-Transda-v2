@@ -75,5 +75,15 @@ class MonitoringAlokasi extends Model
         'updated_at' => 'nullable'
     ];
 
+    public function penyaluran()
+    {
+        return $this->hasMany(\App\Models\MonitoringPenyaluran::class, 'nama_pemda', 'nama_pemda');
+    }
+
+    public function penggunaan()
+    {
+        return $this->hasMany(\App\Models\MonitoringPenggunaan::class, 'nama_pemda', 'nama_pemda');
+    }
+
     
 }

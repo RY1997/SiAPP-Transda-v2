@@ -37,18 +37,20 @@ class MonitoringTrenController extends AppBaseController
     {
         $nama_pemda = $request->query('nama_pemda');
 
-        $daftarPemdas = DaftarPemda::where('nama_pemda', 'like', '%' . $nama_pemda . '%')->paginate(10);
+        $monitoringTrens = MonitoringAlokasi::where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+            ->groupBy('nama_pemda')
+            ->groupBy('tahun')
+            ->withSum('penyaluran', 'penyaluran_tkd')
+            ->withSum('penggunaan', 'anggaran_tkd')
+            ->withSum('penggunaan', 'realisasi_tkd')
+            ->selectRaw('SUM(alokasi_tkd) as total_alokasi')
+            ->orderBy('nama_pemda')->orderBy('tahun')
+            ->paginate(40);
 
-        $monitoringAlokasis = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'))->get();
-        $monitoringPenyalurans = MonitoringPenyaluran::where('jenis_tkd', session('jenis_tkd'))->get();
-        $monitoringPenggunaans = MonitoringPenggunaan::where('jenis_tkd', session('jenis_tkd'))->get();
 
         return view('monitoring_trens.index')
             ->with([
-                'monitoringAlokasis' => $monitoringAlokasis,
-                'monitoringPenyalurans' => $monitoringPenyalurans,
-                'monitoringPenggunaans' => $monitoringPenggunaans,
-                'daftarPemdas' => $daftarPemdas,
+                'monitoringTrens' => $monitoringTrens,
                 'nama_pemda' => $nama_pemda
             ]);
     }
@@ -101,7 +103,7 @@ class MonitoringTrenController extends AppBaseController
     //     return view('monitoring_alokasis.show')->with('monitoringAlokasi', $monitoringAlokasi);
     // }
 
-    public function show($pemda_id , $tahun)
+    public function show($pemda_id, $tahun)
     {
         $pemda = DaftarPemda::find($pemda_id);
 
@@ -122,7 +124,7 @@ class MonitoringTrenController extends AppBaseController
                 'nama_pemda' => $pemda->nama_pemda,
                 'jenis_tkd' => session('jenis_tkd'),
                 'tahap_salur' => $item['tahap_salur']
-            ],[
+            ], [
                 'penyaluran_tkd' => 0
             ]);
         }
@@ -134,7 +136,7 @@ class MonitoringTrenController extends AppBaseController
                 'nama_pemda' => $pemda->nama_pemda,
                 'jenis_tkd' => session('jenis_tkd'),
                 'bidang_tkd' => $item->bidang_tkd
-            ],[
+            ], [
                 'anggaran_tkd' => 0
             ]);
         }

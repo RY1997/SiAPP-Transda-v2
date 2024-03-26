@@ -34,10 +34,26 @@
     @endif
 </div>
 
-<div class="col-sm-12 mt-3">
-    <h5>A. Data Kontrak</h5>
+<div class="col-sm-12 my-3">
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+            <a class="nav-link {{ $step == 'data' ? 'active' : '' }}" href="?step=data">A. Data Kontrak</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ $step == 'pelaksanaan' ? 'active' : '' }}" href="?step=pelaksanaan">B. Pelaksanaan Kontrak</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ $step == 'penyelesaian' ? 'active' : '' }}" href="?step=penyelesaian">C. Penyelesaian Kontrak</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ $step == 'pengujian' ? 'active' : '' }}" href="?step=pengujian">D. Pengujian Kontrak</a>
+        </li>
+    </ul>
 </div>
 
+<input type="hidden" name="step" value="{{ $step }}">
+
+@if ($step == 'data')
 <!-- Nomor Kontrak Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('nomor_kontrak', 'Nomor Kontrak:') !!}
@@ -74,7 +90,7 @@
 
 <!-- Program Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('program', 'Program:') !!}
+    {!! Form::label('program', 'Nama Program:') !!}
 </div>
 <div class="form-group col-sm-8">
     {!! Form::textarea('program', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -82,10 +98,18 @@
 
 <!-- Kegiatan Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('kegiatan', 'Kegiatan:') !!}
+    {!! Form::label('kegiatan', 'Nama Kegiatan:') !!}
 </div>
 <div class="form-group col-sm-8">
     {!! Form::textarea('kegiatan', null, ['class' => 'form-control', 'rows' => '3']) !!}
+</div>
+
+<!-- Nama Opd Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('nama_opd', 'Nama Opd:') !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::text('nama_opd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
 <!-- Target Output Field -->
@@ -112,28 +136,90 @@
     {!! Form::text('jenis_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
+<!-- Nilai Kontrak Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('nilai_kontrak', 'Nilai Kontrak:') !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+</div>
+@endif
+
+@if ($step == 'pelaksanaan')
+<!-- Nomor Kontrak Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('nomor_kontrak', 'Nomor Kontrak:') !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::text('nomor_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+</div>
+
+<!-- Tanggal Kontrak Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('tanggal_kontrak', 'Tanggal Kontrak:') !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::text('tanggal_kontrak', null, ['class' => 'form-control','id'=>'tanggal_kontrak', 'readonly']) !!}
+</div>
+
+<!-- Uraian Kontrak Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('uraian_kontrak', 'Uraian Kontrak:') !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::textarea('uraian_kontrak', null, ['class' => 'form-control', 'rows' => '3', 'readonly']) !!}
+</div>
+
+<!-- Masa Kontrak Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('masa_kontrak', 'Masa Kontrak (Hari):') !!}
+</div>
+<div class="form-group col-sm-8">
+    {!! Form::text('masa_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+</div>
+
+<!-- Tanggal Mulai Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('tanggal_mulai', 'Tanggal Pelaksanaan:') !!}
+</div>
+<div class="form-group col-sm-3">
+    {!! Form::text('tanggal_mulai', null, ['class' => 'form-control','id'=>'tanggal_mulai']) !!}
+</div>
+
+@push('page_scripts')
+<script type="text/javascript">
+    $('#tanggal_mulai').datetimepicker({
+        format: 'YYYY-MM-DD',
+        useCurrent: false,
+        sideBySide: true
+    })
+</script>
+@endpush
+
+<!-- Tanggal Selesai Field -->
+<div class="form-group col-sm-2">
+    sampai dengan
+</div>
+<div class="form-group col-sm-3">
+    {!! Form::text('tanggal_selesai', null, ['class' => 'form-control','id'=>'tanggal_selesai']) !!}
+</div>
+
+@push('page_scripts')
+<script type="text/javascript">
+    $('#tanggal_selesai').datetimepicker({
+        format: 'YYYY-MM-DD',
+        useCurrent: false,
+        sideBySide: true
+    })
+</script>
+@endpush
+
 <!-- Lokasi Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('lokasi', 'Lokasi:') !!}
 </div>
 <div class="form-group col-sm-8">
     {!! Form::textarea('lokasi', null, ['class' => 'form-control', 'rows' => '3']) !!}
-</div>
-
-<!-- Nama Opd Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('nama_opd', 'Nama Opd:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::text('nama_opd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
-<!-- Nama Rekanan Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('nama_rekanan', 'Nama Rekanan:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::text('nama_rekanan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
 <!-- Tgl Lelang Field -->
@@ -154,56 +240,20 @@
 </script>
 @endpush
 
-<!-- Masa Kontrak Field -->
+<!-- Nama Rekanan Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('masa_kontrak', 'Masa Kontrak (Hari):') !!}
+    {!! Form::label('nama_rekanan', 'Nama Rekanan:') !!}
 </div>
 <div class="form-group col-sm-8">
-    {!! Form::text('masa_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::text('nama_rekanan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
-
-<!-- Tanggal Mulai Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('tanggal_mulai', 'Tanggal Mulai:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::text('tanggal_mulai', null, ['class' => 'form-control','id'=>'tanggal_mulai']) !!}
-</div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tanggal_mulai').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: false,
-        sideBySide: true
-    })
-</script>
-@endpush
-
-<!-- Tanggal Selesai Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('tanggal_selesai', 'Tanggal Selesai:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::text('tanggal_selesai', null, ['class' => 'form-control','id'=>'tanggal_selesai']) !!}
-</div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tanggal_selesai').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: false,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Nilai Kontrak Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('nilai_kontrak', 'Nilai Kontrak:') !!}
 </div>
 <div class="form-group col-sm-8">
-    {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+    {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01', 'readonly']) !!}
 </div>
 
 <!-- Sisa Nilai Kontrak Field -->
@@ -221,11 +271,9 @@
 <div class="form-group col-sm-8">
     {!! Form::textarea('penyebab_pembayaran', null, ['class' => 'form-control', 'rows' => '3']) !!}
 </div>
+@endif
 
-<div class="col-sm-12 mt-3">
-    <h5>B. Penyelesaian Kontrak</h5>
-</div>
-
+@if ($step == 'penyelesaian')
 <!-- No Bast Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('no_bast', 'No BAST:') !!}
@@ -290,11 +338,9 @@
 <div class="form-group col-sm-8">
     {!! Form::textarea('keterangan', null, ['class' => 'form-control', 'rows' => '3']) !!}
 </div>
+@endif
 
-<div class="col-sm-12 mt-3">
-    <h5>C. Pengujian Kontrak</h5>
-</div>
-
+@if ($step == 'pengujian')
 <!-- Target Omspan Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('Realisasi Capaian dan Pembayaran:') !!}
@@ -321,9 +367,13 @@
                 <td>{!! Form::number('realisasi_auditor', null, ['class' => 'form-control']) !!}</td>
             </tr>
             <tr>
-                <td>Capaian Fisik</td>
-                <td>{!! Form::number('fisik_omspan', null, ['class' => 'form-control', 'readonly disabled']) !!}</td>
-                <td>{!! Form::number('fisik_auditor', null, ['class' => 'form-control', 'readonly disabled']) !!}</td>
+                <td>Capaian Fisik (%)</td>
+                <td>
+                    <input type="text" class="form-control" name="fisik_omspan" value="{{ number_format($evaluasiKontrak->realisasi_omspan / $evaluasiKontrak->target_omspan * 100, 2) }}" readonly disabled>
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="fisik_auditor" value="{{ number_format($evaluasiKontrak->realisasi_auditor / $evaluasiKontrak->target_auditor * 100, 2) }}" readonly disabled>
+                </td>
             </tr>
             <tr>
                 <td>Nilai Pembayaran</td>
@@ -465,3 +515,4 @@
         </tbody>
     </table>
 </div>
+@endif
