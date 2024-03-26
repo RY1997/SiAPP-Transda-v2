@@ -103,9 +103,9 @@ class MonitoringTrenController extends AppBaseController
     //     return view('monitoring_alokasis.show')->with('monitoringAlokasi', $monitoringAlokasi);
     // }
 
-    public function show($pemda_id, $tahun)
+    public function show($id)
     {
-        $pemda = DaftarPemda::find($pemda_id);
+        $pemda = MonitoringAlokasi::find($id);
 
         if (session('jenis_tkd') == 'Dana Otonomi Khusus') {
             $tahap = [
@@ -120,7 +120,7 @@ class MonitoringTrenController extends AppBaseController
         foreach ($tahap as $item) {
             MonitoringPenyaluran::updateOrCreate([
                 'kode_pwk' => $pemda->kode_pwk,
-                'tahun' => $tahun,
+                'tahun' => $pemda->tahun,
                 'nama_pemda' => $pemda->nama_pemda,
                 'jenis_tkd' => session('jenis_tkd'),
                 'tahap_salur' => $item['tahap_salur']
@@ -132,7 +132,7 @@ class MonitoringTrenController extends AppBaseController
         foreach ($bidang as $item) {
             MonitoringPenggunaan::updateOrCreate([
                 'kode_pwk' => $pemda->kode_pwk,
-                'tahun' => $tahun,
+                'tahun' => $pemda->tahun,
                 'nama_pemda' => $pemda->nama_pemda,
                 'jenis_tkd' => session('jenis_tkd'),
                 'bidang_tkd' => $item->bidang_tkd
@@ -141,9 +141,9 @@ class MonitoringTrenController extends AppBaseController
             ]);
         }
 
-        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
-        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
-        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
+        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
 
         if (empty($monitoringAlokasis)) {
             Flash::error('Monitoring Alokasi not found');
@@ -152,7 +152,6 @@ class MonitoringTrenController extends AppBaseController
 
         return view('monitoring_trens.show')->with([
             'pemda' => $pemda,
-            'tahun' => $tahun,
             'monitoringAlokasis' => $monitoringAlokasis,
             'monitoringPenyalurans' => $monitoringPenyalurans,
             'monitoringPenggunaans' => $monitoringPenggunaans,

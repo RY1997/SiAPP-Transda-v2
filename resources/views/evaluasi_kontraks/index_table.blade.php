@@ -21,8 +21,10 @@
             @foreach($suratTugas as $suratTugas)
             @foreach([2023, 2024] as $tahun)
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $suratTugas->nama_pemda }}</td>
+                @if ($tahun == '2023')
+                <td rowspan="2">{{ $loop->iteration }}</td>
+                <td rowspan="2">{{ $suratTugas->nama_pemda }}</td>
+                @endif
                 <td class="text-center">{{ $tahun }}</td>
                 <td class="text-center">{{ $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->count() }}</td>
                 <td class="text-right">{{ number_format($evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('nilai_kontrak'), 2, ',', '.') }}</td>

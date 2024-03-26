@@ -2,40 +2,37 @@
     <table class="table m-0" id="evaluasiLaporans-table">
         <thead class="text-center bg-secondary">
             <tr>
-                <th>#</th>
-                <th>Tahun</th>
-                <th>Nama Pemda</th>
-                <th>Jenis TKD</th>
-                <th>Nama Laporan</th>
-                <th>Keberadaan Laporan</th>
-                <th>Nomor Laporan</th>
-                <th>Tgl Laporan</th>
+                <th width="50">#</th>
+                <th width="150">Nama Pemda</th>
+                <th width="150">Bidang TKD</th>
+                <th width="100">Tahun</th>
+                <th width="200">Nama Laporan</th>
+                <th width="100">Keberadaan Laporan</th>
+                <th width="200">Nomor Laporan</th>
+                <th width="150">Tgl Laporan</th>
                 <th>Penyebab Tidak Tepat Waktu</th>
-                <th>Action</th>
+                <th width="50">Action</th>
             </tr>
         </thead>
         <tbody>
             @if ($evaluasiLaporans->count() > 0)
             @foreach($evaluasiLaporans as $evaluasiLaporan)
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $evaluasiLaporan->tahun }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $evaluasiLaporan->nama_pemda }}</td>
-                <td>{{ $evaluasiLaporan->jenis_tkd }}</td>
+                <td>{{ $evaluasiLaporan->bidang_tkd }}</td>
+                <td class="text-center">{{ $evaluasiLaporan->tahun }}</td>
                 <td>{{ $evaluasiLaporan->nama_laporan }}</td>
                 <td>{{ $evaluasiLaporan->keberadaan_laporan }}</td>
                 <td>{{ $evaluasiLaporan->nomor_laporan }}</td>
-                <td>{{ $evaluasiLaporan->tgl_laporan }}</td>
+                <td>{{ $evaluasiLaporan->tgl_laporan != NULL ? ($evaluasiLaporan->tgl_laporan->format('d-m-Y')) : '' }}</td>
                 <td>{{ $evaluasiLaporan->penyebab_tidak_tepat_waktu }}</td>
-                <td width="120">
-                    {!! Form::open(['route' => ['evaluasiLaporans.destroy', $evaluasiLaporan->id], 'method' => 'delete']) !!}
+                <td>
                     <div class='btn-group'>
                         <a href="{{ route('evaluasiLaporans.edit', [$evaluasiLaporan->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
-                    {!! Form::close() !!}
                 </td>
             </tr>
             @endforeach

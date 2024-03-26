@@ -6,6 +6,9 @@ use App\Http\Requests\CreateEvaluasiLaporanRequest;
 use App\Http\Requests\UpdateEvaluasiLaporanRequest;
 use App\Repositories\EvaluasiLaporanRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\EvaluasiLaporan;
+use App\Models\ParameterLaporan;
+use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -28,12 +31,28 @@ class EvaluasiLaporanController extends AppBaseController
      * @return Response
      */
     public function index(Request $request)
-    {
-        $evaluasiLaporans = $this->evaluasiLaporanRepository->paginate(20);
+    {        
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Audit')->first();
+        $parameterLaporan = ParameterLaporan::where('jenis_tkd', session('jenis_tkd'))->get();
+
+        foreach ($parameterLaporan as $item) {
+            $evaluasiLaporan = EvaluasiLaporan::updateOrCreate([
+                'tahun' => $item->tahun_laporan,
+                'kode_pwk' => $suratTugas->kode_pwk,
+                'nama_pemda' => $suratTugas->nama_pemda,
+                'jenis_tkd' => $item->jenis_tkd,
+                'bidang_tkd' => $item->bidang_tkd,
+                'nama_laporan' => $item->nama_laporan,
+                'batas_penyampaian' => $item->batas_penyampaian
+            ]);
+        }
+
+        $evaluasiLaporans = EvaluasiLaporan::orderBy('nama_pemda')->orderBy('bidang_tkd')->orderBy('tahun')->paginate(20);
 
         return view('evaluasi_laporans.index')
             ->with('evaluasiLaporans', $evaluasiLaporans);
     }
+
 
     /**
      * Show the form for creating a new EvaluasiLaporan.

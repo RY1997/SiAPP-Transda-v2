@@ -39,6 +39,7 @@ class MonitoringPenggunaan extends Model
         'nama_pemda',
         'jenis_tkd',
         'bidang_tkd',
+        'tipe_tkd',
         'anggaran_tkd',
         'realisasi_tkd',
         'penyebab_kurang_guna'
@@ -56,6 +57,7 @@ class MonitoringPenggunaan extends Model
         'nama_pemda' => 'string',
         'jenis_tkd' => 'string',
         'bidang_tkd' => 'string',
+        'tipe_tkd' => 'string',
         'anggaran_tkd' => 'decimal:2',
         'realisasi_tkd' => 'decimal:2',
         'penyebab_kurang_guna' => 'string'
@@ -71,6 +73,7 @@ class MonitoringPenggunaan extends Model
         'kode_pwk' => 'nullable|string|max:255',
         'nama_pemda' => 'required|string|max:255',
         'jenis_tkd' => 'nullable|string|max:255',
+        'tipe_tkd' => 'nullable|string|max:255',
         'bidang_tkd' => 'required|string|max:255',
         'anggaran_tkd' => 'required|numeric',
         'realisasi_tkd' => 'required|numeric',

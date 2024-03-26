@@ -25,7 +25,7 @@
                     {!! Form::label('tahun', 'Tahun') !!}
                 </div>
                 <div class="col-sm-8 mb-2">
-                    <input type="text" class="form-control" value="{{ $tahun }}" readonly />
+                    <input type="text" class="form-control" value="{{ $pemda->tahun }}" readonly />
                 </div>
 
                 <!-- Nama Pemda Field -->
@@ -54,7 +54,7 @@
                     <h5>B. Penyaluran Transfer ke Daerah</h5>
                 </div>
                 <!-- <div class="col-sm-4 mb-2">
-                    <a class="btn btn-primary float-right" href="{{ url('monitoringPenyalurans/'.$pemda->id.'/'.$tahun.'/create') }}">
+                    <a class="btn btn-primary float-right" href="{{ url('monitoringPenyalurans/'.$pemda->id.'/'.$pemda->tahun.'/create') }}">
                         + Penyaluran
                     </a>
                 </div> -->
@@ -65,7 +65,7 @@
                     <h5>C. Penggunaan Transfer ke Daerah</h5>
                 </div>
                 <!-- <div class="col-sm-4 mb-2">
-                    <a class="btn btn-primary float-right" href="{{ url('monitoringPenggunaans/'.$pemda->id.'/'.$tahun.'/create') }}">
+                    <a class="btn btn-primary float-right" href="{{ url('monitoringPenggunaans/'.$pemda->id.'/'.$pemda->tahun.'/create') }}">
                         + Penggunaan
                     </a>
                 </div> -->
