@@ -6,6 +6,7 @@ use App\Http\Requests\CreateRippOtsusRequest;
 use App\Http\Requests\UpdateRippOtsusRequest;
 use App\Repositories\RippOtsusRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\RippOtsus;
 use Illuminate\Http\Request;
 use Flash;
 use Response;

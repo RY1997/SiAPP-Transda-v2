@@ -6,6 +6,8 @@ use App\Http\Requests\CreateKebijakanOtsusRequest;
 use App\Http\Requests\UpdateKebijakanOtsusRequest;
 use App\Repositories\KebijakanOtsusRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\KebijakanOtsus;
+use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,7 +31,38 @@ class KebijakanOtsusController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $kebijakanOtsuses = $this->kebijakanOtsusRepository->all();
+        $suratTugas = SuratTugas::where('jenis_penugasan', 'Audit')->where('jenis_tkd', session('jenis_tkd'))->get();
+
+        foreach ($suratTugas as $item) {
+            KebijakanOtsus::updateOrCreate([
+                'tahun' => '2023',
+                'kode_pwk' => $item->kode_pwk,
+                'jenis_tkd' => $item->jenis_tkd,
+                'nama_pemda' => $item->nama_pemda
+            ]);
+            KebijakanOtsus::updateOrCreate([
+                'tahun' => '2024',
+                'kode_pwk' => $item->kode_pwk,
+                'jenis_tkd' => $item->jenis_tkd,
+                'nama_pemda' => $item->nama_pemda
+            ]);
+            if ($item->kode_pwk != 'PW01') {
+                KebijakanOtsus::updateOrCreate([
+                    'tahun' => '2023',
+                    'kode_pwk' => $item->kode_pwk,
+                    'jenis_tkd' => 'Dana Tambahan Infrastruktur (DTI)',
+                    'nama_pemda' => $item->nama_pemda
+                ]);
+                KebijakanOtsus::updateOrCreate([
+                    'tahun' => '2024',
+                    'kode_pwk' => $item->kode_pwk,
+                    'jenis_tkd' => 'Dana Tambahan Infrastruktur (DTI)',
+                    'nama_pemda' => $item->nama_pemda
+                ]);
+            }
+        }
+
+        $kebijakanOtsuses = KebijakanOtsus::orderBy('nama_pemda')->orderBy('tahun')->orderBy('jenis_tkd')->paginate(20);
 
         return view('kebijakan_otsuses.index')
             ->with('kebijakanOtsuses', $kebijakanOtsuses);

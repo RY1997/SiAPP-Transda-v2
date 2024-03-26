@@ -1,44 +1,36 @@
 <div class="table-responsive">
-    <table class="table m-0" id="kebijakanOtsuses-table">
-        <thead>
-        <tr>
-            <th>Tahun</th>
-        <th>Kode Pwk</th>
-        <th>Nama Pemda</th>
-        <th>Jenis Tkd</th>
-        <th>Dasar Penetapan</th>
-        <th>Tgl Penetapan</th>
-        <th>Simpulan Penetapan</th>
-            <th>Action</th>
-        </tr>
+    <table class="table table-bordered text-sm" id="kebijakanOtsuses-table">
+        <thead class="text-center bg-secondary">
+            <tr>
+                <th width="50">#</th>
+                <th width="150">Nama Pemda</th>
+                <th width="100">Tahun</th>
+                <th width="150">Jenis TKD</th>
+                <th width="200">Dasar Penetapan</th>
+                <th width="100">Tgl Penetapan</th>
+                <th width="300">Simpulan Penetapan</th>
+                <th width="50">Action</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach($kebijakanOtsuses as $kebijakanOtsus)
+            @foreach($kebijakanOtsuses as $kebijakanOtsus)
             <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $kebijakanOtsus->nama_pemda }}</td>
                 <td>{{ $kebijakanOtsus->tahun }}</td>
-            <td>{{ $kebijakanOtsus->kode_pwk }}</td>
-            <td>{{ $kebijakanOtsus->nama_pemda }}</td>
-            <td>{{ $kebijakanOtsus->jenis_tkd }}</td>
-            <td>{{ $kebijakanOtsus->dasar_penetapan }}</td>
-            <td>{{ $kebijakanOtsus->tgl_penetapan }}</td>
-            <td>{{ $kebijakanOtsus->simpulan_penetapan }}</td>
-                <td width="120">
-                    {!! Form::open(['route' => ['kebijakanOtsuses.destroy', $kebijakanOtsus->id], 'method' => 'delete']) !!}
-                    <div class='btn-group'>
-                        <a href="{{ route('kebijakanOtsuses.show', [$kebijakanOtsus->id]) }}"
-                           class='btn btn-default btn-xs'>
-                            <i class="far fa-eye"></i>
-                        </a>
-                        <a href="{{ route('kebijakanOtsuses.edit', [$kebijakanOtsus->id]) }}"
-                           class='btn btn-default btn-xs'>
+                <td>{{ $kebijakanOtsus->jenis_tkd }}</td>
+                <td>{{ $kebijakanOtsus->dasar_penetapan }}</td>
+                <td>{{ $kebijakanOtsus->tgl_penetapan != NULL ? $kebijakanOtsus->tgl_penetapan->format('d-m-Y') : '' }}</td>
+                <td>{{ $kebijakanOtsus->simpulan_penetapan }}</td>
+                <td>
+                    <div class='btn-group'>                        
+                        <a href="{{ route('kebijakanOtsuses.edit', [$kebijakanOtsus->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
-                    {!! Form::close() !!}
                 </td>
             </tr>
-        @endforeach
+            @endforeach
         </tbody>
     </table>
 </div>

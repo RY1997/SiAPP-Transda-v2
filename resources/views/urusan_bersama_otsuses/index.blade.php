@@ -24,7 +24,7 @@
         <div class="clearfix"></div>
 
         <div class="card">
-            <div class="card-body p-0">
+            <div class="card-body p-3">
                 @include('urusan_bersama_otsuses.table')
 
                 <div class="card-footer clearfix">
