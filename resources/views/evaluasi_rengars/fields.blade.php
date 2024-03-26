@@ -49,7 +49,7 @@
     {!! Form::label('urusan_subkegiatan', 'Dukungan Urusan Bersama:') !!}
 </div>
 <div class="form-group col-sm-8">
-    {!! Form::text('urusan_subkegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::text('urusan_subkegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required']) !!}
 </div>
 
 <div class="col-sm-12">
@@ -71,22 +71,22 @@
         <tbody>
             @foreach ($subKegiatans as $subKegiatan)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $subKegiatan->kode_subkegiatan . ' ' . $subKegiatan->nama_subkegiatan }}</td>
                 <td class="text-right">{{ number_format($subKegiatan->nilai_anggaran, 2, ',', '.') }}</td>
                 <td>
-                    <input type="number" name="nilai_realisasi" class="form-control" step="0.01" value="{{ $subKegiatan->nilai_realisasi }}" required>
+                    <input type="number" name="nilai_realisasi_{{ $subKegiatan->id }}" class="form-control" step="0.01" value="{{ $subKegiatan->nilai_realisasi }}" required>
                 </td>
                 <td class="text-center">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Relevan" name="relevansi-{{ $subKegiatan->id }}" id="relevansi-{{ $subKegiatan->id }}">
-                        <label class="form-check-label" for="relevansi-{{ $subKegiatan->id }}"> Relevan</label>
+                        <input class="form-check-input" type="checkbox" value="Relevan" name="relevansi_{{ $subKegiatan->id }}" id="relevansi-{{ $subKegiatan->id }}" {{ $subKegiatan->relevansi_subkegiatan == 'Relevan' ? 'checked' : '' }}>
+                        <label class="form-check-label" for="relevansi_{{ $subKegiatan->id }}"> Relevan</label>
                     </div>
                 </td>
                 <td class="text-center">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Dilaksanakan" name="pelaksanaan-{{ $subKegiatan->id }}" id="pelaksanaan-{{ $subKegiatan->id }}">
-                        <label class="form-check-label" for="pelaksanaan-{{ $subKegiatan->id }}"> Dilaksanakan</label>
+                        <input class="form-check-input" type="checkbox" value="Dilaksanakan" name="pelaksanaan_{{ $subKegiatan->id }}" id="pelaksanaan-{{ $subKegiatan->id }}" {{ $subKegiatan->pelaksanaan_subkegiatan == 'Dilaksanakan' ? 'checked' : '' }}>
+                        <label class="form-check-label" for="pelaksanaan_{{ $subKegiatan->id }}"> Dilaksanakan</label>
                     </div>
                 </td>
             </tr>

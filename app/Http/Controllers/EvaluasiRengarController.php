@@ -65,7 +65,6 @@ class EvaluasiRengarController extends AppBaseController
         $evaluasiRengar = $this->evaluasiRengarRepository->create($input);
 
         Flash::success('Evaluasi Rengar saved successfully.');
-
         return redirect(route('evaluasiRengars.index'));
     }
 
@@ -79,7 +78,21 @@ class EvaluasiRengarController extends AppBaseController
     public function show($id, $tahun)
     {
         $suratTugas = SuratTugas::where('id', $id)->first();
-        $evaluasiRengars = EvaluasiRengar::where('nama_pemda', $suratTugas->nama_pemda)->where('tahun', $tahun)->where('sumber_dana', session('jenis_tkd'))->groupBy('nama_kegiatan')->selectRaw('*, sum(nilai_anggaran) as total_anggaran, sum(nilai_realisasi) as total_realisasi')->paginate(20);
+        $evaluasiRengars = EvaluasiRengar::where('nama_pemda', $suratTugas->nama_pemda)
+            ->where('tahun', $tahun)
+            ->where('sumber_dana', session('jenis_tkd'))
+            ->groupBy('kode_kegiatan')
+            ->selectRaw('*, 
+                SUM(nilai_anggaran) as total_anggaran, 
+                SUM(nilai_realisasi) as total_realisasi, 
+                COUNT(CASE WHEN relevansi_subkegiatan = "Relevan" THEN 1 END) AS total_relevan, 
+                COUNT(CASE WHEN relevansi_subkegiatan = "Tidak Relevan" THEN 1 END) AS total_tdk_relevan,
+                COUNT(CASE WHEN relevansi_subkegiatan IS NULL THEN 1 END) AS total_blm_relevan, 
+                COUNT(CASE WHEN pelaksanaan_subkegiatan = "Dilaksanakan" THEN 1 END) AS total_pelaksanaan, 
+                COUNT(CASE WHEN pelaksanaan_subkegiatan = "Tidak Dilaksanakan" THEN 1 END) AS total_tdk_pelaksanaan,
+                COUNT(CASE WHEN pelaksanaan_subkegiatan IS NULL THEN 1 END) AS total_blm_pelaksanaan')
+            ->paginate(20);
+
 
         return view('evaluasi_rengars.show')->with(['suratTugas' => $suratTugas, 'evaluasiRengars' => $evaluasiRengars, 'tahun' => $tahun]);
     }
@@ -95,7 +108,7 @@ class EvaluasiRengarController extends AppBaseController
     {
         $evaluasiRengar = EvaluasiRengar::find($id);
         $st_id = SuratTugas::where('nama_pemda', $evaluasiRengar->nama_pemda)->first();
-        $subKegiatans = EvaluasiRengar::where('kode_kegiatan', $evaluasiRengar->kode_kegiatan)->get();
+        $subKegiatans = EvaluasiRengar::where('nama_pemda', $evaluasiRengar->nama_pemda)->where('tahun', $evaluasiRengar->tahun)->where('kode_kegiatan', $evaluasiRengar->kode_kegiatan)->where('sumber_dana', session('jenis_tkd'))->get();
 
         if (empty($evaluasiRengar)) {
             Flash::error('Evaluasi Rengar not found');
@@ -122,17 +135,27 @@ class EvaluasiRengarController extends AppBaseController
     {
         $evaluasiRengar = $this->evaluasiRengarRepository->find($id);
 
+        $evaluasiRengar = EvaluasiRengar::find($id);
+
         if (empty($evaluasiRengar)) {
             Flash::error('Evaluasi Rengar not found');
-
             return redirect(route('evaluasiRengars.index'));
         }
 
-        $evaluasiRengar = $this->evaluasiRengarRepository->update($request->all(), $id);
+        $subKegiatans = EvaluasiRengar::where('nama_pemda', $evaluasiRengar->nama_pemda)->where('tahun', $evaluasiRengar->tahun)->where('kode_kegiatan', $evaluasiRengar->kode_kegiatan)->where('sumber_dana', session('jenis_tkd'))->get();
+
+        foreach ($subKegiatans as $subKegiatan) {
+            $evaluasiRengar = EvaluasiRengar::find($subKegiatan->id);
+            $evaluasiRengar->update([
+                'urusan_subkegiatan' => $request->urusan_subkegiatan,
+                'nilai_realisasi' => $request->{"nilai_realisasi_$subKegiatan->id"},
+                'relevansi_subkegiatan' => $request->{"relevansi_$subKegiatan->id"} ?? 'Tidak Relevan',
+                'pelaksanaan_subkegiatan' => $request->{"pelaksanaan_$subKegiatan->id"} ?? 'Tidak Dilaksanakan'
+            ]);
+        }
 
         Flash::success('Evaluasi Rengar updated successfully.');
-
-        return redirect(route('evaluasiRengars.index'));
+        return redirect()->back();
     }
 
     /**

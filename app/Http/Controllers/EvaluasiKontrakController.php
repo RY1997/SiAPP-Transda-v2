@@ -33,7 +33,7 @@ class EvaluasiKontrakController extends AppBaseController
     {
         $evaluasiKontraks = $this->evaluasiKontrakRepository->all();
 
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->paginate(20);
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Audit')->paginate(20);
         $evaluasiKontraks = EvaluasiKontrak::where('jenis_tkd', session('jenis_tkd'))->get();
 
         return view('evaluasi_kontraks.index')

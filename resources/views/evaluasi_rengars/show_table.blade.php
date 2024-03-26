@@ -17,7 +17,7 @@
             @if ($evaluasiRengars->count() > 0)
             @foreach($evaluasiRengars as $evaluasiRengar)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td>
                 <td>
                     {{ $evaluasiRengar->kode_program }}<br>
                     {{ $evaluasiRengar->nama_program }}
@@ -29,8 +29,16 @@
                 <td>{{ $evaluasiRengar->urusan_subkegiatan }}</td>
                 <td class="text-right">{{ number_format($evaluasiRengar->total_anggaran, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($evaluasiRengar->total_realisasi, 2, ',', '.') }}</td>
-                <td>{{ $evaluasiRengar->relevansi_subkegiatan }}</td>
-                <td>{{ $evaluasiRengar->pelaksanaan_subkegiatan }}</td>
+                <td>
+                    {!! ($evaluasiRengar->total_blm_relevan > 0 ? '<span class="badge badge-danger right">'.$evaluasiRengar->total_blm_relevan.' Belum Diuji</span>' : '') !!}
+                    {!! ($evaluasiRengar->total_relevan > 0 ? '<span class="badge badge-success right">'.$evaluasiRengar->total_relevan.' Relevan</span>' : '') !!}
+                    {!! ($evaluasiRengar->total_tdk_relevan > 0 ? '<span class="badge badge-warning right">'.$evaluasiRengar->total_tdk_relevan.' Tidak</span>' : '') !!}
+                </td>
+                <td>
+                    {!! ($evaluasiRengar->total_blm_pelaksanaan > 0 ? '<span class="badge badge-danger right">'.$evaluasiRengar->total_blm_pelaksanaan.' Belum Diuji</span>' : '') !!}
+                    {!! ($evaluasiRengar->total_pelaksanaan > 0 ? '<span class="badge badge-success right">'.$evaluasiRengar->total_pelaksanaan.' Dilaksanakan</span>' : '') !!}
+                    {!! ($evaluasiRengar->total_tdk_pelaksanaan > 0 ? '<span class="badge badge-warning right">'.$evaluasiRengar->total_tdk_pelaksanaan.' Tidak</span>' : '') !!}
+                </td>
                 <td>
                     <div class='btn-group'>
                         <a href="{{ route('evaluasiRengars.edit', [$evaluasiRengar->id]) }}" class='btn btn-default btn-xs'>
