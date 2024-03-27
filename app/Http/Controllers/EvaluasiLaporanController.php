@@ -32,7 +32,7 @@ class EvaluasiLaporanController extends AppBaseController
      */
     public function index(Request $request)
     {        
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->first();
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->first();
         $parameterLaporan = ParameterLaporan::where('jenis_tkd', session('jenis_tkd'))->get();
 
         foreach ($parameterLaporan as $item) {
