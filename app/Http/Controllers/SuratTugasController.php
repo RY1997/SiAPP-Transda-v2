@@ -34,7 +34,7 @@ class SuratTugasController extends AppBaseController
         if (Auth::user()->role == 'Admin') {
             $suratTugas = SuratTugas::paginate(20);
         } else {
-            $suratTugas = SuratTugas::where('kd_pwk', Auth::user()->kd_pwk)->paginate(20);
+            $suratTugas = SuratTugas::where('kode_pwk', Auth::user()->kd_pwk)->paginate(20);
         }
 
         return view('surat_tugas.index')
