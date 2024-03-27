@@ -41,6 +41,7 @@ class SuratTugas extends Model
         'kode_pwk',
         'no_st',
         'tgl_st',
+        'jenis_tkd',
         'nama_penugasan',
         'jenis_penugasan',
         'nama_pemda',
