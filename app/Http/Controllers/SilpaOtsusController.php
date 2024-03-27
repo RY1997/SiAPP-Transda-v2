@@ -31,7 +31,7 @@ class SilpaOtsusController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $suratTugas = SuratTugas::where('jenis_penugasan', 'Audit')->where('jenis_tkd', session('jenis_tkd'))->get();
+        $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', session('jenis_tkd'))->get();
 
         foreach ($suratTugas as $item) {
             SilpaOtsus::updateOrCreate([

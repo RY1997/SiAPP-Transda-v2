@@ -33,7 +33,7 @@ class EvaluasiIndikatorController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Audit')->get();
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->get();
         $parameterIndikator = ParameterIndikator::where('jenis_tkd', session('jenis_tkd'))->get();
 
         foreach ($suratTugas as $st) {

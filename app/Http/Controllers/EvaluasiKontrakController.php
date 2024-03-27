@@ -33,7 +33,7 @@ class EvaluasiKontrakController extends AppBaseController
     {
         $evaluasiKontraks = $this->evaluasiKontrakRepository->all();
 
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Audit')->paginate(20);
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->paginate(20);
         $evaluasiKontraks = EvaluasiKontrak::where('jenis_tkd', session('jenis_tkd'))->get();
 
         return view('evaluasi_kontraks.index')
@@ -106,7 +106,7 @@ class EvaluasiKontrakController extends AppBaseController
     public function edit($id, Request $request)
     {
         $evaluasiKontrak = $this->evaluasiKontrakRepository->find($id);
-        $suratTugas = SuratTugas::where('jenis_penugasan', 'Audit')->where('nama_pemda', $evaluasiKontrak->nama_pemda)->first();
+        $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('nama_pemda', $evaluasiKontrak->nama_pemda)->first();
         $step = $request->step;
 
         if (empty($evaluasiKontrak)) {
@@ -129,7 +129,7 @@ class EvaluasiKontrakController extends AppBaseController
     {
         $evaluasiKontrak = $this->evaluasiKontrakRepository->find($id);
 
-        $suratTugas = SuratTugas::where('jenis_penugasan', 'Audit')->where('nama_pemda', $evaluasiKontrak->nama_pemda)->first();
+        $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('nama_pemda', $evaluasiKontrak->nama_pemda)->first();
 
         if (empty($evaluasiKontrak)) {
             Flash::error('Evaluasi Kontrak not found');
