@@ -6,12 +6,12 @@
                 <th>Nama Pemda</th>
                 <th>Tahun</th>
                 <th>Kelompok Permasalahan</th>
-                <th>Uraian Permasalahan</th>
+                <th>Dampak Permasalahan</th>
                 <!-- <th>Nilai Permasalahan</th> -->
-                <th>Uraian Rekomendasi</th>
-                <th>Uraian TL</th>
+                <th>Penyebab Permasalahan</th>
+                <th>Tindak Lanjut</th>
                 <!-- <th>Nilai TL</th> -->
-                <th>Simpulan TL</th>
+                <!-- <th>Simpulan TL</th> -->
                 <th>Action</th>
             </tr>
         </thead>
@@ -28,7 +28,7 @@
                 <td>{{ $monitoringTl->uraian_rekomendasi }}</td>
                 <td>{{ $monitoringTl->uraian_tl }}</td>
                 <!-- <td>{{ $monitoringTl->nilai_tl }}</td> -->
-                <td>{{ $monitoringTl->simpulan_tl }}</td>
+                <!-- <td>{{ $monitoringTl->simpulan_tl }}</td> -->
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringTls.edit', [$monitoringTl->id]) }}" class='btn btn-default btn-xs'>
@@ -40,7 +40,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="9" class="text-center">Belum ada data</td>
+                <td colspan="8" class="text-center">Belum ada data</td>
             </tr>
             @endif
         </tbody>

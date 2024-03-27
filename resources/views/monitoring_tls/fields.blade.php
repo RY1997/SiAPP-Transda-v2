@@ -32,10 +32,10 @@
 
 <!-- Uraian Permasalahan Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('uraian_permasalahan', 'Uraian Permasalahan:') !!}
+    {!! Form::label('uraian_permasalahan', 'Dampak Permasalahan:') !!}
 </div>
 <div class="form-group col-sm-8">
-    {!! Form::textarea('uraian_permasalahan', null, ['class' => 'form-control', 'rows' => '3', 'readonly disabled']) !!}
+    {!! Form::textarea('uraian_permasalahan', null, ['class' => 'form-control', 'rows' => '3']) !!}
 </div>
 
 <!-- Nilai Permasalahan Field -->
@@ -48,15 +48,15 @@
 
 <!-- Uraian Rekomendasi Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('uraian_rekomendasi', 'Uraian Rekomendasi:') !!}
+    {!! Form::label('uraian_rekomendasi', 'Penyebab Permasalahan:') !!}
 </div>
 <div class="form-group col-sm-8">
-    {!! Form::textarea('uraian_rekomendasi', null, ['class' => 'form-control', 'rows' => '3', 'readonly disabled']) !!}
+    {!! Form::textarea('uraian_rekomendasi', null, ['class' => 'form-control', 'rows' => '3']) !!}
 </div>
 
 <!-- Uraian Tl Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('uraian_tl', 'Uraian TL:') !!}
+    {!! Form::label('uraian_tl', 'Tindak Lanjut yang Dilakukan:') !!}
 </div>
 <div class="form-group col-sm-8">
     {!! Form::textarea('uraian_tl', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -71,9 +71,9 @@
 </div> -->
 
 <!-- Simpulan Tl Field -->
-<div class="form-group col-sm-4">
+<!-- <div class="form-group col-sm-4">
     {!! Form::label('simpulan_tl', 'Simpulan TL:') !!}
 </div>
 <div class="form-group col-sm-8">
     {!! Form::text('simpulan_tl', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
+</div> -->

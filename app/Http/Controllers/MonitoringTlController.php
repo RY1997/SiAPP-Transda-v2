@@ -6,6 +6,8 @@ use App\Http\Requests\CreateMonitoringTlRequest;
 use App\Http\Requests\UpdateMonitoringTlRequest;
 use App\Repositories\MonitoringTlRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\MonitoringTl;
+use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,6 +31,29 @@ class MonitoringTlController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', session('jenis_tkd'))->get();
+
+        $permasalahan = [
+            ['permasalahan' => 'Realisasi Penyaluran Tidak 100%'],
+            ['permasalahan' => 'Realisasi Penggunaan Tidak 100%'],
+            ['permasalahan' => 'Kegiatan yang tidak dilaksanakan/tidak selesai/terlambat'],
+            ['permasalahan' => 'Kegiatan yang tidak relevan'],
+            ['permasalahan' => 'Keterlambatan Penetapan Alokasi Dana Otsus'],
+            ['permasalahan' => 'Alokasi Dana Otsus tidak sesuai dengan perhitungan parameter yang tepat dan data dasar yang up to date'],
+        ];
+
+        foreach ($permasalahan as $item) {
+            foreach ($suratTugas as $st) {
+                MonitoringTl::updateOrCreate([
+                    'kode_pwk' => $st->kode_pwk,
+                    'tahun' => $st->tahun,
+                    'nama_pemda' => $st->nama_pemda,
+                    'jenis_tkd' => session('jenis_tkd'),
+                    'kelompok_permasalahan' => $item['permasalahan']
+                ]);
+            }
+        }
+
         $monitoringTls = $this->monitoringTlRepository->paginate(20);
 
         return view('monitoring_tls.index')
