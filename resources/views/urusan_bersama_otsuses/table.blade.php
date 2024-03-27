@@ -5,8 +5,8 @@
                 <th>#</th>
                 <th>Nama Pemda</th>
                 <th>Urusan Bersama</th>
-                <th>Anggaran Tahun 2024</th>
                 <th>Anggaran Tahun 2023</th>
+                <th>Anggaran Tahun 2024</th>
             </tr>
         </thead>
         <tbody>
