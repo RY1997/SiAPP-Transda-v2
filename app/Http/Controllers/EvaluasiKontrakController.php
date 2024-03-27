@@ -177,6 +177,6 @@ class EvaluasiKontrakController extends AppBaseController
         $this->evaluasiKontrakRepository->delete($id);
 
         Flash::success('Evaluasi Kontrak deleted successfully.');
-        return redirect()->back;
+        return redirect()->back();
     }
 }
