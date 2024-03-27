@@ -67,7 +67,7 @@
 <li class="nav-item">
     <a href="{{ route('monitoringTrens.index') }}" class="nav-link {{ Request::is('monitoringTrens*') || Request::is('monitoringPenyalurans*') || Request::is('monitoringPenggunaans*') ? 'active' : '' }}">
         <p>Pengelolaan TKD
-            <span class="badge badge-danger right">!</span>
+            <!-- <span class="badge badge-danger right">!</span> -->
         </p>
     </a>
 </li>
@@ -108,7 +108,7 @@
 <li class="nav-item">
     <a href="{{ route('monitoringTls.index') }}" class="nav-link {{ Request::is('monitoringTls*') ? 'active' : '' }}">
         <p>Jakda
-            <span class="badge badge-danger right">!</span>
+            <!-- <span class="badge badge-danger right">!</span> -->
         </p>
     </a>
 </li>
