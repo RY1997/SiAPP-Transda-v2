@@ -31,7 +31,7 @@ class EvaluasiRengarController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->paginate(20);
+        $suratTugas = SuratTugas::paginate(20);
         $evaluasiRengars = EvaluasiRengar::where('sumber_dana', session('jenis_tkd'))->get();
 
         return view('evaluasi_rengars.index')
