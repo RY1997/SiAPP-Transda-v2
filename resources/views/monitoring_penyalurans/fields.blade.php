@@ -23,7 +23,7 @@
     {!! Form::label('tahap_salur', 'Tahap Salur:') !!}
 </div>
 <div class="form-group col-sm-8">
-    {!! Form::select('tahap_salur', ['' => 'Pilih', 'Tahap I' => 'Tahap I', 'Tahap II' => 'Tahap II', 'Tahap III' => 'Tahap III'], null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::text('tahap_salur', null, ['class' => 'form-control','readonly']) !!}
 </div>
 
 <!-- Tgl Salur Field -->

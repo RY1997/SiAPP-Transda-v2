@@ -31,18 +31,7 @@
     {!! Form::label('bidang_tkd', 'Bidang TKD:') !!}
 </div>
 <div class="form-group col-sm-8">
-    <select class="form-control custom-select" id="bidang_tkd" name="bidang_tkd">
-        <option selected>Pilih</option>
-        @if ($monitoringPenggunaan)
-        @foreach ($bidang_tkds as $bidang_tkd)
-        <option value="{{ $bidang_tkd->bidang_tkd }}" {{ $bidang_tkd->bidang_tkd == $monitoringPenggunaan->bidang_tkd ? 'selected' : '' }}>{{ $bidang_tkd->bidang_tkd }}</option>
-        @endforeach
-        @else
-        @foreach ($bidang_tkds as $bidang_tkd)
-        <option value="{{ $bidang_tkd->bidang_tkd }}">{{ $bidang_tkd->bidang_tkd }}</option>
-        @endforeach
-        @endif
-    </select>
+    {!! Form::number('bidang_tkd', null, ['class' => 'form-control', 'readonly']) !!}
 </div>
 
 <!-- Penggunaan Tkd Field -->
