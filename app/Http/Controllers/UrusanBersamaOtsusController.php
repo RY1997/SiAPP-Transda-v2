@@ -31,7 +31,7 @@ class UrusanBersamaOtsusController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $urusanBersamaOtsuses = EvaluasiRengar::whereNotNull('urusan_subkegiatan')->groupBy(['urusan_subkegiatan', 'tahun'])->selectRaw('*, sum(nilai_anggaran) as total_anggaran')->get();
+        $urusanBersamaOtsuses = EvaluasiRengar::whereNotNull('urusan_subkegiatan')->groupBy(['urusan_subkegiatan', 'tahun'])->selectRaw('*, sum(nilai_anggaran) as total_anggaran');
 
         return view('urusan_bersama_otsuses.index')
             ->with([
