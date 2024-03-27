@@ -136,8 +136,16 @@ class EvaluasiKontrakController extends AppBaseController
             return redirect(route('evaluasiKontraks.index'));
         }
 
-        $fisikOmspan = $request->realisasi_omspan / $request->target_omspan;
-        $fisikAuditor = $request->realisasi_auditor / $request->target_auditor;
+        if ($request->target_omspan > 0) {
+            $fisikOmspan = $request->realisasi_omspan / $request->target_omspan;
+        } else {
+            $fisikOmspan = '0.00';
+        }
+        if ($request->target_auditor > 0) {
+            $fisikAuditor = $request->realisasi_auditor / $request->target_auditor;
+        } else {
+            $fisikAuditor = '0.00';
+        }
         $requestData = $request->all();
         $requestData['fisik_omspan'] = $fisikOmspan;
         $requestData['fisik_auditor'] = $fisikAuditor;
