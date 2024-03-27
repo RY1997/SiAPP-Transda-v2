@@ -11,7 +11,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
 </div>
 <div class="form-group col-sm-8">
-    <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $pemda->nama_pemda }}" readonly>
+    <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $monitoringPenggunaan->nama_pemda }}" readonly>
 </div>
 
 <div class="col-sm-12 mt-2">
