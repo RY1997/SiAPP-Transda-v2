@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateMonitoringPenggunaanRequest;
 use App\Repositories\MonitoringPenggunaanRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
+use App\Models\MonitoringAlokasi;
 use App\Models\MonitoringPenggunaan;
 use App\Models\ParameterTkd;
 use Illuminate\Http\Request;
@@ -109,15 +110,14 @@ class MonitoringPenggunaanController extends AppBaseController
     public function edit($id)
     {
         $monitoringPenggunaan = $this->monitoringPenggunaanRepository->find($id);
-        $bidangTkds = ParameterTkd::where('jenis_tkd', session('jenis_tkd'))->get();
+        $alokasi_id = MonitoringAlokasi::where('tahun', $monitoringPenggunaan->tahun)->where('nama_pemda', $monitoringPenggunaan->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
 
         if (empty($monitoringPenggunaan)) {
             Flash::error('Monitoring Penggunaan not found');
-
             return redirect(route('monitoringPenggunaans.index'));
         }
 
-        return view('monitoring_penggunaans.edit')->with(['monitoringPenggunaan' => $monitoringPenggunaan, 'bidangTkds' => $bidangTkds]);
+        return view('monitoring_penggunaans.edit')->with(['monitoringPenggunaan' => $monitoringPenggunaan, 'alokasi_id' => $alokasi_id->id]);
     }
 
     /**

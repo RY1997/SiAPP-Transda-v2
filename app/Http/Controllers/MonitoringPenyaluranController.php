@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateMonitoringPenyaluranRequest;
 use App\Repositories\MonitoringPenyaluranRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
+use App\Models\MonitoringAlokasi;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -103,14 +104,14 @@ class MonitoringPenyaluranController extends AppBaseController
     public function edit($id)
     {
         $monitoringPenyaluran = $this->monitoringPenyaluranRepository->find($id);
+        $alokasi_id = MonitoringAlokasi::where('tahun', $monitoringPenyaluran->tahun)->where('nama_pemda', $monitoringPenyaluran->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
 
         if (empty($monitoringPenyaluran)) {
             Flash::error('Monitoring Penyaluran not found');
-
             return redirect(route('monitoringPenyalurans.index'));
         }
 
-        return view('monitoring_penyalurans.edit')->with('monitoringPenyaluran', $monitoringPenyaluran);
+        return view('monitoring_penyalurans.edit')->with(['monitoringPenyaluran' => $monitoringPenyaluran, 'alokasi_id' => $alokasi_id->id]);
     }
 
     /**
