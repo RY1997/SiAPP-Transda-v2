@@ -369,10 +369,10 @@
             <tr>
                 <td>Capaian Fisik (%)</td>
                 <td>
-                    <input type="text" class="form-control" name="fisik_omspan" value="{{ number_format($evaluasiKontrak->realisasi_omspan / $evaluasiKontrak->target_omspan * 100, 2) }}" readonly disabled>
+                    <input type="text" class="form-control" name="fisik_omspan" value="{{ $evaluasiKontrak->target_omspan > 0 ? number_format($evaluasiKontrak->realisasi_omspan / $evaluasiKontrak->target_omspan * 100, 2) : '' }}" readonly disabled>
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="fisik_auditor" value="{{ number_format($evaluasiKontrak->realisasi_auditor / $evaluasiKontrak->target_auditor * 100, 2) }}" readonly disabled>
+                    <input type="text" class="form-control" name="fisik_auditor" value="{{ $evaluasiKontrak->target_auditor > 0 ? number_format($evaluasiKontrak->realisasi_auditor / $evaluasiKontrak->target_auditor * 100, 2) : '' }}" readonly disabled>
                 </td>
             </tr>
             <tr>
