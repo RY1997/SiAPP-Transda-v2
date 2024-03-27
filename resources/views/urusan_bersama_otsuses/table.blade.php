@@ -10,13 +10,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($urusanBersamaOtsuses2024 as $urusanBersamaOtsus2024)
+            @foreach($urusanBersamaOtsuses as $urusanBersamaOtsus)
             <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
-                <td>{{ $urusanBersamaOtsus2024->first()->nama_pemda }}</td>
-                <td>{{ $urusanBersamaOtsus2024->urusan_subkegiatan }}</td>
-                <td class="text-right">0,00</td>
-                <td class="text-right">0,00</td>
+                <td>{{ $urusanBersamaOtsus->nama_pemda }}</td>
+                <td>{{ $urusanBersamaOtsus->urusan_subkegiatan }}</td>
+                <td class="text-right">{{ $urusanBersamaOtsus->where('tahun', 2023)->where('urusan_subkegiatan', $urusanBersamaOtsus->urusan_subkegiatan)->sum('nilai_anggaran') }}</td>
+                <td class="text-right">{{ $urusanBersamaOtsus->where('tahun', 2024)->where('urusan_subkegiatan', $urusanBersamaOtsus->urusan_subkegiatan)->sum('nilai_anggaran') }}</td>
             </tr>
             @endforeach
         </tbody>

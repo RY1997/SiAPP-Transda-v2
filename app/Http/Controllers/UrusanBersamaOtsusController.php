@@ -31,20 +31,11 @@ class UrusanBersamaOtsusController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $urusanBersamaOtsuses2023 = EvaluasiRengar::where('tahun', '2023')
-            ->groupBy('urusan_subkegiatan')
-            ->selectRaw('urusan_subkegiatan, sum(nilai_anggaran) as total_nilai_anggaran')
-            ->get();
-
-        $urusanBersamaOtsuses2024 = EvaluasiRengar::where('tahun', '2024')
-            ->groupBy('urusan_subkegiatan')
-            ->selectRaw('urusan_subkegiatan, sum(nilai_anggaran) as total_nilai_anggaran')
-            ->get();
+        $urusanBersamaOtsuses = EvaluasiRengar::whereNotNull('urusan_subkegiatan')->groupBy(['urusan_subkegiatan', 'tahun'])->selectRaw('*, sum(nilai_anggaran) as total_anggaran')->get();
 
         return view('urusan_bersama_otsuses.index')
             ->with([
-                'urusanBersamaOtsuses2023' => $urusanBersamaOtsuses2023,
-                'urusanBersamaOtsuses2024' => $urusanBersamaOtsuses2024
+                'urusanBersamaOtsuses' => $urusanBersamaOtsuses
             ]);
     }
 
