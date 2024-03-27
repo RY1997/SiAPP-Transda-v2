@@ -125,11 +125,11 @@
     </a>
 </li>
 
-<li class="nav-item">
+<!-- <li class="nav-item">
     <a href="{{ route('urusanBersamaOtsuses.index') }}" class="nav-link {{ Request::is('urusanBersamaOtsuses*') ? 'active' : '' }}">
         <p>Urusan Bersama</p>
     </a>
-</li>
+</li> -->
 
 <li class="nav-item">
     <a href="{{ route('evaluasiKontraks.index') }}" class="nav-link {{ Request::is('evaluasiKontraks*') ? 'active' : '' }}">
