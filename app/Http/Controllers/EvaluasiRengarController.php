@@ -145,8 +145,8 @@ class EvaluasiRengarController extends AppBaseController
         $subKegiatans = EvaluasiRengar::where('nama_pemda', $evaluasiRengar->nama_pemda)->where('tahun', $evaluasiRengar->tahun)->where('kode_kegiatan', $evaluasiRengar->kode_kegiatan)->where('sumber_dana', session('jenis_tkd'))->get();
 
         foreach ($subKegiatans as $subKegiatan) {
-            $evaluasiRengar = EvaluasiRengar::find($subKegiatan->id);
-            $evaluasiRengar->update([
+            $evaluasiRengarUpdate = EvaluasiRengar::find($subKegiatan->id);
+            $evaluasiRengarUpdate->update([
                 'urusan_subkegiatan' => $request->urusan_subkegiatan,
                 'nilai_realisasi' => $request->{"nilai_realisasi_$subKegiatan->id"},
                 'relevansi_subkegiatan' => $request->{"relevansi_$subKegiatan->id"} ?? 'Tidak Relevan',

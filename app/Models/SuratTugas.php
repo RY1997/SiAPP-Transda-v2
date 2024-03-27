@@ -80,17 +80,17 @@ class SuratTugas extends Model
      */
     public static $rules = [
         'kode_pwk' => 'nullable|string|max:255',
-        'no_st' => 'required|string|max:255',
-        'tgl_st' => 'required',
-        'nama_penugasan' => 'required|string|max:255',
-        'jenis_penugasan' => 'required|string|max:255',
-        'nama_pemda' => 'required|string|max:255',
-        'tgl_mulai' => 'required',
-        'tgl_akhir' => 'required',
-        'status_st' => 'required|string|max:255',
-        'file_st' => 'required|string|max:255',
-        'tw_penugasan' => 'required|string|max:255',
-        'tahun_penugasan' => 'required|string|max:255',
+        'no_st' => 'nullable|string|max:255',
+        'tgl_st' => 'nullable',
+        'nama_penugasan' => 'nullable|string|max:255',
+        'jenis_penugasan' => 'nullable|string|max:255',
+        'nama_pemda' => 'nullable|string|max:255',
+        'tgl_mulai' => 'nullable',
+        'tgl_akhir' => 'nullable',
+        'status_st' => 'nullable|string|max:255',
+        'file_st' => 'nullable|string|max:255',
+        'tw_penugasan' => 'nullable|string|max:255',
+        'tahun_penugasan' => 'nullable|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

@@ -1,11 +1,3 @@
-<!-- Kode Pwk Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('kode_pwk', 'Kode Pwk:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::text('kode_pwk', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
 <!-- No St Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('no_st', 'No St:') !!}
@@ -25,7 +17,7 @@
 @push('page_scripts')
 <script type="text/javascript">
     $('#tgl_st').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm:ss',
+        format: 'YYYY-MM-DD',
         useCurrent: true,
         sideBySide: true
     })
@@ -48,6 +40,14 @@
     {!! Form::text('jenis_penugasan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
+<!-- Tahun Penugasan Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('tahun_penugasan', 'Tahun Penugasan:') !!}
+</div>
+<div class="form-group col-sm-8">
+    <input type="text" class="form-control" id="tahun_penugasan" name="tahun_penugasan" value="2024" readonly>
+</div>
+
 <!-- Nama Pemda Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
@@ -67,7 +67,7 @@
 @push('page_scripts')
 <script type="text/javascript">
     $('#tgl_mulai').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm:ss',
+        format: 'YYYY-MM-DD',
         useCurrent: true,
         sideBySide: true
     })
@@ -85,7 +85,7 @@
 @push('page_scripts')
 <script type="text/javascript">
     $('#tgl_akhir').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm:ss',
+        format: 'YYYY-MM-DD',
         useCurrent: true,
         sideBySide: true
     })
@@ -106,20 +106,4 @@
 </div>
 <div class="form-group col-sm-8">
     {!! Form::file('file_st', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
-<!-- Tw Penugasan Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('tw_penugasan', 'Tw Penugasan:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::text('tw_penugasan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
-<!-- Tahun Penugasan Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('tahun_penugasan', 'Tahun Penugasan:') !!}
-</div>
-<div class="form-group col-sm-8">
-    {!! Form::text('tahun_penugasan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>

@@ -4,7 +4,7 @@
             <tr>
                 <th>#</th>
                 <th>Nama Pemda</th>
-                <th>Tahun</th>
+                <!-- <th>Tahun</th> -->
                 <th>Kelompok Permasalahan</th>
                 <th>Dampak Permasalahan</th>
                 <!-- <th>Nilai Permasalahan</th> -->
@@ -21,7 +21,7 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $monitoringTl->nama_pemda }}</td>
-                <td>{{ $monitoringTl->tahun }}</td>
+                <!-- <td>{{ $monitoringTl->tahun }}</td> -->
                 <td>{{ $monitoringTl->kelompok_permasalahan }}</td>
                 <td>{{ $monitoringTl->uraian_permasalahan }}</td>
                 <!-- <td>{{ $monitoringTl->nilai_permasalahan }}</td> -->
@@ -40,7 +40,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="8" class="text-center">Belum ada data</td>
+                <td colspan="7" class="text-center">Belum ada data</td>
             </tr>
             @endif
         </tbody>
