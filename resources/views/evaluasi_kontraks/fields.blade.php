@@ -305,7 +305,7 @@
     {!! Form::label('realisasi_bast', 'Realisasi BAST:') !!}
 </div>
 <div class="form-group col-sm-8">
-    <table id="realisasi_bast" class="table table-bordered no-margin text-xs">
+    <table id="realisasi_bast" class="table table-bordered no-margin text-sm">
         <thead class="text-center bg-secondary">
             <tr>
                 <th>Target Kontrak</th>
@@ -347,7 +347,7 @@
 </div>
 <div class="form-group col-sm-8">
 
-    <table id="capaian" class="table table-bordered no-margin text-xs">
+    <table id="capaian" class="table table-bordered no-margin text-sm">
         <thead class="text-center bg-secondary">
             <tr>
                 <th>Uraian</th>
@@ -388,7 +388,7 @@
     {!! Form::label('Permasalahan Pelaksanaan:') !!}
 </div>
 <div class="form-group col-sm-8">
-    <table id="permasalahanPelaksanaan" class="table table-bordered no-margin text-xs">
+    <table id="permasalahanPelaksanaan" class="table table-bordered no-margin text-sm">
         <thead class="text-center bg-secondary">
             <tr>
                 <th style="width: 50px;">#</th>
@@ -454,7 +454,7 @@
     {!! Form::label('Permasalahan Pemanfaatan:') !!}
 </div>
 <div class="form-group col-sm-8">
-    <table id="permasalahanPemanfaatan" class="table table-bordered no-margin text-xs">
+    <table id="permasalahanPemanfaatan" class="table table-bordered no-margin text-sm">
         <thead class="text-center bg-secondary">
             <tr>
                 <th style="width: 50px;">#</th>

@@ -5,7 +5,7 @@
     </div>
 </form>
 
-<div class="table-responsive table-bordered text-xs">
+<div class="table-responsive table-bordered text-sm">
     <table class="table m-0" id="monitoringPenyalurans-table">
         <thead class="text-center bg-secondary">
             <tr>
