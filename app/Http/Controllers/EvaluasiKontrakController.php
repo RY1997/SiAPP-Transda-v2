@@ -60,7 +60,7 @@ class EvaluasiKontrakController extends AppBaseController
             'jenis_tkd' => $suratTugas->jenis_tkd
         ]);
 
-        return redirect(route('evaluasiKontraks.edit', $evaluasiKontrak->id));
+        return redirect(url('evaluasiKontraks/'.$evaluasiKontrak->id.'/edit?step=data'));
     }
 
     /**
