@@ -1,3 +1,4 @@
+<input type="hidden" class="form-control" id="kode_pwk" name="kode_pwk" value="{{ Auth::user()->kode_pwk }}">
 <!-- No St Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('no_st', 'No St:') !!}
