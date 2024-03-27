@@ -48,6 +48,14 @@
     <input type="text" class="form-control" id="tahun_penugasan" name="tahun_penugasan" value="2024" readonly>
 </div>
 
+<!-- Tahun Penugasan Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('jenis_tkd', 'Lingkup Penugasan:') !!}
+</div>
+<div class="form-group col-sm-8">
+    <input type="text" class="form-control" id="jenis_tkd" name="jenis_tkd" value="{{ session('jenis_tkd') }}" readonly>
+</div>
+
 <!-- Nama Pemda Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
