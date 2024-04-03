@@ -30,7 +30,7 @@ class HomeController extends Controller
             ->groupBy('kode_pwk', 'tahun')
             ->get([\DB::raw('SUM(alokasi_tkd) AS sum_alokasi')]);
 
-        dd($data['anggaran_aceh']);
+        // dd($data['anggaran_aceh']);
         return view('home');
     }
 
