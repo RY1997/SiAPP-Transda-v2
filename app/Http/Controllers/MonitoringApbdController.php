@@ -10,6 +10,7 @@ use App\Models\DaftarPemda;
 use App\Models\MonitoringApbd;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class MonitoringApbdController extends AppBaseController
@@ -32,12 +33,23 @@ class MonitoringApbdController extends AppBaseController
     public function index(Request $request)
     {
         $nama_pemda = $request->query('nama_pemda');
-        $daftarPemdas = DaftarPemda::where('nama_pemda', 'like', '%' . $nama_pemda . '%')->paginate(20);
 
-        $monitoringApbds = MonitoringApbd::orderBy('nama_pemda')->orderBy('nama_pemda')->orderBy('tahun')->paginate(50);
+        if (Auth::user()->role == 'Admin') {
+            if (session('jenis_tkd') == 'Dana Otonomi Khusus') {
+                $monitoringApbds = MonitoringApbd::whereIn('kode_pwk', ['PW01', 'PW26', 'PW27']);
+            } else {
+                $monitoringApbds = MonitoringApbd::query();
+            }
+        } else {
+            $monitoringApbds = MonitoringApbd::where('kode_pwk', Auth::user()->kode_pwk);
+        }
+
+        $monitoringApbds = $monitoringApbds->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+        ->orderBy('nama_pemda')->orderBy('nama_pemda')->orderBy('tahun')
+        ->paginate(50);
 
         return view('monitoring_apbds.index')
-            ->with(['monitoringApbds' => $monitoringApbds , 'daftarPemdas' => $daftarPemdas , 'nama_pemda' => $nama_pemda]);
+            ->with(['monitoringApbds' => $monitoringApbds, 'nama_pemda' => $nama_pemda, 'page' => $request->page]);
     }
 
     /**

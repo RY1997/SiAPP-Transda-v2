@@ -162,6 +162,6 @@ class MonitoringPenyaluranController extends AppBaseController
 
         Flash::success('Monitoring Penyaluran deleted successfully.');
 
-        return redirect(route('monitoringPenyalurans.index'));
+        return redirect()->back();
     }
 }

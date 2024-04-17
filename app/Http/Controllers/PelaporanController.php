@@ -10,6 +10,7 @@ use App\Models\Pelaporan;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class PelaporanController extends AppBaseController
@@ -31,7 +32,11 @@ class PelaporanController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->get();
+        if (Auth::user()->role == 'Admin') {
+            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->paginate(20);
+        } else {
+            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('kode_pwk', Auth::user()->kd_pwk)->paginate(20);
+        }
 
         foreach ($suratTugas as $item) {
             Pelaporan::updateOrCreate([
@@ -41,8 +46,16 @@ class PelaporanController extends AppBaseController
                 'tgl_laporan' => $item->tgl_akhir
             ]);
         }
-        
-        $pelaporans = Pelaporan::with('st')->get();
+
+        if (Auth::user()->role == 'Admin') {
+            $pelaporans = Pelaporan::with('st')->whereHas('st', function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            })->paginate(20);
+        } else {
+            $pelaporans = Pelaporan::with('st')->whereHas('st', function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            })->where('kode_pwk', Auth::user()->kd_pwk)->with('st')->paginate(20);
+        }
 
         return view('pelaporans.index')
             ->with('pelaporans', $pelaporans);

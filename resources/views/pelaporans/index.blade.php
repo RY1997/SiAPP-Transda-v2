@@ -19,7 +19,7 @@
 
         <div class="card">
             <div class="card-body p-3">
-                @include('pelaporans.index_table')
+                @include('pelaporans.table')
 
                 <div class="card-footer clearfix">
                     <div class="float-right">

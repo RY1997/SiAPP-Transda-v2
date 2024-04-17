@@ -37,15 +37,15 @@
             @foreach($monitoringApbds as $monitoringApbd)
             <tr>
                 @if ($monitoringApbd->tahun == '2020')
-                <td rowspan="5" class="text-center">{{ $loop->iteration }}</td>
+                <td rowspan="5" class="text-center">{{ ceil($loop->iteration / 5 + ($page > 0 ? ($page - 1) : 0) * 5) }}</td>
                 <td rowspan="5">{{ $monitoringApbd->nama_pemda }}</td>
                 @endif
                 <td class="text-center">{{ $monitoringApbd->tahun }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->pendapatan_daerah, 2, ',', '.') }}</td>
+                <td class="text-right">{{ $monitoringApbd->pendapatan_daerah > 1 ? number_format($monitoringApbd->pendapatan_daerah, 2, ',', '.') : number_format($monitoringApbd->pendapatan_pad + $monitoringApbd->pendapatan_transfer + $monitoringApbd->pendapatan_lainnya, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->pendapatan_pad, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->pendapatan_transfer, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->pendapatan_lainnya, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->belanja_daerah, 2, ',', '.') }}</td>
+                <td class="text-right">{{ $monitoringApbd->belanja_daerah > 1 ? number_format($monitoringApbd->belanja_daerah, 2, ',', '.') : number_format($monitoringApbd->belanja_pegawai + $monitoringApbd->belanja_barjas + $monitoringApbd->belanja_modal + $monitoringApbd->belanja_hibah + $monitoringApbd->belanja_lainnya, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->belanja_pegawai, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->belanja_barjas, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->belanja_modal, 2, ',', '.') }}</td>

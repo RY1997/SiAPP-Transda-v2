@@ -77,7 +77,7 @@ class Pelaporan extends Model
 
     public function st()
     {
-        return $this->hasOne(\App\Models\SuratTugas::class, 'id', 'st_id');
+        return $this->hasOne(\App\Models\SuratTugas::class, 'id', 'id_st');
     }
     
 }

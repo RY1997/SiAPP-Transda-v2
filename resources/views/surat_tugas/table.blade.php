@@ -17,13 +17,18 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $suratTugas->no_st }}</td>
-                <td>{{ $suratTugas->tgl_st->format('d-m-Y') }}</td>
+                <td>{{ $suratTugas->tgl_st->format('d M Y') }}</td>
                 <td>{{ $suratTugas->nama_penugasan }}</td>
                 <td>{{ $suratTugas->jenis_penugasan }}</td>
                 <td>{{ $suratTugas->nama_pemda }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['suratTugas.destroy', $suratTugas->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
+                        @if ($suratTugas->file_st != NULL)
+                        <a href="{{ $suratTugas->file_st }}" class='btn btn-success btn-xs'>
+                            <i class="far fa-download"></i>
+                        </a>
+                        @endif
                         <a href="{{ route('suratTugas.edit', [$suratTugas->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>

@@ -9,7 +9,6 @@
                 <th>No Laporan</th>
                 <th>Tgl Laporan</th>
                 <th>Status Laporan</th>
-                <th>File Laporan</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -18,19 +17,20 @@
             @foreach($pelaporans as $pelaporan)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $pelaporan->st_id }}</td>
-                <td>{{ $pelaporan->st_id }}</td>
+                <td>{{ $pelaporan->st->no_st }}</td>
+                <td>{{ $pelaporan->st->jenis_penugasan }}</td>
                 <td>{{ $pelaporan->nama_pemda }}</td>
                 <td>{{ $pelaporan->no_laporan }}</td>
-                <td>{{ $pelaporan->tgl_laporan }}</td>
+                <td>{{ $pelaporan->tgl_laporan->format('d M Y') }}</td>
                 <td>{{ $pelaporan->status_laporan }}</td>
-                <td>{{ $pelaporan->file_laporan }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['pelaporans.destroy', $pelaporan->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('pelaporans.show', [$pelaporan->id]) }}" class='btn btn-default btn-xs'>
+                        @if ($pelaporan->file_laporan != NULL)
+                        <a href="{{ $pelaporan->file_laporan }}" class='btn btn-success btn-xs'>
                             <i class="far fa-download"></i>
                         </a>
+                        @endif
                         <a href="{{ route('pelaporans.edit', [$pelaporan->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>

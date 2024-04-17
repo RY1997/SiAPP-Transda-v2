@@ -26,8 +26,8 @@
             @foreach($monitoringTrens as $monitoringTren)
             <tr>
                 @if ($monitoringTren->tahun == $monitoringTren->first()->tahun)
-                <td rowspan="{{ $monitoringTrens->where('nama_pemda', $monitoringTren->nama_pemda)->count() }}" class="text-center">{{ $loop->iteration }}</td>
-                <td rowspan="{{ $monitoringTrens->where('nama_pemda', $monitoringTren->nama_pemda)->count() }}">{{ $monitoringTren->nama_pemda }}</td>
+                <td rowspan="5" class="text-center">{{ ceil($loop->iteration / 5 + ($page > 0 ? ($page - 1) : 0) * 5) }}</td>                
+                <td rowspan="5">{{ $monitoringTren->nama_pemda }}</td>
                 @endif
                 <td class="text-center">{{ $monitoringTren->tahun }}</td>
                 <td class="text-right">{{ number_format($monitoringTren->total_alokasi, 2, ',', '.') }}</td>

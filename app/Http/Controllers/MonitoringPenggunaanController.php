@@ -168,6 +168,6 @@ class MonitoringPenggunaanController extends AppBaseController
 
         Flash::success('Monitoring Penggunaan deleted successfully.');
 
-        return redirect(route('monitoringPenggunaans.index'));
+        return redirect()->back();
     }
 }

@@ -37,7 +37,17 @@ class MonitoringTrenController extends AppBaseController
     {
         $nama_pemda = $request->query('nama_pemda');
 
-        $monitoringTrens = MonitoringAlokasi::where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+        if (Auth::user()->role == 'Admin') {
+            if (session('jenis_tkd') == 'Dana Otonomi Khusus') {
+                $monitoringTrens = MonitoringAlokasi::whereIn('kode_pwk', ['PW01', 'PW26', 'PW27']);
+            } else {
+                $monitoringTrens = MonitoringAlokasi::query();
+            }
+        } else {
+            $monitoringTrens = MonitoringAlokasi::where('kode_pwk', Auth::user()->kode_pwk);
+        }
+
+        $monitoringTrens = $monitoringTrens->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
             ->groupBy('nama_pemda')
             ->groupBy('tahun')
             ->withSum('penyaluran', 'penyaluran_tkd')
@@ -45,13 +55,13 @@ class MonitoringTrenController extends AppBaseController
             ->withSum('penggunaan', 'realisasi_tkd')
             ->selectRaw('SUM(alokasi_tkd) as total_alokasi')
             ->orderBy('nama_pemda')->orderBy('tahun')
-            ->paginate(40);
-
+            ->paginate(50);
 
         return view('monitoring_trens.index')
             ->with([
                 'monitoringTrens' => $monitoringTrens,
-                'nama_pemda' => $nama_pemda
+                'nama_pemda' => $nama_pemda,
+                'page' => $request->page
             ]);
     }
 
@@ -90,19 +100,6 @@ class MonitoringTrenController extends AppBaseController
      *
      * @return Response
      */
-    // public function show($id)
-    // {
-    //     $monitoringAlokasi = $this->monitoringAlokasiRepository->find($id);
-
-    //     if (empty($monitoringAlokasi)) {
-    //         Flash::error('Monitoring Alokasi not found');
-
-    //         return redirect(route('monitoringAlokasis.index'));
-    //     }
-
-    //     return view('monitoring_alokasis.show')->with('monitoringAlokasi', $monitoringAlokasi);
-    // }
-
     public function show($id)
     {
         $pemda = MonitoringAlokasi::find($id);
@@ -142,9 +139,9 @@ class MonitoringTrenController extends AppBaseController
             }
         }
 
-        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
-        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
-        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->orderBy('tipe_tkd')->get();
+        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->orderBy('tahap_salur')->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->orderBy('bidang_tkd')->get();
 
         if (empty($monitoringAlokasis)) {
             Flash::error('Monitoring Alokasi not found');

@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Monitoring Alokasi Details</h1>
+                <h1>Monitoring Tren {{ session('jenis_tkd') }}</h1>
             </div>
             <div class="col-sm-6">
                 <a class="btn btn-default float-right" href="{{ route('monitoringTrens.index') }}">
@@ -60,6 +60,9 @@
                 </div> -->
                 <div class="col-sm-12 mb-2">
                     @include('monitoring_trens.table_penyaluran')
+                    @if ($monitoringPenyalurans->sum('penyaluran_tkd') > $monitoringAlokasis->sum('alokasi_tkd'))
+                    <p class="text-danger">Catatan : Jumlah Penyaluran melebihi Jumlah Alokasi. Silahkan periksa kembali.</p>
+                    @endif
                 </div>
                 <div class="col-sm-8 mb-2">
                     <h5>C. Penggunaan Transfer ke Daerah</h5>
@@ -71,6 +74,9 @@
                 </div> -->
                 <div class="col-sm-12 mb-2">
                     @include('monitoring_trens.table_penggunaan')
+                    @if ($monitoringPenggunaans->sum('realisasi_tkd') > $monitoringPenyalurans->sum('panyaluran_tkd'))
+                    <p class="text-danger">Catatan : Jumlah Penggunaan melebihi Jumlah Penyaluran. Silahkan periksa kembali.</p>
+                    @endif
                 </div>
             </div>
         </div>
