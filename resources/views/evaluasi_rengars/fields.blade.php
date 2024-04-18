@@ -1,21 +1,21 @@
 <!-- Tahun Field -->
-<div class="form-group col-sm-4">
+<div class="form-group col-sm-4 mb-3">
     {!! Form::label('tahun', 'Tahun:') !!}
 </div>
-<div class="form-group col-sm-8">
+<div class="form-group col-sm-8 mb-3">
     {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <!-- Nama Pemda Field -->
-<div class="form-group col-sm-4">
+<div class="form-group col-sm-4 mb-3">
     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
 </div>
-<div class="form-group col-sm-8">
+<div class="form-group col-sm-8 mb-3">
     {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <!-- Kode Program Field -->
-<div class="form-group col-sm-4">
+<div class="form-group col-sm-4 mb-3">
     {!! Form::label('nama_program', 'Program:') !!}
 </div>
 <div class="form-group col-sm-2">
@@ -26,7 +26,7 @@
 </div>
 
 <!-- Kode Kegiatan Field -->
-<div class="form-group col-sm-4">
+<div class="form-group col-sm-4 mb-3">
     {!! Form::label('nama_kegiatan', 'Kegiatan:') !!}
 </div>
 <div class="form-group col-sm-2">
@@ -37,18 +37,18 @@
 </div>
 
 <!-- Sumber Dana Field -->
-<div class="form-group col-sm-4">
+<div class="form-group col-sm-4 mb-3">
     {!! Form::label('sumber_dana', 'Sumber Dana:') !!}
 </div>
-<div class="form-group col-sm-8">
+<div class="form-group col-sm-8 mb-3">
     {!! Form::text('sumber_dana', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <!-- Urusan Subkegiatan Field -->
-<div class="form-group col-sm-4">
+<div class="form-group col-sm-4 mb-3">
     {!! Form::label('urusan_subkegiatan', 'Dukungan Urusan Bersama:') !!}
 </div>
-<div class="form-group col-sm-8">
+<div class="form-group col-sm-8 mb-3">
     {!! Form::text('urusan_subkegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required']) !!}
 </div>
 
@@ -58,7 +58,7 @@
 
 <div class="table-responsive">
     <table class="table table-bordered" id="subkegiatanTable">
-        <thead class="text-center bg-secondary">
+        <thead class="table-info">
             <tr>
                 <th width="50">#</th>
                 <th width="300">Nama Subkegiatan</th>

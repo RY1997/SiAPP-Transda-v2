@@ -31,7 +31,7 @@
                             <i class="far fa-download"></i>
                         </a>
                         @endif
-                        <a href="{{ route('pelaporans.edit', [$pelaporan->id]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('pelaporans.edit', [$pelaporan->id]) }}" class='btn btn-warning btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}

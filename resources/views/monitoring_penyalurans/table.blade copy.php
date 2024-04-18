@@ -5,9 +5,9 @@
     </div>
 </form>
 
-<div class="table-responsive table-bordered text-sm">
-    <table class="table m-0" id="monitoringPenyalurans-table">
-        <thead class="text-center bg-secondary">
+<div class="table-responsive card mb-0">
+    <table class="table small text-center align-middle m-0" id="monitoringPenyalurans-table">
+        <thead class="table-info">
             <tr>
                 <th rowspan="2">#</th>
                 <th rowspan="2" style="min-width: 150px;">Nama Pemda</th>

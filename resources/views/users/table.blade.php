@@ -1,5 +1,5 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center m-0" id="users-table">
+    <table class="table small text-center align-middle m-0" id="users-table">
         <thead class="table-info">
             <tr>
                 <th>#</th>

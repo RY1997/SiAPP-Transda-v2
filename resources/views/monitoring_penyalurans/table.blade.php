@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table m-0" id="monitoringPenyalurans-table">
+    <table class="table small text-center align-middle m-0" id="monitoringPenyalurans-table">
         <thead>
         <tr>
             <th>Tahun</th>

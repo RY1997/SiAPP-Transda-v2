@@ -1,6 +1,6 @@
 <div class="table-responsive">
     <table class="table table-bordered text-sm" id="silpaOtsuses-table">
-        <thead class="text-center bg-secondary">
+        <thead class="table-info">
             <tr>
                 <th rowspan="2" width="50">Nama Pemda</th>
                 <th rowspan="2" width="150">Nama Pemda</th>

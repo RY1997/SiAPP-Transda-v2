@@ -16,7 +16,7 @@
     </div>
 </section>
 
-<div class="content px-3">
+<div class="content">
 
     @include('adminlte-templates::common.errors')
 

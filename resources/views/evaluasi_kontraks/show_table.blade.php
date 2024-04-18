@@ -1,6 +1,6 @@
-<div class="table-responsive table-bordered text-sm">
-    <table class="table m-0" id="evaluasiKontrak-table">
-        <thead class="text-center bg-secondary">
+<div class="table-responsive card mb-0">
+    <table class="table small text-center align-middle m-0" id="evaluasiKontrak-table">
+        <thead class="table-info">
             <tr>
                 <th rowspan="2" width="50">#</th>
                 <th colspan="4">Data Kontrak</th>

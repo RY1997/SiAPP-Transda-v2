@@ -1,6 +1,6 @@
-<div class="table-responsive table-bordered">
-    <table class="table m-0" id="parameterLaporans-table">
-        <thead class="text-center bg-secondary">
+<div class="table-responsive card mb-0">
+    <table class="table small text-center align-middle m-0" id="parameterLaporans-table">
+        <thead class="table-info">
             <tr>
                 <th>#</th>
                 <th>Jenis TKD</th>
@@ -23,7 +23,7 @@
                 <td width="120">
                     {!! Form::open(['route' => ['parameterLaporans.destroy', $parameterLaporan->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('parameterLaporans.edit', [$parameterLaporan->id]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('parameterLaporans.edit', [$parameterLaporan->id]) }}" class='btn btn-warning btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
@@ -34,4 +34,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="card-footer clearfix">
+        <div class="float-right d-flex justify-content-center">
+            @include('adminlte-templates::common.paginate', ['records' => $parameterLaporans])
+        </div>
+    </div>
 </div>

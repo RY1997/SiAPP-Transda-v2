@@ -1,6 +1,6 @@
 <div class="table-responsive table-bordered">
-    <table class="table m-0" id="parameterIndikators-table">
-        <thead class="text-center bg-secondary">
+    <table class="table small text-center align-middle m-0" id="parameterIndikators-table">
+        <thead class="table-info">
             <tr>
                 <th>#</th>
                 <th>Jenis TKD</th>
@@ -21,7 +21,7 @@
                 <td width="120">
                     {!! Form::open(['route' => ['parameterIndikators.destroy', $parameterIndikator->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('parameterIndikators.edit', [$parameterIndikator->id]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('parameterIndikators.edit', [$parameterIndikator->id]) }}" class='btn btn-warning btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
@@ -32,4 +32,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="card-footer clearfix">
+        <div class="float-right d-flex justify-content-center">
+            @include('adminlte-templates::common.paginate', ['records' => $parameterIndikators])
+        </div>
+    </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="table-responsive">
     <table class="table table-bordered text-sm" id="kebijakanOtsuses-table">
-        <thead class="text-center bg-secondary">
+        <thead class="table-info">
             <tr>
                 <th width="50">#</th>
                 <th width="150">Nama Pemda</th>

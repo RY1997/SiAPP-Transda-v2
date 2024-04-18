@@ -16,14 +16,14 @@
     </div>
 </section>
 
-<div class="content px-3">
+<div class="content">
 
     @include('flash::message')
 
     <div class="clearfix"></div>
 
     <div class="card">
-        <div class="card-body p-3">
+        <div class="card-body p-0">
             @include('monitoring_penggunaans.table')
 
             <div class="card-footer clearfix">
