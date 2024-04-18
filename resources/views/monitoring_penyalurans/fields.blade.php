@@ -3,7 +3,7 @@
     {!! Form::label('tahun', 'Tahun:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $monitoringPenyaluran->tahun }}" readonly>
+    <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $monitoringPenyaluran->tahun }}" readonly disabled>
 </div>
 
 <!-- Nama Pemda Field -->
@@ -11,7 +11,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $monitoringPenyaluran->nama_pemda }}" readonly>
+    <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $monitoringPenyaluran->nama_pemda }}" readonly disabled>
 </div>
 
 <div class="col-sm-12 mt-2">
@@ -23,7 +23,7 @@
     {!! Form::label('tahap_salur', 'Tahap Salur:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    {!! Form::text('tahap_salur', null, ['class' => 'form-control','readonly']) !!}
+    {!! Form::text('tahap_salur', null, ['class' => 'form-control','readonly disabled']) !!}
 </div>
 
 <!-- Tgl Salur Field -->

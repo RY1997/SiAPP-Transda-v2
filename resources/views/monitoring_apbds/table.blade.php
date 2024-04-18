@@ -1,10 +1,3 @@
-<form class="input-group col-sm-4 float-right mb-2">
-    <input class="form-control text-sm" type="text" name="nama_pemda" value="{{ $nama_pemda ?? NULL }}" placeholder="Ketik Nama Pemda..." />
-    <div class="input-group-append">
-        <button class="btn btn-success">Cari</button>
-    </div>
-</form>
-
 <div class="table-responsive card mb-0">
     <table class="table small text-center align-middle m-0" id="monitoringApbds-table">
         <thead class="table-info">
@@ -56,7 +49,7 @@
                 <td class="text-right">{{ number_format($monitoringApbd->silpa, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ route('monitoringApbds.edit', $monitoringApbd->id) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('monitoringApbds.edit', $monitoringApbd->id) }}" class='btn btn-warning btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>
@@ -65,4 +58,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="card-footer clearfix">
+        <div class="float-right d-flex justify-content-center">
+            @include('adminlte-templates::common.paginate', ['records' => $monitoringApbds])
+        </div>
+    </div>
 </div>

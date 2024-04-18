@@ -24,7 +24,7 @@
 
 <!-- Jenis Tkd Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('jenis_tkd', 'Jenis Tkd:') !!}
+    {!! Form::label('jenis_tkd', 'Jenis TKD:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     @if (!empty($evaluasiKontrak))

@@ -30,7 +30,7 @@
                 <td width="120">
                     {!! Form::open(['route' => ['monitoringPenyalurans.destroy', $monitoringPenyaluran->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('monitoringPenyalurans.edit', [$monitoringPenyaluran->id]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('monitoringPenyalurans.edit', [$monitoringPenyaluran->id]) }}" class='btn btn-warning btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
