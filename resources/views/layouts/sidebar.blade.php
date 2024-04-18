@@ -5,8 +5,8 @@
         <!-- ---------------------------------- -->
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="https://bootstrapdemos.wrappixel.com/monster/dist/main/index.html" class="text-nowrap logo-img">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/BPKP_Logo.png" alt="Logo" class="brand-image img-circle elevation-3 bg-white p-1 my-2" width="100">
-                <p class="brand-text font-weight-light my-2">SiAPP Transda</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/BPKP_Logo.png" alt="Logo" class="brand-image img-circle elevation-3 bg-white p-1 my-2" width="70">
+                <span class="brand-text fw-bolder fs-5 my-2">SiAPP Transda</span>
             </a>
             <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-flex d-xl-none">
                 <iconify-icon icon="solar:close-circle-outline"></iconify-icon>
@@ -41,7 +41,7 @@
 
         <div class="sidebar-footer hide-menu">
             <!-- item-->
-            <a href="{{ route('users.index') }}" class="link" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Ubah Password" data-bs-original-title="Ubah Password" style="width: 129px;"><iconify-icon icon="solar:settings-linear"></iconify-icon></a>
+            <a href="{{ route('users.edit', Auth::user()->id) }}" class="link" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Ganti Password" data-bs-original-title="Ubah Password" style="width: 129px;"><iconify-icon icon="solar:settings-linear"></iconify-icon></a>
             <!-- item-->
             <a href="#" class="link" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Keluar" data-bs-original-title="Keluar" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="width: 129px;"><iconify-icon icon="solar:power-bold"></iconify-icon></a>
         </div>
