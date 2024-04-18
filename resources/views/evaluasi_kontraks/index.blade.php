@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1>Evaluasi Kontraks</h1>
+                <h1>Evaluasi Pelaksanaan Kontrak (Uji Petik)</h1>
             </div>
         </div>
     </div>

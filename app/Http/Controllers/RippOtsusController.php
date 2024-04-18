@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\RippOtsus;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class RippOtsusController extends AppBaseController
@@ -30,7 +31,11 @@ class RippOtsusController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $rippOtsuses = $this->rippOtsusRepository->all();
+        if (Auth::user()->role == 'Admin') {
+            $rippOtsuses = RippOtsus::all();
+        } else {
+            $rippOtsuses = RippOtsus::where('kode_pwk', Auth::user()->kode_pwk)->get();
+        }
 
         return view('ripp_otsuses.index')
             ->with('rippOtsuses', $rippOtsuses);

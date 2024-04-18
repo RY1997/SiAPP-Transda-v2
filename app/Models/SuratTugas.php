@@ -96,5 +96,8 @@ class SuratTugas extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+    public function kontrak()
+    {
+        return $this->hasMany(\App\Models\EvaluasiKontrak::class, 'nama_pemda', 'nama_pemda');
+    }
 }

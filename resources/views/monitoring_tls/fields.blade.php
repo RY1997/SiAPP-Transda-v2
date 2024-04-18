@@ -71,9 +71,9 @@
 </div> -->
 
 <!-- Simpulan Tl Field -->
-<!-- <div class="form-group col-sm-4">
+<div class="form-group col-sm-4">
     {!! Form::label('simpulan_tl', 'Simpulan TL:') !!}
 </div>
 <div class="form-group col-sm-8">
-    {!! Form::text('simpulan_tl', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div> -->
+    {!! Form::textarea('simpulan_tl', null, ['class' => 'form-control','rows' => 3]) !!}
+</div>

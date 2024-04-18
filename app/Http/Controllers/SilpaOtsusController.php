@@ -10,6 +10,7 @@ use App\Models\SilpaOtsus;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class SilpaOtsusController extends AppBaseController
@@ -62,7 +63,13 @@ class SilpaOtsusController extends AppBaseController
             }
         }
 
-        $silpaOtsuses = SilpaOtsus::orderBy('nama_pemda')->orderBy('tahun')->orderBy('jenis_tkd')->paginate(20);
+        if (Auth::user()->role == 'Admin') {
+            $silpaOtsuses = SilpaOtsus::query();
+        } else {
+            $silpaOtsuses = SilpaOtsus::where('kode_pwk', Auth::user()->kode_pwk);
+        }
+
+        $silpaOtsuses = $silpaOtsuses->orderBy('nama_pemda')->orderBy('tahun')->orderBy('jenis_tkd')->paginate(20);
 
         return view('silpa_otsuses.index')
             ->with('silpaOtsuses', $silpaOtsuses);

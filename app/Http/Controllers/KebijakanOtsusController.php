@@ -10,6 +10,7 @@ use App\Models\KebijakanOtsus;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class KebijakanOtsusController extends AppBaseController
@@ -62,7 +63,13 @@ class KebijakanOtsusController extends AppBaseController
             }
         }
 
-        $kebijakanOtsuses = KebijakanOtsus::orderBy('nama_pemda')->orderBy('tahun')->orderBy('jenis_tkd')->paginate(20);
+        if (Auth::user()->role == 'Admin') {
+            $kebijakanOtsuses = KebijakanOtsus::query();
+        } else {
+            $kebijakanOtsuses = KebijakanOtsus::where('kode_pwk', Auth::user()->kode_pwk);
+        }
+
+        $kebijakanOtsuses = $kebijakanOtsuses->has('st')->orderBy('nama_pemda')->orderBy('tahun')->orderBy('jenis_tkd')->paginate(20);
 
         return view('kebijakan_otsuses.index')
             ->with('kebijakanOtsuses', $kebijakanOtsuses);

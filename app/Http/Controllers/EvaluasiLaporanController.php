@@ -11,6 +11,7 @@ use App\Models\ParameterLaporan;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class EvaluasiLaporanController extends AppBaseController
@@ -47,7 +48,13 @@ class EvaluasiLaporanController extends AppBaseController
             ]);
         }
 
-        $evaluasiLaporans = EvaluasiLaporan::orderBy('nama_pemda')->orderBy('bidang_tkd')->orderBy('tahun')->paginate(20);
+        if (Auth::user()->role == 'Admin') {
+            $evaluasiLaporans = EvaluasiLaporan::query();
+        } else {
+            $evaluasiLaporans = EvaluasiLaporan::where('kode_pwk', Auth::user()->kode_pwk);
+        }
+
+        $evaluasiLaporans = $evaluasiLaporans->orderBy('nama_pemda')->orderBy('bidang_tkd')->orderBy('tahun')->paginate(20);
 
         return view('evaluasi_laporans.index')
             ->with('evaluasiLaporans', $evaluasiLaporans);

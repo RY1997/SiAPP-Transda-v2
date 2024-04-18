@@ -9,9 +9,9 @@
                 <th>Dampak Permasalahan</th>
                 <!-- <th>Nilai Permasalahan</th> -->
                 <th>Penyebab Permasalahan</th>
-                <th>Tindak Lanjut</th>
+                <!-- <th>Tindak Lanjut</th> -->
                 <!-- <th>Nilai TL</th> -->
-                <!-- <th>Simpulan TL</th> -->
+                <th>Simpulan</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -26,9 +26,9 @@
                 <td>{{ $monitoringTl->uraian_permasalahan }}</td>
                 <!-- <td>{{ $monitoringTl->nilai_permasalahan }}</td> -->
                 <td>{{ $monitoringTl->uraian_rekomendasi }}</td>
-                <td>{{ $monitoringTl->uraian_tl }}</td>
+                <!-- <td>{{ $monitoringTl->uraian_tl }}</td> -->
                 <!-- <td>{{ $monitoringTl->nilai_tl }}</td> -->
-                <!-- <td>{{ $monitoringTl->simpulan_tl }}</td> -->
+                <td>{{ $monitoringTl->simpulan_tl }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringTls.edit', [$monitoringTl->id]) }}" class='btn btn-default btn-xs'>

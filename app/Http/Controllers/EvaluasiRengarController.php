@@ -10,6 +10,7 @@ use App\Models\EvaluasiRengar;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class EvaluasiRengarController extends AppBaseController
@@ -31,7 +32,14 @@ class EvaluasiRengarController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->paginate(20);
+        if (Auth::user()->role == 'Admin') {
+            $suratTugas = SuratTugas::query();
+        } else {
+            $suratTugas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk);
+        }
+        
+        $suratTugas = $suratTugas->where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->paginate(20);
+
         $evaluasiRengars = EvaluasiRengar::where('sumber_dana', session('jenis_tkd'))->get();
 
         return view('evaluasi_rengars.index')

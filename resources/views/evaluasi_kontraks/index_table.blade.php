@@ -26,28 +26,10 @@
                 <td rowspan="2">{{ $suratTugas->nama_pemda }}</td>
                 @endif
                 <td class="text-center">{{ $tahun }}</td>
-                <td class="text-center">{{ $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->count() }}</td>
-                <td class="text-right">{{ number_format($evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('nilai_kontrak'), 2, ',', '.') }}</td>
-                <td class="text-right">{{
-                    number_format($evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('masalah1') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('masalah2') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('masalah3') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('masalah4') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('masalah5') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('masalah6') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('masalah7') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('masalah8'), 2, ',', '.')
-                     }}</td>
-                <td class="text-right">{{
-                    number_format($evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('manfaat1') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('manfaat2') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('manfaat3') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('manfaat4') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('manfaat5') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('manfaat6') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('manfaat7') +
-                    $evaluasiKontraks->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('manfaat8'), 2, ',', '.')
-                     }}</td>
+                <td class="text-center">{{ number_format($suratTugas->{"kontrak{$tahun}"}, 0, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($suratTugas->{"nilai_kontrak{$tahun}"}, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($suratTugas->{"nilai_masalah{$tahun}"}, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($suratTugas->{"nilai_manfaat{$tahun}"}, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$tahun) }}" class='btn btn-default btn-xs'>

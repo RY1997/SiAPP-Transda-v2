@@ -10,6 +10,7 @@ use App\Models\MonitoringTl;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class MonitoringTlController extends AppBaseController
@@ -31,16 +32,22 @@ class MonitoringTlController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', session('jenis_tkd'))->get();
+        if (Auth::user()->role == 'Admin') {
+            $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', session('jenis_tkd'))->get();
+        } else {
+            $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', session('jenis_tkd'))->where('kode_pwk', Auth::user()->kd_pwk)->get();
+        }
 
-        $permasalahan = [
-            ['permasalahan' => 'Realisasi Penyaluran Tidak 100%'],
-            ['permasalahan' => 'Realisasi Penggunaan Tidak 100%'],
-            ['permasalahan' => 'Kegiatan yang tidak dilaksanakan/tidak selesai/terlambat'],
-            ['permasalahan' => 'Kegiatan yang tidak relevan'],
-            ['permasalahan' => 'Keterlambatan Penetapan Alokasi Dana Otsus'],
-            ['permasalahan' => 'Alokasi Dana Otsus tidak sesuai dengan perhitungan parameter yang tepat dan data dasar yang up to date'],
-        ];
+        if (session('jenis_tkd') == 'Dana Otonomi Khusus') {
+            $permasalahan = [
+                ['permasalahan' => 'Realisasi Penyaluran Tidak 100%'],
+                ['permasalahan' => 'Realisasi Penggunaan Tidak 100%'],
+                ['permasalahan' => 'Kegiatan yang tidak dilaksanakan/tidak selesai/terlambat'],
+                ['permasalahan' => 'Kegiatan yang tidak relevan'],
+                ['permasalahan' => 'Keterlambatan Penetapan Alokasi Dana Otsus'],
+                ['permasalahan' => 'Alokasi Dana Otsus tidak sesuai dengan perhitungan parameter yang tepat dan data dasar yang up to date'],
+            ];
+        }
 
         foreach ($permasalahan as $item) {
             foreach ($suratTugas as $st) {
@@ -54,7 +61,13 @@ class MonitoringTlController extends AppBaseController
             }
         }
 
-        $monitoringTls = $this->monitoringTlRepository->paginate(20);
+        if (Auth::user()->role == 'Admin') {
+            $monitoringTls = MonitoringTl::query();
+        } else {
+            $monitoringTls = MonitoringTl::where('kode_pwk', Auth::user()->kode_pwk);
+        }
+
+        $monitoringTls = $monitoringTls->has('st')->where('jenis_tkd', session('jenis_tkd'))->orderBy('nama_pemda')->orderBy('tahun')->paginate(20);
 
         return view('monitoring_tls.index')
             ->with('monitoringTls', $monitoringTls);

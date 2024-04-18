@@ -75,5 +75,8 @@ class RippOtsus extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+    public function st()
+    {
+        return $this->belongsTo(\App\Models\SuratTugas::class, 'nama_pemda', 'nama_pemda');
+    }
 }

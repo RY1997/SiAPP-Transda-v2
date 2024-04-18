@@ -10,6 +10,7 @@ use App\Models\EvaluasiRengar;
 use App\Models\UrusanBersamaOtsus;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class UrusanBersamaOtsusController extends AppBaseController
@@ -31,7 +32,16 @@ class UrusanBersamaOtsusController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $urusanBersamaOtsuses = EvaluasiRengar::whereNotNull('urusan_subkegiatan')->groupBy(['urusan_subkegiatan', 'tahun'])->selectRaw('*, sum(nilai_anggaran) as total_anggaran');
+        if (Auth::user()->role == 'Admin') {
+            $urusanBersamaOtsuses = EvaluasiRengar::query();
+        } else {
+            $urusanBersamaOtsuses = EvaluasiRengar::where('kode_pwk', Auth::user()->kode_pwk);
+        }
+        
+        $urusanBersamaOtsuses = $urusanBersamaOtsuses->whereNotNull('urusan_subkegiatan')
+        ->where('sumber_dana', session('jenis_tkd'))
+        ->groupBy(['urusan_subkegiatan', 'tahun'])
+        ->selectRaw('*, sum(nilai_anggaran) as total_anggaran');
 
         return view('urusan_bersama_otsuses.index')
             ->with([

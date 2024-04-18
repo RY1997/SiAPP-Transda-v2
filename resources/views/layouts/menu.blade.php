@@ -164,7 +164,7 @@
 </li>
 
 
-<li class="nav-item">
+<li class="nav-item mb-5">
     <a href="{{ route('evaluasiLaporans.index') }}"
         class="nav-link {{ Request::is('evaluasiLaporans*') ? 'active' : '' }}">
         <p>Pelaporan TKD</p>

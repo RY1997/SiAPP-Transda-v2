@@ -10,6 +10,7 @@ use App\Models\EvaluasiKontrak;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class EvaluasiKontrakController extends AppBaseController
@@ -31,15 +32,43 @@ class EvaluasiKontrakController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $evaluasiKontraks = $this->evaluasiKontrakRepository->all();
-
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->paginate(20);
-        $evaluasiKontraks = EvaluasiKontrak::where('jenis_tkd', session('jenis_tkd'))->get();
+        if (Auth::user()->role == 'Admin') {
+            $suratTugas = SuratTugas::query();
+        } else {
+            $suratTugas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk);
+        }
+        
+        $suratTugas = $suratTugas->where('jenis_tkd', session('jenis_tkd'))
+            ->where('jenis_penugasan', 'Evaluasi')
+            ->withCount(['kontrak as kontrak2023' => function ($query) {
+                $query->where('tahun', '2023');
+            }])
+            ->withCount(['kontrak as kontrak2024' => function ($query) {
+                $query->where('tahun', '2024');
+            }])
+            ->withCount(['kontrak as nilai_kontrak2023' => function ($query) {
+                $query->where('tahun', '2023')->selectRaw('sum(nilai_kontrak)');
+            }])
+            ->withCount(['kontrak as nilai_kontrak2024' => function ($query) {
+                $query->where('tahun', '2024')->selectRaw('sum(nilai_kontrak)');
+            }])
+            ->withCount(['kontrak as nilai_masalah2023' => function ($query) {
+                $query->where('tahun', '2023')->selectRaw('sum(masalah1 + masalah2 + masalah3 + masalah4 + masalah5 + masalah6 + masalah7 + masalah8)');
+            }])
+            ->withCount(['kontrak as nilai_masalah2024' => function ($query) {
+                $query->where('tahun', '2024')->selectRaw('sum(masalah1 + masalah2 + masalah3 + masalah4 + masalah5 + masalah6 + masalah7 + masalah8)');
+            }])
+            ->withCount(['kontrak as nilai_manfaat2023' => function ($query) {
+                $query->where('tahun', '2023')->selectRaw('sum(manfaat1 + manfaat2 + manfaat3 + manfaat4 + manfaat5 + manfaat6 + manfaat7 + manfaat8)');
+            }])
+            ->withCount(['kontrak as nilai_manfaat2024' => function ($query) {
+                $query->where('tahun', '2024')->selectRaw('sum(manfaat1 + manfaat2 + manfaat3 + manfaat4 + manfaat5 + manfaat6 + manfaat7 + manfaat8)');
+            }])
+            ->paginate(20);
 
         return view('evaluasi_kontraks.index')
             ->with([
-                'suratTugas' => $suratTugas,
-                'evaluasiKontraks' => $evaluasiKontraks
+                'suratTugas' => $suratTugas
             ]);
     }
 
@@ -60,7 +89,7 @@ class EvaluasiKontrakController extends AppBaseController
             'jenis_tkd' => $suratTugas->jenis_tkd
         ]);
 
-        return redirect(url('evaluasiKontraks/'.$evaluasiKontrak->id.'/edit?step=data'));
+        return redirect(url('evaluasiKontraks/' . $evaluasiKontrak->id . '/edit?step=data'));
     }
 
     /**

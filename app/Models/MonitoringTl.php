@@ -76,20 +76,16 @@ class MonitoringTl extends Model
      * @var array
      */
     public static $rules = [
-        'tahun' => 'required|string|max:255',
-        'kode_pwk' => 'nullable|string|max:255',
-        'nama_pemda' => 'required|string|max:255',
-        'jenis_tkd' => 'nullable|string|max:255',
-        'kelompok_permasalahan' => 'required|string|max:255',
         'uraian_permasalahan' => 'required|string',
-        'nilai_permasalahan' => 'required|numeric',
         'uraian_rekomendasi' => 'required|string',
         'uraian_tl' => 'required|string',
-        'nilai_tl' => 'required|numeric',
         'simpulan_tl' => 'required|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
 
-    
+    public function st()
+    {
+        return $this->belongsTo(\App\Models\SuratTugas::class, 'nama_pemda', 'nama_pemda');
+    }
 }

@@ -60,7 +60,13 @@ class EvaluasiIndikatorController extends AppBaseController
             }
         }
 
-        $evaluasiIndikators = EvaluasiIndikator::where('jenis_tkd', session('jenis_tkd'))->orderBy('nama_pemda')->orderBy('tahun')->paginate(20);
+        if (Auth::user()->role == 'Admin') {
+            $evaluasiIndikators = EvaluasiIndikator::query();
+        } else {
+            $evaluasiIndikators = EvaluasiIndikator::where('kode_pwk', Auth::user()->kode_pwk);
+        }
+
+        $evaluasiIndikators = $evaluasiIndikators->has('st')->where('jenis_tkd', session('jenis_tkd'))->orderBy('nama_pemda')->orderBy('tahun')->paginate(20);
 
         return view('evaluasi_indikators.index')
             ->with('evaluasiIndikators', $evaluasiIndikators);
