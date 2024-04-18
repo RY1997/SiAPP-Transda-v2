@@ -30,12 +30,6 @@
     <div class="card">
         <div class="card-body p-0">
             @include('users.table')
-
-            <div class="card-footer clearfix">
-                <div class="float-right d-flex justify-content-center">
-                    @include('adminlte-templates::common.paginate', ['records' => $users])
-                </div>
-            </div>
         </div>
 
     </div>

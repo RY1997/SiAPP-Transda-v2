@@ -28,14 +28,9 @@
     <div class="clearfix"></div>
 
     <div class="card">
-        <div class="card-body p-3">
+        <div class="card-body p-0">
             @include('surat_tugas.table')
 
-            <div class="card-footer clearfix">
-                <div class="float-right">
-                    @include('adminlte-templates::common.paginate', ['records' => $suratTugas])
-                </div>
-            </div>
         </div>
 
     </div>

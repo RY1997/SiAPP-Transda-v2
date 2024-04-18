@@ -1,4 +1,4 @@
-<div class="table-responsive card">
+<div class="table-responsive card mb-0">
     <table class="table small text-center m-0" id="users-table">
         <thead class="text-center table-info">
             <tr>
@@ -27,4 +27,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="card-footer clearfix">
+        <div class="float-right d-flex justify-content-center">
+            @include('adminlte-templates::common.paginate', ['records' => $users])
+        </div>
+    </div>
 </div>
