@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
     <table class="table small text-center m-0" id="users-table">
-        <thead class="text-center table-info">
+        <thead class="table-info">
             <tr>
                 <th>#</th>
                 <th>Nama</th>

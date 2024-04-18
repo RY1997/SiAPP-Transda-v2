@@ -42,8 +42,7 @@ class PelaporanController extends AppBaseController
             Pelaporan::updateOrCreate([
                 'kode_pwk' => $item->kode_pwk,
                 'id_st' => $item->id,
-                'nama_pemda' => $item->nama_pemda,
-                'tgl_laporan' => $item->tgl_akhir
+                'nama_pemda' => $item->nama_pemda
             ]);
         }
 
