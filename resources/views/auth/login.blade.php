@@ -12,7 +12,7 @@
 
     <!-- Core Css -->
     <link rel="stylesheet" href="https://bootstrapdemos.wrappixel.com/monster/dist/assets/css/styles.css">
-    <title>Monster Bootstrap Admin</title>
+    <title>SiAPP Transda | Login</title>
 </head>
 
 <body data-sidebartype="mini-sidebar">
