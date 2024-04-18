@@ -1,18 +1,18 @@
 <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="home" class="nav-link">
         <p>Dashboard</p>
     </a>
 </li>
 
-<li class="nav-item">
+<!-- <li class="nav-item">
     <a href="#" class="nav-link">
         <p>Ringkasan TKD</p>
     </a>
-</li>
+</li> -->
 
 <li class="nav-item">
     <a href="{{ route('users.index') }}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
-        <p>Pengguna</p>
+        <p>Akun Pengguna</p>
     </a>
 </li>
 

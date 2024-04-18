@@ -21,7 +21,7 @@
 
         <div class="card">
             <div class="card-body p-3">
-                @include('evaluasi_laporans.index_table')
+                @include('evaluasi_laporans.table')
 
                 <div class="card-footer clearfix">
                     <div class="float-right">

@@ -19,7 +19,7 @@
 
         <div class="card">
             <div class="card-body p-3">
-                @include('evaluasi_indikators.index_table')
+                @include('evaluasi_indikators.table')
 
                 <div class="card-footer clearfix">
                     <div class="float-right">

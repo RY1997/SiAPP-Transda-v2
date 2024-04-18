@@ -19,7 +19,7 @@
 
         <div class="card">
             <div class="card-body p-3">
-                @include('evaluasi_rengars.index_table')
+                @include('evaluasi_rengars.table')
 
                 <div class="card-footer clearfix">
                     <div class="float-right">
