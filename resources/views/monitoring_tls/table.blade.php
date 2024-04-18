@@ -12,7 +12,7 @@
                 <!-- <th>Tindak Lanjut</th> -->
                 <!-- <th>Nilai TL</th> -->
                 <th>Simpulan</th>
-                <th>Action</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +31,7 @@
                 <td>{{ $monitoringTl->simpulan_tl }}</td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ route('monitoringTls.edit', [$monitoringTl->id]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('monitoringTls.edit', [$monitoringTl->id]) }}" class='btn btn-warning btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>
@@ -45,4 +45,9 @@
             @endif
         </tbody>
     </table>
+    <div class="card-footer clearfix">
+        <div class="float-right d-flex justify-content-center">
+            @include('adminlte-templates::common.paginate', ['records' => $monitoringTls])
+        </div>
+    </div>
 </div>

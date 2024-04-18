@@ -10,25 +10,25 @@
                 <th width="150">Nilai Realisasi</th>
                 <th width="100">Relevansi Subkegiatan</th>
                 <th width="100">Pelaksanaan Subkegiatan</th>
-                <th width="80">Action</th>
+                <th width="100">Aksi</th>
             </tr>
         </thead>
         <tbody>
             @if ($evaluasiRengars->count() > 0)
             @foreach($evaluasiRengars as $evaluasiRengar)
             <tr>
-                <td class="text-center">{{ $loop->iteration }}</td>
-                <td>
+                <td>{{ $loop->iteration }}</td>
+                <td class="text-start">
                     {{ $evaluasiRengar->kode_program }}<br>
                     {{ $evaluasiRengar->nama_program }}
                 </td>
-                <td>
+                <td class="text-start">
                     {{ $evaluasiRengar->kode_kegiatan }}<br>
                     {{ $evaluasiRengar->nama_kegiatan }}
                 </td>
                 <td>{{ $evaluasiRengar->urusan_subkegiatan }}</td>
-                <td class="text-right">{{ number_format($evaluasiRengar->total_anggaran, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($evaluasiRengar->total_realisasi, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($evaluasiRengar->total_anggaran, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($evaluasiRengar->total_realisasi, 2, ',', '.') }}</td>
                 <td>
                     {!! ($evaluasiRengar->total_blm_relevan > 0 ? '<span class="badge badge-danger right">'.$evaluasiRengar->total_blm_relevan.' Belum Diuji</span>' : '') !!}
                     {!! ($evaluasiRengar->total_relevan > 0 ? '<span class="badge badge-success right">'.$evaluasiRengar->total_relevan.' Relevan</span>' : '') !!}
@@ -41,7 +41,7 @@
                 </td>
                 <td>
                     <div class='btn-group'>
-                        <a href="{{ route('evaluasiRengars.edit', [$evaluasiRengar->id]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('evaluasiRengars.edit', [$evaluasiRengar->id]) }}" class='btn btn-warning btn-xs'>
                             <i class="far fa-edit"> Uji </i>
                         </a>
                     </div>
@@ -55,4 +55,9 @@
             @endif
         </tbody>
     </table>
+    <div class="card-footer clearfix">
+        <div class="float-right d-flex justify-content-center">
+            @include('adminlte-templates::common.paginate', ['records' => $evaluasiRengars])
+        </div>
+    </div>
 </div>

@@ -11,7 +11,7 @@
                 <th width="200">Nomor Laporan</th>
                 <th width="150">Tgl Laporan</th>
                 <th>Penyebab Tidak Tepat Waktu</th>
-                <th width="50">Action</th>
+                <th width="50">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -25,11 +25,11 @@
                 <td>{{ $evaluasiLaporan->nama_laporan }}</td>
                 <td>{{ $evaluasiLaporan->keberadaan_laporan }}</td>
                 <td>{{ $evaluasiLaporan->nomor_laporan }}</td>
-                <td>{{ $evaluasiLaporan->tgl_laporan != NULL ? ($evaluasiLaporan->tgl_laporan->format('d-m-Y')) : '' }}</td>
+                <td>{{ $evaluasiLaporan->tgl_laporan != NULL ? ($evaluasiLaporan->tgl_laporan->format('d M Y')) : '' }}</td>
                 <td>{{ $evaluasiLaporan->penyebab_tidak_tepat_waktu }}</td>
                 <td>
                     <div class='btn-group'>
-                        <a href="{{ route('evaluasiLaporans.edit', [$evaluasiLaporan->id]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('evaluasiLaporans.edit', [$evaluasiLaporan->id]) }}" class='btn btn-warning btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>
@@ -43,4 +43,9 @@
             @endif
         </tbody>
     </table>
+    <div class="card-footer clearfix">
+        <div class="float-right d-flex justify-content-center">
+            @include('adminlte-templates::common.paginate', ['records' => $evaluasiLaporans])
+        </div>
+    </div>
 </div>

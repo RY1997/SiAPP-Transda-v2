@@ -7,7 +7,7 @@
                 <!-- <th rowspan="2" style="min-width: 100px;">Alokasi</th> -->
                 <th colspan="2">Penggunaan TKD</th>
                 <th rowspan="2" style="min-width: 300px;">Penyebab Realisasi Rendah</th>
-                <th rowspan="2">Action</th>
+                <th rowspan="2">Aksi</th>
             </tr>
             <tr>
                 <th style="min-width: 200px;">Anggaran</th>

@@ -1,5 +1,5 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center m-0" id="pelaporans-table">
+    <table class="table small text-center align-middle m-0" id="pelaporans-table">
         <thead class="table-info">
             <tr>
                 <th>#</th>
@@ -9,7 +9,7 @@
                 <th>No Laporan</th>
                 <th>Tgl Laporan</th>
                 <th>Status Laporan</th>
-                <th>Action</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>

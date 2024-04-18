@@ -8,7 +8,7 @@
                 <th>Tahun Laporan</th>
                 <th>Nama Laporan</th>
                 <th>Batas Penyampaian</th>
-                <th>Action</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>

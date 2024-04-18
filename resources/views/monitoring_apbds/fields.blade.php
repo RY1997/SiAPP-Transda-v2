@@ -3,7 +3,7 @@
     {!! Form::label('tahun', 'Tahun:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <!-- Nama Pemda Field -->
@@ -11,7 +11,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <!-- Pendapatan Daerah Field -->

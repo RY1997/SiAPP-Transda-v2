@@ -6,7 +6,7 @@
                 <th>Jenis TKD</th>
                 <th>Bidang TKD</th>
                 <th>Alokasi Minimal</th>
-                <th>Action</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>

@@ -7,7 +7,7 @@
                 <th>Bidang TKD</th>
                 <th>Uraian Indikator</th>
                 <th>Satuan Indikator</th>
-                <th>Action</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>

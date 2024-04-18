@@ -1,15 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-12">
-                <h1>Edit Evaluasi Kontrak</h1>
-            </div>
-        </div>
+<div class="d-md-flex align-items-center justify-content-between mb-7">
+    <div class="mb-4 mb-md-0">
+        <h4 class="fs-6 mb-0">Pengujian Pelaksanaan Kontrak {{ session('jenis_tkd') }}</h4>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a class="text-primary text-decoration-none" href="home">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a class="text-primary text-decoration-none" href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$evaluasiKontrak->tahun) }}">Pelaksanaan Kontrak {{ session('jenis_tkd') }}</a>
+                </li>
+                <li class="text-muted breadcrumb-item active" aria-current="page">Pengujian</li>
+            </ol>
+        </nav>
     </div>
-</section>
+    <div class="d-flex align-items-center justify-content-between gap-6">
+        <a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$evaluasiKontrak->tahun) }}" class="btn btn-danger d-flex align-items-center gap-1 fs-3 py-2 px-9">
+            <i class="ti ti-arrow-left fs-4"></i>
+            Kembali
+        </a>
+    </div>
+</div>
 
 <div class="content">
 
@@ -25,20 +38,20 @@
             </div>
         </div>
 
-        <div class="card-footer">
-            @if ($step == 'data')
-            <a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$evaluasiKontrak->tahun) }}" class="btn btn-default">Batal</a>
-            @elseif ($step == 'pelaksanaan')
-            <a href="?step=data" class="btn btn-default">Sebelumnya</a>
-            @elseif ($step == 'penyelesaian')
-            <a href="?step=pelaksanaan" class="btn btn-default">Sebelumnya</a>
-            @elseif ($step == 'pengujian')
-            <a href="?step=penyelesaian" class="btn btn-default">Sebelumnya</a>
-            @endif
+        <div class="card-footer d-flex justify-content-end">
             @if ($step == 'pengujian')
-            {!! Form::submit('Selesai', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Selesai', ['class' => 'btn btn-primary mx-1']) !!}
             @else
-            {!! Form::submit('Selanjutnya', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Selanjutnya', ['class' => 'btn btn-primary mx-1']) !!}
+            @endif
+            @if ($step == 'data')
+            <a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$evaluasiKontrak->tahun) }}" class="btn btn-danger mx-1">Batal</a>
+            @elseif ($step == 'pelaksanaan')
+            <a href="?step=data" class="btn btn-danger mx-1">Sebelumnya</a>
+            @elseif ($step == 'penyelesaian')
+            <a href="?step=pelaksanaan" class="btn btn-danger mx-1">Sebelumnya</a>
+            @elseif ($step == 'pengujian')
+            <a href="?step=penyelesaian" class="btn btn-danger mx-1">Sebelumnya</a>
             @endif
         </div>
 

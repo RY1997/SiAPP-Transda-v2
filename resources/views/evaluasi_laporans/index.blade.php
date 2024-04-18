@@ -1,37 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Evaluasi Laporans</h1>
-                </div>
-                <div class="col-sm-6">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="content">
-
-        @include('flash::message')
-
-        <div class="clearfix"></div>
-
-        <div class="card">
-            <div class="card-body p-0">
-                @include('evaluasi_laporans.table')
-
-                <div class="card-footer clearfix">
-                    <div class="float-right">
-                    @include('adminlte-templates::common.paginate', ['records' => $evaluasiLaporans])
-                    </div>
-                </div>
-            </div>
-
-        </div>
+<div class="d-md-flex align-items-center justify-content-between mb-7">
+    <div class="mb-4 mb-md-0">
+        <h4 class="fs-6 mb-0">Pelaporan {{ session('jenis_tkd') }}</h4>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a class="text-primary text-decoration-none" href="home">Home</a>
+                </li>
+                <li class="text-muted breadcrumb-item active" aria-current="page">Pelaporan {{ session('jenis_tkd') }}</li>
+            </ol>
+        </nav>
     </div>
+    <div class="d-flex align-items-center justify-content-between gap-6">
+        
+    </div>
+</div>
+
+<div class="content">
+
+    @include('flash::message')
+
+    <div class="clearfix"></div>
+
+    <div class="card">
+        <div class="card-body p-0">
+            @include('evaluasi_laporans.table')
+            
+        </div>
+
+    </div>
+</div>
 
 @endsection
-

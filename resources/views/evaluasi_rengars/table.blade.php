@@ -8,29 +8,29 @@
                 <th>Nilai Anggaran</th>
                 <th>Nilai Realisasi</th>
                 <th>Status Isian</th>
-                <th>Action</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
             @if ($suratTugas->count() > 0)
-            @foreach($suratTugas as $suratTugas)
+            @foreach($suratTugas as $st)
             @foreach([2023, 2024] as $tahun)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $suratTugas->nama_pemda }}</td>
+                <td>{{ $st->nama_pemda }}</td>
                 <td>{{ $tahun }}</td>
-                <td class="text-right">{{ number_format($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('nilai_anggaran'), 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('nilai_realisasi'), 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $st->nama_pemda)->sum('nilai_anggaran'), 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $st->nama_pemda)->sum('nilai_realisasi'), 2, ',', '.') }}</td>
                 <td>
-                    @if ($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->sum('nilai_anggaran') > 0)
-                    {{ $evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $suratTugas->nama_pemda)->whereNull('relevansi_subkegiatan')->count() > 0 ? 'Belum Lengkap' : 'Lengkap' }}
+                    @if ($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $st->nama_pemda)->sum('nilai_anggaran') > 0)
+                    {{ $evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $st->nama_pemda)->whereNull('relevansi_subkegiatan')->count() > 0 ? 'Belum Lengkap' : 'Lengkap' }}
                     @else
                     Belum ada data
                     @endif
                 </td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ url('evaluasiRengars/'.$suratTugas->id.'/'.$tahun) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ url('evaluasiRengars/'.$st->id.'/'.$tahun) }}" class='btn btn-warning btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>
@@ -45,4 +45,9 @@
             @endif
         </tbody>
     </table>
+    <div class="card-footer clearfix">
+        <div class="float-right d-flex justify-content-center">
+            @include('adminlte-templates::common.paginate', ['records' => $suratTugas])
+        </div>
+    </div>
 </div>

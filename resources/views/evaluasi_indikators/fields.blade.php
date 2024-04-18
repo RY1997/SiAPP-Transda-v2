@@ -3,7 +3,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <!-- Uraian Indikator Field -->
@@ -11,12 +11,12 @@
     {!! Form::label('uraian_indikator', 'Uraian Indikator:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    {!! Form::textarea('uraian_indikator', null, ['class' => 'form-control', 'rows' => 3, 'readonly']) !!}
+    {!! Form::textarea('uraian_indikator', null, ['class' => 'form-control', 'rows' => 3, 'readonly disabled']) !!}
 </div>
 
 <h5 class="col-sm-12">Capaian Indikator Makro</h5>
 
-<div class="table-responsive">
+<div class="table-responsive card mb-0">
     <table class="table table-bordered" id="indikatorTable">
         <thead class="table-info">
             <tr>

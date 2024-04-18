@@ -6,7 +6,7 @@
                 <th rowspan="2" style="min-width: 100px;">Nama Pemda</th>
                 <th rowspan="2" style="min-width: 100px;">Tahun</th>
                 <th colspan="4">Pengelolaan TKD</th>
-                <th rowspan="2">Action</th>
+                <th rowspan="2">Aksi</th>
             </tr>
             <tr>
                 <th style="min-width: 200px;">Alokasi</th>
@@ -23,10 +23,10 @@
                 <td rowspan="5">{{ $monitoringTren->nama_pemda }}</td>
                 @endif
                 <td>{{ $monitoringTren->tahun }}</td>
-                <td class="text-right">{{ number_format($monitoringTren->total_alokasi, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringTren->total_penyaluran, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringTren->total_anggaran, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringTren->total_realisasi, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringTren->total_alokasi, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringTren->total_penyaluran, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringTren->total_anggaran, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringTren->total_realisasi, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringTrens.show', $monitoringTren->id) }}" class='btn btn-warning btn-xs'>

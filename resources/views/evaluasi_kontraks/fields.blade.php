@@ -4,7 +4,7 @@
 </div>
 <div class="form-group col-sm-8 mb-3">
     @if (!empty($evaluasiKontrak))
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
     @else
     <input id='nama_pemda' name="nama_pemda" class="form-control" value="{{ $suratTugas->nama_pemda }}" readonly />
     @endif
@@ -16,7 +16,7 @@
 </div>
 <div class="form-group col-sm-8 mb-3">
     @if (!empty($evaluasiKontrak))
-    {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
     @else
     <input id='tahun' name="tahun" class="form-control" value="{{ $tahun }}" readonly />
     @endif
@@ -28,7 +28,7 @@
 </div>
 <div class="form-group col-sm-8 mb-3">
     @if (!empty($evaluasiKontrak))
-    {!! Form::text('jenis_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('jenis_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
     @else
     <input id="jenis_tkd" name="jenis_tkd" class="form-control" value="{{ session('jenis_tkd') }}" readonly />
     @endif
@@ -151,7 +151,7 @@
     {!! Form::label('nomor_kontrak', 'Nomor Kontrak:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    {!! Form::text('nomor_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nomor_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <!-- Tanggal Kontrak Field -->
@@ -159,7 +159,7 @@
     {!! Form::label('tanggal_kontrak', 'Tanggal Kontrak:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    {!! Form::text('tanggal_kontrak', null, ['class' => 'form-control','id'=>'tanggal_kontrak', 'readonly']) !!}
+    {!! Form::text('tanggal_kontrak', null, ['class' => 'form-control','id'=>'tanggal_kontrak', 'readonly disabled']) !!}
 </div>
 
 <!-- Uraian Kontrak Field -->
@@ -167,7 +167,7 @@
     {!! Form::label('uraian_kontrak', 'Uraian Kontrak:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    {!! Form::textarea('uraian_kontrak', null, ['class' => 'form-control', 'rows' => '3', 'readonly']) !!}
+    {!! Form::textarea('uraian_kontrak', null, ['class' => 'form-control', 'rows' => '3', 'readonly disabled']) !!}
 </div>
 
 <!-- Masa Kontrak Field -->
@@ -253,7 +253,7 @@
     {!! Form::label('nilai_kontrak', 'Nilai Kontrak:') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01', 'readonly']) !!}
+    {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01', 'readonly disabled']) !!}
 </div>
 
 <!-- Sisa Nilai Kontrak Field -->

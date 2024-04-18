@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-responsive card mb-0">
     <table class="table small text-center align-middle m-0" id="monitoringPenyalurans-table">
         <thead>
         <tr>
@@ -14,7 +14,7 @@
         <th>Tgl Salur</th>
         <th>Tepat Waktu</th>
         <th>Penyebab Tidak Tepat Waktu</th>
-            <th>Action</th>
+            <th>Aksi</th>
         </tr>
         </thead>
         <tbody>

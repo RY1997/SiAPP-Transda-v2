@@ -18,10 +18,10 @@
 <div class="form-group col-sm-4 mb-3">
     {!! Form::label('nama_program', 'Program:') !!}
 </div>
-<div class="form-group col-sm-2">
+<div class="form-group col-sm-2 mb-3">
     {!! Form::text('kode_program', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-6 mb-3">
     {!! Form::text('nama_program', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
@@ -29,10 +29,10 @@
 <div class="form-group col-sm-4 mb-3">
     {!! Form::label('nama_kegiatan', 'Kegiatan:') !!}
 </div>
-<div class="form-group col-sm-2">
+<div class="form-group col-sm-2 mb-3">
     {!! Form::text('kode_kegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-6 mb-3">
     {!! Form::textarea('nama_kegiatan', null, ['class' => 'form-control','rows' => 3, 'readonly disabled']) !!}
 </div>
 
@@ -52,45 +52,47 @@
     {!! Form::text('urusan_subkegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required']) !!}
 </div>
 
-<div class="col-sm-12">
+<div class="col-sm-12 mb-3">
     <h5>Pengujian Subkegiatan</h5>
 </div>
 
-<div class="table-responsive">
-    <table class="table table-bordered" id="subkegiatanTable">
-        <thead class="table-info">
-            <tr>
-                <th width="50">#</th>
-                <th width="300">Nama Subkegiatan</th>
-                <th width="150">Anggaran</th>
-                <th width="150">Realisasi</th>
-                <th width="100">Relevansi</th>
-                <th width="100">Pelaksanaan</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($subKegiatans as $subKegiatan)
-            <tr>
-                <td class="text-center">{{ $loop->iteration }}</td>
-                <td>{{ $subKegiatan->kode_subkegiatan . ' ' . $subKegiatan->nama_subkegiatan }}</td>
-                <td class="text-right">{{ number_format($subKegiatan->nilai_anggaran, 2, ',', '.') }}</td>
-                <td>
-                    <input type="number" name="nilai_realisasi_{{ $subKegiatan->id }}" class="form-control" step="0.01" value="{{ $subKegiatan->nilai_realisasi }}" required>
-                </td>
-                <td class="text-center">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Relevan" name="relevansi_{{ $subKegiatan->id }}" id="relevansi-{{ $subKegiatan->id }}" {{ $subKegiatan->relevansi_subkegiatan == 'Relevan' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="relevansi_{{ $subKegiatan->id }}"> Relevan</label>
-                    </div>
-                </td>
-                <td class="text-center">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Dilaksanakan" name="pelaksanaan_{{ $subKegiatan->id }}" id="pelaksanaan-{{ $subKegiatan->id }}" {{ $subKegiatan->pelaksanaan_subkegiatan == 'Dilaksanakan' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="pelaksanaan_{{ $subKegiatan->id }}"> Dilaksanakan</label>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+<div class="col-sm-12 mb-3">
+    <div class="table-responsive card mb-0">
+        <table class="table small text-center align-middle m-0" id="subkegiatanTable">
+            <thead class="table-info">
+                <tr>
+                    <th width="50">#</th>
+                    <th width="300">Nama Subkegiatan</th>
+                    <th width="150">Anggaran</th>
+                    <th width="150">Realisasi</th>
+                    <th width="100">Relevansi</th>
+                    <th width="100">Pelaksanaan</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($subKegiatans as $subKegiatan)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td class="text-start">{{ $subKegiatan->kode_subkegiatan . ' ' . $subKegiatan->nama_subkegiatan }}</td>
+                    <td class="text-end">{{ number_format($subKegiatan->nilai_anggaran, 2, ',', '.') }}</td>
+                    <td>
+                        <input type="number" name="nilai_realisasi_{{ $subKegiatan->id }}" class="form-control" step="0.01" value="{{ $subKegiatan->nilai_realisasi }}" required>
+                    </td>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Relevan" name="relevansi_{{ $subKegiatan->id }}" id="relevansi-{{ $subKegiatan->id }}" {{ $subKegiatan->relevansi_subkegiatan == 'Relevan' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="relevansi_{{ $subKegiatan->id }}"> Relevan</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Dilaksanakan" name="pelaksanaan_{{ $subKegiatan->id }}" id="pelaksanaan-{{ $subKegiatan->id }}" {{ $subKegiatan->pelaksanaan_subkegiatan == 'Dilaksanakan' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="pelaksanaan_{{ $subKegiatan->id }}"> Dilaksanakan</label>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>

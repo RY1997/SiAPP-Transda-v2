@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-responsive card mb-0">
     <table class="table small text-center align-middle m-0" id="monitoringAlokasis-table">
         <thead>
         <tr>
@@ -9,7 +9,7 @@
         <th>Tipe Tkd</th>
         <th>Bidang Tkd</th>
         <th>Alokasi Tkd</th>
-            <th>Action</th>
+            <th>Aksi</th>
         </tr>
         </thead>
         <tbody>

@@ -34,28 +34,28 @@
                 </div>
 
                 <!-- Nama Pemda Field -->
-                <div class="col-sm-4 mb-2">
+                <div class="col-sm-4 mb-3">
                     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
                 </div>
-                <div class="col-sm-8 mb-2">
+                <div class="col-sm-8 mb-3">
                     <input type="text" class="form-control" value="{{ $pemda->nama_pemda }}" readonly disabled />
                 </div>
 
                 <!-- Nama Pemda Field -->
-                <div class="col-sm-4 mb-2">
+                <div class="col-sm-4 mb-3">
                     {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
                 </div>
-                <div class="col-sm-8 mb-2">
+                <div class="col-sm-8 mb-3">
                     <input type="text" class="form-control" value="{{ session('jenis_tkd') }}" readonly disabled />
                 </div>
 
-                <div class="col-sm-12 mb-2">
+                <div class="col-sm-12 mb-3">
                     <h5>A. Alokasi Transfer ke Daerah</h5>
                 </div>
-                <div class="col-sm-12 mb-2">
+                <div class="col-sm-12 mb-3">
                     @include('monitoring_trens.table_alokasi')
                 </div>
-                <div class="col-sm-8 mb-2">
+                <div class="col-sm-8 mb-3">
                     <h5>B. Penyaluran Transfer ke Daerah</h5>
                 </div>
                 <!-- <div class="col-sm-4 mb-2">
@@ -63,13 +63,13 @@
                         + Penyaluran
                     </a>
                 </div> -->
-                <div class="col-sm-12 mb-2">
+                <div class="col-sm-12 mb-3">
                     @include('monitoring_trens.table_penyaluran')
                     @if ($monitoringPenyalurans->sum('penyaluran_tkd') > $monitoringAlokasis->sum('alokasi_tkd'))
                     <p class="text-danger">Catatan : Jumlah Penyaluran melebihi Jumlah Alokasi. Silahkan periksa kembali.</p>
                     @endif
                 </div>
-                <div class="col-sm-8 mb-2">
+                <div class="col-sm-8 mb-3">
                     <h5>C. Penggunaan Transfer ke Daerah</h5>
                 </div>
                 <!-- <div class="col-sm-4 mb-2">
@@ -77,7 +77,7 @@
                         + Penggunaan
                     </a>
                 </div> -->
-                <div class="col-sm-12 mb-2">
+                <div class="col-sm-12 mb-3">
                     @include('monitoring_trens.table_penggunaan')
                     @if ($monitoringPenggunaans->sum('realisasi_tkd') > $monitoringPenyalurans->sum('panyaluran_tkd'))
                     <p class="text-danger">Catatan : Jumlah Penggunaan melebihi Jumlah Penyaluran. Silahkan periksa kembali.</p>

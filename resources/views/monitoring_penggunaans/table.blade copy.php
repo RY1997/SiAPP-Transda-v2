@@ -13,7 +13,7 @@
                 <th rowspan="2" style="min-width: 150px;">Nama Pemda</th>
                 <th rowspan="2" style="min-width: 100px;">Tahun</th>
                 <th colspan="5">Jenis TKD</th>
-                <th rowspan="2">Action</th>
+                <th rowspan="2">Aksi</th>
             </tr>
             <tr>
                 <th style="min-width: 250px;">Dana Otonomi Khusus</th>

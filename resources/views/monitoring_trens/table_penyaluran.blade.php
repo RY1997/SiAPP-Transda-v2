@@ -7,7 +7,7 @@
                 <th rowspan="2" style="min-width: 100px;">Tanggal Penyaluran</th>
                 <th colspan="2">Ketepatan Jumlah</th>
                 <th colspan="2">Ketepatan Waktu</th>
-                <th rowspan="2">Action</th>
+                <th rowspan="2">Aksi</th>
             </tr>
             <tr>
                 <th style="width: 100px;">Simpulan</th>

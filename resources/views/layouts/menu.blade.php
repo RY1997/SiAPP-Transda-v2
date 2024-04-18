@@ -98,7 +98,7 @@
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('kebijakanOtsuses*') ? 'active' : '' }}" href="{{ route('kebijakanOtsuses.index') }}">
         <iconify-icon icon="solar:file-text-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Kebijakan TKD</span>
+        <span class="hide-menu">Penetapan Otsus</span>
     </a>
 </li>
 

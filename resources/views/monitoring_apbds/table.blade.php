@@ -9,7 +9,7 @@
                 <th colspan="6">Belanja Daerah</th>
                 <th colspan="2">Pembiayaan Daerah</th>
                 <th rowspan="2" style="min-width: 200px;">SiLPA</th>
-                <th rowspan="2" colspan="3">Action</th>
+                <th rowspan="2" colspan="3">Aksi</th>
             </tr>
             <tr>
                 <th style="min-width: 200px;">Total</th>
@@ -34,19 +34,19 @@
                 <td rowspan="5">{{ $monitoringApbd->nama_pemda }}</td>
                 @endif
                 <td class="text-center">{{ $monitoringApbd->tahun }}</td>
-                <td class="text-right">{{ $monitoringApbd->pendapatan_daerah > 1 ? number_format($monitoringApbd->pendapatan_daerah, 2, ',', '.') : number_format($monitoringApbd->pendapatan_pad + $monitoringApbd->pendapatan_transfer + $monitoringApbd->pendapatan_lainnya, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->pendapatan_pad, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->pendapatan_transfer, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->pendapatan_lainnya, 2, ',', '.') }}</td>
-                <td class="text-right">{{ $monitoringApbd->belanja_daerah > 1 ? number_format($monitoringApbd->belanja_daerah, 2, ',', '.') : number_format($monitoringApbd->belanja_pegawai + $monitoringApbd->belanja_barjas + $monitoringApbd->belanja_modal + $monitoringApbd->belanja_hibah + $monitoringApbd->belanja_lainnya, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->belanja_pegawai, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->belanja_barjas, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->belanja_modal, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->belanja_hibah, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->belanja_lainnya, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->penerimaan_pembiayaan, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->pengeluaran_pembiayaan, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->silpa, 2, ',', '.') }}</td>
+                <td class="text-end">{{ $monitoringApbd->pendapatan_daerah > 1 ? number_format($monitoringApbd->pendapatan_daerah, 2, ',', '.') : number_format($monitoringApbd->pendapatan_pad + $monitoringApbd->pendapatan_transfer + $monitoringApbd->pendapatan_lainnya, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->pendapatan_pad, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->pendapatan_transfer, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->pendapatan_lainnya, 2, ',', '.') }}</td>
+                <td class="text-end">{{ $monitoringApbd->belanja_daerah > 1 ? number_format($monitoringApbd->belanja_daerah, 2, ',', '.') : number_format($monitoringApbd->belanja_pegawai + $monitoringApbd->belanja_barjas + $monitoringApbd->belanja_modal + $monitoringApbd->belanja_hibah + $monitoringApbd->belanja_lainnya, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->belanja_pegawai, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->belanja_barjas, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->belanja_modal, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->belanja_hibah, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->belanja_lainnya, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->penerimaan_pembiayaan, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->pengeluaran_pembiayaan, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($monitoringApbd->silpa, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringApbds.edit', $monitoringApbd->id) }}" class='btn btn-warning btn-xs'>

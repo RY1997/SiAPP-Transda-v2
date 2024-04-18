@@ -8,7 +8,7 @@
                 <th>Nama Penugasan</th>
                 <th>Jenis Penugasan</th>
                 <th>Nama Pemda</th>
-                <th>Action</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
