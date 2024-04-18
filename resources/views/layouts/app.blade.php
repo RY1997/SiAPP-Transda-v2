@@ -1,156 +1,184 @@
-<!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/png" href="https://bootstrapdemos.wrappixel.com/monster/dist/assets/images/logos/favicon.png">
+
+    <!-- Core Css -->
+    <link rel="stylesheet" href="https://bootstrapdemos.wrappixel.com/monster/dist/assets/css/styles.css">
     <title>SiAPP Transda</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap4-toggle/3.6.1/bootstrap4-toggle.min.css"
-        integrity="sha512-EzrsULyNzUc4xnMaqTrB4EpGvudqpetxG/WNjCpG6ZyyAGxeB6OBF9o246+mwx3l/9Cn838iLIcrxpPHTiygAA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- AdminLTE -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css"
-        integrity="sha512-mxrUXSjrxl8vm5GwafxcqTrEwO1/oBNU25l20GODsysHReZo4uhVISzAKzaABH6/tTfAxZrY2FprmeAP5UZY8A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css"
-        integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg=="
-        crossorigin="anonymous" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
-        integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
-        crossorigin="anonymous" />
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
-        integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw=="
-        crossorigin="anonymous" />
 
     @stack('third_party_stylesheets')
 
     @stack('page_css')
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
-        <!-- Main Header -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown user-menu">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <!-- <img src="https://assets.infyom.com/logo/blue_logo_150x150.png"
-                            class="user-image img-circle elevation-2" alt="User Image"> -->
-                        <p class="d-none d-md-inline text-dark"><span class="text-bold">Halo,</span> {{ Auth::user()->name }}</p>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <!-- User image -->
-                        <li class="user-header bg-primary">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/BPKP_Logo.png"
-                                class="img-circle elevation-2 bg-white" alt="User Image">
-                            <p>
-                                {{ Auth::user()->name }}
-                            </p>
-                        </li>
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <a href="#" class="btn btn-default btn-flat">Pengaturan</a>
-                            <a href="#" class="btn btn-default btn-flat float-right"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Keluar
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Left side column. contains the logo and sidebar -->
-        @include('layouts.sidebar')
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <section class="content">
-                @yield('content')
-            </section>
-        </div>
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            SiAPP Transda 2.0 &copy; 2024 | Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral Pembangunan
-            Daerah
-        </footer>
+<body data-sidebartype="mini-sidebar">
+    <!-- Preloader -->
+    <div class="preloader" style="display: none;">
+        <img src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid">
     </div>
+    <div id="main-wrapper">
+        <!-- Sidebar Start -->
+        @include('layouts.sidebar')
+        <!--  Sidebar End -->
+        <div class="page-wrapper">
+            <!--  Header Start -->
+            <header class="topbar">
+                <div class="with-vertical">
+                    <!-- ---------------------------------- -->
+                    <!-- Start Vertical Layout Header -->
+                    <!-- ---------------------------------- -->
+                    <nav class="navbar navbar-expand-lg p-0">
+                        <!-- <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                                    <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+                                </a>
+                            </li>
+                        </ul> -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-        crossorigin="anonymous"></script>
+                        <div class="d-block d-lg-none">
+                            <img src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/images/logos/light-logo.svg" class="" width="180" alt="">
+                        </div>
+                        <a class="navbar-toggler border-0 text-white nav-icon-hover" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <iconify-icon icon="solar:menu-dots-bold" class="fs-7"></iconify-icon>
+                        </a>
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
+                                    <!-- ------------------------------- -->
+                                    <!-- start profile Dropdown -->
+                                    <!-- ------------------------------- -->
+                                    <li class="nav-item hover-dd dropdown">
+                                        <a class="nav-link" href="javascript:void(0)" id="drop1" aria-expanded="false">
+                                            <div class="d-flex align-items-center">
+                                                <div class="user-profile-img">
+                                                    <img src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/images/profile/user-1.jpg" class="rounded-circle" width="30" height="30" alt="">
+                                                </div>
+                                                <p class="mb-0 mx-2">Halo, {{ Auth::user()->name }}</p>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop1">
+                                            <div class="message-body">
+                                                <a href="{{ route('users.index') }}" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
+                                                    <iconify-icon icon="solar:settings-linear"></iconify-icon>
+                                                    <p class="mb-0 fs-3">Ganti Password</p>
+                                                </a>
+                                                <a href="#" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    <div class="position-relative">
+                                                        <iconify-icon icon="solar:power-bold"></iconify-icon>
+                                                    </div>
+                                                    <p class="mb-0 fs-3">Keluar</p>
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- ------------------------------- -->
+                                    <!-- end profile Dropdown -->
+                                    <!-- ------------------------------- -->
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- ---------------------------------- -->
+                    <!-- End Vertical Layout Header -->
+                    <!-- ---------------------------------- -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
-    </script>
+                    <!-- ------------------------------- -->
+                    <!-- apps Dropdown in Small screen -->
+                    <!-- ------------------------------- -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+                    <!--  Mobilenavbar -->
+                    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="mobilenavbar" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <nav class="sidebar-nav scroll-sidebar">
+                            <div class="offcanvas-header justify-content-between">
+                                <img src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/images/logos/dark-logo.svg" alt="" class="img-fluid">
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body h-n80" data-simplebar="init">
+                                <div class="simplebar-wrapper" style="margin: -16px;">
+                                    <div class="simplebar-height-auto-observer-wrapper">
+                                        <div class="simplebar-height-auto-observer"></div>
+                                    </div>
+                                    <div class="simplebar-placeholder" style="width: 330px; height: 244px;"></div>
+                                </div>
+                                <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                                    <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+                                </div>
+                                <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+                                    <div class="simplebar-scrollbar" style="height: 0px; display: none;"></div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <!--  Header End -->
 
-    <!-- AdminLTE App -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js"
-        integrity="sha512-AJUWwfMxFuQLv1iPZOTZX0N/jTCIrLxyZjTRKQostNU71MzZTEPHjajSK20Kj1TwJELpP7gl+ShXw5brpnKwEg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            @include('layouts.sidebar')
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <div class="body-wrapper">
+                <div class="container-fluid" style="min-height: 70vh;">
+                    @yield('content')
+                </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"
-        integrity="sha512-GDey37RZAxFkpFeJorEUwNoIbkTwsyC736KNSYucu1WJWFK9qTdzYub8ATxktr6Dwke7nbFaioypzbDOQykoRg=="
-        crossorigin="anonymous"></script>
+                <div class="container-fluid">
+                    <div class="card rounded-2">
+                        <div class="card-body text-center row">
+                            <small class="fw-semibold">Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral Pembangunan Daerah</small>
+                            <small class="fw-normal">SiAPP Transda 2.0 &copy; 2024</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+            <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-body h-n80 simplebar-scrollable-y" data-simplebar="init">
+                    <div class="simplebar-wrapper" style="margin: -16px;">
+                        <div class="simplebar-mask">
+                            <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
+                                    <div class="simplebar-content" style="padding: 16px;">
+                                        <div>
+                                            <input type="radio" class="btn-check" name="page-layout" id="vertical-layout" autocomplete="off">
+                                        </div>
+                                        <a href="javascript:void(0)" class="fullsidebar">
+                                            <input type="radio" class="btn-check" name="sidebar-type" id="full-sidebar" autocomplete="off">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dark-transparent sidebartoggler"></div>
+    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/vendor.min.js"></script>
+    <!-- Import Js Files -->
+    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
+    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/theme/app.init.js"></script>
+    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/theme/theme.js"></script>
+    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/theme/app.min.js"></script>
+    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/theme/sidebarmenu.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
-        integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
-        crossorigin="anonymous"></script>
+    <!-- solar icons -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/dashboards/dashboard6.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.3/bootstrapSwitch.min.js"
-        integrity="sha512-DAc/LqVY2liDbikmJwUS1MSE3pIH0DFprKHZKPcJC7e3TtAOzT55gEMTleegwyuIWgCfOPOM8eLbbvFaG9F/cA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        $(function() {
-            bsCustomFileInput.init();
-        });
-
-        $("input[data-bootstrap-switch]").each(function() {
-            $(this).bootstrapSwitch('state', $(this).prop('checked'));
-        });
-    </script>
-
-    @stack('third_party_scripts')
-
-    @stack('page_scripts')
 </body>
 
 </html>

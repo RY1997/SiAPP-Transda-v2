@@ -1,6 +1,7 @@
-<li class="nav-item">
-    <a href="home" class="nav-link">
-        <p>Dashboard</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('home') ? 'active' : '' }}" href="home">
+        <iconify-icon icon="solar:screencast-2-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Dashboard</span>
     </a>
 </li>
 
@@ -10,163 +11,161 @@
     </a>
 </li> -->
 
-<li class="nav-item">
-    <a href="{{ route('users.index') }}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
-        <p>Akun Pengguna</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
+        <iconify-icon icon="solar:user-plus-rounded-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Akun Pengguna</span>
     </a>
 </li>
 
-<li class="nav-header" style="color: #007bff; font-weight: bold;">ADMINISTRASI</li>
+<li class="nav-small-cap">
+    <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon fs-4"></iconify-icon>
+    <span class="hide-menu">ADMINISTRASI</span>
+</li>
 
-<li class="nav-item">
-    <a href="{{ route('suratTugas.index') }}" class="nav-link {{ Request::is('suratTugas*') ? 'active' : '' }}">
-        <p>Surat Tugas</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('suratTugas*') ? 'active' : '' }}" href="{{ route('suratTugas.index') }}">
+        <iconify-icon icon="solar:atom-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Surat Tugas</span>
     </a>
 </li>
 
-<li class="nav-item">
-    <a href="{{ route('pelaporans.index') }}" class="nav-link {{ Request::is('pelaporans*') ? 'active' : '' }}">
-        <p>Pelaporan</p>
+<li class="sidebar-item">
+    <a class="sidebar-link" href="#">
+        <iconify-icon icon="solar:atom-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Kertas Kerja</span>
+    </a>
+</li>
+
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('pelaporans*') ? 'active' : '' }}" href="{{ route('pelaporans.index') }}">
+        <iconify-icon icon="solar:atom-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Pelaporan</span>
     </a>
 </li>
 
 @if (Auth::user()->role == 'Admin')
-    <li class="nav-header" style="color: #007bff; font-weight: bold;">PARAMETER</li>
+<li class="nav-small-cap">
+    <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon fs-4"></iconify-icon>
+    <span class="hide-menu">PARAMETER</span>
+</li>
 
-    <li class="nav-item">
-        <a href="{{ route('parameterTkds.index') }}"
-            class="nav-link {{ Request::is('parameterTkds*') ? 'active' : '' }}">
-            <p>Bidang TKD</p>
-        </a>
-    </li>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('parameterTkds*') ? 'active' : '' }}" href="{{ route('parameterTkds.index') }}">
+        <iconify-icon icon="solar:calendar-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Bidang TKD</span>
+    </a>
+</li>
 
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('parameterIndikators*') ? 'active' : '' }}" href="{{ route('parameterIndikators.index') }}">
+        <iconify-icon icon="solar:calendar-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Indikator Pengujian</span>
+    </a>
+</li>
 
-    <li class="nav-item">
-        <a href="{{ route('parameterIndikators.index') }}"
-            class="nav-link {{ Request::is('parameterIndikators*') ? 'active' : '' }}">
-            <p>Indikator Pengujian</p>
-        </a>
-    </li>
-
-
-    <li class="nav-item">
-        <a href="{{ route('parameterLaporans.index') }}"
-            class="nav-link {{ Request::is('parameterLaporans*') ? 'active' : '' }}">
-            <p>Laporan Pengelolaan</p>
-        </a>
-    </li>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('parameterLaporans*') ? 'active' : '' }}" href="{{ route('parameterLaporans.index') }}">
+        <iconify-icon icon="solar:calendar-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Laporan Pengelolaan</span>
+    </a>
+</li>
 @endif
 
+<li class="nav-small-cap">
+    <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon fs-4"></iconify-icon>
+    <span class="hide-menu">MONITORING</span>
+</li>
 
-<li class="nav-header" style="color: #007bff; font-weight: bold;">MONITORING</li>
-
-
-<li class="nav-item">
-    <a href="{{ route('monitoringApbds.index') }}"
-        class="nav-link {{ Request::is('monitoringApbds*') ? 'active' : '' }}">
-        <p>Postur APBD</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('monitoringApbds*') ? 'active' : '' }}" href="{{ route('monitoringApbds.index') }}">
+        <iconify-icon icon="solar:dollar-minimalistic-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Postur APBD</span>
+    </a>
+</li>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('monitoringTrens*') || Request::is('monitoringPenyalurans*') || Request::is('monitoringPenggunaans*') ? 'active' : '' }}" href="{{ route('monitoringTrens.index') }}">
+        <iconify-icon icon="solar:question-circle-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Pengelolaan TKD</span>
     </a>
 </li>
 
+<li class="nav-small-cap">
+    <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon fs-4"></iconify-icon>
+    <span class="hide-menu">Evaluasi</span>
+</li>
 
-<li class="nav-item">
-    <a href="{{ route('monitoringTrens.index') }}"
-        class="nav-link {{ Request::is('monitoringTrens*') || Request::is('monitoringPenyalurans*') || Request::is('monitoringPenggunaans*') ? 'active' : '' }}">
-        <p>Pengelolaan TKD
-            <!-- <span class="badge badge-danger right">!</span> -->
-        </p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('kebijakanOtsuses*') ? 'active' : '' }}" href="{{ route('kebijakanOtsuses.index') }}">
+        <iconify-icon icon="solar:file-text-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Kebijakan TKD</span>
     </a>
 </li>
 
-
-<!-- <li class="nav-item">
-    <a href="{{ route('monitoringAlokasis.index') }}"
-       class="nav-link {{ Request::is('monitoringAlokasis*') ? 'active' : '' }}">
-        <p>Monitoring Alokasis</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('monitoringTls*') ? 'active' : '' }}" href="{{ route('monitoringTls.index') }}">
+        <iconify-icon icon="solar:file-favourite-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Kebijakan Daerah</span>
     </a>
 </li>
 
-
-<li class="nav-item">
-    <a href="{{ route('monitoringPenyalurans.index') }}"
-       class="nav-link {{ Request::is('monitoringPenyalurans*') ? 'active' : '' }}">
-        <p>Monitoring Penyalurans</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('evaluasiRengars*') ? 'active' : '' }}" href="{{ route('evaluasiRengars.index') }}">
+        <iconify-icon icon="solar:file-check-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Ren-Gar</span>
     </a>
 </li>
 
-
-<li class="nav-item">
-    <a href="{{ route('monitoringPenggunaans.index') }}"
-       class="nav-link {{ Request::is('monitoringPenggunaans*') ? 'active' : '' }}">
-        <p>Monitoring Penggunaans</p>
-    </a>
-</li> -->
-
-
-
-<li class="nav-header" style="color: #007bff; font-weight: bold;">EVALUASI</li>
-
-<li class="nav-item">
-    <a href="{{ route('kebijakanOtsuses.index') }}"
-        class="nav-link {{ Request::is('kebijakanOtsuses*') ? 'active' : '' }}">
-        <p>Kebijakan</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('rippOtsuses*') ? 'active' : '' }}" href="{{ route('rippOtsuses.index') }}">
+        <iconify-icon icon="solar:file-smile-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Sinkron RIPP</span>
     </a>
 </li>
 
-<li class="nav-item">
-    <a href="{{ route('monitoringTls.index') }}" class="nav-link {{ Request::is('monitoringTls*') ? 'active' : '' }}">
-        <p>Jakda
-            <!-- <span class="badge badge-danger right">!</span> -->
-        </p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('urusanBersamaOtsuses*') ? 'active' : '' }}" href="{{ route('urusanBersamaOtsuses.index') }}">
+        <iconify-icon icon="solar:file-right-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Urusan Bersama</span>
     </a>
 </li>
 
-<li class="nav-item">
-    <a href="{{ route('evaluasiRengars.index') }}"
-        class="nav-link {{ Request::is('evaluasiRengars*') ? 'active' : '' }}">
-        <p>Perencanaan dan Penganggaran</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('evaluasiKontraks*') ? 'active' : '' }}" href="{{ route('evaluasiKontraks.index') }}">
+        <iconify-icon icon="solar:file-left-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Uji Kontrak</span>
     </a>
 </li>
 
-<li class="nav-item">
-    <a href="{{ route('rippOtsuses.index') }}" class="nav-link {{ Request::is('rippOtsuses*') ? 'active' : '' }}">
-        <p>Sinkronisasi RIPP</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('silpaOtsuses*') ? 'active' : '' }}" href="{{ route('silpaOtsuses.index') }}">
+        <iconify-icon icon="solar:checklist-minimalistic-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Saldo SiLPA</span>
     </a>
 </li>
 
-<li class="nav-item">
-    <a href="{{ route('urusanBersamaOtsuses.index') }}"
-        class="nav-link {{ Request::is('urusanBersamaOtsuses*') ? 'active' : '' }}">
-        <p>Urusan Bersama</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('evaluasiIndikators*') ? 'active' : '' }}" href="{{ route('evaluasiIndikators.index') }}">
+        <iconify-icon icon="solar:archive-minimalistic-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Efektivitas TKD</span>
     </a>
 </li>
 
-<li class="nav-item">
-    <a href="{{ route('evaluasiKontraks.index') }}"
-        class="nav-link {{ Request::is('evaluasiKontraks*') ? 'active' : '' }}">
-        <p>Pelaksanaan (Uji Petik)</p>
+<li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('evaluasiLaporans*') ? 'active' : '' }}" href="{{ route('evaluasiLaporans.index') }}">
+        <iconify-icon icon="solar:document-add-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Pelaporan TKD</span>
     </a>
 </li>
 
-
-<li class="nav-item">
-    <a href="{{ route('silpaOtsuses.index') }}" class="nav-link {{ Request::is('silpaOtsuses*') ? 'active' : '' }}">
-        <p>SiLPA</p>
-    </a>
+<li class="nav-small-cap">
+    <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon fs-4"></iconify-icon>
+    <span class="hide-menu">Dokumentasi</span>
 </li>
 
-
-<li class="nav-item">
-    <a href="{{ route('evaluasiIndikators.index') }}"
-        class="nav-link {{ Request::is('evaluasiIndikators*') ? 'active' : '' }}">
-        <p>Efektivitas Pelaksanaan</p>
-    </a>
-</li>
-
-
-<li class="nav-item mb-5">
-    <a href="{{ route('evaluasiLaporans.index') }}"
-        class="nav-link {{ Request::is('evaluasiLaporans*') ? 'active' : '' }}">
-        <p>Pelaporan TKD</p>
+<li class="sidebar-item">
+    <a class="sidebar-link" href="#" aria-expanded="false">
+        <iconify-icon icon="solar:star-line-duotone" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Petunjuk Teknis</span>
     </a>
 </li>
