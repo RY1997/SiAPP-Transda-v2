@@ -1,6 +1,6 @@
 <!-- Jenis Tkd Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('jenis_tkd', 'Jenis TKD:') !!}
+    {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::select('jenis_tkd', [
@@ -15,7 +15,7 @@
 
 <!-- Bidang Tkd Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('bidang_tkd', 'Bidang TKD:') !!}
+    {!! Form::label('bidang_tkd', 'Bidang TKD') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('bidang_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -23,7 +23,7 @@
 
 <!-- Uraian Indikator Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('uraian_indikator', 'Uraian Indikator:') !!}
+    {!! Form::label('uraian_indikator', 'Uraian Indikator') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('uraian_indikator', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -31,7 +31,7 @@
 
 <!-- Satuan Indikator Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('satuan_indikator', 'Satuan Indikator:') !!}
+    {!! Form::label('satuan_indikator', 'Satuan Indikator') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('satuan_indikator', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}

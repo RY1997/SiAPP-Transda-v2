@@ -43,9 +43,8 @@
             <!-- item-->
             <a href="{{ route('users.index') }}" class="link" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Ubah Password" data-bs-original-title="Ubah Password" style="width: 129px;"><iconify-icon icon="solar:settings-linear"></iconify-icon></a>
             <!-- item-->
-            <a href="#" class="link" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Keluar" data-bs-original-title="Keluar" style="width: 129px;"><iconify-icon icon="solar:power-bold"></iconify-icon></a>
+            <a href="#" class="link" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Keluar" data-bs-original-title="Keluar" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="width: 129px;"><iconify-icon icon="solar:power-bold"></iconify-icon></a>
         </div>
-
         <!-- ---------------------------------- -->
         <!-- Start Vertical Layout Sidebar -->
         <!-- ---------------------------------- -->

@@ -1,6 +1,6 @@
 <!-- Tahun Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tahun', 'Tahun:') !!}
+    {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -8,7 +8,7 @@
 
 <!-- Nama Pemda Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
+    {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -16,7 +16,7 @@
 
 <!-- Jenis Tkd Field -->
 <!-- <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('jenis_tkd', 'Jenis Tkd:') !!}
+    {!! Form::label('jenis_tkd', 'Jenis Tkd') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('jenis_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -24,7 +24,7 @@
 
 <!-- Kelompok Permasalahan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('kelompok_permasalahan', 'Kelompok Permasalahan:') !!}
+    {!! Form::label('kelompok_permasalahan', 'Kelompok Permasalahan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('kelompok_permasalahan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -32,7 +32,7 @@
 
 <!-- Uraian Permasalahan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('uraian_permasalahan', 'Dampak Permasalahan:') !!}
+    {!! Form::label('uraian_permasalahan', 'Dampak Permasalahan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('uraian_permasalahan', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -40,7 +40,7 @@
 
 <!-- Nilai Permasalahan Field -->
 <!-- <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nilai_permasalahan', 'Nilai Permasalahan:') !!}
+    {!! Form::label('nilai_permasalahan', 'Nilai Permasalahan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::number('nilai_permasalahan', null, ['class' => 'form-control', 'step' => '0.01', 'readonly disabled']) !!}
@@ -48,7 +48,7 @@
 
 <!-- Uraian Rekomendasi Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('uraian_rekomendasi', 'Penyebab Permasalahan:') !!}
+    {!! Form::label('uraian_rekomendasi', 'Penyebab Permasalahan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('uraian_rekomendasi', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -56,7 +56,7 @@
 
 <!-- Uraian Tl Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('uraian_tl', 'Tindak Lanjut yang Dilakukan:') !!}
+    {!! Form::label('uraian_tl', 'Tindak Lanjut yang Dilakukan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('uraian_tl', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -64,7 +64,7 @@
 
 <!-- Nilai Tl Field -->
 <!-- <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nilai_tl', 'Nilai TL:') !!}
+    {!! Form::label('nilai_tl', 'Nilai TL') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::number('nilai_tl', null, ['class' => 'form-control', 'step' => '0.01']) !!}
@@ -72,7 +72,7 @@
 
 <!-- Simpulan Tl Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('simpulan_tl', 'Simpulan TL:') !!}
+    {!! Form::label('simpulan_tl', 'Simpulan TL') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('simpulan_tl', null, ['class' => 'form-control','rows' => 3]) !!}

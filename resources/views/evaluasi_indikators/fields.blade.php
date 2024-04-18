@@ -1,6 +1,6 @@
 <!-- Nama Pemda Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
+    {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -8,7 +8,7 @@
 
 <!-- Uraian Indikator Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('uraian_indikator', 'Uraian Indikator:') !!}
+    {!! Form::label('uraian_indikator', 'Uraian Indikator') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('uraian_indikator', null, ['class' => 'form-control', 'rows' => 3, 'readonly disabled']) !!}
@@ -34,7 +34,7 @@
         <tbody>
             <tr>
                 <td width="30">
-                    {!! Form::label('target', 'Target:') !!}
+                    {!! Form::label('target', 'Target') !!}
                 </td>
                 <td width="35">
                     <input type="number" class="form-control" name="target_2023" step="0.01" value="{{ $evaluasiIndikator2023->target }}" required>
@@ -45,7 +45,7 @@
             </tr>
             <tr>
                 <td width="30">
-                    {!! Form::label('realisasi', 'Realisasi:') !!}
+                    {!! Form::label('realisasi', 'Realisasi') !!}
                 </td>
                 <td width="35">
                     <input type="number" class="form-control" name="realisasi_2023" step="0.01" value="{{ $evaluasiIndikator2023->realisasi }}" required>
@@ -56,7 +56,7 @@
             </tr>
             <tr>
                 <td width="30">
-                    {!! Form::label('capaian', 'Capaian Indikator:') !!}
+                    {!! Form::label('capaian', 'Capaian Indikator') !!}
                 </td>
                 <td width="35">
                     <input type="number" class="form-control" name="capaian_2023" step="0.01" value="{{ $evaluasiIndikator2023->target > 0 ? ($evaluasiIndikator2023->realisasi / $evaluasiIndikator2023->target * 100) : '0.00' }}" readonly required>
@@ -67,7 +67,7 @@
             </tr>
             <tr>
                 <td width="30">
-                    {!! Form::label('keterangan', 'Penyebab Capaian Rendah:') !!}
+                    {!! Form::label('keterangan', 'Penyebab Capaian Rendah') !!}
                 </td>
                 <td width="35">
                     <textarea class="form-control" name="keterangan_2023">{{ $evaluasiIndikator2023->keterangan }}</textarea>

@@ -1,6 +1,6 @@
 <!-- Tahun Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tahun', 'Tahun:') !!}
+    {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $monitoringPenyaluran->tahun }}" readonly disabled>
@@ -8,7 +8,7 @@
 
 <!-- Nama Pemda Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
+    {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $monitoringPenyaluran->nama_pemda }}" readonly disabled>
@@ -20,7 +20,7 @@
 
 <!-- Tahap Salur Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tahap_salur', 'Tahap Salur:') !!}
+    {!! Form::label('tahap_salur', 'Tahap Salur') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('tahap_salur', null, ['class' => 'form-control','readonly disabled']) !!}
@@ -28,7 +28,7 @@
 
 <!-- Tgl Salur Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tgl_salur', 'Tgl Salur:') !!}
+    {!! Form::label('tgl_salur', 'Tgl Salur') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('tgl_salur', null, ['class' => 'form-control','id'=>'tgl_salur']) !!}
@@ -46,7 +46,7 @@
 
 <!-- Penyaluran Tkd Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('penyaluran_tkd', 'Nilai Penyaluran:') !!}
+    {!! Form::label('penyaluran_tkd', 'Nilai Penyaluran') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::number('penyaluran_tkd', null, ['class' => 'form-control']) !!}
@@ -58,7 +58,7 @@
 
 <!-- Tepat Waktu Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tepat_waktu', 'Ketepatan Waktu Penyaluran:') !!}
+    {!! Form::label('tepat_waktu', 'Ketepatan Waktu Penyaluran') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::select('tepat_waktu', ['' => 'Pilih', 'Tepat Waktu' => 'Tepat Waktu', 'Tidak Tepat Waktu' => 'Tidak Tepat Waktu'], null, ['class' => 'form-control custom-select']) !!}
@@ -66,7 +66,7 @@
 
 <!-- Penyebab Tidak Tepat Waktu Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('penyebab_tidak_tepat_waktu', 'Penyebab Tidak Tepat Waktu:') !!}
+    {!! Form::label('penyebab_tidak_tepat_waktu', 'Penyebab Tidak Tepat Waktu') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('penyebab_tidak_tepat_waktu', null, ['class' => 'form-control', 'rows' => '2']) !!}
@@ -74,7 +74,7 @@
 
 <!-- Tepat Jumlah Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tepat_jumlah', 'Ketepatan Jumlah Penyaluran:') !!}
+    {!! Form::label('tepat_jumlah', 'Ketepatan Jumlah Penyaluran') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::select('tepat_jumlah', ['' => 'Pilih', 'Tepat Jumlah' => 'Tepat Jumlah', 'Tidak Tepat Jumlah' => 'Tidak Tepat Jumlah'], null, ['class' => 'form-control custom-select']) !!}
@@ -82,7 +82,7 @@
 
 <!-- Penyebab Tidak Tepat Jumlah Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('penyebab_tidak_tepat_jumlah', 'Penyebab Tidak Tepat Jumlah:') !!}
+    {!! Form::label('penyebab_tidak_tepat_jumlah', 'Penyebab Tidak Tepat Jumlah') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('penyebab_tidak_tepat_jumlah', null, ['class' => 'form-control', 'rows' => '2']) !!}

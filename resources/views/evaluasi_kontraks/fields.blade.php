@@ -1,6 +1,6 @@
 <!-- Nama Pemda Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
+    {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     @if (!empty($evaluasiKontrak))
@@ -12,7 +12,7 @@
 
 <!-- Tahun Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tahun', 'Tahun:') !!}
+    {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     @if (!empty($evaluasiKontrak))
@@ -24,7 +24,7 @@
 
 <!-- Jenis Tkd Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('jenis_tkd', 'Jenis TKD:') !!}
+    {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     @if (!empty($evaluasiKontrak))
@@ -56,7 +56,7 @@
 @if ($step == 'data')
 <!-- Nomor Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nomor_kontrak', 'Nomor Kontrak:') !!}
+    {!! Form::label('nomor_kontrak', 'Nomor Kontrak') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('nomor_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -64,7 +64,7 @@
 
 <!-- Tanggal Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tanggal_kontrak', 'Tanggal Kontrak:') !!}
+    {!! Form::label('tanggal_kontrak', 'Tanggal Kontrak') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('tanggal_kontrak', null, ['class' => 'form-control','id'=>'tanggal_kontrak']) !!}
@@ -82,7 +82,7 @@
 
 <!-- Uraian Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('uraian_kontrak', 'Uraian Kontrak:') !!}
+    {!! Form::label('uraian_kontrak', 'Uraian Kontrak') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('uraian_kontrak', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -90,7 +90,7 @@
 
 <!-- Program Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('program', 'Nama Program:') !!}
+    {!! Form::label('program', 'Nama Program') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('program', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -98,7 +98,7 @@
 
 <!-- Kegiatan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('kegiatan', 'Nama Kegiatan:') !!}
+    {!! Form::label('kegiatan', 'Nama Kegiatan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('kegiatan', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -106,7 +106,7 @@
 
 <!-- Nama Opd Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nama_opd', 'Nama Opd:') !!}
+    {!! Form::label('nama_opd', 'Nama Opd') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('nama_opd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -114,7 +114,7 @@
 
 <!-- Target Output Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('target_output', 'Target Output:') !!}
+    {!! Form::label('target_output', 'Target Output') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::number('target_output', null, ['class' => 'form-control']) !!}
@@ -122,7 +122,7 @@
 
 <!-- Satuan Output Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('satuan_output', 'Satuan Output:') !!}
+    {!! Form::label('satuan_output', 'Satuan Output') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('satuan_output', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -130,7 +130,7 @@
 
 <!-- Jenis Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('jenis_kontrak', 'Jenis Kontrak:') !!}
+    {!! Form::label('jenis_kontrak', 'Jenis Kontrak') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('jenis_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -138,7 +138,7 @@
 
 <!-- Nilai Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nilai_kontrak', 'Nilai Kontrak:') !!}
+    {!! Form::label('nilai_kontrak', 'Nilai Kontrak') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01']) !!}
@@ -148,7 +148,7 @@
 @if ($step == 'pelaksanaan')
 <!-- Nomor Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nomor_kontrak', 'Nomor Kontrak:') !!}
+    {!! Form::label('nomor_kontrak', 'Nomor Kontrak') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('nomor_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -156,7 +156,7 @@
 
 <!-- Tanggal Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tanggal_kontrak', 'Tanggal Kontrak:') !!}
+    {!! Form::label('tanggal_kontrak', 'Tanggal Kontrak') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('tanggal_kontrak', null, ['class' => 'form-control','id'=>'tanggal_kontrak', 'readonly disabled']) !!}
@@ -164,7 +164,7 @@
 
 <!-- Uraian Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('uraian_kontrak', 'Uraian Kontrak:') !!}
+    {!! Form::label('uraian_kontrak', 'Uraian Kontrak') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('uraian_kontrak', null, ['class' => 'form-control', 'rows' => '3', 'readonly disabled']) !!}
@@ -172,7 +172,7 @@
 
 <!-- Masa Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('masa_kontrak', 'Masa Kontrak (Hari):') !!}
+    {!! Form::label('masa_kontrak', 'Masa Kontrak (Hari)') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('masa_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -180,7 +180,7 @@
 
 <!-- Tanggal Mulai Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tanggal_mulai', 'Tanggal Pelaksanaan:') !!}
+    {!! Form::label('tanggal_mulai', 'Tanggal Pelaksanaan') !!}
 </div>
 <div class="form-group col-sm-3">
     {!! Form::text('tanggal_mulai', null, ['class' => 'form-control','id'=>'tanggal_mulai']) !!}
@@ -216,7 +216,7 @@
 
 <!-- Lokasi Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('lokasi', 'Lokasi:') !!}
+    {!! Form::label('lokasi', 'Lokasi') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('lokasi', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -224,7 +224,7 @@
 
 <!-- Tgl Lelang Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tgl_lelang', 'Tgl Lelang:') !!}
+    {!! Form::label('tgl_lelang', 'Tgl Lelang') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('tgl_lelang', null, ['class' => 'form-control','id'=>'tgl_lelang']) !!}
@@ -242,7 +242,7 @@
 
 <!-- Nama Rekanan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nama_rekanan', 'Nama Rekanan:') !!}
+    {!! Form::label('nama_rekanan', 'Nama Rekanan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('nama_rekanan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -250,7 +250,7 @@
 
 <!-- Nilai Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nilai_kontrak', 'Nilai Kontrak:') !!}
+    {!! Form::label('nilai_kontrak', 'Nilai Kontrak') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01', 'readonly disabled']) !!}
@@ -258,7 +258,7 @@
 
 <!-- Sisa Nilai Kontrak Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('sisa_nilai_kontrak', 'Sisa Nilai Kontrak:') !!}
+    {!! Form::label('sisa_nilai_kontrak', 'Sisa Nilai Kontrak') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::number('sisa_nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01']) !!}
@@ -266,7 +266,7 @@
 
 <!-- Penyebab Pembayaran Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('penyebab_pembayaran', 'Penyebab Pembayaran:') !!}
+    {!! Form::label('penyebab_pembayaran', 'Penyebab Pembayaran') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('penyebab_pembayaran', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -276,7 +276,7 @@
 @if ($step == 'penyelesaian')
 <!-- No Bast Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('no_bast', 'No BAST:') !!}
+    {!! Form::label('no_bast', 'No BAST') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('no_bast', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -284,7 +284,7 @@
 
 <!-- Tgl Bast Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tgl_bast', 'Tanggal BAST:') !!}
+    {!! Form::label('tgl_bast', 'Tanggal BAST') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('tgl_bast', null, ['class' => 'form-control','id'=>'tgl_bast']) !!}
@@ -302,7 +302,7 @@
 
 <!-- Realisasi Bast Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('realisasi_bast', 'Realisasi BAST:') !!}
+    {!! Form::label('realisasi_bast', 'Realisasi BAST') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     <table id="realisasi_bast" class="table table-bordered no-margin text-sm">
@@ -325,7 +325,7 @@
 
 <!-- Penyebab Realisasi Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('penyebab_realisasi', 'Penyebab Realisasi:') !!}
+    {!! Form::label('penyebab_realisasi', 'Penyebab Realisasi') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('penyebab_realisasi', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -333,7 +333,7 @@
 
 <!-- Keterangan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('keterangan', 'Keterangan:') !!}
+    {!! Form::label('keterangan', 'Keterangan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('keterangan', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -343,7 +343,7 @@
 @if ($step == 'pengujian')
 <!-- Target Omspan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('Realisasi Capaian dan Pembayaran:') !!}
+    {!! Form::label('Realisasi Capaian dan Pembayaran') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
 
@@ -385,7 +385,7 @@
 </div>
 
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('Permasalahan Pelaksanaan:') !!}
+    {!! Form::label('Permasalahan Pelaksanaan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     <table id="permasalahanPelaksanaan" class="table table-bordered no-margin text-sm">
@@ -451,7 +451,7 @@
 </div>
 
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('Permasalahan Pemanfaatan:') !!}
+    {!! Form::label('Permasalahan Pemanfaatan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     <table id="permasalahanPemanfaatan" class="table table-bordered no-margin text-sm">

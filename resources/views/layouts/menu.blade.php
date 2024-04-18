@@ -25,21 +25,21 @@
 
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('suratTugas*') ? 'active' : '' }}" href="{{ route('suratTugas.index') }}">
-        <iconify-icon icon="solar:atom-linear" class="aside-icon"></iconify-icon>
+        <iconify-icon icon="solar:notification-unread-lines-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Surat Tugas</span>
     </a>
 </li>
 
 <li class="sidebar-item">
     <a class="sidebar-link" href="#">
-        <iconify-icon icon="solar:atom-linear" class="aside-icon"></iconify-icon>
+        <iconify-icon icon="solar:download-twice-square-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Kertas Kerja</span>
     </a>
 </li>
 
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('pelaporans*') ? 'active' : '' }}" href="{{ route('pelaporans.index') }}">
-        <iconify-icon icon="solar:atom-linear" class="aside-icon"></iconify-icon>
+        <iconify-icon icon="solar:sidebar-code-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Pelaporan</span>
     </a>
 </li>
@@ -79,13 +79,13 @@
 
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('monitoringApbds*') ? 'active' : '' }}" href="{{ route('monitoringApbds.index') }}">
-        <iconify-icon icon="solar:dollar-minimalistic-linear" class="aside-icon"></iconify-icon>
+        <iconify-icon icon="solar:layers-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Postur APBD</span>
     </a>
 </li>
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('monitoringTrens*') || Request::is('monitoringPenyalurans*') || Request::is('monitoringPenggunaans*') ? 'active' : '' }}" href="{{ route('monitoringTrens.index') }}">
-        <iconify-icon icon="solar:question-circle-linear" class="aside-icon"></iconify-icon>
+        <iconify-icon icon="solar:star-line-duotone" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Pengelolaan TKD</span>
     </a>
 </li>
@@ -165,7 +165,7 @@
 
 <li class="sidebar-item">
     <a class="sidebar-link" href="#" aria-expanded="false">
-        <iconify-icon icon="solar:star-line-duotone" class="aside-icon"></iconify-icon>
+        <iconify-icon icon="solar:question-circle-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Petunjuk Teknis</span>
     </a>
 </li>

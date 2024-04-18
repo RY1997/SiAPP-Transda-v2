@@ -1,6 +1,6 @@
 <!-- Tahun Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tahun', 'Tahun:') !!}
+    {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -8,7 +8,7 @@
 
 <!-- Nama Pemda Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nama_pemda', 'Nama Pemda:') !!}
+    {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -16,14 +16,14 @@
 
 <!-- Jenis Tkd Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('jenis_tkd', 'Jenis TKD:') !!}
+    {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('jenis_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('bidang_tkd', 'Bidang TKD:') !!}
+    {!! Form::label('bidang_tkd', 'Bidang TKD') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('bidang_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -31,7 +31,7 @@
 
 <!-- Nama Laporan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nama_laporan', 'Nama Laporan:') !!}
+    {!! Form::label('nama_laporan', 'Nama Laporan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('nama_laporan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -39,7 +39,7 @@
 
 <!-- Keberadaan Laporan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('keberadaan_laporan', 'Keberadaan Laporan:') !!}
+    {!! Form::label('keberadaan_laporan', 'Keberadaan Laporan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('keberadaan_laporan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -47,7 +47,7 @@
 
 <!-- Nomor Laporan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('nomor_laporan', 'Nomor Laporan:') !!}
+    {!! Form::label('nomor_laporan', 'Nomor Laporan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('nomor_laporan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -55,7 +55,7 @@
 
 <!-- Tgl Laporan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tgl_laporan', 'Tgl Laporan:') !!}
+    {!! Form::label('tgl_laporan', 'Tgl Laporan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('tgl_laporan', null, ['class' => 'form-control','id'=>'tgl_laporan']) !!}
@@ -73,7 +73,7 @@
 
 <!-- Nama Laporan Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('batas_penyampaian', 'Batas Penyampaian Laporan:') !!}
+    {!! Form::label('batas_penyampaian', 'Batas Penyampaian Laporan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('batas_penyampaian', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
@@ -82,7 +82,7 @@
 
 <!-- Tgl Penyampaian Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('tgl_penyampaian', 'Tgl Penyampaian:') !!}
+    {!! Form::label('tgl_penyampaian', 'Tgl Penyampaian') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('tgl_penyampaian', null, ['class' => 'form-control','id'=>'tgl_penyampaian']) !!}
@@ -100,7 +100,7 @@
 
 <!-- Penyebab Tidak Tepat Waktu Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('penyebab_tidak_tepat_waktu', 'Penyebab Tidak Tepat Waktu:') !!}
+    {!! Form::label('penyebab_tidak_tepat_waktu', 'Penyebab Tidak Tepat Waktu') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::textarea('penyebab_tidak_tepat_waktu', null, ['class' => 'form-control', 'rows' => 4]) !!}

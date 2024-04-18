@@ -1,6 +1,6 @@
 <!-- Jenis Tkd Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('jenis_tkd', 'Jenis TKD:') !!}
+    {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::select('jenis_tkd', [
@@ -15,7 +15,7 @@
 
 <!-- Bidang Tkd Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('bidang_tkd', 'Bidang TKD:') !!}
+    {!! Form::label('bidang_tkd', 'Bidang TKD') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::text('bidang_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
@@ -23,7 +23,7 @@
 
 <!-- Alokasi Minimal Field -->
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::label('alokasi_minimal', 'Alokasi Minimal (%):') !!}
+    {!! Form::label('alokasi_minimal', 'Alokasi Minimal (%)') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
     {!! Form::number('alokasi_minimal', null, ['class' => 'form-control']) !!}
