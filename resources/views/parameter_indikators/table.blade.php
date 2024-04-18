@@ -1,4 +1,4 @@
-<div class="table-responsive table-bordered">
+<div class="table-responsive card mb-0">
     <table class="table small text-center align-middle m-0" id="parameterIndikators-table">
         <thead class="table-info">
             <tr>
