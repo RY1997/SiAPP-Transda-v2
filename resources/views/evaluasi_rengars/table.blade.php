@@ -19,11 +19,11 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $st->nama_pemda }}</td>
                 <td>{{ $tahun }}</td>
-                <td class="text-end">{{ number_format($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $st->nama_pemda)->sum('nilai_anggaran'), 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $st->nama_pemda)->sum('nilai_realisasi'), 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($st->{"nilai_anggaran{$tahun}"}, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($st->{"nilai_realisasi{$tahun}"}, 2, ',', '.') }}</td>
                 <td>
-                    @if ($evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $st->nama_pemda)->sum('nilai_anggaran') > 0)
-                    {{ $evaluasiRengars->where('tahun', $tahun)->where('nama_pemda', $st->nama_pemda)->whereNull('relevansi_subkegiatan')->count() > 0 ? 'Belum Lengkap' : 'Lengkap' }}
+                    @if ($st->{"nilai_anggaran{$tahun}"} > 0)
+                    {{ $st->{"jumlah_relevansi{$tahun}"} > 0 ? 'Belum Lengkap' : 'Lengkap' }}
                     @else
                     Belum ada data
                     @endif

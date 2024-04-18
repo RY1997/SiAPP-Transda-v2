@@ -54,7 +54,7 @@ class EvaluasiLaporanController extends AppBaseController
             $evaluasiLaporans = EvaluasiLaporan::where('kode_pwk', Auth::user()->kode_pwk);
         }
 
-        $evaluasiLaporans = $evaluasiLaporans->orderBy('nama_pemda')->orderBy('bidang_tkd')->orderBy('tahun')->paginate(20);
+        $evaluasiLaporans = $evaluasiLaporans->has('st')->orderBy('nama_pemda')->orderBy('bidang_tkd')->orderBy('tahun')->paginate(20);
 
         return view('evaluasi_laporans.index')
             ->with('evaluasiLaporans', $evaluasiLaporans);

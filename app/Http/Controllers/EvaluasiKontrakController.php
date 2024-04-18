@@ -37,7 +37,7 @@ class EvaluasiKontrakController extends AppBaseController
         } else {
             $suratTugas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk);
         }
-        
+
         $suratTugas = $suratTugas->where('jenis_tkd', session('jenis_tkd'))
             ->where('jenis_penugasan', 'Evaluasi')
             ->withCount(['kontrak as kontrak2023' => function ($query) {
@@ -120,7 +120,13 @@ class EvaluasiKontrakController extends AppBaseController
     public function show($st_id, $tahun)
     {
         $suratTugas = SuratTugas::find($st_id);
-        $evaluasiKontraks = EvaluasiKontrak::where('nama_pemda', $suratTugas->nama_pemda)->where('tahun', $tahun)->paginate(20);
+        $evaluasiKontraks = EvaluasiKontrak::where('nama_pemda', $suratTugas->nama_pemda)
+            ->where('tahun', $tahun)
+            ->selectRaw('*, 
+        COALESCE(masalah1, 0) + COALESCE(masalah2, 0) + COALESCE(masalah3, 0) + COALESCE(masalah4, 0) + COALESCE(masalah5, 0) + COALESCE(masalah6, 0) + COALESCE(masalah7, 0) + COALESCE(masalah8, 0) as nilai_masalah, 
+        COALESCE(manfaat1, 0) + COALESCE(manfaat2, 0) + COALESCE(manfaat3, 0) + COALESCE(manfaat4, 0) + COALESCE(manfaat5, 0) + COALESCE(manfaat6, 0) + COALESCE(manfaat7, 0) + COALESCE(manfaat8, 0) as nilai_manfaat')
+            ->paginate(20);
+
 
         return view('evaluasi_kontraks.show')->with(['suratTugas' => $suratTugas, 'tahun' => $tahun, 'evaluasiKontraks' => $evaluasiKontraks]);
     }

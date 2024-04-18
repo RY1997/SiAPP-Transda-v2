@@ -33,15 +33,19 @@ class UrusanBersamaOtsusController extends AppBaseController
     public function index(Request $request)
     {
         if (Auth::user()->role == 'Admin') {
-            $urusanBersamaOtsuses = EvaluasiRengar::query();
+            $urusanBersamaOtsuses = EvaluasiRengar::whereIn('nama_pemda', ['Provinsi Papua' , 'Provinsi Papua Barat']);
+        } elseif (Auth::user()->kode_pwk == 'pwk26' || Auth::user()->kode_pwk == 'pwk27') {
+            $urusanBersamaOtsuses = EvaluasiRengar::whereIn('nama_pemda', ['Provinsi Papua' , 'Provinsi Papua Barat'])->where('kode_pwk', Auth::user()->kode_pwk);
         } else {
-            $urusanBersamaOtsuses = EvaluasiRengar::where('kode_pwk', Auth::user()->kode_pwk);
+            $urusanBersamaOtsuses = EvaluasiRengar::whereNull('program');
         }
         
         $urusanBersamaOtsuses = $urusanBersamaOtsuses->whereNotNull('urusan_subkegiatan')
-        ->where('sumber_dana', session('jenis_tkd'))
-        ->groupBy(['urusan_subkegiatan', 'tahun'])
-        ->selectRaw('*, sum(nilai_anggaran) as total_anggaran');
+            ->where('sumber_dana', session('jenis_tkd'))
+            ->groupBy('urusan_subkegiatan')
+            ->selectRaw('*, SUM(CASE WHEN tahun = 2023 THEN nilai_anggaran ELSE 0 END) as total_anggaran_2023, SUM(CASE WHEN tahun = 2024 THEN nilai_anggaran ELSE 0 END) as total_anggaran_2024')
+            ->get();
+
 
         return view('urusan_bersama_otsuses.index')
             ->with([

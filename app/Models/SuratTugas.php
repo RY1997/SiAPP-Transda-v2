@@ -100,4 +100,9 @@ class SuratTugas extends Model
     {
         return $this->hasMany(\App\Models\EvaluasiKontrak::class, 'nama_pemda', 'nama_pemda');
     }
+
+    public function rengar()
+    {
+        return $this->hasMany(\App\Models\EvaluasiRengar::class, 'nama_pemda', 'nama_pemda');
+    }
 }

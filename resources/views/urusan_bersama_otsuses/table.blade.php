@@ -10,13 +10,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($urusanBersamaOtsuses->groupBy('urusan_subkegiatan')->get() as $urusanBersamaOtsus)
+            @foreach($urusanBersamaOtsuses as $urusanBersamaOtsus)
             <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $urusanBersamaOtsus->nama_pemda }}</td>
                 <td>{{ $urusanBersamaOtsus->urusan_subkegiatan }}</td>
-                <td class="text-end">{{ $urusanBersamaOtsuses->where('tahun', 2023)->where('urusan_subkegiatan', $urusanBersamaOtsus->urusan_subkegiatan)->sum('nilai_anggaran') }}</td>
-                <td class="text-end">{{ $urusanBersamaOtsuses->where('tahun', 2024)->where('urusan_subkegiatan', $urusanBersamaOtsus->urusan_subkegiatan)->sum('nilai_anggaran') }}</td>
+                <td class="text-end">{{ number_format($urusanBersamaOtsus->total_anggaran_2023, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($urusanBersamaOtsus->total_anggaran_2024, 2, ',', '.') }}</td>
             </tr>
             @endforeach
         </tbody>

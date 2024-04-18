@@ -25,8 +25,8 @@
                 <td class="text-center">{{ $evaluasiKontrak->tanggal_kontrak->format('d-m-Y') }}</td>
                 <td>{{ $evaluasiKontrak->uraian_kontrak }}</td>
                 <td class="text-end">{{ number_format($evaluasiKontrak->nilai_kontrak, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($evaluasiKontrak->masalah1 + $evaluasiKontrak->masalah2 + $evaluasiKontrak->masalah3 + $evaluasiKontrak->masalah4 + $evaluasiKontrak->masalah5 + $evaluasiKontrak->masalah6 + $evaluasiKontrak->masalah7 + $evaluasiKontrak->masalah8, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($evaluasiKontrak->manfaat1 + $evaluasiKontrak->manfaat2 + $evaluasiKontrak->manfaat3 + $evaluasiKontrak->manfaat4 + $evaluasiKontrak->manfaat5 + $evaluasiKontrak->manfaat6 + $evaluasiKontrak->manfaat7 + $evaluasiKontrak->manfaat8, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($evaluasiKontrak->nilai_masalah, 2, ',', '.') }}</td>
+                <td class="text-end">{{ number_format($evaluasiKontrak->nilai_manfaat, 2, ',', '.') }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['evaluasiKontraks.destroy', $evaluasiKontrak->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

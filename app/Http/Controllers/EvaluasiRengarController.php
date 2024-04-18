@@ -37,15 +37,40 @@ class EvaluasiRengarController extends AppBaseController
         } else {
             $suratTugas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk);
         }
-        
-        $suratTugas = $suratTugas->where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->paginate(20);
 
-        $evaluasiRengars = EvaluasiRengar::where('sumber_dana', session('jenis_tkd'))->get();
+        $suratTugas = $suratTugas->where('jenis_tkd', session('jenis_tkd'))
+            ->where('jenis_penugasan', 'Evaluasi')
+            ->withSum([
+                'rengar as nilai_anggaran2023' => function ($query) {
+                    $query->where('tahun', '2023')->where('sumber_dana', session('jenis_tkd'));
+                }
+            ], 'nilai_anggaran')
+            ->withSum([
+                'rengar as nilai_anggaran2024' => function ($query) {
+                    $query->where('tahun', '2024')->where('sumber_dana', session('jenis_tkd'));
+                }
+            ], 'nilai_anggaran')
+            ->withSum([
+                'rengar as nilai_realisasi2023' => function ($query) {
+                    $query->where('tahun', '2023')->where('sumber_dana', session('jenis_tkd'));
+                }
+            ], 'nilai_realisasi')
+            ->withSum([
+                'rengar as nilai_realisasi2024' => function ($query) {
+                    $query->where('tahun', '2024')->where('sumber_dana', session('jenis_tkd'));
+                }
+            ], 'nilai_realisasi')
+            ->withCount(['rengar as jumlah_relevansi2023' => function ($query) {
+                $query->where('tahun', '2023')->where('sumber_dana', session('jenis_tkd'))->whereNull('relevansi_subkegiatan');
+            }])
+            ->withCount(['rengar as jumlah_relevansi2024' => function ($query) {
+                $query->where('tahun', '2024')->where('sumber_dana', session('jenis_tkd'))->whereNull('relevansi_subkegiatan');
+            }])
+            ->paginate(20);
 
         return view('evaluasi_rengars.index')
             ->with([
-                'suratTugas' => $suratTugas,
-                'evaluasiRengars' => $evaluasiRengars
+                'suratTugas' => $suratTugas
             ]);
     }
 
