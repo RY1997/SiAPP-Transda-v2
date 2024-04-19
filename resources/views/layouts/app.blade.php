@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/png" href="https://bootstrapdemos.wrappixel.com/monster/dist/assets/images/logos/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/1/11/BPKP_Logo.png">
 
     <!-- Core Css -->
     <link rel="stylesheet" href="https://bootstrapdemos.wrappixel.com/monster/dist/assets/css/styles.css">
@@ -23,7 +23,7 @@
 <body data-sidebartype="mini-sidebar">
     <!-- Preloader -->
     <div class="preloader" style="display: none;">
-        <img src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/BPKP_Logo.png" alt="loader" class="lds-ripple img-fluid">
     </div>
     <div id="main-wrapper">
         <!-- Sidebar Start -->
