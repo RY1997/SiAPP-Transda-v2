@@ -1,54 +1,54 @@
 <!-- Tahun Field -->
-<div class="form-group col-sm-4 mb-3">
+<div class="form-group col-sm-3 mb-3">
     {!! Form::label('tahun', 'Tahun') !!}
 </div>
-<div class="form-group col-sm-8 mb-3">
+<div class="form-group col-sm-9 mb-3">
     {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <!-- Nama Pemda Field -->
-<div class="form-group col-sm-4 mb-3">
+<div class="form-group col-sm-3 mb-3">
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
-<div class="form-group col-sm-8 mb-3">
+<div class="form-group col-sm-9 mb-3">
     {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <!-- Kode Program Field -->
-<div class="form-group col-sm-4 mb-3">
+<div class="form-group col-sm-3 mb-3">
     {!! Form::label('nama_program', 'Program') !!}
 </div>
 <div class="form-group col-sm-2 mb-3">
     {!! Form::text('kode_program', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
-<div class="form-group col-sm-6 mb-3">
-    {!! Form::text('nama_program', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
+<div class="form-group col-sm-7 mb-3">
+    {!! Form::textarea('nama_program', null, ['class' => 'form-control', 'rows' => 2, 'readonly disabled']) !!}
 </div>
 
 <!-- Kode Kegiatan Field -->
-<div class="form-group col-sm-4 mb-3">
+<div class="form-group col-sm-3 mb-3">
     {!! Form::label('nama_kegiatan', 'Kegiatan') !!}
 </div>
 <div class="form-group col-sm-2 mb-3">
     {!! Form::text('kode_kegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
-<div class="form-group col-sm-6 mb-3">
+<div class="form-group col-sm-7 mb-3">
     {!! Form::textarea('nama_kegiatan', null, ['class' => 'form-control','rows' => 3, 'readonly disabled']) !!}
 </div>
 
 <!-- Sumber Dana Field -->
-<div class="form-group col-sm-4 mb-3">
+<div class="form-group col-sm-3 mb-3">
     {!! Form::label('sumber_dana', 'Sumber Dana') !!}
 </div>
-<div class="form-group col-sm-8 mb-3">
+<div class="form-group col-sm-9 mb-3">
     {!! Form::text('sumber_dana', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
 </div>
 
 <!-- Urusan Subkegiatan Field -->
-<div class="form-group col-sm-4 mb-3">
-    {!! Form::label('urusan_subkegiatan', 'Dukungan Urusan Bersama') !!}
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('urusan_subkegiatan', 'Dukungan Urusan Bersama/Bidang TKD') !!}
 </div>
-<div class="form-group col-sm-8 mb-3">
+<div class="form-group col-sm-9 mb-3">
     {!! Form::text('urusan_subkegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required']) !!}
 </div>
 
