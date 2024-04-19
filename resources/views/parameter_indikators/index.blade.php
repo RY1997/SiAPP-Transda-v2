@@ -15,7 +15,7 @@
     </div>
     <div class="d-flex align-items-center justify-content-between gap-6">
         <a href="{{ route('parameterIndikators.create') }}" class="btn btn-success d-flex align-items-center gap-1 fs-3 py-2 px-9">
-            <i class="far fa-plus fs-4"></i>
+            <i class="ti ti-plus fs-4"></i>
             Tambah
         </a>
     </div>

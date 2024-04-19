@@ -15,11 +15,11 @@
     </div>
     <div class="d-flex align-items-center justify-content-between gap-6">
         <a href="{{ route('evaluasiKontraks.index') }}" class="btn btn-danger d-flex align-items-center gap-1 fs-3 py-2 px-9">
-            <i class="far fa-arrow-left fs-4"></i>
+            <i class="ti ti-arrow-left fs-4"></i>
             Kembali
         </a>
         <a class="btn btn-success d-flex align-items-center gap-1 fs-3 py-2 px-9 mx-1" href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$tahun.'/create') }}">
-            <i class="far fa-plus fs-4"></i>
+            <i class="ti ti-plus fs-4"></i>
             Tambah
         </a>
     </div>
