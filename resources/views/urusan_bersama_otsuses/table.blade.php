@@ -10,6 +10,7 @@
             </tr>
         </thead>
         <tbody>
+            @if (Auth::user()->role != 'Admin' && Auth::user()->kode_pwk != 'PW26' && Auth::user()->kode_pwk != 'PW27')
             @foreach($urusanBersamaOtsuses as $urusanBersamaOtsus)
             <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
@@ -19,6 +20,10 @@
                 <td class="text-end">{{ number_format($urusanBersamaOtsus->total_anggaran_2024, 2, ',', '.') }}</td>
             </tr>
             @endforeach
+            @else
+            <tr>
+                <td colspan="5">Menu Pengujian Khusus Perwakilan BPKP Provinsi Papua dan Papua Barat</td>
+            </tr>
         </tbody>
     </table>
 </div>
