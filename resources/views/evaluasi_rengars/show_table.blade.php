@@ -30,18 +30,18 @@
                 <td class="text-end">{{ number_format($evaluasiRengar->total_anggaran, 2, ',', '.') }}</td>
                 <td class="text-end">{{ number_format($evaluasiRengar->total_realisasi, 2, ',', '.') }}</td>
                 <td>
-                    {!! ($evaluasiRengar->total_blm_relevan > 0 ? '<span class="badge badge-danger right">'.$evaluasiRengar->total_blm_relevan.' Belum Diuji</span>' : '') !!}
-                    {!! ($evaluasiRengar->total_relevan > 0 ? '<span class="badge badge-success right">'.$evaluasiRengar->total_relevan.' Relevan</span>' : '') !!}
-                    {!! ($evaluasiRengar->total_tdk_relevan > 0 ? '<span class="badge badge-warning right">'.$evaluasiRengar->total_tdk_relevan.' Tidak</span>' : '') !!}
+                    {!! ($evaluasiRengar->total_blm_relevan > 0 ? '<span class="badge rounded-pill text-bg-danger mb-1">Belum Diuji</span>' : '') !!}
+                    {!! ($evaluasiRengar->total_relevan > 0 ? '<span class="badge rounded-pill text-bg-success mb-1">'.$evaluasiRengar->total_relevan.' Relevan</span>' : '') !!}
+                    {!! ($evaluasiRengar->total_tdk_relevan > 0 ? '<span class="badge rounded-pill text-bg-warning mb-1">'.$evaluasiRengar->total_tdk_relevan.' Tidak</span>' : '') !!}
                 </td>
                 <td>
-                    {!! ($evaluasiRengar->total_blm_pelaksanaan > 0 ? '<span class="badge badge-danger right">'.$evaluasiRengar->total_blm_pelaksanaan.' Belum Diuji</span>' : '') !!}
-                    {!! ($evaluasiRengar->total_pelaksanaan > 0 ? '<span class="badge badge-success right">'.$evaluasiRengar->total_pelaksanaan.' Dilaksanakan</span>' : '') !!}
-                    {!! ($evaluasiRengar->total_tdk_pelaksanaan > 0 ? '<span class="badge badge-warning right">'.$evaluasiRengar->total_tdk_pelaksanaan.' Tidak</span>' : '') !!}
+                    {!! ($evaluasiRengar->total_blm_pelaksanaan > 0 ? '<span class="badge rounded-pill text-bg-danger mb-1">Belum Diuji</span>' : '') !!}
+                    {!! ($evaluasiRengar->total_pelaksanaan > 0 ? '<span class="badge rounded-pill text-bg-success mb-1">'.$evaluasiRengar->total_pelaksanaan.' Dilaksanakan</span>' : '') !!}
+                    {!! ($evaluasiRengar->total_tdk_pelaksanaan > 0 ? '<span class="badge rounded-pill text-bg-warning mb-1">'.$evaluasiRengar->total_tdk_pelaksanaan.' Tidak</span>' : '') !!}
                 </td>
                 <td>
                     <div class='btn-group'>
-                        <a href="{{ route('evaluasiRengars.edit', [$evaluasiRengar->id]) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('evaluasiRengars.edit', [$evaluasiRengar->id]) }}" class='btn btn-secondary btn-xs'>
                             <i class="far fa-edit"> Uji </i>
                         </a>
                     </div>

@@ -11,6 +11,7 @@ use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class EvaluasiKontrakController extends AppBaseController
@@ -46,25 +47,46 @@ class EvaluasiKontrakController extends AppBaseController
             ->withCount(['kontrak as kontrak2024' => function ($query) {
                 $query->where('tahun', '2024');
             }])
-            ->withCount(['kontrak as nilai_kontrak2023' => function ($query) {
-                $query->where('tahun', '2023')->selectRaw('sum(nilai_kontrak)');
-            }])
-            ->withCount(['kontrak as nilai_kontrak2024' => function ($query) {
-                $query->where('tahun', '2024')->selectRaw('sum(nilai_kontrak)');
-            }])
-            ->withCount(['kontrak as nilai_masalah2023' => function ($query) {
-                $query->where('tahun', '2023')->selectRaw('sum(masalah1 + masalah2 + masalah3 + masalah4 + masalah5 + masalah6 + masalah7 + masalah8)');
-            }])
-            ->withCount(['kontrak as nilai_masalah2024' => function ($query) {
-                $query->where('tahun', '2024')->selectRaw('sum(masalah1 + masalah2 + masalah3 + masalah4 + masalah5 + masalah6 + masalah7 + masalah8)');
-            }])
-            ->withCount(['kontrak as nilai_manfaat2023' => function ($query) {
-                $query->where('tahun', '2023')->selectRaw('sum(manfaat1 + manfaat2 + manfaat3 + manfaat4 + manfaat5 + manfaat6 + manfaat7 + manfaat8)');
-            }])
-            ->withCount(['kontrak as nilai_manfaat2024' => function ($query) {
-                $query->where('tahun', '2024')->selectRaw('sum(manfaat1 + manfaat2 + manfaat3 + manfaat4 + manfaat5 + manfaat6 + manfaat7 + manfaat8)');
-            }])
+            ->withSum([
+                'kontrak as nilai_kontrak2023' => function ($query) {
+                    $query->where('tahun', '2023')->where('jenis_tkd', session('jenis_tkd'));
+                }
+            ], 'nilai_kontrak')
+            ->withSum([
+                'kontrak as nilai_kontrak2024' => function ($query) {
+                    $query->where('tahun', '2024')->where('jenis_tkd', session('jenis_tkd'));
+                }
+            ], 'nilai_kontrak')
+            ->withSum([
+                'kontrak as nilai_masalah2023' => function ($query) {
+                    $query->select(DB::raw('SUM(masalah1 + masalah2 + masalah3 + masalah4 + masalah5 + masalah6 + masalah7 + masalah8) as total_masalah'))
+                        ->where('tahun', '2023')
+                        ->where('jenis_tkd', session('jenis_tkd'));
+                }
+            ], 'total_masalah')
+            ->withSum([
+                'kontrak as nilai_masalah2024' => function ($query) {
+                    $query->select(DB::raw('SUM(masalah1 + masalah2 + masalah3 + masalah4 + masalah5 + masalah6 + masalah7 + masalah8) as total_masalah'))
+                        ->where('tahun', '2024')
+                        ->where('jenis_tkd', session('jenis_tkd'));
+                }
+            ], 'total_masalah')
+            ->withSum([
+                'kontrak as nilai_manfaat2023' => function ($query) {
+                    $query->select(DB::raw('SUM(manfaat1 + manfaat2 + manfaat3 + manfaat4 + manfaat5 + manfaat6 + manfaat7 + manfaat8) as total_manfaat'))
+                        ->where('tahun', '2023')
+                        ->where('jenis_tkd', session('jenis_tkd'));
+                }
+            ], 'total_manfaat')
+            ->withSum([
+                'kontrak as nilai_manfaat2024' => function ($query) {
+                    $query->select(DB::raw('SUM(manfaat1 + manfaat2 + manfaat3 + manfaat4 + manfaat5 + manfaat6 + manfaat7 + manfaat8) as total_manfaat'))
+                        ->where('tahun', '2024')
+                        ->where('jenis_tkd', session('jenis_tkd'));
+                }
+            ], 'total_manfaat')
             ->paginate(20);
+
 
         return view('evaluasi_kontraks.index')
             ->with([
