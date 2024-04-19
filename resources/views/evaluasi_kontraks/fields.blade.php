@@ -182,7 +182,7 @@
 <div class="form-group col-sm-4 mb-3">
     {!! Form::label('tanggal_mulai', 'Tanggal Pelaksanaan') !!}
 </div>
-<div class="form-group col-sm-3">
+<div class="form-group col-sm-3 mb-3">
     {!! Form::text('tanggal_mulai', null, ['class' => 'form-control','id'=>'tanggal_mulai']) !!}
 </div>
 
@@ -197,10 +197,10 @@
 @endpush
 
 <!-- Tanggal Selesai Field -->
-<div class="form-group col-sm-2">
+<div class="form-group col-sm-2 mb-3">
     sampai dengan
 </div>
-<div class="form-group col-sm-3">
+<div class="form-group col-sm-3 mb-3">
     {!! Form::text('tanggal_selesai', null, ['class' => 'form-control','id'=>'tanggal_selesai']) !!}
 </div>
 
@@ -305,22 +305,24 @@
     {!! Form::label('realisasi_bast', 'Realisasi BAST') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    <table id="realisasi_bast" class="table table-bordered no-margin text-sm">
-        <thead class="table-info">
-            <tr>
-                <th>Target Kontrak</th>
-                <th>Realisasi</th>
-                <th>%</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{!! Form::number('target_output', null, ['class' => 'form-control', 'readonly disabled']) !!}</td>
-                <td>{!! Form::number('realisasi_bast', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::number('persen_fisik', null, ['class' => 'form-control', 'readonly disabled']) !!}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive card mb-0">
+        <table id="realisasiBast" class="table small text-center align-middle m-0">
+            <thead class="table-info">
+                <tr>
+                    <th>Target Kontrak</th>
+                    <th>Realisasi</th>
+                    <th>%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{!! Form::number('target_output', null, ['class' => 'form-control', 'readonly disabled']) !!}</td>
+                    <td>{!! Form::number('realisasi_bast', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('persen_fisik', null, ['class' => 'form-control', 'readonly disabled']) !!}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!-- Penyebab Realisasi Field -->
@@ -346,173 +348,178 @@
     {!! Form::label('Realisasi Capaian dan Pembayaran') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-
-    <table id="capaian" class="table table-bordered no-margin text-sm">
-        <thead class="table-info">
-            <tr>
-                <th>Uraian</th>
-                <th>Menurut OMSPAN</th>
-                <th>Menurut Auditor</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Target Output</td>
-                <td>{!! Form::number('target_omspan', null, ['class' => 'form-control']) !!}</td>
-                <td>{!! Form::number('target_auditor', null, ['class' => 'form-control']) !!}</td>
-            </tr>
-            <tr>
-                <td>Realisasi Output</td>
-                <td>{!! Form::number('realisasi_omspan', null, ['class' => 'form-control']) !!}</td>
-                <td>{!! Form::number('realisasi_auditor', null, ['class' => 'form-control']) !!}</td>
-            </tr>
-            <tr>
-                <td>Capaian Fisik (%)</td>
-                <td>
-                    <input type="text" class="form-control" name="fisik_omspan" value="{{ $evaluasiKontrak->target_omspan > 0 ? number_format($evaluasiKontrak->realisasi_omspan / $evaluasiKontrak->target_omspan * 100, 2) : '' }}" readonly disabled>
-                </td>
-                <td>
-                    <input type="text" class="form-control" name="fisik_auditor" value="{{ $evaluasiKontrak->target_auditor > 0 ? number_format($evaluasiKontrak->realisasi_auditor / $evaluasiKontrak->target_auditor * 100, 2) : '' }}" readonly disabled>
-                </td>
-            </tr>
-            <tr>
-                <td>Nilai Pembayaran</td>
-                <td>{!! Form::number('nilai_laporan', null, ['class' => 'form-control']) !!}</td>
-                <td>{!! Form::number('nilai_auditor', null, ['class' => 'form-control']) !!}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive card mb-0">
+        <table id="realisasiCapaian" class="table small text-center align-middle m-0">
+            <thead class="table-info">
+                <tr>
+                    <th>Uraian</th>
+                    <th>Menurut OMSPAN</th>
+                    <th>Menurut Auditor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Target Output</td>
+                    <td>{!! Form::number('target_omspan', null, ['class' => 'form-control']) !!}</td>
+                    <td>{!! Form::number('target_auditor', null, ['class' => 'form-control']) !!}</td>
+                </tr>
+                <tr>
+                    <td>Realisasi Output</td>
+                    <td>{!! Form::number('realisasi_omspan', null, ['class' => 'form-control']) !!}</td>
+                    <td>{!! Form::number('realisasi_auditor', null, ['class' => 'form-control']) !!}</td>
+                </tr>
+                <tr>
+                    <td>Capaian Fisik (%)</td>
+                    <td>
+                        <input type="text" class="form-control" name="fisik_omspan" value="{{ $evaluasiKontrak->target_omspan > 0 ? number_format($evaluasiKontrak->realisasi_omspan / $evaluasiKontrak->target_omspan * 100, 2) : '' }}" readonly disabled>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="fisik_auditor" value="{{ $evaluasiKontrak->target_auditor > 0 ? number_format($evaluasiKontrak->realisasi_auditor / $evaluasiKontrak->target_auditor * 100, 2) : '' }}" readonly disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nilai Pembayaran</td>
+                    <td>{!! Form::number('nilai_laporan', null, ['class' => 'form-control']) !!}</td>
+                    <td>{!! Form::number('nilai_auditor', null, ['class' => 'form-control']) !!}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div class="form-group col-sm-4 mb-3">
     {!! Form::label('Permasalahan Pelaksanaan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    <table id="permasalahanPelaksanaan" class="table table-bordered no-margin text-sm">
-        <thead class="table-info">
-            <tr>
-                <th style="width: 50px;">#</th>
-                <th style="width: 250px;">Kode Permasalahan</th>
-                <th style="width: 250px;">Nilai K.KN</th>
-                <th>Uraian</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>P1</td>
-                <td>Kegagalan penyelesaian pekerjaan karena penyedia wanprestasi atau sebab lain</td>
-                <td>{!! Form::number('masalah1', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_masalah1', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>P2</td>
-                <td>Pembayaran atas pekerjaan yang tidak dilaksanakan</td>
-                <td>{!! Form::number('masalah2', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_masalah2', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>P3</td>
-                <td>Kekurangan volume pekerjaan</td>
-                <td>{!! Form::number('masalah3', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_masalah3', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>P4</td>
-                <td>Keterlambatan penyelesaian pekerjaan yang belum dipungut dendanya</td>
-                <td>{!! Form::number('masalah4', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_masalah4', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>P5</td>
-                <td>Kewajiban pajak/retribusi yang belum dipungut dan/atau disetor ke Kas Daerah/Negara</td>
-                <td>{!! Form::number('masalah5', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_masalah5', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>P6</td>
-                <td>Pelaksanaan pekerjaan tidak sesuai dengan spesifikasi teknis</td>
-                <td>{!! Form::number('masalah6', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_masalah6', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>P7</td>
-                <td>Kelebihan perhitungan volume RAB kontrak pada pelaksanaan kegiatan</td>
-                <td>{!! Form::number('masalah7', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_masalah7', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>P8</td>
-                <td>Permasalahan Lainnya</td>
-                <td>{!! Form::number('masalah8', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_masalah8', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive card mb-0">
+        <table id="permasalahanPelaksanaan" class="table small text-center align-middle m-0">
+            <thead class="table-info">
+                <tr>
+                    <th>#</th>
+                    <th>Kode Permasalahan</th>
+                    <th style="min-width: 250px;">Nilai K.KN</th>
+                    <th style="min-width: 250px;">Uraian</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>P1</td>
+                    <td>Kegagalan penyelesaian pekerjaan karena penyedia wanprestasi atau sebab lain</td>
+                    <td>{!! Form::number('masalah1', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_masalah1', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>P2</td>
+                    <td>Pembayaran atas pekerjaan yang tidak dilaksanakan</td>
+                    <td>{!! Form::number('masalah2', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_masalah2', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>P3</td>
+                    <td>Kekurangan volume pekerjaan</td>
+                    <td>{!! Form::number('masalah3', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_masalah3', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>P4</td>
+                    <td>Keterlambatan penyelesaian pekerjaan yang belum dipungut dendanya</td>
+                    <td>{!! Form::number('masalah4', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_masalah4', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>P5</td>
+                    <td>Kewajiban pajak/retribusi yang belum dipungut dan/atau disetor ke Kas Daerah/Negara</td>
+                    <td>{!! Form::number('masalah5', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_masalah5', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>P6</td>
+                    <td>Pelaksanaan pekerjaan tidak sesuai dengan spesifikasi teknis</td>
+                    <td>{!! Form::number('masalah6', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_masalah6', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>P7</td>
+                    <td>Kelebihan perhitungan volume RAB kontrak pada pelaksanaan kegiatan</td>
+                    <td>{!! Form::number('masalah7', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_masalah7', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>P8</td>
+                    <td>Permasalahan Lainnya</td>
+                    <td>{!! Form::number('masalah8', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_masalah8', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div class="form-group col-sm-4 mb-3">
     {!! Form::label('Permasalahan Pemanfaatan') !!}
 </div>
 <div class="form-group col-sm-8 mb-3">
-    <table id="permasalahanPemanfaatan" class="table table-bordered no-margin text-sm">
-        <thead class="table-info">
-            <tr>
-                <th style="width: 50px;">#</th>
-                <th style="width: 250px;">Kode Permasalahan</th>
-                <th style="width: 250px;">Nilai K.KN</th>
-                <th>Uraian</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>M1</td>
-                <td>Fasilitas atau sarana pendukung belum tersedia</td>
-                <td>{!! Form::number('manfaat1', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_manfaat1', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>M2</td>
-                <td>Tidak didukung SDM yang mampu memanfaatkan hasil pekerjaan</td>
-                <td>{!! Form::number('manfaat2', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_manfaat2', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>M3</td>
-                <td>Hasil pekerjaan tidak sesuai dengan spesifikasi yang ditetapkan dalam kontrak</td>
-                <td>{!! Form::number('manfaat3', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_manfaat3', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>M4</td>
-                <td>Hasil pekerjaan tidak memenuhi kebutuhan yang diminta oleh pengguna</td>
-                <td>{!! Form::number('manfaat4', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_manfaat4', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>M5</td>
-                <td>Hasil pekerjaan masih dalam sengketa</td>
-                <td>{!! Form::number('manfaat5', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_manfaat5', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>M6</td>
-                <td>Hasil pekerjaan masih dalam masa pemeliharaan dan belum diserahterimakan (Final Hand Over)</td>
-                <td>{!! Form::number('manfaat6', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_manfaat6', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>M7</td>
-                <td>Kelalaian atau kesengajaan dari pelaksana pekerjaan/ pihak ketiga</td>
-                <td>{!! Form::number('manfaat7', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_manfaat7', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-            <tr>
-                <td>M8</td>
-                <td>Lainnya</td>
-                <td>{!! Form::number('manfaat8', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                <td>{!! Form::textarea('uraian_manfaat8', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive card mb-0">
+        <table id="permasalahanPemanfaatan" class="table small text-center align-middle m-0">
+            <thead class="table-info">
+                <tr>
+                    <th>#</th>
+                    <th>Kode Permasalahan</th>
+                    <th style="min-width: 250px;">Nilai K.KN</th>
+                    <th style="min-width: 250px;">Uraian</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>M1</td>
+                    <td>Fasilitas atau sarana pendukung belum tersedia</td>
+                    <td>{!! Form::number('manfaat1', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_manfaat1', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>M2</td>
+                    <td>Tidak didukung SDM yang mampu memanfaatkan hasil pekerjaan</td>
+                    <td>{!! Form::number('manfaat2', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_manfaat2', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>M3</td>
+                    <td>Hasil pekerjaan tidak sesuai dengan spesifikasi yang ditetapkan dalam kontrak</td>
+                    <td>{!! Form::number('manfaat3', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_manfaat3', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>M4</td>
+                    <td>Hasil pekerjaan tidak memenuhi kebutuhan yang diminta oleh pengguna</td>
+                    <td>{!! Form::number('manfaat4', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_manfaat4', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>M5</td>
+                    <td>Hasil pekerjaan masih dalam sengketa</td>
+                    <td>{!! Form::number('manfaat5', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_manfaat5', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>M6</td>
+                    <td>Hasil pekerjaan masih dalam masa pemeliharaan dan belum diserahterimakan (Final Hand Over)</td>
+                    <td>{!! Form::number('manfaat6', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_manfaat6', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>M7</td>
+                    <td>Kelalaian atau kesengajaan dari pelaksana pekerjaan/ pihak ketiga</td>
+                    <td>{!! Form::number('manfaat7', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_manfaat7', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+                <tr>
+                    <td>M8</td>
+                    <td>Lainnya</td>
+                    <td>{!! Form::number('manfaat8', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::textarea('uraian_manfaat8', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 @endif

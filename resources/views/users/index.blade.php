@@ -15,7 +15,7 @@
     </div>
     <div class="d-flex align-items-center justify-content-between gap-6">
         <form class="input-group col-sm-4 float-right mb-2">
-            <input class="form-control text-sm" type="text" name="name" value="{{ $search['name'] ?? NULL }}" placeholder="Ketik Nama" />
+            <input class="form-control bg-white" type="text" name="name" value="{{ $search['name'] ?? NULL }}" placeholder="Ketik Nama" />
             <button class="btn btn-success">Cari</button>
         </form>
     </div>
