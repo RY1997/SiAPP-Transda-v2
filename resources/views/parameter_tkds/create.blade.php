@@ -18,7 +18,7 @@
     </div>
     <div class="d-flex align-items-center justify-content-between gap-6">
         <a href="{{ route('parameterTkds.index') }}" class="btn btn-danger d-flex align-items-center gap-1 fs-3 py-2 px-9">
-            <i class="ti ti-arrow-left fs-4"></i>
+            <i class="far fa-arrow-left fs-4"></i>
             Kembali
         </a>
     </div>
