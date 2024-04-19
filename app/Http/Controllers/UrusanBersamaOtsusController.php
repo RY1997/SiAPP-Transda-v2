@@ -37,7 +37,7 @@ class UrusanBersamaOtsusController extends AppBaseController
         } elseif (Auth::user()->kode_pwk == 'pwk26' || Auth::user()->kode_pwk == 'pwk27') {
             $urusanBersamaOtsuses = EvaluasiRengar::whereIn('nama_pemda', ['Provinsi Papua' , 'Provinsi Papua Barat'])->where('kode_pwk', Auth::user()->kode_pwk);
         } else {
-            $urusanBersamaOtsuses = EvaluasiRengar::whereNull('program');
+            $urusanBersamaOtsuses = EvaluasiRengar::whereNull('nama_program');
         }
         
         $urusanBersamaOtsuses = $urusanBersamaOtsuses->whereNotNull('urusan_subkegiatan')
