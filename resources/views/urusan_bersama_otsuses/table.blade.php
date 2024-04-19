@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            @if (Auth::user()->role != 'Admin' && Auth::user()->kode_pwk != 'PW26' && Auth::user()->kode_pwk != 'PW27')
+            @if (Auth::user()->role == 'Admin' || Auth::user()->kode_pwk == 'PW26' || Auth::user()->kode_pwk == 'PW27')
             @foreach($urusanBersamaOtsuses as $urusanBersamaOtsus)
             <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
@@ -22,7 +22,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="5">Menu Pengujian Khusus Perwakilan BPKP Provinsi Papua dan Papua Barat</td>
+                <td colspan="5">Menu Pengujian Khusus Perwakilan BPKP Provinsi Papua dan Papua Barat.</td>
             </tr>
             @endif
         </tbody>
