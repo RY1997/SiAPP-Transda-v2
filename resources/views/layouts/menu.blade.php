@@ -164,7 +164,7 @@
 </li>
 
 <li class="sidebar-item">
-    <a class="sidebar-link" href="#" aria-expanded="false">
+    <a class="sidebar-link" href="https://drive.google.com/drive/folders/10duSsgmhvra1Nldl8qjpJqCldNsCTqUh?usp=share_link" target="_blank" aria-expanded="false">
         <iconify-icon icon="solar:question-circle-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Petunjuk Teknis</span>
     </a>
