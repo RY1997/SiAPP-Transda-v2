@@ -22,7 +22,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="5">Menu Pengujian Khusus Perwakilan BPKP Provinsi Papua dan Papua Barat.</td>
+                <td colspan="5">Menu Pengujian Khusus Perwakilan BPKP Provinsi Papua dan Papua Barat</td>
             </tr>
             @endif
         </tbody>

@@ -13,6 +13,7 @@
             </tr>
         </thead>
         <tbody>
+            @if ($kebijakanOtsuses->count() > 0)
             @foreach($kebijakanOtsuses as $kebijakanOtsus)
             <tr>
                 <td>{{ $loop->iteration }}</td>
@@ -31,6 +32,11 @@
                 </td>
             </tr>
             @endforeach
+            @else
+            <tr>
+                <td colspan="8" class="text-center">Surat Tugas belum diinput</td>
+            </tr>
+            @endif
         </tbody>
     </table>
     <div class="card-footer clearfix">

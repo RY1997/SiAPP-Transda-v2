@@ -40,7 +40,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="7" class="text-center">Belum ada data</td>
+                <td colspan="7" class="text-center">Surat Tugas belum diinput</td>
             </tr>
             @endif
         </tbody>
