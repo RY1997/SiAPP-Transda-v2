@@ -35,7 +35,7 @@ class PelaporanController extends AppBaseController
         if (Auth::user()->role == 'Admin') {
             $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->paginate(20);
         } else {
-            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('kode_pwk', Auth::user()->kd_pwk)->paginate(20);
+            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('kode_pwk', Auth::user()->kode_pwk)->paginate(20);
         }
 
         foreach ($suratTugas as $item) {
@@ -53,7 +53,7 @@ class PelaporanController extends AppBaseController
         } else {
             $pelaporans = Pelaporan::with('st')->whereHas('st', function ($query) {
                 $query->where('jenis_tkd', session('jenis_tkd'));
-            })->where('kode_pwk', Auth::user()->kd_pwk)->with('st')->paginate(20);
+            })->where('kode_pwk', Auth::user()->kode_pwk)->with('st')->paginate(20);
         }
 
         return view('pelaporans.index')

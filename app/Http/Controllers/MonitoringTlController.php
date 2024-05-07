@@ -35,7 +35,7 @@ class MonitoringTlController extends AppBaseController
         if (Auth::user()->role == 'Admin') {
             $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', session('jenis_tkd'))->get();
         } else {
-            $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', session('jenis_tkd'))->where('kode_pwk', Auth::user()->kd_pwk)->get();
+            $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', session('jenis_tkd'))->where('kode_pwk', Auth::user()->kode_pwk)->get();
         }
 
         if (session('jenis_tkd') == 'Dana Otonomi Khusus') {

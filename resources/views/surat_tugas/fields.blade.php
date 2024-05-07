@@ -54,7 +54,7 @@
     {!! Form::label('jenis_tkd', 'Lingkup Penugasan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" class="form-control" id="jenis_tkd" name="jenis_tkd" value="{{ session('jenis_tkd') }}" readonly disabled>
+    <input type="text" class="form-control bg-light" id="jenis_tkd" name="jenis_tkd" value="{{ session('jenis_tkd') }}" readonly>
 </div>
 
 <!-- Nama Pemda Field -->
