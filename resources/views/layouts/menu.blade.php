@@ -95,12 +95,14 @@
     <span class="hide-menu">Evaluasi</span>
 </li>
 
+@if (session('jenis_tkd') == 'Dana Otonomi Khusus')
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('kebijakanOtsuses*') ? 'active' : '' }}" href="{{ route('kebijakanOtsuses.index') }}">
         <iconify-icon icon="solar:file-text-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Penetapan Otsus</span>
     </a>
 </li>
+@endif
 
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('monitoringTls*') ? 'active' : '' }}" href="{{ route('monitoringTls.index') }}">
@@ -116,6 +118,7 @@
     </a>
 </li>
 
+@if (session('jenis_tkd') == 'Dana Otonomi Khusus')
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('rippOtsuses*') ? 'active' : '' }}" href="{{ route('rippOtsuses.index') }}">
         <iconify-icon icon="solar:file-smile-linear" class="aside-icon"></iconify-icon>
@@ -129,6 +132,7 @@
         <span class="hide-menu">Urusan Bersama</span>
     </a>
 </li>
+@endif
 
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('evaluasiKontraks*') ? 'active' : '' }}" href="{{ route('evaluasiKontraks.index') }}">
@@ -137,12 +141,14 @@
     </a>
 </li>
 
+@if (session('jenis_tkd') == 'Dana Otonomi Khusus')
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('silpaOtsuses*') ? 'active' : '' }}" href="{{ route('silpaOtsuses.index') }}">
         <iconify-icon icon="solar:checklist-minimalistic-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Saldo SiLPA</span>
     </a>
 </li>
+@endif
 
 <li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('evaluasiIndikators*') ? 'active' : '' }}" href="{{ route('evaluasiIndikators.index') }}">

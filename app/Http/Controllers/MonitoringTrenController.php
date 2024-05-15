@@ -47,7 +47,8 @@ class MonitoringTrenController extends AppBaseController
             $monitoringTrens = MonitoringAlokasi::where('kode_pwk', Auth::user()->kode_pwk);
         }
 
-        $monitoringTrens = $monitoringTrens->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+        $monitoringTrens = $monitoringTrens->where('jenis_tkd', session('jenis_tkd'))
+            ->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
             ->groupBy('nama_pemda')
             ->groupBy('tahun')
             ->withSum('penyaluran', 'penyaluran_tkd')

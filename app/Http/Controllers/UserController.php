@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Response;
 
@@ -31,9 +32,13 @@ class UserController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $users = User::where('name', 'like', '%' . $request->query('name') . '%')
-        ->where('username', 'like', '%' . $request->query('username') . '%')
-        ->paginate(10);
+        if (Auth::user()->role == 'Admin') {
+            $users = User::where('name', 'like', '%' . $request->query('name') . '%')
+                ->where('username', 'like', '%' . $request->query('username') . '%')
+                ->paginate(10);
+        } else {
+            $users = User::where('id', Auth::user()->id)->paginate(1);
+        }
 
         $search = [
             'name' => $request->query('name'),
@@ -41,7 +46,7 @@ class UserController extends AppBaseController
         ];
 
         return view('users.index')
-            ->with(['users' => $users , 'search' => $search]);
+            ->with(['users' => $users, 'search' => $search]);
     }
 
     /**
@@ -122,7 +127,7 @@ class UserController extends AppBaseController
      */
     public function update($id, Request $request)
     {
-        $user = User::where('id',$id)->first();
+        $user = User::where('id', $id)->first();
 
         if (empty($user)) {
             Flash::error('User not found');

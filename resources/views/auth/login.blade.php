@@ -52,6 +52,9 @@
                                         <select class="form-control @error('jenis_tkd') is-invalid @enderror" id="jenis_tkd" name="jenis_tkd">
                                             <option selected disabled>Pilih</option>
                                             <option value="Dana Otonomi Khusus">Dana Otonomi Khusus</option>
+                                            <option value="Dana Alokasi Umum">Dana Alokasi Umum</option>
+                                            <option value="Dana Alokasi Khusus">Dana Alokasi Khusus</option>
+                                            <option value="Dana Bagi Hasil">Dana Bagi Hasil</option>
                                         </select>
                                         @error('jenis_tkd')
                                         <span class="error invalid-feedback">{{ $message }}</span>
