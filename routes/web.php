@@ -91,3 +91,5 @@ Route::resource('suratTugas', App\Http\Controllers\SuratTugasController::class);
 
 
 Route::resource('pelaporans', App\Http\Controllers\PelaporanController::class);
+
+Route::resource('ppbrs', App\Http\Controllers\PPBRController::class);

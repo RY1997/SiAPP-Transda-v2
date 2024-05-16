@@ -67,7 +67,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
     <div class="dark-transparent sidebartoggler"></div>

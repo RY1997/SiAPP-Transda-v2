@@ -24,6 +24,13 @@
 </li>
 
 <li class="sidebar-item">
+    <a class="sidebar-link {{ Request::is('ppbrs*') ? 'active' : '' }}" href="{{ route('ppbrs.index') }}">
+        <iconify-icon icon="solar:notification-unread-lines-linear" class="aside-icon"></iconify-icon>
+        <span class="hide-menu">Perencanaan Penugasan</span>
+    </a>
+</li>
+
+<li class="sidebar-item">
     <a class="sidebar-link {{ Request::is('suratTugas*') ? 'active' : '' }}" href="{{ route('suratTugas.index') }}">
         <iconify-icon icon="solar:notification-unread-lines-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Surat Tugas</span>
