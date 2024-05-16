@@ -48,15 +48,17 @@ class MonitoringTlController extends AppBaseController
                 ['permasalahan' => 'Alokasi Dana Otsus tidak sesuai dengan perhitungan parameter yang tepat dan data dasar yang up to date'],
             ];
 
-            foreach ($permasalahan as $item) {
-                foreach ($suratTugas as $st) {
-                    MonitoringTl::updateOrCreate([
-                        'kode_pwk' => $st->kode_pwk,
-                        'tahun' => $st->tahun_penugasan,
-                        'nama_pemda' => $st->nama_pemda,
-                        'jenis_tkd' => session('jenis_tkd'),
-                        'kelompok_permasalahan' => $item['permasalahan']
-                    ]);
+            if (!empty($suratTugas)) {
+                foreach ($permasalahan as $item) {
+                    foreach ($suratTugas as $st) {
+                        MonitoringTl::updateOrCreate([
+                            'kode_pwk' => $st->kode_pwk,
+                            'tahun' => $st->tahun_penugasan,
+                            'nama_pemda' => $st->nama_pemda,
+                            'jenis_tkd' => session('jenis_tkd'),
+                            'kelompok_permasalahan' => $item['permasalahan']
+                        ]);
+                    }
                 }
             }
         }
