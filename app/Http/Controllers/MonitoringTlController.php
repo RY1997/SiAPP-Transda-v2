@@ -48,7 +48,7 @@ class MonitoringTlController extends AppBaseController
                 ['permasalahan' => 'Alokasi Dana Otsus tidak sesuai dengan perhitungan parameter yang tepat dan data dasar yang up to date'],
             ];
 
-            if (!empty($suratTugas)) {
+            if (!empty($suratTugas) && Auth::user()->role != 'Admin') {
                 foreach ($permasalahan as $item) {
                     foreach ($suratTugas as $st) {
                         MonitoringTl::updateOrCreate([
