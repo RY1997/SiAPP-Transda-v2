@@ -6,6 +6,14 @@ use App\Http\Requests\CreateSuratTugasRequest;
 use App\Http\Requests\UpdateSuratTugasRequest;
 use App\Repositories\SuratTugasRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\EvaluasiIndikator;
+use App\Models\EvaluasiKontrak;
+use App\Models\EvaluasiLaporan;
+use App\Models\EvaluasiRengar;
+use App\Models\KebijakanOtsus;
+use App\Models\MonitoringTl;
+use App\Models\Pelaporan;
+use App\Models\SilpaOtsus;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
@@ -46,8 +54,23 @@ class SuratTugasController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        if (!empty($request->semula) && !empty($request->menjadi)) {
+            SuratTugas::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+            Pelaporan::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+            MonitoringTl::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+            MonitoringTl::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+            KebijakanOtsus::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+            SilpaOtsus::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+            EvaluasiIndikator::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+            EvaluasiKontrak::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+            EvaluasiLaporan::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+
+            Flash::error('Berhasil');
+            return redirect()->back();
+        }
+        
         return view('surat_tugas.create');
     }
 
