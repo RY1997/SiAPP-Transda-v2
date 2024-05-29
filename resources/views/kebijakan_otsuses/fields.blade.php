@@ -35,18 +35,8 @@
     {!! Form::label('tgl_penetapan', 'Tgl Penetapan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tgl_penetapan', null, ['class' => 'form-control','id'=>'tgl_penetapan']) !!}
+    <input type="date" class="form-control" name="tgl_penetapan" value="{{ !empty($kebijakanOtsus) ? $kebijakanOtsus->tgl_penetapan : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tgl_penetapan').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: true,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Simpulan Penetapan Field -->
 <div class="form-group col-sm-3 mb-3">

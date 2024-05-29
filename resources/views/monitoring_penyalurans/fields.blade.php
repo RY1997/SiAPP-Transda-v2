@@ -31,18 +31,8 @@
     {!! Form::label('tgl_salur', 'Tgl Salur') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tgl_salur', null, ['class' => 'form-control','id'=>'tgl_salur']) !!}
+    <input type="date" class="form-control" name="tgl_salur" value="{{ !empty($monitoringPenyaluran) ? $monitoringPenyaluran->tgl_salur : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tgl_salur').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: false,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Penyaluran Tkd Field -->
 <div class="form-group col-sm-3 mb-3">

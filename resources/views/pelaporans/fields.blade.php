@@ -11,16 +11,8 @@
     {!! Form::label('tgl_laporan', 'Tgl Laporan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tgl_laporan', null, ['class' => 'form-control','id'=>'tgl_laporan']) !!}
+    <input type="date" class="form-control" name="tgl_laporan" value="{{ !empty($pelaporan) ? $pelaporan->tgl_laporan : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tgl_laporan').datetimepicker({
-        format: 'YYYY-MM-DD',
-    })
-</script>
-@endpush
 
 <!-- Nama Pemda Field -->
 <div class="form-group col-sm-3 mb-3">

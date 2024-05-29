@@ -58,18 +58,8 @@
     {!! Form::label('tgl_laporan', 'Tgl Laporan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tgl_laporan', null, ['class' => 'form-control','id'=>'tgl_laporan']) !!}
+    <input type="date" class="form-control" name="tgl_laporan" value="{{ !empty($evaluasiLaporan) ? $evaluasiLaporan->tgl_laporan : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tgl_laporan').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: true,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Nama Laporan Field -->
 <div class="form-group col-sm-3 mb-3">
@@ -85,18 +75,8 @@
     {!! Form::label('tgl_penyampaian', 'Tgl Penyampaian') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tgl_penyampaian', null, ['class' => 'form-control','id'=>'tgl_penyampaian']) !!}
+    <input type="date" class="form-control" name="tgl_penyampaian" value="{{ !empty($evaluasiLaporan) ? $evaluasiLaporan->tgl_penyampaian : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tgl_penyampaian').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: true,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Penyebab Tidak Tepat Waktu Field -->
 <div class="form-group col-sm-3 mb-3">

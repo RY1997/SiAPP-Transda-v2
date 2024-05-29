@@ -67,18 +67,8 @@
     {!! Form::label('tanggal_kontrak', 'Tanggal Kontrak') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tanggal_kontrak', null, ['class' => 'form-control','id'=>'tanggal_kontrak']) !!}
+    <input type="date" class="form-control" name="tanggal_kontrak" value="{{ !empty($evaluasiKontrak) ? $evaluasiKontrak->tanggal_kontrak : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tanggal_kontrak').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: false,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Uraian Kontrak Field -->
 <div class="form-group col-sm-3 mb-3">
@@ -183,36 +173,16 @@
     {!! Form::label('tanggal_mulai', 'Tanggal Pelaksanaan') !!}
 </div>
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::text('tanggal_mulai', null, ['class' => 'form-control','id'=>'tanggal_mulai']) !!}
+    <input type="date" class="form-control" name="tanggal_mulai" value="{{ !empty($evaluasiKontrak) ? $evaluasiKontrak->tanggal_mulai : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tanggal_mulai').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: false,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Tanggal Selesai Field -->
 <div class="form-group col-sm-1 mb-3 text-center">
     s.d
 </div>
 <div class="form-group col-sm-4 mb-3">
-    {!! Form::text('tanggal_selesai', null, ['class' => 'form-control','id'=>'tanggal_selesai']) !!}
+    <input type="date" class="form-control" name="tanggal_selesai" value="{{ !empty($evaluasiKontrak) ? $evaluasiKontrak->tanggal_selesai : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tanggal_selesai').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: false,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Lokasi Field -->
 <div class="form-group col-sm-3 mb-3">
@@ -227,18 +197,8 @@
     {!! Form::label('tgl_lelang', 'Tgl Lelang') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tgl_lelang', null, ['class' => 'form-control','id'=>'tgl_lelang']) !!}
+    <input type="date" class="form-control" name="tgl_lelang" value="{{ !empty($evaluasiKontrak) ? $evaluasiKontrak->tgl_lelang : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tgl_lelang').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: false,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Nama Rekanan Field -->
 <div class="form-group col-sm-3 mb-3">
@@ -287,18 +247,8 @@
     {!! Form::label('tgl_bast', 'Tanggal BAST') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tgl_bast', null, ['class' => 'form-control','id'=>'tgl_bast']) !!}
+    <input type="date" class="form-control" name="tgl_bast" value="{{ !empty($evaluasiKontrak) ? $evaluasiKontrak->tgl_bast : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tgl_bast').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: false,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Realisasi Bast Field -->
 <div class="form-group col-sm-3 mb-3">

@@ -12,18 +12,8 @@
     {!! Form::label('tgl_st', 'Tgl ST') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tgl_st', null, ['class' => 'form-control','id'=>'tgl_st']) !!}
+    <input type="date" class="form-control" name="tgl_st" value="{{ !empty($user) ? $user->tgl_st : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tgl_st').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: true,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Nama Penugasan Field -->
 <div class="form-group col-sm-3 mb-3">
@@ -70,36 +60,16 @@
     {!! Form::label('tgl_mulai', 'Tgl Mulai') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tgl_mulai', null, ['class' => 'form-control','id'=>'tgl_mulai']) !!}
+    <input type="date" class="form-control" name="tgl_mulai" value="{{ !empty($suratTugas) ? $suratTugas->tgl_mulai : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tgl_mulai').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: true,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Tgl Akhir Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('tgl_akhir', 'Tgl Akhir') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tgl_akhir', null, ['class' => 'form-control','id'=>'tgl_akhir']) !!}
+    <input type="date" class="form-control" name="tgl_akhir" value="{{ !empty($suratTugas) ? $suratTugas->tgl_akhir : '' }}">
 </div>
-
-@push('page_scripts')
-<script type="text/javascript">
-    $('#tgl_akhir').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: true,
-        sideBySide: true
-    })
-</script>
-@endpush
 
 <!-- Status St Field -->
 <div class="form-group col-sm-3 mb-3">
