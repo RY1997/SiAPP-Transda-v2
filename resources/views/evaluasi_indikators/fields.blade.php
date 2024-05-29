@@ -54,10 +54,10 @@
                         {!! Form::label('capaian', 'Capaian Indikator') !!}
                     </td>
                     <td>
-                        <input type="number" class="form-control" name="capaian_2023" step="0.01" value="{{ $evaluasiIndikator2023->target > 0 ? ($evaluasiIndikator2023->realisasi / $evaluasiIndikator2023->target * 100) : '0.00' }}" readonly required>
+                        <input type="number" class="form-control bg-light" name="capaian_2023" step="0.01" value="{{ $evaluasiIndikator2023->target > 0 ? number_format($evaluasiIndikator2023->realisasi / $evaluasiIndikator2023->target * 100, 2, '.', ',') : '0.00' }}" readonly required>
                     </td>
                     <td>
-                        <input type="number" class="form-control" name="capaian_2024" step="0.01" value="{{ $evaluasiIndikator2024->target > 0 ? ($evaluasiIndikator2024->realisasi / $evaluasiIndikator2024->target * 100) : '0.00' }}" readonly required>
+                        <input type="number" class="form-control bg-light" name="capaian_2024" step="0.01" value="{{ $evaluasiIndikator2024->target > 0 ? number_format($evaluasiIndikator2024->realisasi / $evaluasiIndikator2024->target * 100, 2, '.', ',') : '0.00' }}" readonly required>
                     </td>
                 </tr>
                 <tr>
