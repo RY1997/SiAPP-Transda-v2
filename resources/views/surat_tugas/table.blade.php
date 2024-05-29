@@ -2,13 +2,13 @@
     <table class="table small text-center align-middle m-0" id="suratTugas-table">
         <thead class="table-info">
             <tr>
-                <th>#</th>
-                <th>No ST</th>
-                <th>Tgl ST</th>
-                <th>Nama Penugasan</th>
-                <th>Jenis Penugasan</th>
-                <th>Nama Pemda</th>
-                <th>Aksi</th>
+                <th width="50">#</th>
+                <th width="200">No ST</th>
+                <th width="150">Tgl ST</th>
+                <th width="300">Nama Penugasan</th>
+                <th width="150">Jenis Penugasan</th>
+                <th width="200">Nama Pemda</th>
+                <th width="100">Aksi</th>
             </tr>
         </thead>
         <tbody>
