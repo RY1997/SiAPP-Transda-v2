@@ -3,7 +3,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
+    {!! Form::text('nama_pemda', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Uraian Indikator Field -->
@@ -11,7 +11,7 @@
     {!! Form::label('uraian_indikator', 'Uraian Indikator') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::textarea('uraian_indikator', null, ['class' => 'form-control', 'rows' => 3, 'readonly disabled']) !!}
+    {!! Form::textarea('uraian_indikator', null, ['class' => 'form-control bg-light', 'rows' => 3, 'readonly']) !!}
 </div>
 
 <h5 class="col-sm-12 mb-3">Capaian Indikator Makro</h5>

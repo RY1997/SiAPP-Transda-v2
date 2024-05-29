@@ -3,7 +3,7 @@
     {!! Form::label('name', 'Nama') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('name', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
+    {!! Form::text('name', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Username Field -->
@@ -11,7 +11,7 @@
     {!! Form::label('username', 'Username') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('username', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly disabled']) !!}
+    {!! Form::text('username', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Password Field -->

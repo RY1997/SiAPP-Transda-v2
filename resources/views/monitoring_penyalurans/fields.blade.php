@@ -23,7 +23,7 @@
     {!! Form::label('tahap_salur', 'Tahap Salur') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tahap_salur', null, ['class' => 'form-control','readonly disabled']) !!}
+    {!! Form::text('tahap_salur', null, ['class' => 'form-control bg-light','readonly']) !!}
 </div>
 
 <!-- Tgl Salur Field -->
