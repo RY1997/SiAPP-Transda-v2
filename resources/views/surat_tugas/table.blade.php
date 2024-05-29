@@ -25,7 +25,7 @@
                     {!! Form::open(['route' => ['suratTugas.destroy', $st->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         @if ($st->file_st != NULL)
-                        <a href="{{ $st->file_st }}" class='btn btn-success btn-xs'>
+                        <a href="{{ $st->file_st }}" target="_blank" class='btn btn-success btn-xs'>
                             <i class="far fa-download"></i>
                         </a>
                         @endif
