@@ -114,7 +114,7 @@ class EvaluasiRengarController extends AppBaseController
         $evaluasiRengars = EvaluasiRengar::where('nama_pemda', $suratTugas->nama_pemda)
             ->where('tahun', $tahun)
             ->where('sumber_dana', session('jenis_tkd'))
-            ->groupBy('kode_kegiatan')
+            ->groupBy(['nama_skpd', 'kode_kegiatan'])
             ->selectRaw('*, 
                 SUM(nilai_anggaran) as total_anggaran, 
                 SUM(nilai_realisasi) as total_realisasi, 
@@ -141,7 +141,7 @@ class EvaluasiRengarController extends AppBaseController
     {
         $evaluasiRengar = EvaluasiRengar::find($id);
         $st_id = SuratTugas::where('nama_pemda', $evaluasiRengar->nama_pemda)->first();
-        $subKegiatans = EvaluasiRengar::where('nama_pemda', $evaluasiRengar->nama_pemda)->where('tahun', $evaluasiRengar->tahun)->where('kode_kegiatan', $evaluasiRengar->kode_kegiatan)->where('sumber_dana', session('jenis_tkd'))->get();
+        $subKegiatans = EvaluasiRengar::where('nama_pemda', $evaluasiRengar->nama_pemda)->where('nama_skpd', $evaluasiRengar->nama_skpd)->where('tahun', $evaluasiRengar->tahun)->where('kode_kegiatan', $evaluasiRengar->kode_kegiatan)->where('sumber_dana', session('jenis_tkd'))->get();
 
         if (empty($evaluasiRengar)) {
             Flash::error('Evaluasi Rengar not found');

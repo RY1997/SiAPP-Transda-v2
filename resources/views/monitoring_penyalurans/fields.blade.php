@@ -31,7 +31,7 @@
     {!! Form::label('tgl_salur', 'Tgl Salur') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_salur" value="{{ !empty($monitoringPenyaluran) ? $monitoringPenyaluran->tgl_salur : '' }}">
+    <input type="date" class="form-control" name="tgl_salur" value="{{ !empty($monitoringPenyaluran) ? date_format($monitoringPenyaluran->tgl_salur, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Penyaluran Tkd Field -->

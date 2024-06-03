@@ -14,6 +14,14 @@
     {!! Form::text('nama_pemda', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
+<!-- Nama SKPD Field -->
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('nama_skpd', 'Nama SKPD') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    {!! Form::text('nama_skpd', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+</div>
+
 <!-- Kode Program Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('nama_program', 'Program') !!}

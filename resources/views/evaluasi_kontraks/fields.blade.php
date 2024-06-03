@@ -67,7 +67,7 @@
     {!! Form::label('tanggal_kontrak', 'Tanggal Kontrak') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tanggal_kontrak" value="{{ !empty($evaluasiKontrak) ? $evaluasiKontrak->tanggal_kontrak : '' }}">
+    <input type="date" class="form-control" name="tanggal_kontrak" value="{{ !empty($evaluasiKontrak) ? date_format($evaluasiKontrak->tanggal_kontrak, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Uraian Kontrak Field -->
@@ -173,7 +173,7 @@
     {!! Form::label('tanggal_mulai', 'Tanggal Pelaksanaan') !!}
 </div>
 <div class="form-group col-sm-4 mb-3">
-    <input type="date" class="form-control" name="tanggal_mulai" value="{{ !empty($evaluasiKontrak) ? $evaluasiKontrak->tanggal_mulai : '' }}">
+    <input type="date" class="form-control" name="tanggal_mulai" value="{{ !empty($evaluasiKontrak) ? date_format($evaluasiKontrak->tanggal_mulai, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Tanggal Selesai Field -->
@@ -181,7 +181,7 @@
     s.d
 </div>
 <div class="form-group col-sm-4 mb-3">
-    <input type="date" class="form-control" name="tanggal_selesai" value="{{ !empty($evaluasiKontrak) ? $evaluasiKontrak->tanggal_selesai : '' }}">
+    <input type="date" class="form-control" name="tanggal_selesai" value="{{ !empty($evaluasiKontrak) ? date_format($evaluasiKontrak->tanggal_selesai, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Lokasi Field -->
@@ -197,7 +197,7 @@
     {!! Form::label('tgl_lelang', 'Tgl Lelang') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_lelang" value="{{ !empty($evaluasiKontrak) ? $evaluasiKontrak->tgl_lelang : '' }}">
+    <input type="date" class="form-control" name="tgl_lelang" value="{{ !empty($evaluasiKontrak) ? date_format($evaluasiKontrak->tgl_lelang, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Nama Rekanan Field -->
@@ -247,7 +247,7 @@
     {!! Form::label('tgl_bast', 'Tanggal BAST') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_bast" value="{{ !empty($evaluasiKontrak) ? $evaluasiKontrak->tgl_bast : '' }}">
+    <input type="date" class="form-control" name="tgl_bast" value="{{ !empty($evaluasiKontrak) ? date_format($evaluasiKontrak->tgl_bast, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Realisasi Bast Field -->

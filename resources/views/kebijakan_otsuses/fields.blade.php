@@ -35,7 +35,7 @@
     {!! Form::label('tgl_penetapan', 'Tgl Penetapan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_penetapan" value="{{ !empty($kebijakanOtsus) ? $kebijakanOtsus->tgl_penetapan : '' }}">
+    <input type="date" class="form-control" name="tgl_penetapan" value="{{ !empty($kebijakanOtsus) ? date_format($kebijakanOtsus->tgl_penetapan, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Simpulan Penetapan Field -->

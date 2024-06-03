@@ -3,9 +3,10 @@
         <thead class="table-info">
             <tr>
                 <th width="50">#</th>
+                <th width="100">Nama SKPD</th>
                 <th width="250">Nama Program</th>
                 <th width="250">Nama Kegiatan</th>
-                <th>Urusan Bersama</th>
+                <th width="150">Urusan Bersama</th>
                 <th width="150">Nilai Anggaran</th>
                 <th width="150">Nilai Realisasi</th>
                 <th width="100">Relevansi Subkegiatan</th>
@@ -18,6 +19,7 @@
             @foreach($evaluasiRengars as $evaluasiRengar)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $evaluasiRengar->nama_skpd }}</td>
                 <td class="text-start">
                     {{ $evaluasiRengar->kode_program }}<br>
                     {{ $evaluasiRengar->nama_program }}
@@ -41,8 +43,8 @@
                 </td>
                 <td>
                     <div class='btn-group'>
-                        <a href="{{ route('evaluasiRengars.edit', [$evaluasiRengar->id]) }}" class='btn btn-secondary btn-xs'>
-                            <i class="far fa-edit"> Uji </i>
+                        <a href="{{ route('evaluasiRengars.edit', [$evaluasiRengar->id]) }}" class="btn btn-secondary">
+                            <i class="far fa-edit"></i>
                         </a>
                     </div>
                 </td>
