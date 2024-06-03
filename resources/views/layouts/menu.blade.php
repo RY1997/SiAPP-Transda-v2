@@ -1,5 +1,5 @@
 <li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('home') ? 'active' : '' }}" href="home">
+    <a class="sidebar-link {{ Request::is('home') ? 'active' : '' }}" href="/home">
         <iconify-icon icon="solar:screencast-2-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Dashboard</span>
     </a>

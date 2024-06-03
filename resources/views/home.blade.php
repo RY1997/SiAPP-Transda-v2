@@ -1,120 +1,63 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-3">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-5 col-md-6">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">Batas Pengisian : Minggu, 9 Juni 2024</h4>
-                            <div class="col-12 row text-center">
-                                <div class="col-3 p-1">
-                                    <div class="col-12 card p-0 mb-2 mx-2 border border-primary">
-                                        <div class="card-body p-2 mb-0">
-                                            <h3 class="text-primary mb-0" id="days"></h3>
-                                        </div>
-                                        <div class="card-footer py-2 p-0 bg-primary">
-                                            <p class="mb-0 text-white">Hari</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-3 p-1">
-                                    <div class="col-12 card p-0 mb-2 mx-2 border border-primary">
-                                        <div class="card-body p-2 mb-0">
-                                            <h3 class="text-primary mb-0" id="hours"></h3>
-                                        </div>
-                                        <div class="card-footer py-2 p-0 bg-primary">
-                                            <p class="mb-0 text-white">Jam</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-3 p-1">
-                                    <div class="col-12 card p-0 mb-2 mx-2 border border-primary">
-                                        <div class="card-body p-2 mb-0">
-                                            <h3 class="text-primary mb-0" id="minutes"></h3>
-                                        </div>
-                                        <div class="card-footer py-2 p-0 bg-primary">
-                                            <p class="mb-0 text-white">Menit</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-3 p-1">
-                                    <div class="col-12 card p-0 mb-2 mx-2 border border-primary">
-                                        <div class="card-body p-2 mb-0">
-                                            <h3 class="text-primary mb-0" id="seconds"></h3>
-                                        </div>
-                                        <div class="card-footer py-2 p-0 bg-primary">
-                                            <p class="mb-0 text-white">Detik</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <p class="card-subtitle text-danger mb-4">
-                                Terlambat
-                            </p> -->
-                            <div class="clearfix"></div>
-                            <a href="#" class="btn btn-success mt-2">
-                                Hasil QA 
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
+<div class="container-fluid py-3">
+    <div class="row mb-5">
+        <div class="d-md-flex align-items-center justify-content-between mb-2">
+            <div class="mb-4 mb-md-0">
+                <h4 class="fs-6 mb-0">Batas Pengisian : Minggu, 9 Juni 2024</h4>
+            </div>
+            <div class="d-flex align-items-center justify-content-between gap-6">
+                <a href="https://docs.google.com/spreadsheets/d/1EzVca9mJbvz4fiXVV_w9KQDLZUIHd-jQzEwmCBguQqY/edit#gid=623477459" target="_blank" class="btn btn-success mt-2">
+                    Hasil QA 
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-12 row m-0 text-center">
+            <div class="col-3 p-1">
+                <div class="col-12 card p-0 mb-2 border border-primary">
+                    <div class="card-body p-2 mb-0">
+                        <h3 class="text-primary mb-0" id="days"></h3>
                     </div>
-                    <!-- Column -->
-                    <div class="col-lg-7 col-md-6 border-start pl-0">
-                        <ul class="product-review list-inline p-4">
-                            <li class="py-3">
-                                <div class="d-flex align-items-center">
-                                    <span class="text-muted display-5">
-                                        <i class="ti ti-mood-smile-beam"></i>
-                                    </span>
-                                    <div class="dl ms-2">
-                                        <h4 class="card-title">Positive Reviews</h4>
-                                        <p class="card-subtitle">25547 Reviews</p>
-                                    </div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar text-bg-success" role="progressbar" style="width: 65%; height: 6px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="py-3">
-                                <div class="d-flex align-items-center">
-                                    <span class="text-muted display-5">
-                                        <i class="ti ti-mood-sad"></i>
-                                    </span>
-                                    <div class="dl ms-2">
-                                        <h4 class="card-title text-nowrap">
-                                            Negative Reviews
-                                        </h4>
-                                        <p class="card-subtitle">5478 Reviews</p>
-                                    </div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar text-bg-danger" role="progressbar" style="width: 15%; height: 6px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="py-3">
-                                <div class="d-flex align-items-center">
-                                    <span class="text-muted display-5">
-                                        <i class="ti ti-mood-empty"></i>
-                                    </span>
-                                    <div class="dl ms-2">
-                                        <h4 class="card-title">Neutral Reviews</h4>
-                                        <p class="card-subtitle">457 Reviews</p>
-                                    </div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar text-bg-primary" role="progressbar" style="width: 35%; height: 6px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                        </ul>
+                    <div class="card-footer py-2 p-0 bg-primary">
+                        <p class="mb-0 text-white">Hari</p>
                     </div>
-                    <!-- Column -->
+                </div>
+            </div>
+            <div class="col-3 p-1">
+                <div class="col-12 card p-0 mb-2 border border-primary">
+                    <div class="card-body p-2 mb-0">
+                        <h3 class="text-primary mb-0" id="hours"></h3>
+                    </div>
+                    <div class="card-footer py-2 p-0 bg-primary">
+                        <p class="mb-0 text-white">Jam</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 p-1">
+                <div class="col-12 card p-0 mb-2 border border-primary">
+                    <div class="card-body p-2 mb-0">
+                        <h3 class="text-primary mb-0" id="minutes"></h3>
+                    </div>
+                    <div class="card-footer py-2 p-0 bg-primary">
+                        <p class="mb-0 text-white">Menit</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 p-1">
+                <div class="col-12 card p-0 mb-2 border border-primary">
+                    <div class="card-body p-2 mb-0">
+                        <h3 class="text-primary mb-0" id="seconds"></h3>
+                    </div>
+                    <div class="card-footer py-2 p-0 bg-primary">
+                        <p class="mb-0 text-white">Detik</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>    
+    <div class="row">
         <div class="col-12 col-sm-6 col-md-4">
             <div class="card">
                 <div class="card-header">
