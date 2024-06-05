@@ -136,7 +136,8 @@ class MonitoringPenyaluranController extends AppBaseController
 
         Flash::success('Monitoring Penyaluran updated successfully.');
 
-        return redirect(route('monitoringPenyalurans.index'));
+        $monitoringAlokasi = MonitoringAlokasi::where('tahun', $monitoringPenyaluran->tahun)->where('nama_pemda', $monitoringPenyaluran->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
+        return redirect(route('monitoringTrens.show', $monitoringAlokasi->id));
     }
 
     /**

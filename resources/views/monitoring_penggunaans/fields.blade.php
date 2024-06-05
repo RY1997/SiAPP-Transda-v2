@@ -46,14 +46,14 @@
     {!! Form::label('anggaran_tkd', 'Anggaran') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('anggaran_tkd', null, ['class' => 'form-control']) !!}
+    {!! Form::number('anggaran_tkd', null, ['class' => 'form-control', 'step' => '0.01']) !!}
 </div>
 
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('realisasi_tkd', 'Realisasi') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('realisasi_tkd', null, ['class' => 'form-control']) !!}
+    {!! Form::number('realisasi_tkd', null, ['class' => 'form-control', 'step' => '0.01']) !!}
 </div>
 
 <!-- Penyebab Kurang Guna Field -->

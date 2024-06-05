@@ -31,7 +31,7 @@
     {!! Form::label('tgl_salur', 'Tgl Salur') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_salur" value="{{ !empty($monitoringPenyaluran) ? date_format($monitoringPenyaluran->tgl_salur, 'Y-m-d') : '' }}">
+    <input type="date" class="form-control" name="tgl_salur" value="{{ $monitoringPenyaluran->tgl_salur != NULL ? date_format($monitoringPenyaluran->tgl_salur, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Penyaluran Tkd Field -->
@@ -39,7 +39,7 @@
     {!! Form::label('penyaluran_tkd', 'Nilai Penyaluran') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('penyaluran_tkd', null, ['class' => 'form-control']) !!}
+    {!! Form::number('penyaluran_tkd', null, ['class' => 'form-control', 'step' => '0.01']) !!}
 </div>
 
 <div class="col-sm-12 mt-2">

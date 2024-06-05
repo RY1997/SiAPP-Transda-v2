@@ -12,7 +12,7 @@
     {!! Form::label('tgl_st', 'Tgl ST') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_st" value="{{ !empty($suratTugas) ? date_format($suratTugas->tgl_st, 'Y-m-d') : '' }}">
+    <input type="date" class="form-control" name="tgl_st" value="{{ $suratTugas->tgl_st != NULL ? date_format($suratTugas->tgl_st, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Nama Penugasan Field -->
@@ -60,7 +60,7 @@
     {!! Form::label('tgl_mulai', 'Tgl Mulai') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_mulai" value="{{ !empty($suratTugas) ? date_format($suratTugas->tgl_mulai, 'Y-m-d') : '' }}">
+    <input type="date" class="form-control" name="tgl_mulai" value="{{ $suratTugas->tgl_mulai != NULL ? date_format($suratTugas->tgl_mulai, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Tgl Akhir Field -->
@@ -68,7 +68,7 @@
     {!! Form::label('tgl_akhir', 'Tgl Akhir') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_akhir" value="{{ !empty($suratTugas) ? date_format($suratTugas->tgl_akhir, 'Y-m-d') : '' }}">
+    <input type="date" class="form-control" name="tgl_akhir" value="{{ $suratTugas->tgl_akhir != NULL ? date_format($suratTugas->tgl_akhir, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Status St Field -->

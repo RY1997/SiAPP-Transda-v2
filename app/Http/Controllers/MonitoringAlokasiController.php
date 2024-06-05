@@ -130,7 +130,7 @@ class MonitoringAlokasiController extends AppBaseController
 
         Flash::success('Monitoring Alokasi updated successfully.');
 
-        return redirect(route('monitoringAlokasis.index'));
+        return redirect(route('monitoringTrens.show', $id));
     }
 
     /**

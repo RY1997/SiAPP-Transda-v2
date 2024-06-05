@@ -125,7 +125,7 @@ class MonitoringTrenController extends AppBaseController
             ]);
         }
 
-        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->get();
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('tipe_tkd')->get();
 
         foreach ($monitoringAlokasis as $alokasi) {
             foreach ($bidang as $item) {
@@ -139,10 +139,9 @@ class MonitoringTrenController extends AppBaseController
                 ]);
             }
         }
-
-        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->orderBy('tipe_tkd')->get();
-        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->orderBy('tahap_salur')->get();
-        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->orderBy('bidang_tkd')->get();
+                
+        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('tahap_salur')->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('bidang_tkd')->get();
 
         if (empty($monitoringAlokasis)) {
             Flash::error('Monitoring Alokasi not found');

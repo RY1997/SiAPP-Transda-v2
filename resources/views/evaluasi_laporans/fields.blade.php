@@ -58,7 +58,7 @@
     {!! Form::label('tgl_laporan', 'Tgl Laporan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_laporan" value="{{ !empty($evaluasiLaporan) ? date_format($evaluasiLaporan->tgl_laporan, 'Y-m-d') : '' }}">
+    <input type="date" class="form-control" name="tgl_laporan" value="{{ $evaluasiLaporan->tgl_laporan != NULL ? date_format($evaluasiLaporan->tgl_laporan, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Nama Laporan Field -->
@@ -75,7 +75,7 @@
     {!! Form::label('tgl_penyampaian', 'Tgl Penyampaian') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_penyampaian" value="{{ !empty($evaluasiLaporan) ? date_format($evaluasiLaporan->tgl_penyampaian, 'Y-m-d') : '' }}">
+    <input type="date" class="form-control" name="tgl_penyampaian" value="{{ $evaluasiLaporan->tgl_penyampaian != NULL ? date_format($evaluasiLaporan->tgl_penyampaian, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Penyebab Tidak Tepat Waktu Field -->

@@ -11,7 +11,7 @@
     {!! Form::label('tgl_laporan', 'Tgl Laporan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_laporan" value="{{ !empty($pelaporan) ? date_format($pelaporan->tgl_laporan, 'Y-m-d') : '' }}">
+    <input type="date" class="form-control" name="tgl_laporan" value="{{ $pelaporan->tgl_laporan != NULL ? date_format($pelaporan->tgl_laporan, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Nama Pemda Field -->

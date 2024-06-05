@@ -16,7 +16,9 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "laravelcollective/html": "^6.2"
+        "laravelcollective/html": "^6.2",
+        "mpdf/mpdf": "^8.2",
+        "phpoffice/phpspreadsheet": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

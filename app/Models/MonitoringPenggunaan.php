@@ -69,12 +69,12 @@ class MonitoringPenggunaan extends Model
      * @var array
      */
     public static $rules = [
-        'tahun' => 'required|string|max:255',
+        'tahun' => 'nullable|string|max:255',
         'kode_pwk' => 'nullable|string|max:255',
-        'nama_pemda' => 'required|string|max:255',
+        'nama_pemda' => 'nullable|string|max:255',
         'jenis_tkd' => 'nullable|string|max:255',
         'tipe_tkd' => 'nullable|string|max:255',
-        'bidang_tkd' => 'required|string|max:255',
+        'bidang_tkd' => 'nullable|string|max:255',
         'anggaran_tkd' => 'required|numeric',
         'realisasi_tkd' => 'required|numeric',
         'penyebab_kurang_guna' => 'nullable|string',

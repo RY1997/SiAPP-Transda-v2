@@ -5,6 +5,7 @@
                 <th>Earmarked/Non Earmarked</th>
                 <th>Bidang TKD</th>
                 <th>Alokasi TKD</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -14,11 +15,18 @@
                 <td>{{ $monitoringAlokasi->tipe_tkd }}</td>
                 <td>{{ $monitoringAlokasi->bidang_tkd }}</td>
                 <td class="text-end">{{ number_format($monitoringAlokasi->alokasi_tkd, 2, ',', '.') }}</td>
+                <td width="120">
+                    <div class='btn-group'>
+                        <a href="{{ route('monitoringAlokasis.edit', [$monitoringAlokasi->id]) }}" class='btn btn-warning btn-xs'>
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </div>
+                </td>
             </tr>
             @endforeach
             @else
             <tr>
-                <td colspan="3" class="text-center">Tidak ada alokasi</td>
+                <td colspan="4" class="text-center">Tidak ada alokasi</td>
             </tr>
             @endif
         </tbody>

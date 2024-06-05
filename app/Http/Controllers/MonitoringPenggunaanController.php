@@ -142,7 +142,8 @@ class MonitoringPenggunaanController extends AppBaseController
 
         Flash::success('Monitoring Penggunaan updated successfully.');
 
-        return redirect(route('monitoringPenggunaans.index'));
+        $monitoringAlokasi = MonitoringAlokasi::where('tahun', $monitoringPenggunaan->tahun)->where('nama_pemda', $monitoringPenggunaan->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
+        return redirect(route('monitoringTrens.show', $monitoringAlokasi->id));
     }
 
     /**

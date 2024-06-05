@@ -64,12 +64,12 @@ class MonitoringAlokasi extends Model
      * @var array
      */
     public static $rules = [
-        'tahun' => 'required|string|max:255',
+        'tahun' => 'nullable|string|max:255',
         'kode_pwk' => 'nullable|string|max:255',
-        'nama_pemda' => 'required|string|max:255',
+        'nama_pemda' => 'nullable|string|max:255',
         'jenis_tkd' => 'nullable|string|max:255',
-        'tipe_tkd' => 'required|string|max:255',
-        'bidang_tkd' => 'required|string|max:255',
+        'tipe_tkd' => 'nullable|string|max:255',
+        'bidang_tkd' => 'nullable|string|max:255',
         'alokasi_tkd' => 'required|numeric',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'

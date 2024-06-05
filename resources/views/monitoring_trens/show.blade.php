@@ -22,6 +22,9 @@
 </div>
 
 <div class="content">
+
+    @include('flash::message')
+
     <div class="card">
         <div class="card-body">
             <div class="row">
