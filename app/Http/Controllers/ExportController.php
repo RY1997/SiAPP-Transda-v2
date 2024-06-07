@@ -118,23 +118,26 @@ class ExportController extends AppBaseController
                 $sheet->setCellValue('A' . $rowIndex, $rowIndex - 7);
                 $sheet->setCellValue('B' . $rowIndex, $st->kode_pwk);
                 $sheet->setCellValue('C' . $rowIndex, $st->pwk->name);
-                $sheet->setCellValue('D' . $rowIndex, $st->no_st);
-                $sheet->setCellValue('E' . $rowIndex, $st->laporan->file_laporan != NULL ? 'SUDAH' : 'BELUM');
+                $sheet->setCellValue('D' . $rowIndex, $st->nama_pemda);
+                $sheet->setCellValue('E' . $rowIndex, $st->no_st);
+                $sheet->setCellValue('F' . $rowIndex, $st->laporan->file_laporan != NULL ? 'SUDAH' : 'BELUM');
                 if ($st->jenis_penugasan == 'Monitoring') {
-                    $sheet->setCellValue('F' . $rowIndex, $st->belum_apbd > 0 ? 'BELUM' : 'SUDAH');
-                    $sheet->setCellValue('G' . $rowIndex, $st->belum_alokasi > 0 ? 'BELUM' : 'SUDAH');
-                    $sheet->setCellValue('H' . $rowIndex, $st->belum_penyaluran > 0 ? 'BELUM' : 'SUDAH');
-                    $sheet->setCellValue('I' . $rowIndex, $st->belum_penggunaan > 0 ? 'BELUM' : 'SUDAH');
+                    $sheet->setCellValue('G' . $rowIndex, $st->belum_apbd > 0 ? 'BELUM' : 'SUDAH');
+                    $sheet->setCellValue('H' . $rowIndex, $st->belum_alokasi > 0 ? 'BELUM' : 'SUDAH');
+                    $sheet->setCellValue('I' . $rowIndex, $st->belum_penyaluran > 0 ? 'BELUM' : 'SUDAH');
+                    $sheet->setCellValue('J' . $rowIndex, $st->belum_penggunaan > 0 ? 'BELUM' : 'SUDAH');
                 } elseif ($st->jenis_penugasan == 'Evaluasi') {
-                    $sheet->setCellValue('J' . $rowIndex, $st->jml_penetapan = 0 || $st->belum_penetapan > 0 ? 'BELUM' : 'SUDAH');
-                    $sheet->setCellValue('K' . $rowIndex, $st->jml_jakda = 0 || $st->belum_jakda > 0 ? 'BELUM' : 'SUDAH');
-                    $sheet->setCellValue('L' . $rowIndex, $st->jml_relevan = 0 || $st->belum_relevan > 0 ? 'BELUM' : 'SUDAH');
-                    $sheet->setCellValue('M' . $rowIndex, $st->jml_ripp = 0 || $st->belum_ripp > 0 ? 'BELUM' : 'SUDAH');
-                    $sheet->setCellValue('N' . $rowIndex, $st->jml_urusan = 0 || $st->belum_urusan > 0 ? 'BELUM' : 'SUDAH');
-                    $sheet->setCellValue('O' . $rowIndex, $st->jml_kontrak > 0 ? 'SUDAH' : 'BELUM');
-                    $sheet->setCellValue('P' . $rowIndex, $st->jml_silpa = 0 || $st->belum_silpa > 0 ? 'BELUM' : 'SUDAH');
-                    $sheet->setCellValue('Q' . $rowIndex, $st->jml_efektivitas = 0 || $st->belum_efektivitas > 0 ? 'BELUM' : 'SUDAH');
-                    $sheet->setCellValue('R' . $rowIndex, $st->jml_pelaporan = 0 || $st->belum_pelaporan > 0 ? 'BELUM' : 'SUDAH');
+                    $sheet->setCellValue('K' . $rowIndex, $st->jml_penetapan = 0 || $st->belum_penetapan > 0 ? 'BELUM' : 'SUDAH');
+                    $sheet->setCellValue('L' . $rowIndex, $st->jml_jakda = 0 || $st->belum_jakda > 0 ? 'BELUM' : 'SUDAH');
+                    $sheet->setCellValue('M' . $rowIndex, $st->jml_relevan = 0 || $st->belum_relevan > 0 ? 'BELUM' : 'SUDAH');
+                    if ($st->kode_pwk == 'PW26' || $st->kode_pwk == 'PW27') {
+                    $sheet->setCellValue('N' . $rowIndex, $st->jml_ripp = 0 || $st->belum_ripp > 0 ? 'BELUM' : 'SUDAH');
+                    }
+                    $sheet->setCellValue('O' . $rowIndex, $st->jml_urusan = 0 || $st->belum_urusan > 0 ? 'BELUM' : 'SUDAH');
+                    $sheet->setCellValue('P' . $rowIndex, $st->jml_kontrak > 0 ? 'SUDAH' : 'BELUM');
+                    $sheet->setCellValue('Q' . $rowIndex, $st->jml_silpa = 0 || $st->belum_silpa > 0 ? 'BELUM' : 'SUDAH');
+                    $sheet->setCellValue('R' . $rowIndex, $st->jml_efektivitas = 0 || $st->belum_efektivitas > 0 ? 'BELUM' : 'SUDAH');
+                    $sheet->setCellValue('S' . $rowIndex, $st->jml_pelaporan = 0 || $st->belum_pelaporan > 0 ? 'BELUM' : 'SUDAH');
                 }
                 $rowIndex++;
             }
