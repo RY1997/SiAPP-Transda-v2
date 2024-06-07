@@ -36,7 +36,7 @@ class ExportController extends AppBaseController
 
     public function progres()
     {
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->orderBy('nama_pemda')->orderBy('kode_pwk')
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->orderBy('kode_pwk')->orderBy('jenis_penugasan', 'DESC')
         ->withCount(['apbd as belum_apbd' => function ($query) {
             $query->where('belanja_pegawai', '=', 0);
         }])
