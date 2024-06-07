@@ -38,7 +38,7 @@
 </li>
 
 <li class="sidebar-item">
-    <a class="sidebar-link" href="#">
+    <a class="sidebar-link {{ Request::is('exports*') ? 'active' : '' }}" href="{{ route('exports.index') }}">
         <iconify-icon icon="solar:download-twice-square-linear" class="aside-icon"></iconify-icon>
         <span class="hide-menu">Kertas Kerja</span>
     </a>

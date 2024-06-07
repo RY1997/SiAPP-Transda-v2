@@ -96,13 +96,73 @@ class SuratTugas extends Model
         'updated_at' => 'nullable'
     ];
 
-    public function kontrak()
+    public function pwk()
     {
-        return $this->hasMany(\App\Models\EvaluasiKontrak::class, 'nama_pemda', 'nama_pemda');
+        return $this->hasOne(\App\Models\User::class, 'kode_pwk', 'kode_pwk');
+    }
+
+    public function laporan()
+    {
+        return $this->hasOne(\App\Models\Pelaporan::class, 'id_st', 'id');
+    }
+    
+    public function apbd()
+    {
+        return $this->hasMany(\App\Models\MonitoringApbd::class, 'nama_pemda', 'nama_pemda');
+    }
+
+    public function alokasi()
+    {
+        return $this->hasMany(\App\Models\MonitoringAlokasi::class, 'nama_pemda', 'nama_pemda');
+    }
+
+    public function penyaluran()
+    {
+        return $this->hasMany(\App\Models\MonitoringPenyaluran::class, 'nama_pemda', 'nama_pemda');
+    }
+
+    public function penggunaan()
+    {
+        return $this->hasMany(\App\Models\MonitoringPenggunaan::class, 'nama_pemda', 'nama_pemda');
+    }
+
+    public function penetapan()
+    {
+        return $this->hasMany(\App\Models\KebijakanOtsus::class, 'nama_pemda', 'nama_pemda');
+    }
+
+    public function jakda()
+    {
+        return $this->hasMany(\App\Models\MonitoringTl::class, 'nama_pemda', 'nama_pemda');
     }
 
     public function rengar()
     {
         return $this->hasMany(\App\Models\EvaluasiRengar::class, 'nama_pemda', 'nama_pemda');
+    }
+
+    public function ripp()
+    {
+        return $this->hasMany(\App\Models\RippOtsus::class, 'nama_pemda', 'nama_pemda');
+    }
+    
+    public function kontrak()
+    {
+        return $this->hasMany(\App\Models\EvaluasiKontrak::class, 'nama_pemda', 'nama_pemda');
+    }
+
+    public function silpa()
+    {
+        return $this->hasMany(\App\Models\SilpaOtsus::class, 'nama_pemda', 'nama_pemda');
+    }
+
+    public function efektivitas()
+    {
+        return $this->hasMany(\App\Models\EvaluasiIndikator::class, 'nama_pemda', 'nama_pemda');
+    }
+
+    public function pelaporan()
+    {
+        return $this->hasMany(\App\Models\EvaluasiLaporan::class, 'nama_pemda', 'nama_pemda');
     }
 }

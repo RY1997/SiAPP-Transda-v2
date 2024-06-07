@@ -88,6 +88,9 @@ Route::resource('silpaOtsuses', App\Http\Controllers\SilpaOtsusController::class
 
 
 Route::resource('suratTugas', App\Http\Controllers\SuratTugasController::class);
+Route::get('/exports', [App\Http\Controllers\ExportController::class, 'index'])->name('exports.index');
+
+Route::get('/exports/progresIsian', [App\Http\Controllers\ExportController::class, 'progres'])->name('exports.progres');
 
 
 Route::resource('pelaporans', App\Http\Controllers\PelaporanController::class);
