@@ -41,10 +41,10 @@ class ExportController extends AppBaseController
             $query->where('belanja_pegawai', '=', 0);
         }])
         ->withCount(['alokasi as belum_alokasi' => function ($query) {
-            $query->whereNull('alokasi_tkd')->where('jenis_tkd', session('jenis_tkd'));
+            $query->where('alokasi_tkd', '=', 0)->where('jenis_tkd', session('jenis_tkd'));
         }])
         ->withCount(['penyaluran as belum_penyaluran' => function ($query) {
-            $query->whereNull('penyaluran_tkd')->where('jenis_tkd', session('jenis_tkd'));
+            $query->where('penyaluran_tkd', '=', 0)->where('jenis_tkd', session('jenis_tkd'));
         }])
         ->withCount(['penggunaan as belum_penggunaan' => function ($query) {
             $query->whereNull('realisasi_tkd')->where('jenis_tkd', session('jenis_tkd'));
