@@ -17,7 +17,7 @@
                 <td>{{ $st->nama_pemda }}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <a class="btn btn-secondary rounded-start" href="{{ route('exports.progres') }}">
+                        <a class="btn btn-secondary rounded-start" href="{{ route('kertasKerja.progres') }}">
                             Progres Isian
                         </a>
                         <button class="btn btn-info rounded-0 dropdown-toggle" type="button" id="dropdownMonitoring" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
