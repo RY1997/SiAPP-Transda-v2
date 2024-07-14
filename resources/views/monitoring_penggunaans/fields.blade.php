@@ -31,14 +31,14 @@
     {!! Form::label('tipe_tkd', 'Tipe/Karakteristik TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tipe_tkd', null, ['class' => 'form-control bg-light', 'readonly']) !!}
+    {!! Form::text('tipe_tkd', null, ['class' => 'form-control', 'readonly']) !!}
 </div>
 
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('bidang_tkd', 'Bidang TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('bidang_tkd', null, ['class' => 'form-control bg-light', 'readonly']) !!}
+    {!! Form::text('bidang_tkd', null, ['class' => 'form-control', 'readonly']) !!}
 </div>
 
 <!-- Penggunaan Tkd Field -->

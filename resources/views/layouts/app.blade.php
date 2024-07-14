@@ -1,194 +1,161 @@
-<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@stack('page_title') | SIAPP Transda</title>
 
-    <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/1/11/BPKP_Logo.png">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
 
-    <!-- Core Css -->
-    <link rel="stylesheet" href="https://bootstrapdemos.wrappixel.com/monster/dist/assets/css/styles.css">
-    <title>SiAPP Transda</title>
+    <meta itemprop="name" content="">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="">
 
-    <link rel="stylesheet" href="https://bootstrapdemos.wrappixel.com/monster/dist/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="icon" href="{{ asset('assets/favicon.png') }}" type="image/png">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+
+    <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+
+    <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-bs4/assets/css/argon.min.css?v=1.2.0" type="text/css">
+
+    <style>
+        .table th,
+        .table td {
+            word-wrap: break-word;
+            white-space: normal;            
+        }
+    </style>
 
     @stack('third_party_stylesheets')
 
     @stack('page_css')
+
 </head>
 
-<body data-sidebartype="mini-sidebar">
-    <!-- Preloader -->
-    <div class="preloader" style="display: none;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/BPKP_Logo.png" alt="loader" class="lds-ripple img-fluid">
-    </div>
-    <div id="main-wrapper">
-        <!-- Sidebar Start -->
-        @include('layouts.sidebar')
-        <!--  Sidebar End -->
-        <div class="page-wrapper">
-            <!--  Header Start -->
-            <header class="topbar">
-                <div class="with-vertical">
-                    <!-- ---------------------------------- -->
-                    <!-- Start Vertical Layout Header -->
-                    <!-- ---------------------------------- -->
-                    <nav class="navbar navbar-expand-lg p-0">
-                        <!-- <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
-                                    <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
-                                </a>
-                            </li>
-                        </ul> -->
+<body>
+    <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+        <div class="scrollbar-inner">
 
-                        <div class="d-block d-lg-none">
-                            <img src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/images/logos/light-logo.svg" class="" width="180" alt="">
-                        </div>
-                        <a class="navbar-toggler border-0 text-white nav-icon-hover" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <iconify-icon icon="solar:menu-dots-bold" class="fs-7"></iconify-icon>
-                        </a>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
-                                    <!-- ------------------------------- -->
-                                    <!-- start profile Dropdown -->
-                                    <!-- ------------------------------- -->
-                                    <li class="nav-item hover-dd dropdown">
-                                        <a class="nav-link" href="javascript:void(0)" id="drop1" aria-expanded="false">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-profile-img">
-                                                    <img src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/images/profile/user-1.jpg" class="rounded-circle" width="30" height="30" alt="">
-                                                </div>
-                                                <p class="mb-0 mx-2">Halo, {{ Auth::user()->name }}</p>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop1">
-                                            <div class="message-body">
-                                                <a href="{{ route('users.edit', Auth::user()->id) }}" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                                                    <iconify-icon icon="solar:settings-linear"></iconify-icon>
-                                                    <p class="mb-0 fs-3">Ganti Password</p>
-                                                </a>
-                                                <a href="#" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                    <div class="position-relative">
-                                                        <iconify-icon icon="solar:power-bold"></iconify-icon>
-                                                    </div>
-                                                    <p class="mb-0 fs-3">Keluar</p>
-                                                </a>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                    @csrf
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <!-- ------------------------------- -->
-                                    <!-- end profile Dropdown -->
-                                    <!-- ------------------------------- -->
-
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                    <!-- ---------------------------------- -->
-                    <!-- End Vertical Layout Header -->
-                    <!-- ---------------------------------- -->
-
-                    <!-- ------------------------------- -->
-                    <!-- apps Dropdown in Small screen -->
-                    <!-- ------------------------------- -->
-
-                    <!--  Mobilenavbar -->
-                    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="mobilenavbar" aria-labelledby="offcanvasWithBothOptionsLabel">
-                        <nav class="sidebar-nav scroll-sidebar">
-                            <div class="offcanvas-header justify-content-between">
-                                <img src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/images/logos/dark-logo.svg" alt="" class="img-fluid">
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body h-n80" data-simplebar="init">
-                                <div class="simplebar-wrapper" style="margin: -16px;">
-                                    <div class="simplebar-height-auto-observer-wrapper">
-                                        <div class="simplebar-height-auto-observer"></div>
-                                    </div>
-                                    <div class="simplebar-placeholder" style="width: 330px; height: 244px;"></div>
-                                </div>
-                                <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-                                    <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
-                                </div>
-                                <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
-                                    <div class="simplebar-scrollbar" style="height: 0px; display: none;"></div>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </header>
-            <!--  Header End -->
-
-            @include('layouts.sidebar')
-
-            <div class="body-wrapper">
-                <div class="container-fluid" style="min-height: 70vh;">
-                    @yield('content')
-                </div>
-
-                <div class="container-fluid">
-                    <div class="card rounded-2">
-                        <div class="card-body text-center row">
-                            <small class="fw-semibold">Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral Pembangunan Daerah</small>
-                            <small class="fw-normal">SiAPP Transda 2.0 &copy; 2024</small>
-                        </div>
-                    </div>
-                </div>
+            <div class="sidenav-header align-items-center">
+                <a class="navbar-brand" href="javascript:void(0)">
+                    <img src="{{ asset('assets/logo.png') }}" class="navbar-brand-img" style="max-height: 4rem !important;" alt="...">
+                </a>
             </div>
-
-            <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                <div class="offcanvas-body h-n80 simplebar-scrollable-y" data-simplebar="init">
-                    <div class="simplebar-wrapper" style="margin: -16px;">
-                        <div class="simplebar-mask">
-                            <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
-                                <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
-                                    <div class="simplebar-content" style="padding: 16px;">
-                                        <div>
-                                            <input type="radio" class="btn-check" name="page-layout" id="vertical-layout" autocomplete="off">
-                                        </div>
-                                        <a href="javascript:void(0)" class="fullsidebar">
-                                            <input type="radio" class="btn-check" name="sidebar-type" id="full-sidebar" autocomplete="off">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="navbar-inner">
+                <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                    @include('layouts.menu')
                 </div>
             </div>
         </div>
+    </nav>
+
+    <div class="main-content" id="panel">
+
+        <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav align-items-center ml-md-0">
+                        <li class="nav-item d-xl-none">
+                            <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <h1 class="text-white d-inline-block mb-0">@stack('page_title')</h1>
+
+                    <ul class="navbar-nav align-items-center ml-auto ml-md-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="media align-items-center">
+                                    <span class="avatar avatar-sm rounded-circle">
+                                        <img alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard-bs4/assets/img/theme/team-4.jpg">
+                                    </span>
+                                    <div class="media-body  ml-2  d-none d-lg-block">
+                                        <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu  dropdown-menu-right ">
+                                <div class="dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Pengaturan User</h6>
+                                </div>
+                                <a href="{{ route('users.edit', Auth::user()->id) }}" class="dropdown-item">
+                                    <i class="ni ni-settings-gear-65"></i>
+                                    <span>Ubah Password</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="ni ni-user-run"></i>
+                                    <span>Keluar</span>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="header bg-primary pb-6">
+            <div class="container-fluid">
+                <div class="header-body">
+                    @yield('header')
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mt--6" style="min-height: 65vh;">
+
+            @yield('content')
+
+        </div>
+
+        <div class="container-fluid">
+            <footer class="footer pt-0">
+                <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-10">
+                        <div class="copyright text-center  text-lg-left  text-muted">
+                            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral Pembangunan Daerah</a>
+                            <a>&copy; 2024</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <ul class="nav nav-footer text-center justify-content-lg-end text-muted">
+                            <a>Versi 2.1 beta</a>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
     </div>
-    <div class="dark-transparent sidebartoggler"></div>
-    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/vendor.min.js"></script>
-    <!-- Import Js Files -->
-    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
-    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/theme/app.init.js"></script>
-    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/theme/theme.js"></script>
-    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/theme/app.min.js"></script>
-    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/theme/sidebarmenu.js"></script>
 
-    <!-- solar icons -->
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-    <script src="https://bootstrapdemos.wrappixel.com/monster/dist/assets/js/dashboards/dashboard6.js"></script>
 
-    <!-- AdminLTE App -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/js-cookie/js.cookie.js"></script>
+    <script src="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/chart.js/dist/Chart.extension.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha512-GDey37RZAxFkpFeJorEUwNoIbkTwsyC736KNSYucu1WJWFK9qTdzYub8ATxktr6Dwke7nbFaioypzbDOQykoRg==" crossorigin="anonymous"></script>
+    <script src="https://demos.creative-tim.com/argon-dashboard-bs4/assets/js/argon.min.js?v=1.2.0"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8a2a23c15c17b5cf","serverTiming":{"name":{"cfL4":true}},"version":"2024.6.1","token":"1b7cbb72744b40c580f8633c6b62637e"}' crossorigin="anonymous"></script>
 
     @stack('third_party_scripts')
 

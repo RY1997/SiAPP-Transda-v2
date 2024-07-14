@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="evaluasiRengars-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="evaluasiRengars-table">
+        <thead class="thead-light">
             <tr>
                 <th>#</th>
                 <th>Nama Pemda</th>
@@ -19,8 +19,8 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $st->nama_pemda }}</td>
                 <td>{{ $tahun }}</td>
-                <td class="text-end">{{ number_format($st->{"nilai_anggaran{$tahun}"}, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($st->{"nilai_realisasi{$tahun}"}, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($st->{"nilai_anggaran{$tahun}"}, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($st->{"nilai_realisasi{$tahun}"}, 2, ',', '.') }}</td>
                 <td>
                     @if ($st->{"nilai_anggaran{$tahun}"} > 0)
                     {{ $st->{"jumlah_relevansi{$tahun}"} > 0 ? 'Belum Lengkap' : 'Lengkap' }}
@@ -30,7 +30,7 @@
                 </td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ url('evaluasiRengars/'.$st->id.'/'.$tahun) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ url('evaluasiRengars/'.$st->id.'/'.$tahun) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

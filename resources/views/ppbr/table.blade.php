@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="ppbr-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="ppbr-table">
+        <thead class="thead-light">
             <tr>
                 <th>#</th>
                 <th>Nama Pemda</th>                
@@ -26,10 +26,10 @@
                 <td>{{ $ppbrItem->rank_risiko_2 }}</td>
                 <td>{{ $ppbrItem->rank_risiko_total }}</td>
                 <td>{{ $ppbrItem->ket_pwk }}</td>
-                <td>{!! ($ppbrItem->uji_petik == 'Ya' ? '<span class="badge rounded-pill text-bg-success mb-1">Ya</span>' : '<span class="badge rounded-pill text-bg-danger mb-1">Tidak</span>') !!}</td>
+                <td>{!! ($ppbrItem->uji_petik == 'Ya' ? '<span class="badge badge-sm bg-gradient-success mb-1 text-white">Ya</span>' : '<span class="badge badge-sm bg-gradient-danger mb-1 text-white">Tidak</span>') !!}</td>
                 <!-- <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ route('ppbrs.edit', [$ppbrItem->id]) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('ppbrs.edit', [$ppbrItem->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

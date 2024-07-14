@@ -3,7 +3,7 @@
     {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tahun', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Nama Pemda Field -->
@@ -11,7 +11,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Nama SKPD Field -->
@@ -19,7 +19,7 @@
     {!! Form::label('nama_skpd', 'Nama SKPD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nama_skpd', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nama_skpd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Kode Program Field -->
@@ -27,10 +27,10 @@
     {!! Form::label('nama_program', 'Program') !!}
 </div>
 <div class="form-group col-sm-2 mb-3">
-    {!! Form::text('kode_program', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('kode_program', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 <div class="form-group col-sm-7 mb-3">
-    {!! Form::textarea('nama_program', null, ['class' => 'form-control bg-light', 'rows' => 2, 'readonly']) !!}
+    {!! Form::textarea('nama_program', null, ['class' => 'form-control', 'rows' => 2, 'readonly']) !!}
 </div>
 
 <!-- Kode Kegiatan Field -->
@@ -38,10 +38,10 @@
     {!! Form::label('nama_kegiatan', 'Kegiatan') !!}
 </div>
 <div class="form-group col-sm-2 mb-3">
-    {!! Form::text('kode_kegiatan', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('kode_kegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 <div class="form-group col-sm-7 mb-3">
-    {!! Form::textarea('nama_kegiatan', null, ['class' => 'form-control bg-light','rows' => 3, 'readonly']) !!}
+    {!! Form::textarea('nama_kegiatan', null, ['class' => 'form-control','rows' => 3, 'readonly']) !!}
 </div>
 
 <!-- Sumber Dana Field -->
@@ -49,7 +49,7 @@
     {!! Form::label('sumber_dana', 'Sumber Dana') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('sumber_dana', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('sumber_dana', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Urusan Subkegiatan Field -->
@@ -66,8 +66,8 @@
 
 <div class="col-sm-12 mb-3">
     <div class="table-responsive card mb-0">
-        <table class="table small text-center align-middle m-0" id="subkegiatanTable">
-            <thead class="table-info">
+        <table class="table text-center m-0" id="subkegiatanTable">
+            <thead class="thead-light">
                 <tr>
                     <th width="50">#</th>
                     <th width="300">Nama Subkegiatan</th>
@@ -81,8 +81,8 @@
                 @foreach ($subKegiatans as $subKegiatan)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td class="text-start">{{ $subKegiatan->kode_subkegiatan . ' ' . $subKegiatan->nama_subkegiatan }}</td>
-                    <td class="text-end">{{ number_format($subKegiatan->nilai_anggaran, 2, ',', '.') }}</td>
+                    <td class="text-left">{{ $subKegiatan->kode_subkegiatan . ' ' . $subKegiatan->nama_subkegiatan }}</td>
+                    <td class="text-right">{{ number_format($subKegiatan->nilai_anggaran, 2, ',', '.') }}</td>
                     <td>
                         <input type="number" name="nilai_realisasi_{{ $subKegiatan->id }}" class="form-control" step="0.01" value="{{ $subKegiatan->nilai_realisasi }}" required>
                     </td>

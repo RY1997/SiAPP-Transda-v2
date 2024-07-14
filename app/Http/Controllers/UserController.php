@@ -32,21 +32,21 @@ class UserController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $name = $request->query('name');
+
         if (Auth::user()->role == 'Admin') {
-            $users = User::where('name', 'like', '%' . $request->query('name') . '%')
-                ->where('username', 'like', '%' . $request->query('username') . '%')
+            $users = User::where('name', 'like', '%' . $name . '%')
+                ->orWhere('username', 'like', '%' . $name . '%')
                 ->paginate(10);
         } else {
             $users = User::where('id', Auth::user()->id)->paginate(1);
         }
 
-        $search = [
-            'name' => $request->query('name'),
-            'username' => $request->query('username'),
-        ];
-
         return view('users.index')
-            ->with(['users' => $users, 'search' => $search]);
+            ->with([
+                'users' => $users,
+                'name' => $name
+            ]);
     }
 
     /**

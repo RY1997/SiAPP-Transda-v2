@@ -1,184 +1,205 @@
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('home') ? 'active' : '' }}" href="/home">
-        <iconify-icon icon="solar:screencast-2-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Dashboard</span>
-    </a>
-</li>
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('home') ? 'active text-primary' : '' }}" href="/home">
+            <i class="ni ni-tv-2"></i>
+            <span class="nav-link-text">Dashboard</span>
+        </a>
+    </li>
 
-<!-- <li class="nav-item">
-    <a href="#" class="nav-link">
-        <p>Ringkasan TKD</p>
-    </a>
-</li> -->
+    @if (Auth::user()->role == 'Admin')
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('users*') ? 'active text-primary' : '' }}" href="{{ route('users.index') }}">
+            <i class="ni ni-single-02"></i>
+            <span class="nav-link-text">Pengguna</span>
+        </a>
+    </li>
+    @else
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('users*') ? 'active text-primary' : '' }}" href="{{ route('users.index') }}">
+            <i class="ni ni-single-02"></i>
+            <span class="nav-link-text">Profil</span>
+        </a>
+    </li>
+    @endif
+</ul>
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
-        <iconify-icon icon="solar:user-plus-rounded-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Akun Pengguna</span>
-    </a>
-</li>
+<hr class="my-3">
 
-<li class="nav-small-cap">
-    <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon fs-4"></iconify-icon>
-    <span class="hide-menu">ADMINISTRASI</span>
-</li>
+<h6 class="navbar-heading p-0 text-muted">
+    <span class="docs-normal">ADMINISTRASI PENUGASAN</span>
+</h6>
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('ppbrs*') ? 'active' : '' }}" href="{{ route('ppbrs.index') }}">
-        <iconify-icon icon="solar:notification-unread-lines-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Perencanaan Penugasan</span>
-    </a>
-</li>
+<ul class="navbar-nav mb-md-3">
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('ppbrs*') ? 'active text-primary' : '' }}" href="{{ route('ppbrs.index') }}">
+            <i class="ni ni-pin-3"></i>
+            <span class="nav-link-text">Perencanaan</span>
+        </a>
+    </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('suratTugas*') ? 'active' : '' }}" href="{{ route('suratTugas.index') }}">
-        <iconify-icon icon="solar:notification-unread-lines-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Surat Tugas</span>
-    </a>
-</li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('suratTugas*') ? 'active text-primary' : '' }}" href="{{ route('suratTugas.index') }}">
+            <i class="ni ni-pin-3"></i>
+            <span class="nav-link-text">Pelaksanaan</span>
+        </a>
+    </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('kertasKerja*') ? 'active' : '' }}" href="{{ route('kertasKerja.index') }}">
-        <iconify-icon icon="solar:download-twice-square-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Kertas Kerja</span>
-    </a>
-</li>
+    <!-- <li class="nav-item">
+        <a class="nav-link {{ Request::is('kertasKerja*') ? 'active text-primary' : '' }}" href="{{ route('kertasKerja.index') }}">
+            <i class="ni ni-pin-3"></i>
+            <span class="nav-link-text">Kertas Kerja</span>
+        </a>
+    </li> -->
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('pelaporans*') ? 'active' : '' }}" href="{{ route('pelaporans.index') }}">
-        <iconify-icon icon="solar:sidebar-code-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Pelaporan</span>
-    </a>
-</li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('pelaporans*') ? 'active text-primary' : '' }}" href="{{ route('pelaporans.index') }}">
+            <i class="ni ni-pin-3"></i>
+            <span class="nav-link-text">Pelaporan</span>
+        </a>
+    </li>
+</ul>
 
 @if (Auth::user()->role == 'Admin')
-<li class="nav-small-cap">
-    <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon fs-4"></iconify-icon>
-    <span class="hide-menu">PARAMETER</span>
-</li>
+<hr class="my-3">
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('parameterTkds*') ? 'active' : '' }}" href="{{ route('parameterTkds.index') }}">
-        <iconify-icon icon="solar:calendar-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Bidang TKD</span>
-    </a>
-</li>
+<h6 class="navbar-heading p-0 text-muted">
+    <span class="docs-normal">PARAMETER</span>
+</h6>
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('parameterIndikators*') ? 'active' : '' }}" href="{{ route('parameterIndikators.index') }}">
-        <iconify-icon icon="solar:calendar-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Indikator Pengujian</span>
-    </a>
-</li>
+<ul class="navbar-nav mb-md-3">
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('parameterTkds*') ? 'active text-primary' : '' }}" href="{{ route('parameterTkds.index') }}">
+            <i class="ni ni-bullet-list-67"></i>
+            <span class="nav-link-text">Bidang TKD</span>
+        </a>
+    </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('parameterLaporans*') ? 'active' : '' }}" href="{{ route('parameterLaporans.index') }}">
-        <iconify-icon icon="solar:calendar-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Laporan Pengelolaan</span>
-    </a>
-</li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('parameterIndikators*') ? 'active text-primary' : '' }}" href="{{ route('parameterIndikators.index') }}">
+            <i class="ni ni-bullet-list-67"></i>
+            <span class="nav-link-text">Indikator Efektivitas</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('parameterLaporans*') ? 'active text-primary' : '' }}" href="{{ route('parameterLaporans.index') }}">
+            <i class="ni ni-bullet-list-67"></i>
+            <span class="nav-link-text">Laporan TKD</span>
+        </a>
+    </li>
+</ul>
 @endif
 
-<li class="nav-small-cap">
-    <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon fs-4"></iconify-icon>
-    <span class="hide-menu">MONITORING</span>
-</li>
+<hr class="my-3">
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('monitoringApbds*') ? 'active' : '' }}" href="{{ route('monitoringApbds.index') }}">
-        <iconify-icon icon="solar:layers-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Postur APBD</span>
-    </a>
-</li>
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('monitoringTrens*') || Request::is('monitoringPenyalurans*') || Request::is('monitoringPenggunaans*') ? 'active' : '' }}" href="{{ route('monitoringTrens.index') }}">
-        <iconify-icon icon="solar:star-line-duotone" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Pengelolaan TKD</span>
-    </a>
-</li>
+<h6 class="navbar-heading p-0 text-muted">
+    <span class="docs-normal">MONITORING</span>
+</h6>
 
-<li class="nav-small-cap">
-    <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon fs-4"></iconify-icon>
-    <span class="hide-menu">Evaluasi</span>
-</li>
+<ul class="navbar-nav mb-md-3">
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('monitoringApbds*') ? 'active text-primary' : '' }}" href="{{ route('monitoringApbds.index') }}">
+            <i class="ni ni-planet"></i>
+            <span class="nav-link-text">Postur APBD</span>
+        </a>
+    </li>
 
-@if (session('jenis_tkd') == 'Dana Otonomi Khusus')
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('kebijakanOtsuses*') ? 'active' : '' }}" href="{{ route('kebijakanOtsuses.index') }}">
-        <iconify-icon icon="solar:file-text-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Penetapan Otsus</span>
-    </a>
-</li>
-@endif
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('monitoringTrens*') || Request::is('monitoringPenyalurans*') || Request::is('monitoringPenggunaans*') ? 'active text-primary' : '' }}" href="{{ route('monitoringTrens.index') }}">
+            <i class="ni ni-planet"></i>
+            <span class="nav-link-text">Pengelolaan TKD</span>
+        </a>
+    </li>
+</ul>
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('monitoringTls*') ? 'active' : '' }}" href="{{ route('monitoringTls.index') }}">
-        <iconify-icon icon="solar:file-favourite-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Kebijakan Daerah</span>
-    </a>
-</li>
+<hr class="my-3">
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('evaluasiRengars*') ? 'active' : '' }}" href="{{ route('evaluasiRengars.index') }}">
-        <iconify-icon icon="solar:file-check-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Ren-Gar</span>
-    </a>
-</li>
+<h6 class="navbar-heading p-0 text-muted">
+    <span class="docs-normal">EVALUASI</span>
+</h6>
 
-@if (session('jenis_tkd') == 'Dana Otonomi Khusus')
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('rippOtsuses*') ? 'active' : '' }}" href="{{ route('rippOtsuses.index') }}">
-        <iconify-icon icon="solar:file-smile-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Sinkron RIPP</span>
-    </a>
-</li>
+<ul class="navbar-nav mb-md-3">
+    @if (session('jenis_tkd') == 'Dana Otonomi Khusus')
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('kebijakanOtsuses*') ? 'active text-primary' : '' }}" href="{{ route('kebijakanOtsuses.index') }}">
+            <i class="ni ni-spaceship"></i>
+            <span class="nav-link-text">Penetapan Otsus</span>
+        </a>
+    </li>
+    @endif
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('urusanBersamaOtsuses*') ? 'active' : '' }}" href="{{ route('urusanBersamaOtsuses.index') }}">
-        <iconify-icon icon="solar:file-right-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Urusan Bersama</span>
-    </a>
-</li>
-@endif
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('monitoringTls*') ? 'active text-primary' : '' }}" href="{{ route('monitoringTls.index') }}">
+            <i class="ni ni-spaceship"></i>
+            <span class="nav-link-text">Kebijakan Daerah</span>
+        </a>
+    </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('evaluasiKontraks*') ? 'active' : '' }}" href="{{ route('evaluasiKontraks.index') }}">
-        <iconify-icon icon="solar:file-left-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Uji Kontrak</span>
-    </a>
-</li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiRengars*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiRengars.index') }}">
+            <i class="ni ni-spaceship"></i>
+            <span class="nav-link-text">Ren-Gar</span>
+        </a>
+    </li>
 
-@if (session('jenis_tkd') == 'Dana Otonomi Khusus')
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('silpaOtsuses*') ? 'active' : '' }}" href="{{ route('silpaOtsuses.index') }}">
-        <iconify-icon icon="solar:checklist-minimalistic-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Saldo SiLPA</span>
-    </a>
-</li>
-@endif
+    @if (session('jenis_tkd') == 'Dana Otonomi Khusus')
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('rippOtsuses*') ? 'active text-primary' : '' }}" href="{{ route('rippOtsuses.index') }}">
+            <i class="ni ni-spaceship"></i>
+            <span class="nav-link-text">Sinkron RIPP</span>
+        </a>
+    </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('evaluasiIndikators*') ? 'active' : '' }}" href="{{ route('evaluasiIndikators.index') }}">
-        <iconify-icon icon="solar:archive-minimalistic-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Efektivitas TKD</span>
-    </a>
-</li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('urusanBersamaOtsuses*') ? 'active text-primary' : '' }}" href="{{ route('urusanBersamaOtsuses.index') }}">
+            <i class="ni ni-spaceship"></i>
+            <span class="nav-link-text">Urusan Bersama</span>
+        </a>
+    </li>
+    @endif
 
-<li class="sidebar-item">
-    <a class="sidebar-link {{ Request::is('evaluasiLaporans*') ? 'active' : '' }}" href="{{ route('evaluasiLaporans.index') }}">
-        <iconify-icon icon="solar:document-add-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Pelaporan TKD</span>
-    </a>
-</li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiKontraks*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKontraks.index') }}">
+            <i class="ni ni-spaceship"></i>
+            <span class="nav-link-text">Uji Kontrak</span>
+        </a>
+    </li>
 
-<li class="nav-small-cap">
-    <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon fs-4"></iconify-icon>
-    <span class="hide-menu">Dokumentasi</span>
-</li>
+    @if (session('jenis_tkd') == 'Dana Otonomi Khusus')
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('silpaOtsuses*') ? 'active text-primary' : '' }}" href="{{ route('silpaOtsuses.index') }}">
+            <i class="ni ni-spaceship"></i>
+            <span class="nav-link-text">Saldo SILPA</span>
+        </a>
+    </li>
+    @endif
 
-<li class="sidebar-item">
-    <a class="sidebar-link" href="https://drive.google.com/drive/folders/10duSsgmhvra1Nldl8qjpJqCldNsCTqUh?usp=share_link" target="_blank" aria-expanded="false">
-        <iconify-icon icon="solar:question-circle-linear" class="aside-icon"></iconify-icon>
-        <span class="hide-menu">Petunjuk Teknis</span>
-    </a>
-</li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiIndikators*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiIndikators.index') }}">
+            <i class="ni ni-spaceship"></i>
+            <span class="nav-link-text">Efektivitas TKD</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiLaporans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiLaporans.index') }}">
+            <i class="ni ni-spaceship"></i>
+            <span class="nav-link-text">Pelaporan TKD</span>
+        </a>
+    </li>
+</ul>
+
+<hr class="my-3">
+
+<h6 class="navbar-heading p-0 text-muted">
+    <span class="docs-normal">EVALUASI</span>
+</h6>
+
+<ul class="navbar-nav mb-md-3">
+    <li class="nav-item">
+        <a class="nav-link" href="https://drive.google.com/drive/folders/10duSsgmhvra1Nldl8qjpJqCldNsCTqUh?usp=share_link" target="_blank">
+            <i class="ni ni-palette"></i>
+            <span class="nav-link-text">Petunjuk Teknis</span>
+        </a>
+    </li>
+</ul>

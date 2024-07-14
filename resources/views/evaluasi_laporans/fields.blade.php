@@ -3,7 +3,7 @@
     {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tahun', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Nama Pemda Field -->
@@ -11,7 +11,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Jenis Tkd Field -->
@@ -19,14 +19,14 @@
     {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('jenis_tkd', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('jenis_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('bidang_tkd', 'Bidang TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('bidang_tkd', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('bidang_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Nama Laporan Field -->
@@ -34,7 +34,7 @@
     {!! Form::label('nama_laporan', 'Nama Laporan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nama_laporan', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nama_laporan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Keberadaan Laporan Field -->
@@ -66,7 +66,7 @@
     {!! Form::label('batas_penyampaian', 'Batas Penyampaian Laporan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('batas_penyampaian', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('batas_penyampaian', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 

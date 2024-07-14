@@ -1,5 +1,5 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="monitoringPenggunaans-table">
+    <table class="table text-center m-0" id="monitoringPenggunaans-table">
         <thead>
         <tr>
             <th>Tahun</th>
@@ -35,7 +35,7 @@
                            class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

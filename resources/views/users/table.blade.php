@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="users-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="users-table">
+        <thead class="thead-light">
             <tr>
                 <th>#</th>
                 <th>Nama</th>
@@ -13,12 +13,12 @@
             @foreach($users as $user)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td class="text-start">{{ $user->name }}</td>
+                <td class="text-left">{{ $user->name }}</td>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->role }}</td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ route('users.edit', [$user->id]) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('users.edit', [$user->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

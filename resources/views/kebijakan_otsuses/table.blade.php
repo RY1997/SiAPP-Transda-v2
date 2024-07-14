@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="kebijakanOtsuses-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="kebijakanOtsuses-table">
+        <thead class="thead-light">
             <tr>
                 <th width="50">#</th>
                 <th width="150">Nama Pemda</th>
@@ -25,7 +25,7 @@
                 <td>{{ $kebijakanOtsus->simpulan_penetapan }}</td>
                 <td>
                     <div class='btn-group'>                        
-                        <a href="{{ route('kebijakanOtsuses.edit', [$kebijakanOtsus->id]) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('kebijakanOtsuses.edit', [$kebijakanOtsus->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

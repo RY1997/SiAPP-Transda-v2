@@ -1,252 +1,390 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container-fluid py-3">
-    <div class="row mb-5">
-        <div class="d-md-flex align-items-center justify-content-between mb-2">
-            <div class="mb-4 mb-md-0">
-                <h4 class="fs-6 mb-0">Batas Pengisian : Minggu, 9 Juni 2024</h4>
-            </div>
-            <div class="d-flex align-items-center justify-content-between gap-6">
-                <a href="https://docs.google.com/spreadsheets/d/1EzVca9mJbvz4fiXVV_w9KQDLZUIHd-jQzEwmCBguQqY/edit#gid=623477459" target="_blank" class="btn btn-success mt-2">
-                    Hasil QA 
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-12 row m-0 text-center">
-            <div class="col-3 p-1">
-                <div class="col-12 card p-0 mb-2 border border-primary">
-                    <div class="card-body p-2 mb-0">
-                        <h3 class="text-primary mb-0" id="days"></h3>
-                    </div>
-                    <div class="card-footer py-2 p-0 bg-primary">
-                        <p class="mb-0 text-white">Hari</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 p-1">
-                <div class="col-12 card p-0 mb-2 border border-primary">
-                    <div class="card-body p-2 mb-0">
-                        <h3 class="text-primary mb-0" id="hours"></h3>
-                    </div>
-                    <div class="card-footer py-2 p-0 bg-primary">
-                        <p class="mb-0 text-white">Jam</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 p-1">
-                <div class="col-12 card p-0 mb-2 border border-primary">
-                    <div class="card-body p-2 mb-0">
-                        <h3 class="text-primary mb-0" id="minutes"></h3>
-                    </div>
-                    <div class="card-footer py-2 p-0 bg-primary">
-                        <p class="mb-0 text-white">Menit</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 p-1">
-                <div class="col-12 card p-0 mb-2 border border-primary">
-                    <div class="card-body p-2 mb-0">
-                        <h3 class="text-primary mb-0" id="seconds"></h3>
-                    </div>
-                    <div class="card-footer py-2 p-0 bg-primary">
-                        <p class="mb-0 text-white">Detik</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>    
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h6 class="text-center">Data Otsus Aceh</h6>
-                </div>
-                <div class="card-body">
-                    <small class="">Tahun 2023</small>
-                    <div class="progress mb-2">
-                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%; background-color:rgba(255, 99, 132, 0.5)" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="">Tahun 2024</small>
-                    <div class="progress mb-2">
-                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%; background-color:rgba(255, 99, 132, 0.5)" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+@push('page_title')
+Dashboard
+@endpush
 
-        <div class="col-12 col-sm-6 col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h6 class="text-center">Data Otsus dan DTI Papua</h6>
-                </div>
-                <div class="card-body">
-                    <small class="">Tahun 2023</small>
-                    <div class="progress mb-2">
-                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%; background-color:rgba(54, 162, 235, 0.5)" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="">Tahun 2024</small>
-                    <div class="progress mb-2">
-                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%; background-color:rgba(54, 162, 235, 0.5)" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+@section('header')
+<div class="row align-items-center py-4">
+    <div class="col-lg-6 col-7">
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Default</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-lg-6 col-5 text-right">
+        <a href="#" class="btn btn-sm btn-neutral">New</a>
+        <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+    </div>
+</div>
 
-        <div class="col-12 col-sm-6 col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h6 class="text-center">Data Otsus dan DTI Papua Barat</h6>
-                </div>
-                <div class="card-body">
-                    <small class="">Tahun 2023</small>
-                    <div class="progress mb-2">
-                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%; background-color:rgba(255, 206, 86, 0.5)" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Total traffic</h5>
+                        <span class="h2 font-weight-bold mb-0">350,897</span>
                     </div>
-                    <small class="">Tahun 2024</small>
-                    <div class="progress mb-2">
-                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%; background-color:rgba(255, 206, 86, 0.5)" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                            <i class="ni ni-active-40"></i>
+                        </div>
                     </div>
                 </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                </p>
             </div>
         </div>
     </div>
-    <div class="row">
-        <!-- {{ session('jenis_tkd') }} -->
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h6 class="text-center">Proporsi Dana Otsus dalam Pendapatan APBD</h6>
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                        <span class="h2 font-weight-bold mb-0">2,356</span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                            <i class="ni ni-chart-pie-35"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <canvas id="comboChart" style="max-height: 400px;"></canvas>
-                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                </p>
             </div>
         </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
 
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                        <span class="h2 font-weight-bold mb-0">924</span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                            <i class="ni ni-money-coins"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                        <span class="h2 font-weight-bold mb-0">49,65%</span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                            <i class="ni ni-chart-bar-32"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
+@section('content')
+<div class="row">
+    <div class="col-xl-8">
+        <div class="card bg-default">
+            <div class="card-header bg-transparent">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
+                        <h5 class="h3 text-white mb-0">Sales value</h5>
+                    </div>
+                    <div class="col">
+                        <ul class="nav nav-pills justify-content-end">
+                            <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update="{&quot;data&quot;:{&quot;datasets&quot;:[{&quot;data&quot;:[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}" data-prefix="$" data-suffix="k">
+                                <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                                    <span class="d-none d-md-block">Month</span>
+                                    <span class="d-md-none">M</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update="{&quot;data&quot;:{&quot;datasets&quot;:[{&quot;data&quot;:[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}" data-prefix="$" data-suffix="k">
+                                <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                                    <span class="d-none d-md-block">Week</span>
+                                    <span class="d-md-none">W</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
 
-@push('page_scripts')
-<script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("Jun 9, 2024 23:59:59").getTime();
+                <div class="chart">
 
-    // Update the count down every 1 second
-    var x = setInterval(function() {
+                    <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card">
+            <div class="card-header bg-transparent">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
+                        <h5 class="h3 mb-0">Total orders</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
 
-        // Get today's date and time
-        var now = new Date().getTime();
+                <div class="chart">
+                    <canvas id="chart-bars" class="chart-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-header border-0">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="mb-0">Page visits</h3>
+                    </div>
+                    <div class="col text-right">
+                        <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
 
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Page name</th>
+                            <th scope="col">Visitors</th>
+                            <th scope="col">Unique users</th>
+                            <th scope="col">Bounce rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                /argon/
+                            </th>
+                            <td>
+                                4,569
+                            </td>
+                            <td>
+                                340
+                            </td>
+                            <td>
+                                <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                /argon/index.html
+                            </th>
+                            <td>
+                                3,985
+                            </td>
+                            <td>
+                                319
+                            </td>
+                            <td>
+                                <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                /argon/charts.html
+                            </th>
+                            <td>
+                                3,513
+                            </td>
+                            <td>
+                                294
+                            </td>
+                            <td>
+                                <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                /argon/tables.html
+                            </th>
+                            <td>
+                                2,050
+                            </td>
+                            <td>
+                                147
+                            </td>
+                            <td>
+                                <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                /argon/profile.html
+                            </th>
+                            <td>
+                                1,795
+                            </td>
+                            <td>
+                                190
+                            </td>
+                            <td>
+                                <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card">
+            <div class="card-header border-0">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="mb-0">Social traffic</h3>
+                    </div>
+                    <div class="col text-right">
+                        <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
 
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Output the result in an element with id="demo"
-        document.getElementById("days").innerHTML = days;
-        document.getElementById("hours").innerHTML = hours;
-        document.getElementById("minutes").innerHTML = minutes;
-        document.getElementById("seconds").innerHTML = seconds;
-
-        // If the count down is over, write some text 
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-    }, 1000);
-</script>
-<script>
-    // Fetch chart data from the server
-    fetch('/combo-chart-data')
-        .then(response => response.json())
-        .then(data => {
-            const labels = data.monApbdData.map(item => `${item.kode_pwk} - ${item.tahun}`);
-            const totalAllSums = data.monApbdData.map(item => item.total_all_sums);
-            const sumAlokasi = data.monAlokasiData.map(item => item.sum_alokasi);
-
-            const ctx = document.getElementById('comboChart').getContext('2d');
-
-            // Function to generate colors dynamically
-            function generateColor(index) {
-                const colors = ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)'
-                ]; // Add more colors as needed
-                const colorIndex = Math.floor(index / 5) % colors.length; // Change color every 5 data rows
-                return colors[colorIndex];
-            }
-
-            // Function to create custom labels for each color group
-            function createLabels() {
-                const labels = [];
-                for (let i = 0; i < labels.length; i += 5) {
-                    labels.push(`Group ${i/5 + 1}`);
-                }
-                return labels;
-            }
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                            label: 'Total Pendapatan APBD',
-                            data: totalAllSums,
-                            backgroundColor: totalAllSums.map((value, index) => generateColor(index))
-                        },
-                        {
-                            label: 'Total Alokasi Dana OTSUS',
-                            data: sumAlokasi,
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                            type: 'line',
-                            fill: false
-                        }
-                    ]
-                },
-                options: {
-                    layout: {
-                        padding: {
-                            left: 0,
-                            right: 0,
-                            top: 0,
-                            bottom: 0
-                        }
-                    },
-                    scales: {
-                        yAxes: [{
-                            type: 'linear',
-                            position: 'left',
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Total Pendapatan APBD and Alokasi Dana OTSUS'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    tooltips: {
-                        mode: 'index',
-                        intersect: true
-                    },
-                    legend: {
-                        display: true,
-                        position: 'bottom',
-                        labels: {
-                            generateLabels: function(chart) {
-                                return createLabels();
-                            }
-                        }
-                    }
-                }
-            });
-        });
-</script>
-@endpush
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Referral</th>
+                            <th scope="col">Visitors</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                Facebook
+                            </th>
+                            <td>
+                                1,480
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-2">60%</span>
+                                    <div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Facebook
+                            </th>
+                            <td>
+                                5,480
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-2">70%</span>
+                                    <div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Google
+                            </th>
+                            <td>
+                                4,807
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-2">80%</span>
+                                    <div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Instagram
+                            </th>
+                            <td>
+                                3,678
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-2">75%</span>
+                                    <div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                twitter
+                            </th>
+                            <td>
+                                2,645
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-2">30%</span>
+                                    <div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

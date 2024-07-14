@@ -12,7 +12,7 @@
     {!! Form::label('tgl_st', 'Tgl ST') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_st" value="{{ $suratTugas->tgl_st != NULL ? date_format($suratTugas->tgl_st, 'Y-m-d') : '' }}">
+    <input type="date" class="form-control" name="tgl_st" value="{{ !empty($suratTugas) && $suratTugas->tgl_st != NULL ? date_format($suratTugas->tgl_st, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Nama Penugasan Field -->
@@ -44,7 +44,7 @@
     {!! Form::label('jenis_tkd', 'Lingkup Penugasan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" class="form-control bg-light" id="jenis_tkd" name="jenis_tkd" value="{{ session('jenis_tkd') }}" readonly>
+    <input type="text" class="form-control" id="jenis_tkd" name="jenis_tkd" value="{{ session('jenis_tkd') }}" readonly>
 </div>
 
 <!-- Nama Pemda Field -->
@@ -52,7 +52,12 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    <select class="form-control custom-select" id="nama_pemda" name="nama_pemda">
+        <option value="" selected="selected">Pilih</option>
+        @foreach($pemdas as $pemda)
+        <option value="{{ $pemda->nama_pemda }}" {{ !empty($suratTugas) && $pemda->nama_pemda == $suratTugas->name_pemda ? 'selected' : '' }}>{{ $pemda->nama_pemda }}</option>        
+        @endforeach
+    </select>    
 </div>
 
 <!-- Tgl Mulai Field -->
@@ -60,7 +65,7 @@
     {!! Form::label('tgl_mulai', 'Tgl Mulai') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_mulai" value="{{ $suratTugas->tgl_mulai != NULL ? date_format($suratTugas->tgl_mulai, 'Y-m-d') : '' }}">
+    <input type="date" class="form-control" name="tgl_mulai" value="{{ !empty($suratTugas) && $suratTugas->tgl_mulai != NULL ? date_format($suratTugas->tgl_mulai, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Tgl Akhir Field -->
@@ -68,7 +73,7 @@
     {!! Form::label('tgl_akhir', 'Tgl Akhir') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_akhir" value="{{ $suratTugas->tgl_akhir != NULL ? date_format($suratTugas->tgl_akhir, 'Y-m-d') : '' }}">
+    <input type="date" class="form-control" name="tgl_akhir" value="{{ !empty($suratTugas) && $suratTugas->tgl_akhir != NULL ? date_format($suratTugas->tgl_akhir, 'Y-m-d') : '' }}">
 </div>
 
 <!-- Status St Field -->
@@ -76,7 +81,7 @@
     {!! Form::label('status_st', 'Status ST') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::select('status_st', ['' => 'Pilih', 'DL3' => 'DL3', 'Final' => 'Final'], null, ['class' => 'form-control custom-select']) !!}    
+    {!! Form::select('status_st', ['' => 'Pilih', 'DL3' => 'DL3', 'Final' => 'Final'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <!-- File St Field -->

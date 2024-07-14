@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="evaluasiKontraks-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="evaluasiKontraks-table">
+        <thead class="thead-light">
             <tr>
                 <th rowspan="2">#</th>
                 <th rowspan="2" style="min-width: 150px;">Nama Pemda</th>
@@ -25,12 +25,12 @@
                 <td>{{ $st->nama_pemda }}</td>
                 <td>{{ $tahun }}</td>
                 <td>{{ number_format($st->{"kontrak{$tahun}"}, 0, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($st->{"nilai_kontrak{$tahun}"}, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($st->{"nilai_masalah{$tahun}"}, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($st->{"nilai_manfaat{$tahun}"}, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($st->{"nilai_kontrak{$tahun}"}, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($st->{"nilai_masalah{$tahun}"}, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($st->{"nilai_manfaat{$tahun}"}, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ url('evaluasiKontraks/'.$st->id.'/'.$tahun) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ url('evaluasiKontraks/'.$st->id.'/'.$tahun) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

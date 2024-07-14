@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="rippOtsuses-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="rippOtsuses-table">
+        <thead class="thead-light">
             <tr>
                 <th width="50">#</th>
                 <th width="150">Nama Pemda</th>
@@ -16,12 +16,12 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $rippOtsus->nama_pemda }}</td>
-                <td class="text-start">{{ $rippOtsus->item_ripp }}</td>
-                <td class="text-start">{{ $rippOtsus->uraian_ripp }}</td>
-                <td class="text-start">{{ $rippOtsus->penyebab_ripp }}</td>
+                <td class="text-left">{{ $rippOtsus->item_ripp }}</td>
+                <td class="text-left">{{ $rippOtsus->uraian_ripp }}</td>
+                <td class="text-left">{{ $rippOtsus->penyebab_ripp }}</td>
                 <td>
                     <div class='btn-group'>                        
-                        <a href="{{ route('rippOtsuses.edit', [$rippOtsus->id]) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('rippOtsuses.edit', [$rippOtsus->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

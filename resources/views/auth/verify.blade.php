@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row text-center">
             <div class="col-md-7" style="margin-top: 2%">
                 <div class="box">
                     <h3 class="box-title" style="padding: 2%">Verify Your Email Address</h3>

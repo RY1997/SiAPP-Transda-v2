@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="evaluasiIndikators-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="evaluasiIndikators-table">
+        <thead class="thead-light">
             <tr>
                 <td rowspan="2" width="50">#</td>
                 <th rowspan="2" width="200">Nama Pemda</th>
@@ -37,7 +37,7 @@
                 <td>{{ $evaluasiIndikator->keterangan }}</td>
                 <td>
                     <div class='btn-group'>
-                        <a href="{{ route('evaluasiIndikators.edit', [$evaluasiIndikator->id]) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('evaluasiIndikators.edit', [$evaluasiIndikator->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

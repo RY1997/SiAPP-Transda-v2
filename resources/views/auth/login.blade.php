@@ -21,13 +21,13 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/BPKP_Logo.png" alt="loader" class="lds-ripple img-fluid">
     </div>
     <div id="main-wrapper">
-        <div class="position-relative overflow-hidden radial-gradient min-vh-100 w-100 d-flex align-items-center justify-content-center">
-            <div class="d-flex align-items-center justify-content-center w-100">
-                <div class="row justify-content-center w-100">
+        <div class="position-relative overflow-hidden radial-gradient min-vh-100 w-100 d-flex align-items-center text-center">
+            <div class="d-flex align-items-center text-center w-100">
+                <div class="row text-center w-100">
                     <div class="col-md-8 col-lg-6 col-xxl-3 auth-card">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="https://bootstrapdemos.wrappixel.com/monster/dist/main/index.html" class="align-items-center d-flex justify-content-center logo-img mb-5 text-center text-nowrap w-100">
+                                <a href="https://bootstrapdemos.wrappixel.com/monster/dist/main/index.html" class="align-items-center d-flex text-center logo-img mb-5 text-center text-nowrap w-100">
                                     <img class="mx-3" src="https://upload.wikimedia.org/wikipedia/commons/1/11/BPKP_Logo.png" width="100">
                                     <h3 class="text-dark fw-bold mb-0">SiAPP Transda</h3>
                                 </a>

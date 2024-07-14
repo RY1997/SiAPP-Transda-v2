@@ -1,12 +1,12 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="monitoringPenggunaans-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="monitoringPenggunaans-table">
+        <thead class="thead-light">
             <tr>
                 <th rowspan="2" style="min-width: 100px;">Tipe TKD</th>
                 <th rowspan="2" style="min-width: 100px;">Bidang TKD</th>
                 <!-- <th rowspan="2" style="min-width: 100px;">Alokasi</th> -->
                 <th colspan="2">Penggunaan TKD</th>
-                <th rowspan="2" style="min-width: 300px;">Penyebab Realisasi Rendah</th>
+                <th rowspan="2" style="min-width: 250px;">Penyebab Realisasi Rendah</th>
                 <th rowspan="2">Aksi</th>
             </tr>
             <tr>
@@ -21,16 +21,16 @@
                 <td>{{ $monitoringPenggunaan->tipe_tkd }}</td>
                 <td>{{ $monitoringPenggunaan->bidang_tkd }}</td>
                 <!-- <td>Alokasi</td> -->
-                <td class="text-end">{{ number_format($monitoringPenggunaan->anggaran_tkd, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($monitoringPenggunaan->realisasi_tkd, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenggunaan->anggaran_tkd, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenggunaan->realisasi_tkd, 2, ',', '.') }}</td>
                 <td>{{ $monitoringPenggunaan->penyebab_kurang_guna }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['monitoringPenggunaans.destroy', $monitoringPenggunaan->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('monitoringPenggunaans.edit', [$monitoringPenggunaan->id]) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('monitoringPenggunaans.edit', [$monitoringPenggunaan->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

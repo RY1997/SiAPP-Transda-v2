@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="silpaOtsuses-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="silpaOtsuses-table">
+        <thead class="thead-light">
             <tr>
                 <th rowspan="2" width="50">Nama Pemda</th>
                 <th rowspan="2" width="150">Nama Pemda</th>
@@ -25,14 +25,14 @@
                 <td>{{ $silpaOtsus->nama_pemda }}</td>
                 <td>{{ $silpaOtsus->tahun }}</td>
                 <td>{{ $silpaOtsus->jenis_tkd }}</td>
-                <td class="text-end">{{ number_format($silpaOtsus->nilai_silpa, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($silpaOtsus->dianggarkan_relevan, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($silpaOtsus->dianggarkan_tidak_relevan, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($silpaOtsus->dianggarkan_relevan + $silpaOtsus->dianggarkan_tidak_relevan, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($silpaOtsus->tidak_dianggarkan, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($silpaOtsus->nilai_silpa, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($silpaOtsus->dianggarkan_relevan, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($silpaOtsus->dianggarkan_tidak_relevan, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($silpaOtsus->dianggarkan_relevan + $silpaOtsus->dianggarkan_tidak_relevan, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($silpaOtsus->tidak_dianggarkan, 2, ',', '.') }}</td>
                 <td>
                     <div class='btn-group'>
-                        <a href="{{ route('silpaOtsuses.edit', [$silpaOtsus->id]) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('silpaOtsuses.edit', [$silpaOtsus->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

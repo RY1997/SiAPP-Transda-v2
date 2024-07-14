@@ -3,7 +3,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Uraian Indikator Field -->
@@ -11,15 +11,15 @@
     {!! Form::label('uraian_indikator', 'Uraian Indikator') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::textarea('uraian_indikator', null, ['class' => 'form-control bg-light', 'rows' => 3, 'readonly']) !!}
+    {!! Form::textarea('uraian_indikator', null, ['class' => 'form-control', 'rows' => 3, 'readonly']) !!}
 </div>
 
 <h5 class="col-sm-12 mb-3">Capaian Indikator Makro</h5>
 
 <div class="col-sm-12 mb-3">
     <div class="table-responsive card mb-0">
-        <table class="table small text-center align-middle m-0" id="indikatorTable">
-            <thead class="table-info">
+        <table class="table text-center m-0" id="indikatorTable">
+            <thead class="thead-light">
                 <tr>
                     <td width="20">Uraian</td>
                     <td width="40">2023</td>
@@ -54,10 +54,10 @@
                         {!! Form::label('capaian', 'Capaian Indikator') !!}
                     </td>
                     <td>
-                        <input type="number" class="form-control bg-light" name="capaian_2023" step="0.01" value="{{ $evaluasiIndikator2023->target > 0 ? number_format($evaluasiIndikator2023->realisasi / $evaluasiIndikator2023->target * 100, 2, '.', ',') : '0.00' }}" readonly required>
+                        <input type="text" class="form-control" name="capaian_2023" value="{{ $evaluasiIndikator2023->target > 0 ? number_format($evaluasiIndikator2023->realisasi / $evaluasiIndikator2023->target * 100, 2, '.', ',') : '0.00' }}" readonly required>
                     </td>
                     <td>
-                        <input type="number" class="form-control bg-light" name="capaian_2024" step="0.01" value="{{ $evaluasiIndikator2024->target > 0 ? number_format($evaluasiIndikator2024->realisasi / $evaluasiIndikator2024->target * 100, 2, '.', ',') : '0.00' }}" readonly required>
+                        <input type="text" class="form-control" name="capaian_2024" value="{{ $evaluasiIndikator2024->target > 0 ? number_format($evaluasiIndikator2024->realisasi / $evaluasiIndikator2024->target * 100, 2, '.', ',') : '0.00' }}" readonly required>
                     </td>
                 </tr>
                 <tr>

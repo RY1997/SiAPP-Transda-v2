@@ -6,6 +6,7 @@ use App\Http\Requests\CreateSuratTugasRequest;
 use App\Http\Requests\UpdateSuratTugasRequest;
 use App\Repositories\SuratTugasRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DaftarPemda;
 use App\Models\EvaluasiIndikator;
 use App\Models\EvaluasiKontrak;
 use App\Models\EvaluasiLaporan;
@@ -70,8 +71,16 @@ class SuratTugasController extends AppBaseController
             Flash::error('Berhasil');
             return redirect()->back();
         }
+
+        if (Auth::user()->role == 'Admin') {
+            $pemdas = DaftarPemda::all();
+        } else {
+            $pemdas = DaftarPemda::where('kode_pwk', Auth::user()->kode_pwk)->get();
+        }
         
-        return view('surat_tugas.create');
+        return view('surat_tugas.create')->with([
+            'pemdas' => $pemdas,
+        ]);
     }
 
     /**

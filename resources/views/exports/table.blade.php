@@ -1,6 +1,6 @@
 <div class="card mb-0">
-    <table class="table small text-center align-middle m-0" id="exports-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="exports-table">
+        <thead class="thead-light">
             <tr>
                 <th width="5%">#</th>
                 <th width="30%">Kode Perwakilan</th>

@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="monitoringAlokasis-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="monitoringAlokasis-table">
+        <thead class="thead-light">
             <tr>
                 <th>Earmarked/Non Earmarked</th>
                 <th>Bidang TKD</th>
@@ -14,10 +14,10 @@
             <tr>
                 <td>{{ $monitoringAlokasi->tipe_tkd }}</td>
                 <td>{{ $monitoringAlokasi->bidang_tkd }}</td>
-                <td class="text-end">{{ number_format($monitoringAlokasi->alokasi_tkd, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringAlokasi->alokasi_tkd, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ route('monitoringAlokasis.edit', [$monitoringAlokasi->id]) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('monitoringAlokasis.edit', [$monitoringAlokasi->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

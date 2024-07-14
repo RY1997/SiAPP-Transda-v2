@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="suratTugas-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="suratTugas-table">
+        <thead class="thead-light">
             <tr>
                 <th width="50">#</th>
                 <th width="200">No ST</th>
@@ -25,14 +25,14 @@
                     {!! Form::open(['route' => ['suratTugas.destroy', $st->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         @if ($st->file_st != NULL)
-                        <a href="{{ $st->file_st }}" target="_blank" class='btn btn-success btn-xs'>
+                        <a href="{{ $st->file_st }}" target="_blank" class='btn btn-sm btn-success'>
                             <i class="far fa-download"></i>
                         </a>
                         @endif
-                        <a href="{{ route('suratTugas.edit', [$st->id]) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('suratTugas.edit', [$st->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

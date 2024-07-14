@@ -6,8 +6,8 @@
 </form>
 
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="monitoringAlokasis-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="monitoringAlokasis-table">
+        <thead class="thead-light">
         <tr>
                 <th rowspan="2">#</th>
                 <th rowspan="2" style="min-width: 150px;">Nama Pemda</th>

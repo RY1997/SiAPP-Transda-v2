@@ -1,3 +1,3 @@
-<div class="table small text-center align-middle m-0">
+<div class="table text-center m-0">
 {{ Illuminate\Mail\Markdown::parse($slot) }}
 </div>

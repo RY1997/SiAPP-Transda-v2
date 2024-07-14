@@ -1,6 +1,6 @@
 <div class="table-responsive card mb-0">
-    <table class="table small text-center align-middle m-0" id="monitoringAlokasis-table">
-        <thead class="table-info">
+    <table class="table text-center m-0" id="monitoringAlokasis-table">
+        <thead class="thead-light">
             <tr>
                 <th rowspan="2">#</th>
                 <th rowspan="2" style="min-width: 100px;">Nama Pemda</th>
@@ -23,13 +23,13 @@
                 <td rowspan="5">{{ $monitoringTren->nama_pemda }}</td>
                 @endif
                 <td>{{ $monitoringTren->tahun }}</td>
-                <td class="text-end">{{ number_format($monitoringTren->total_alokasi, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($monitoringTren->total_penyaluran, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($monitoringTren->total_anggaran, 2, ',', '.') }}</td>
-                <td class="text-end">{{ number_format($monitoringTren->total_realisasi, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringTren->total_alokasi, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringTren->total_penyaluran, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringTren->total_anggaran, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringTren->total_realisasi, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ route('monitoringTrens.show', $monitoringTren->id) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ route('monitoringTrens.show', $monitoringTren->id) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

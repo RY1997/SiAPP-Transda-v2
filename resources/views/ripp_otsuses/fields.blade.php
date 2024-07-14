@@ -3,7 +3,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Item Ripp Field -->
@@ -11,7 +11,7 @@
     {!! Form::label('item_ripp', 'Pernyataan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::textarea('item_ripp', null, ['class' => 'form-control bg-light', 'rows' => 3, 'readonly']) !!}
+    {!! Form::textarea('item_ripp', null, ['class' => 'form-control', 'rows' => 3, 'readonly']) !!}
 </div>
 
 <!-- Uraian Ripp Field -->

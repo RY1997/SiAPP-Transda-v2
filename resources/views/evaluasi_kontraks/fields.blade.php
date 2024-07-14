@@ -4,7 +4,7 @@
 </div>
 <div class="form-group col-sm-9 mb-3">
     @if (!empty($evaluasiKontrak))
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
     @else
     <input id='nama_pemda' name="nama_pemda" class="form-control" value="{{ $suratTugas->nama_pemda }}" readonly />
     @endif
@@ -16,7 +16,7 @@
 </div>
 <div class="form-group col-sm-9 mb-3">
     @if (!empty($evaluasiKontrak))
-    {!! Form::text('tahun', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
     @else
     <input id='tahun' name="tahun" class="form-control" value="{{ $tahun }}" readonly />
     @endif
@@ -28,7 +28,7 @@
 </div>
 <div class="form-group col-sm-9 mb-3">
     @if (!empty($evaluasiKontrak))
-    {!! Form::text('jenis_tkd', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('jenis_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
     @else
     <input id="jenis_tkd" name="jenis_tkd" class="form-control" value="{{ session('jenis_tkd') }}" readonly />
     @endif
@@ -141,7 +141,7 @@
     {!! Form::label('nomor_kontrak', 'Nomor Kontrak') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nomor_kontrak', null, ['class' => 'form-control bg-light','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    {!! Form::text('nomor_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
 <!-- Tanggal Kontrak Field -->
@@ -149,7 +149,7 @@
     {!! Form::label('tanggal_kontrak', 'Tanggal Kontrak') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tanggal_kontrak', null, ['class' => 'form-control bg-light','id'=>'tanggal_kontrak', 'readonly']) !!}
+    {!! Form::text('tanggal_kontrak', null, ['class' => 'form-control','id'=>'tanggal_kontrak', 'readonly']) !!}
 </div>
 
 <!-- Uraian Kontrak Field -->
@@ -157,7 +157,7 @@
     {!! Form::label('uraian_kontrak', 'Uraian Kontrak') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::textarea('uraian_kontrak', null, ['class' => 'form-control bg-light', 'rows' => '3', 'readonly']) !!}
+    {!! Form::textarea('uraian_kontrak', null, ['class' => 'form-control', 'rows' => '3', 'readonly']) !!}
 </div>
 
 <!-- Masa Kontrak Field -->
@@ -213,7 +213,7 @@
     {!! Form::label('nilai_kontrak', 'Nilai Kontrak') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('nilai_kontrak', null, ['class' => 'form-control bg-light', 'step' => '0.01', 'readonly']) !!}
+    {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01', 'readonly']) !!}
 </div>
 
 <!-- Sisa Nilai Kontrak Field -->
@@ -256,8 +256,8 @@
 </div>
 <div class="form-group col-sm-9 mb-3">
     <div class="table-responsive card mb-0">
-        <table id="realisasiBast" class="table small text-center align-middle m-0">
-            <thead class="table-info">
+        <table id="realisasiBast" class="table text-center m-0">
+            <thead class="thead-light">
                 <tr>
                     <th>Target Kontrak</th>
                     <th>Realisasi</th>
@@ -266,9 +266,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{!! Form::number('target_output', null, ['class' => 'form-control bg-light', 'readonly']) !!}</td>
+                    <td>{!! Form::number('target_output', null, ['class' => 'form-control', 'readonly']) !!}</td>
                     <td>{!! Form::number('realisasi_bast', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('persen_fisik', null, ['class' => 'form-control bg-light', 'readonly']) !!}</td>
+                    <td>{!! Form::number('persen_fisik', null, ['class' => 'form-control', 'readonly']) !!}</td>
                 </tr>
             </tbody>
         </table>
@@ -299,8 +299,8 @@
 </div>
 <div class="form-group col-sm-9 mb-3">
     <div class="table-responsive card mb-0">
-        <table id="realisasiCapaian" class="table small text-center align-middle m-0">
-            <thead class="table-info">
+        <table id="realisasiCapaian" class="table text-center m-0">
+            <thead class="thead-light">
                 <tr>
                     <th>Uraian</th>
                     <th>Menurut OMSPAN</th>
@@ -342,8 +342,8 @@
 </div>
 <div class="form-group col-sm-9 mb-3">
     <div class="table-responsive card mb-0">
-        <table id="permasalahanPelaksanaan" class="table small text-center align-middle m-0">
-            <thead class="table-info">
+        <table id="permasalahanPelaksanaan" class="table text-center m-0">
+            <thead class="thead-light">
                 <tr>
                     <th>#</th>
                     <th>Kode Permasalahan</th>
@@ -410,8 +410,8 @@
 </div>
 <div class="form-group col-sm-9 mb-3">
     <div class="table-responsive card mb-0">
-        <table id="permasalahanPemanfaatan" class="table small text-center align-middle m-0">
-            <thead class="table-info">
+        <table id="permasalahanPemanfaatan" class="table text-center m-0">
+            <thead class="thead-light">
                 <tr>
                     <th>#</th>
                     <th>Kode Permasalahan</th>
