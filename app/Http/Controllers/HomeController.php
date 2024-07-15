@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EvaluasiKontrak;
 use App\Models\MonitoringAlokasi;
 use App\Models\MonitoringApbd;
+use App\Models\MonitoringPenggunaan;
+use App\Models\MonitoringPenyaluran;
+use App\Models\ParameterTkd;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,9 +33,26 @@ class HomeController extends Controller
             ->where('tahun', '2023')
             ->groupBy('kode_pwk', 'tahun')
             ->get([\DB::raw('SUM(alokasi_tkd) AS sum_alokasi')]);
+        
+        $totalAlokasis = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'))->selectRaw('tahun , SUM(alokasi_tkd) AS sum_alokasi')->groupBy('tahun')->groupBy('bidang_tkd')->get();
+        $totalPenyalurans = MonitoringPenyaluran::where('jenis_tkd', session('jenis_tkd'))->selectRaw('tahun , SUM(penyaluran_tkd) AS sum_penyaluran')->groupBy('tahun')->get();
+        $totalPenggunaans = MonitoringPenggunaan::where('jenis_tkd', session('jenis_tkd'))->selectRaw('tahun , SUM(anggaran_tkd) AS sum_penganggaran , SUM(realisasi_tkd) AS sum_penggunaan')->groupBy('tahun')->get();
+        $apbds = MonitoringApbd::selectRaw('tahun , SUM(pendapatan_pad) AS sum_pad')->groupBy('tahun')->get();
+
+        $bidangTkds = ParameterTkd::where('jenis_tkd', session('jenis_tkd'))->get();
+
+        $evaluasiKontraks = EvaluasiKontrak::where('jenis_tkd', session('jenis_tkd'))->get();
 
         // dd($data['anggaran_aceh']);
-        return view('home');
+        return view('home')->with([
+            'data' => $data,
+            'totalAlokasis' => $totalAlokasis,
+            'totalPenyalurans' => $totalPenyalurans,
+            'totalPenggunaans' => $totalPenggunaans,
+            'apbds' => $apbds,
+            'bidangTkds' => $bidangTkds,
+            'evaluasiKontraks' => $evaluasiKontraks,
+        ]);
     }
 
     public function comboChartData()
