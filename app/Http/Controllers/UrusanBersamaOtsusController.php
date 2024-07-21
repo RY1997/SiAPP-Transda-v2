@@ -20,6 +20,7 @@ class UrusanBersamaOtsusController extends AppBaseController
 
     public function __construct(UrusanBersamaOtsusRepository $urusanBersamaOtsusRepo)
     {
+        $this->middleware('auth');
         $this->urusanBersamaOtsusRepository = $urusanBersamaOtsusRepo;
     }
 

@@ -21,6 +21,7 @@ class MonitoringPenggunaanController extends AppBaseController
 
     public function __construct(MonitoringPenggunaanRepository $monitoringPenggunaanRepo)
     {
+        $this->middleware('auth');
         $this->monitoringPenggunaanRepository = $monitoringPenggunaanRepo;
     }
 

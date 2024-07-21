@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('page_title')
-Pelaksanaan Fisik
+Pelaksanaan Non Fisik
 @endpush
 
 @section('header')
@@ -10,14 +10,14 @@ Pelaksanaan Fisik
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark bg-white">
                 <li class="breadcrumb-item"><a href="/home"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="{{ route('evaluasiKontraks.index') }}">Pelaksanaan Fisik</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('evaluasiNonfisiks.index') }}">Pelaksanaan Non Fisik</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $suratTugas->nama_pemda }} {{ $tahun }}</li>
             </ol>
         </nav>
     </div>
     <div class="col-lg-4 col-5 text-right">
-        <a href="{{ route('evaluasiKontraks.index') }}" class="btn btn-danger">Kembali</a>
-        <a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$tahun.'/create') }}" class="btn btn-default">Tambah Pekerjaan</a>
+        <a href="{{ route('evaluasiNonfisiks.index') }}" class="btn btn-danger">Kembali</a>
+        <a href="{{ url('evaluasiNonfisiks/'.$suratTugas->id.'/'.$tahun.'/create') }}" class="btn btn-default">Tambah Kegiatan</a>
     </div>
 </div>
 @endsection
@@ -52,7 +52,7 @@ Pelaksanaan Fisik
                     <input type="text" class="form-control" name="jenis_tkd" id="jenis_tkd" value="{{ session('jenis_tkd') }}" readonly disabled />
                 </div>
                 <div class="col-sm-12 mb-3">
-                    @include('evaluasi_kontraks.show_table')
+                    @include('evaluasi_Nonfisiks.show_table')
                 </div>
             </div>
         </div>

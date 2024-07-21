@@ -68,6 +68,10 @@ Route::resource('evaluasiKontraks', App\Http\Controllers\EvaluasiKontrakControll
 Route::get('evaluasiKontraks/{st_id}/{tahun}', [App\Http\Controllers\EvaluasiKontrakController::class, 'show']);
 Route::get('evaluasiKontraks/{st_id}/{tahun}/create', [App\Http\Controllers\EvaluasiKontrakController::class, 'create']);
 
+Route::resource('evaluasiNonfisiks', App\Http\Controllers\EvaluasiNonfisikController::class);
+Route::get('evaluasiNonfisiks/{st_id}/{tahun}', [App\Http\Controllers\EvaluasiNonfisikController::class, 'show']);
+Route::get('evaluasiNonfisiks/{st_id}/{tahun}/create', [App\Http\Controllers\EvaluasiNonfisikController::class, 'create']);
+
 
 Route::resource('evaluasiIndikators', App\Http\Controllers\EvaluasiIndikatorController::class);
 

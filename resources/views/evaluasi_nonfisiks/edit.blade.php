@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('page_title')
-Tambah Pengujian Fisik
+Ubah Pengujian Non Fisik
 @endpush
 
 @section('header')
@@ -10,14 +10,14 @@ Tambah Pengujian Fisik
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark bg-white">
                 <li class="breadcrumb-item"><a href="/home"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="{{ route('evaluasiKontraks.index') }}">Pelaksanaan Fisik</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$tahun) }}">{{ $suratTugas->nama_pemda }} {{ $tahun }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Tambah Pengujian</li>
+                <li class="breadcrumb-item"><a href="{{ route('evaluasiNonfisiks.index') }}">Pelaksanaan Kontrak</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('evaluasiNonfisiks/'.$suratTugas->id.'/'.$evaluasiNonfisik->tahun) }}">{{ $suratTugas->nama_pemda }} {{ $evaluasiNonfisik->tahun }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Ubah Pengujian</li>
             </ol>
         </nav>
     </div>
     <div class="col-lg-4 col-5 text-right">
-        <a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$tahun) }}" class="btn btn-danger">Kembali</a>
+        <a href="{{ url('evaluasiNonfisiks/'.$suratTugas->id.'/'.$evaluasiNonfisik->tahun) }}" class="btn btn-danger">Kembali</a>
     </div>
 </div>
 @endsection
@@ -26,15 +26,15 @@ Tambah Pengujian Fisik
 <div class="content">
     @include('adminlte-templates::common.errors')
     <div class="card">
-        {!! Form::open(['route' => 'evaluasiKontraks.store']) !!}
+        {!! Form::model($evaluasiNonfisik, ['route' => ['evaluasiNonfisiks.update', $evaluasiNonfisik->id], 'method' => 'patch']) !!}
         <div class="card-body">
             <div class="row">
-                @include('evaluasi_kontraks.fields')
+                @include('evaluasi_Nonfisiks.fields')
             </div>
         </div>
         <div class="card-footer text-right">
             {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
-            <a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$tahun) }}" class="btn btn-danger">Batal</a>
+            <a href="{{ url('evaluasiNonfisiks/'.$suratTugas->id.'/'.$evaluasiNonfisik->tahun) }}" class="btn btn-danger">Batal</a>
         </div>
         {!! Form::close() !!}
     </div>

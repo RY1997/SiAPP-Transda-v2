@@ -151,6 +151,11 @@ class SuratTugas extends Model
         return $this->hasMany(\App\Models\EvaluasiKontrak::class, 'nama_pemda', 'nama_pemda');
     }
 
+    public function nonfisik()
+    {
+        return $this->hasMany(\App\Models\EvaluasiNonfisik::class, 'nama_pemda', 'nama_pemda');
+    }
+
     public function silpa()
     {
         return $this->hasMany(\App\Models\SilpaOtsus::class, 'nama_pemda', 'nama_pemda');

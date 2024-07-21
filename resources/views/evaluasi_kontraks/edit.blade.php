@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('page_title')
-Sampel Kontrak
+Ubah Pengujian Fisik
 @endpush
 
 @section('header')
@@ -10,9 +10,9 @@ Sampel Kontrak
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark bg-white">
                 <li class="breadcrumb-item"><a href="/home"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="{{ route('evaluasiKontraks.index') }}">Pelaksanaan Kontrak</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('evaluasiKontraks.index') }}">Pelaksanaan Fisik</a></li>
                 <li class="breadcrumb-item"><a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$evaluasiKontrak->tahun) }}">{{ $suratTugas->nama_pemda }} {{ $evaluasiKontrak->tahun }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Pengujian</li>
+                <li class="breadcrumb-item active" aria-current="page">Ubah Pengujian</li>
             </ol>
         </nav>
     </div>
@@ -33,20 +33,8 @@ Sampel Kontrak
             </div>
         </div>
         <div class="card-footer text-right">
-            @if ($step == 'pengujian')
-            {!! Form::submit('Selesai', ['class' => 'btn btn-primary']) !!}
-            @else
-            {!! Form::submit('Selanjutnya', ['class' => 'btn btn-primary']) !!}
-            @endif
-            @if ($step == 'data')
+            {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
             <a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$evaluasiKontrak->tahun) }}" class="btn btn-danger">Batal</a>
-            @elseif ($step == 'pelaksanaan')
-            <a href="?step=data" class="btn btn-danger">Sebelumnya</a>
-            @elseif ($step == 'penyelesaian')
-            <a href="?step=pelaksanaan" class="btn btn-danger ">Sebelumnya</a>
-            @elseif ($step == 'pengujian')
-            <a href="?step=penyelesaian" class="btn btn-danger">Sebelumnya</a>
-            @endif
         </div>
         {!! Form::close() !!}
     </div>

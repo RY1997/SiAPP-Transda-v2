@@ -18,6 +18,7 @@ class ParameterLaporanController extends AppBaseController
 
     public function __construct(ParameterLaporanRepository $parameterLaporanRepo)
     {
+        $this->middleware('auth');
         $this->parameterLaporanRepository = $parameterLaporanRepo;
     }
 
@@ -30,7 +31,7 @@ class ParameterLaporanController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $parameterLaporans = ParameterLaporan::orderBy('jenis_tkd')->paginate(20);
+        $parameterLaporans = ParameterLaporan::orderBy('jenis_tkd')->orderBy('tahun_laporan')->paginate(20);
 
         return view('parameter_laporans.index')
             ->with('parameterLaporans', $parameterLaporans);

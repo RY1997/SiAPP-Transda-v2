@@ -20,6 +20,7 @@ class MonitoringApbdController extends AppBaseController
 
     public function __construct(MonitoringApbdRepository $monitoringApbdRepo)
     {
+        $this->middleware('auth');
         $this->monitoringApbdRepository = $monitoringApbdRepo;
     }
 

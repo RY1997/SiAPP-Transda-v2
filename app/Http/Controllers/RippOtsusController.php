@@ -19,6 +19,7 @@ class RippOtsusController extends AppBaseController
 
     public function __construct(RippOtsusRepository $rippOtsusRepo)
     {
+        $this->middleware('auth');
         $this->rippOtsusRepository = $rippOtsusRepo;
     }
 

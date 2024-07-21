@@ -21,6 +21,7 @@ class EvaluasiIndikatorController extends AppBaseController
 
     public function __construct(EvaluasiIndikatorRepository $evaluasiIndikatorRepo)
     {
+        $this->middleware('auth');
         $this->evaluasiIndikatorRepository = $evaluasiIndikatorRepo;
     }
 

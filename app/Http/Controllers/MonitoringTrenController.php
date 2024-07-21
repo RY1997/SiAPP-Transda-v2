@@ -23,6 +23,7 @@ class MonitoringTrenController extends AppBaseController
 
     public function __construct(MonitoringAlokasiRepository $monitoringAlokasiRepo)
     {
+        $this->middleware('auth');
         $this->monitoringAlokasiRepository = $monitoringAlokasiRepo;
     }
 
@@ -111,6 +112,21 @@ class MonitoringTrenController extends AppBaseController
                 ['tahap_salur' => 'Tahap II'],
                 ['tahap_salur' => 'Tahap III'],
             ];
+        } elseif (session('jenis_tkd') == 'Dana Alokasi Umum') {
+            $tahap = [
+                ['tahap_salur' => 'Bulan Januari'],
+                ['tahap_salur' => 'Bulan Februari'],
+                ['tahap_salur' => 'Bulan Maret'],
+                ['tahap_salur' => 'Bulan April'],
+                ['tahap_salur' => 'Bulan Mei'],
+                ['tahap_salur' => 'Bulan Juni'],
+                ['tahap_salur' => 'Bulan Juli'],
+                ['tahap_salur' => 'Bulan Agustus'],
+                ['tahap_salur' => 'Bulan September'],
+                ['tahap_salur' => 'Bulan Oktober'],
+                ['tahap_salur' => 'Bulan November'],
+                ['tahap_salur' => 'Bulan Desember'],
+            ];
         }
 
         $bidang = ParameterTkd::where('jenis_tkd', session('jenis_tkd'))->get();
@@ -125,9 +141,11 @@ class MonitoringTrenController extends AppBaseController
             ]);
         }
 
-        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('tipe_tkd')->get();
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('tipe_tkd');
+        $tipeAlokasis = $monitoringAlokasis->groupBy('tipe_tkd')->get();
+        $monitoringAlokasis = $monitoringAlokasis->get();
 
-        foreach ($monitoringAlokasis as $alokasi) {
+        foreach ($tipeAlokasis as $alokasi) {
             foreach ($bidang as $item) {
                 MonitoringPenggunaan::updateOrCreate([
                     'kode_pwk' => $pemda->kode_pwk,
@@ -139,7 +157,7 @@ class MonitoringTrenController extends AppBaseController
                 ]);
             }
         }
-                
+
         $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('tahap_salur')->get();
         $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('bidang_tkd')->get();
 

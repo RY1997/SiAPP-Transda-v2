@@ -18,6 +18,7 @@ class ParameterIndikatorController extends AppBaseController
 
     public function __construct(ParameterIndikatorRepository $parameterIndikatorRepo)
     {
+        $this->middleware('auth');
         $this->parameterIndikatorRepository = $parameterIndikatorRepo;
     }
 

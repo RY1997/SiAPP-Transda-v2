@@ -1,5 +1,5 @@
 <div class="col-sm-12 mb-3">
-    <h5>A. Data Kontrak</h5>
+    <h5>A. Data Kegiatan Non Fisik</h5>
 </div>
 
 <!-- Nama Pemda Field -->
@@ -7,7 +7,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    @if (!empty($evaluasiKontrak))
+    @if (!empty($evaluasiNonfisik))
     {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
     @else
     <input id='nama_pemda' name="nama_pemda" class="form-control" value="{{ $suratTugas->nama_pemda }}" readonly />
@@ -19,7 +19,7 @@
     {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    @if (!empty($evaluasiKontrak))
+    @if (!empty($evaluasiNonfisik))
     {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
     @else
     <input id='tahun' name="tahun" class="form-control" value="{{ $tahun }}" readonly />
@@ -31,32 +31,16 @@
     {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    @if (!empty($evaluasiKontrak))
+    @if (!empty($evaluasiNonfisik))
     {!! Form::text('jenis_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
     @else
     <input id="jenis_tkd" name="jenis_tkd" class="form-control" value="{{ session('jenis_tkd') }}" readonly />
     @endif
 </div>
 
-<!-- Nomor Kontrak Field -->
-<div class="form-group col-sm-3 mb-3">
-    {!! Form::label('nomor_kontrak', 'Nomor Kontrak') !!}
-</div>
-<div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nomor_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
-<!-- Tanggal Kontrak Field -->
-<div class="form-group col-sm-3 mb-3">
-    {!! Form::label('tanggal_kontrak', 'Tanggal Kontrak') !!}
-</div>
-<div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tanggal_kontrak" value="{{ !empty($evaluasiKontrak) && $evaluasiKontrak->tanggal_kontrak != NULL ? date_format($evaluasiKontrak->tanggal_kontrak, 'Y-m-d') : '' }}">
-</div>
-
 <!-- Uraian Kontrak Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('uraian_kontrak', 'Uraian Pekerjaan') !!}
+    {!! Form::label('uraian_kontrak', 'Uraian Non Fisik') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     {!! Form::textarea('uraian_kontrak', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -102,37 +86,29 @@
     {!! Form::text('satuan_output', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
-<!-- Jenis Kontrak Field -->
-<div class="form-group col-sm-3 mb-3">
-    {!! Form::label('jenis_kontrak', 'Jenis Kontrak') !!}
-</div>
-<div class="form-group col-sm-9 mb-3">
-    {!! Form::text('jenis_kontrak', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
 <!-- Nilai Kontrak Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('nilai_kontrak', 'Nilai Kontrak') !!}
+    {!! Form::label('nilai_kontrak', 'Anggaran Kegiatan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01']) !!}
 </div>
 
 <div class="col-sm-12 mb-3">
-    <h5>B. Capaian Kontrak</h5>
+    <h5>B. Capaian Kegiatan Non Fisik</h5>
 </div>
 
 <!-- Realisasi Bast Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('realisasi_bast', 'Realisasi BAST') !!}
+    {!! Form::label('realisasi_bast', 'Realisasi Kegiatan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     <div class="table-responsive card mb-0">
         <table id="realisasiBast" class="table text-center m-0">
             <thead class="thead-light">
                 <tr>
-                    <th>Target Kontrak</th>
-                    <th>Realisasi</th>
+                    <th>Target Output</th>
+                    <th>Realisasi Output</th>
                     <th>%</th>
                 </tr>
             </thead>
@@ -149,7 +125,7 @@
 
 <!-- Penyebab Realisasi Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('penyebab_realisasi', 'Penyebab Realisasi') !!}
+    {!! Form::label('penyebab_realisasi', 'Penyebab Realisasi Output Rendah') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     {!! Form::textarea('penyebab_realisasi', null, ['class' => 'form-control', 'rows' => '3']) !!}
@@ -191,13 +167,13 @@
                 <tr>
                     <td>Capaian Fisik (%)</td>
                     <td>
-                        @if (!empty($evaluasiKontrak))
-                        <input type="text" class="form-control" name="fisik_omspan" value="{{ $evaluasiKontrak->target_omspan > 0 ? number_format($evaluasiKontrak->realisasi_omspan / $evaluasiKontrak->target_omspan * 100, 2) : '' }}" readonly disabled>
+                        @if (!empty($evaluasiNonfisik))
+                        <input type="text" class="form-control" name="fisik_omspan" value="{{ $evaluasiNonfisik->target_omspan > 0 ? number_format($evaluasiNonfisik->realisasi_omspan / $evaluasiNonfisik->target_omspan * 100, 2) : '' }}" readonly disabled>
                         @endif
                     </td>
                     <td>
-                        @if (!empty($evaluasiKontrak))
-                        <input type="text" class="form-control" name="fisik_auditor" value="{{ $evaluasiKontrak->target_auditor > 0 ? number_format($evaluasiKontrak->realisasi_auditor / $evaluasiKontrak->target_auditor * 100, 2) : '' }}" readonly disabled>
+                        @if (!empty($evaluasiNonfisik))
+                        <input type="text" class="form-control" name="fisik_auditor" value="{{ $evaluasiNonfisik->target_auditor > 0 ? number_format($evaluasiNonfisik->realisasi_auditor / $evaluasiNonfisik->target_auditor * 100, 2) : '' }}" readonly disabled>
                         @endif
                     </td>
                 </tr>
@@ -211,24 +187,16 @@
     </div>
 </div>
 
-<!-- Sisa Nilai Kontrak Field -->
-<div class="form-group col-sm-3 mb-3">
-    {!! Form::label('sisa_nilai_kontrak', 'Sisa Nilai Kontrak') !!}
-</div>
-<div class="form-group col-sm-9 mb-3">
-    {!! Form::number('sisa_nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01']) !!}
-</div>
-
 <!-- Penyebab Pembayaran Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('penyebab_pembayaran', 'Penyebab Pembayaran') !!}
+    {!! Form::label('penyebab_pembayaran', 'Penyebab Realisasi Pembayaran Rendah') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     {!! Form::textarea('penyebab_pembayaran', null, ['class' => 'form-control', 'rows' => '3']) !!}
 </div>
 
 <div class="col-sm-12 mb-3">
-    <h5>C. Pengujian Kontrak</h5>
+    <h5>C. Pengujian Kegiatan Non Fisik</h5>
 </div>
 
 <div class="form-group col-sm-3 mb-3">

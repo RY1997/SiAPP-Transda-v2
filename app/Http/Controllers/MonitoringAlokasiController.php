@@ -18,6 +18,7 @@ class MonitoringAlokasiController extends AppBaseController
 
     public function __construct(MonitoringAlokasiRepository $monitoringAlokasiRepo)
     {
+        $this->middleware('auth');
         $this->monitoringAlokasiRepository = $monitoringAlokasiRepo;
     }
 

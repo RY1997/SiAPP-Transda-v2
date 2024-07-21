@@ -20,6 +20,7 @@ class PelaporanController extends AppBaseController
 
     public function __construct(PelaporanRepository $pelaporanRepo)
     {
+        $this->middleware('auth');
         $this->pelaporanRepository = $pelaporanRepo;
     }
 

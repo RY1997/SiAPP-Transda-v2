@@ -18,6 +18,7 @@ class ParameterTkdController extends AppBaseController
 
     public function __construct(ParameterTkdRepository $parameterTkdRepo)
     {
+        $this->middleware('auth');
         $this->parameterTkdRepository = $parameterTkdRepo;
     }
 

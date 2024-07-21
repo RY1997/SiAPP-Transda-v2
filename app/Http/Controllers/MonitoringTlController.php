@@ -20,6 +20,7 @@ class MonitoringTlController extends AppBaseController
 
     public function __construct(MonitoringTlRepository $monitoringTlRepo)
     {
+        $this->middleware('auth');
         $this->monitoringTlRepository = $monitoringTlRepo;
     }
 

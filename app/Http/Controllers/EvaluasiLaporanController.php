@@ -21,6 +21,7 @@ class EvaluasiLaporanController extends AppBaseController
 
     public function __construct(EvaluasiLaporanRepository $evaluasiLaporanRepo)
     {
+        $this->middleware('auth');
         $this->evaluasiLaporanRepository = $evaluasiLaporanRepo;
     }
 
@@ -32,20 +33,22 @@ class EvaluasiLaporanController extends AppBaseController
      * @return Response
      */
     public function index(Request $request)
-    {        
-        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->first();
+    {
+        $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi')->get();
         $parameterLaporan = ParameterLaporan::where('jenis_tkd', session('jenis_tkd'))->get();
 
-        foreach ($parameterLaporan as $item) {
-            $evaluasiLaporan = EvaluasiLaporan::updateOrCreate([
-                'tahun' => $item->tahun_laporan,
-                'kode_pwk' => $suratTugas->kode_pwk,
-                'nama_pemda' => $suratTugas->nama_pemda,
-                'jenis_tkd' => $item->jenis_tkd,
-                'bidang_tkd' => $item->bidang_tkd,
-                'nama_laporan' => $item->nama_laporan,
-                'batas_penyampaian' => $item->batas_penyampaian
-            ]);
+        foreach ($suratTugas as $st) {
+            foreach ($parameterLaporan as $item) {
+                EvaluasiLaporan::updateOrCreate([
+                    'tahun' => $item->tahun_laporan,
+                    'kode_pwk' => $st->kode_pwk,
+                    'nama_pemda' => $st->nama_pemda,
+                    'jenis_tkd' => $item->jenis_tkd,
+                    'bidang_tkd' => $item->bidang_tkd,
+                    'nama_laporan' => $item->nama_laporan,
+                    'batas_penyampaian' => $item->batas_penyampaian
+                ]);
+            }
         }
 
         if (Auth::user()->role == 'Admin') {
@@ -54,7 +57,7 @@ class EvaluasiLaporanController extends AppBaseController
             $evaluasiLaporans = EvaluasiLaporan::where('kode_pwk', Auth::user()->kode_pwk);
         }
 
-        $evaluasiLaporans = $evaluasiLaporans->has('st')->orderBy('nama_pemda')->orderBy('bidang_tkd')->orderBy('tahun')->paginate(20);
+        $evaluasiLaporans = $evaluasiLaporans->has('st')->where('jenis_tkd', session('jenis_tkd'))->orderBy('nama_pemda')->orderBy('bidang_tkd')->orderBy('tahun')->paginate(20);
 
         return view('evaluasi_laporans.index')
             ->with('evaluasiLaporans', $evaluasiLaporans);

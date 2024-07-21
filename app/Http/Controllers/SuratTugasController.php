@@ -28,6 +28,7 @@ class SuratTugasController extends AppBaseController
 
     public function __construct(SuratTugasRepository $suratTugasRepo)
     {
+        $this->middleware('auth');
         $this->suratTugasRepository = $suratTugasRepo;
     }
 

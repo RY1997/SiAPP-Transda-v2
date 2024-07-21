@@ -19,6 +19,7 @@ class MonitoringPenyaluranController extends AppBaseController
 
     public function __construct(MonitoringPenyaluranRepository $monitoringPenyaluranRepo)
     {
+        $this->middleware('auth');
         $this->monitoringPenyaluranRepository = $monitoringPenyaluranRepo;
     }
 

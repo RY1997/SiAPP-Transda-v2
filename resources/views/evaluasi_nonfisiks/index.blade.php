@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('page_title')
-Evaluasi Pekerjaan Fisik
+Evaluasi Pelaksanaan Kegiatan Non Fisik
 @endpush
 
 @section('header')
@@ -10,7 +10,7 @@ Evaluasi Pekerjaan Fisik
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark bg-white">
                 <li class="breadcrumb-item"><a href="/home"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item active" aria-current="page">Pelaksanaan Fisik</li>
+                <li class="breadcrumb-item active" aria-current="page">Pelaksanaan Non Fisik</li>
             </ol>
         </nav>
     </div>
@@ -32,7 +32,7 @@ Evaluasi Pekerjaan Fisik
     @include('flash::message')
     <div class="card">
         <div class="card-body p-0">
-            @include('evaluasi_kontraks.table')
+            @include('evaluasi_nonfisiks.table')
         </div>
     </div>
 </div>

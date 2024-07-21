@@ -58,7 +58,7 @@
 
 <!-- Penyebab Kurang Guna Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('penyebab_kurang_guna', 'Penyebab Realisasi Rendah') !!}
+    {!! Form::label('penyebab_kurang_guna', 'Penyebab Realisasi Rendah (<75%)') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     {!! Form::textarea('penyebab_kurang_guna', null, ['class' => 'form-control', 'rows' => '3']) !!}

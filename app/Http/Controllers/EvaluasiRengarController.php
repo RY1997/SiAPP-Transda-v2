@@ -20,6 +20,7 @@ class EvaluasiRengarController extends AppBaseController
 
     public function __construct(EvaluasiRengarRepository $evaluasiRengarRepo)
     {
+        $this->middleware('auth');
         $this->evaluasiRengarRepository = $evaluasiRengarRepo;
     }
 

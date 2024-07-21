@@ -19,6 +19,8 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/nucleo/css/nucleo.css" type="text/css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-bs4/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
 
@@ -28,7 +30,7 @@
         .table th,
         .table td {
             word-wrap: break-word;
-            white-space: normal;            
+            white-space: normal;
         }
     </style>
 

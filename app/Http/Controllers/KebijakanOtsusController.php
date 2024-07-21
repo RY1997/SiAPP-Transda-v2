@@ -20,6 +20,7 @@ class KebijakanOtsusController extends AppBaseController
 
     public function __construct(KebijakanOtsusRepository $kebijakanOtsusRepo)
     {
+        $this->middleware('auth');
         $this->kebijakanOtsusRepository = $kebijakanOtsusRepo;
     }
 

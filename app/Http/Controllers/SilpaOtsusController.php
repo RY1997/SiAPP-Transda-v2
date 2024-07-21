@@ -20,6 +20,7 @@ class SilpaOtsusController extends AppBaseController
 
     public function __construct(SilpaOtsusRepository $silpaOtsusRepo)
     {
+        $this->middleware('auth');
         $this->silpaOtsusRepository = $silpaOtsusRepo;
     }
 

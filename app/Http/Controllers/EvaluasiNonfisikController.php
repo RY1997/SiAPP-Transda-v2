@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateEvaluasiKontrakRequest;
-use App\Http\Requests\UpdateEvaluasiKontrakRequest;
-use App\Repositories\EvaluasiKontrakRepository;
+use App\Http\Requests\CreateEvaluasiNonfisikRequest;
+use App\Http\Requests\UpdateEvaluasiNonfisikRequest;
+use App\Repositories\EvaluasiNonfisikRepository;
 use App\Http\Controllers\AppBaseController;
-use App\Models\EvaluasiKontrak;
+use App\Models\EvaluasiNonfisik;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
@@ -14,19 +14,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Response;
 
-class EvaluasiKontrakController extends AppBaseController
+class EvaluasiNonfisikController extends AppBaseController
 {
-    /** @var EvaluasiKontrakRepository $evaluasiKontrakRepository*/
-    private $evaluasiKontrakRepository;
+    /** @var EvaluasiNonfisikRepository $evaluasiNonfisikRepository*/
+    private $evaluasiNonfisikRepository;
 
-    public function __construct(EvaluasiKontrakRepository $evaluasiKontrakRepo)
+    public function __construct(EvaluasiNonfisikRepository $evaluasiNonfisikRepo)
     {
         $this->middleware('auth');
-        $this->evaluasiKontrakRepository = $evaluasiKontrakRepo;
+        $this->evaluasiNonfisikRepository = $evaluasiNonfisikRepo;
     }
 
     /**
-     * Display a listing of the EvaluasiKontrak.
+     * Display a listing of the EvaluasiNonfisik.
      *
      * @param Request $request
      *
@@ -42,45 +42,45 @@ class EvaluasiKontrakController extends AppBaseController
 
         $suratTugas = $suratTugas->where('jenis_tkd', session('jenis_tkd'))
             ->where('jenis_penugasan', 'Evaluasi')
-            ->withCount(['kontrak as kontrak2023' => function ($query) {
+            ->withCount(['nonfisik as nonfisik2023' => function ($query) {
                 $query->where('tahun', '2023');
             }])
-            ->withCount(['kontrak as kontrak2024' => function ($query) {
+            ->withCount(['nonfisik as nonfisik2024' => function ($query) {
                 $query->where('tahun', '2024');
             }])
             ->withSum([
-                'kontrak as nilai_kontrak2023' => function ($query) {
+                'nonfisik as nilai_nonfisik2023' => function ($query) {
                     $query->where('tahun', '2023')->where('jenis_tkd', session('jenis_tkd'));
                 }
             ], 'nilai_kontrak')
             ->withSum([
-                'kontrak as nilai_kontrak2024' => function ($query) {
+                'nonfisik as nilai_nonfisik2024' => function ($query) {
                     $query->where('tahun', '2024')->where('jenis_tkd', session('jenis_tkd'));
                 }
             ], 'nilai_kontrak')
             ->withSum([
-                'kontrak as nilai_masalah2023' => function ($query) {
+                'nonfisik as nilai_masalah2023' => function ($query) {
                     $query->select(DB::raw('SUM(masalah1 + masalah2 + masalah3 + masalah4 + masalah5 + masalah6 + masalah7 + masalah8) as total_masalah'))
                         ->where('tahun', '2023')
                         ->where('jenis_tkd', session('jenis_tkd'));
                 }
             ], 'total_masalah')
             ->withSum([
-                'kontrak as nilai_masalah2024' => function ($query) {
+                'nonfisik as nilai_masalah2024' => function ($query) {
                     $query->select(DB::raw('SUM(masalah1 + masalah2 + masalah3 + masalah4 + masalah5 + masalah6 + masalah7 + masalah8) as total_masalah'))
                         ->where('tahun', '2024')
                         ->where('jenis_tkd', session('jenis_tkd'));
                 }
             ], 'total_masalah')
             ->withSum([
-                'kontrak as nilai_manfaat2023' => function ($query) {
+                'nonfisik as nilai_manfaat2023' => function ($query) {
                     $query->select(DB::raw('SUM(manfaat1 + manfaat2 + manfaat3 + manfaat4 + manfaat5 + manfaat6 + manfaat7 + manfaat8) as total_manfaat'))
                         ->where('tahun', '2023')
                         ->where('jenis_tkd', session('jenis_tkd'));
                 }
             ], 'total_manfaat')
             ->withSum([
-                'kontrak as nilai_manfaat2024' => function ($query) {
+                'nonfisik as nilai_manfaat2024' => function ($query) {
                     $query->select(DB::raw('SUM(manfaat1 + manfaat2 + manfaat3 + manfaat4 + manfaat5 + manfaat6 + manfaat7 + manfaat8) as total_manfaat'))
                         ->where('tahun', '2024')
                         ->where('jenis_tkd', session('jenis_tkd'));
@@ -89,14 +89,14 @@ class EvaluasiKontrakController extends AppBaseController
             ->paginate(20);
 
 
-        return view('evaluasi_kontraks.index')
+        return view('evaluasi_nonfisiks.index')
             ->with([
                 'suratTugas' => $suratTugas
             ]);
     }
 
     /**
-     * Show the form for creating a new EvaluasiKontrak.
+     * Show the form for creating a new EvaluasiNonfisik.
      *
      * @return Response
      */
@@ -105,14 +105,14 @@ class EvaluasiKontrakController extends AppBaseController
 
         $suratTugas = SuratTugas::find($st_id);
 
-        // $evaluasiKontrak = EvaluasiKontrak::create([
+        // $evaluasiNonfisik = EvaluasiNonfisik::create([
         //     'kode_pwk' => $suratTugas->kode_pwk,
         //     'tahun' => $tahun,
         //     'nama_pemda' => $suratTugas->nama_pemda,
         //     'jenis_tkd' => $suratTugas->jenis_tkd
         // ]);
 
-        return view('evaluasi_kontraks.create')
+        return view('evaluasi_nonfisiks.create')
             ->with([
                 'suratTugas' => $suratTugas,
                 'tahun' => $tahun
@@ -120,25 +120,25 @@ class EvaluasiKontrakController extends AppBaseController
     }
 
     /**
-     * Store a newly created EvaluasiKontrak in storage.
+     * Store a newly created EvaluasiNonfisik in storage.
      *
-     * @param CreateEvaluasiKontrakRequest $request
+     * @param CreateEvaluasiNonfisikRequest $request
      *
      * @return Response
      */
-    public function store(CreateEvaluasiKontrakRequest $request)
+    public function store(CreateEvaluasiNonfisikRequest $request)
     {
         $input = $request->all();
 
-        $evaluasiKontrak = $this->evaluasiKontrakRepository->create($input);
+        $evaluasiNonfisik = $this->evaluasiNonfisikRepository->create($input);
 
-        Flash::success('Evaluasi Kontrak saved successfully.');
+        Flash::success('Evaluasi Non Fisik saved successfully.');
 
-        return redirect(route('evaluasiKontraks.index'));
+        return redirect(route('evaluasiNonfisiks.index'));
     }
 
     /**
-     * Display the specified EvaluasiKontrak.
+     * Display the specified EvaluasiNonfisik.
      *
      * @param int $id
      *
@@ -147,7 +147,7 @@ class EvaluasiKontrakController extends AppBaseController
     public function show($st_id, $tahun)
     {
         $suratTugas = SuratTugas::find($st_id);
-        $evaluasiKontraks = EvaluasiKontrak::where('nama_pemda', $suratTugas->nama_pemda)
+        $evaluasiNonfisiks = EvaluasiNonfisik::where('nama_pemda', $suratTugas->nama_pemda)
             ->where('tahun', $tahun)
             ->selectRaw('*, 
         COALESCE(masalah1, 0) + COALESCE(masalah2, 0) + COALESCE(masalah3, 0) + COALESCE(masalah4, 0) + COALESCE(masalah5, 0) + COALESCE(masalah6, 0) + COALESCE(masalah7, 0) + COALESCE(masalah8, 0) as nilai_masalah, 
@@ -155,11 +155,11 @@ class EvaluasiKontrakController extends AppBaseController
             ->paginate(20);
 
 
-        return view('evaluasi_kontraks.show')->with(['suratTugas' => $suratTugas, 'tahun' => $tahun, 'evaluasiKontraks' => $evaluasiKontraks]);
+        return view('evaluasi_nonfisiks.show')->with(['suratTugas' => $suratTugas, 'tahun' => $tahun, 'evaluasiNonfisiks' => $evaluasiNonfisiks]);
     }
 
     /**
-     * Show the form for editing the specified EvaluasiKontrak.
+     * Show the form for editing the specified EvaluasiNonfisik.
      *
      * @param int $id
      *
@@ -167,35 +167,35 @@ class EvaluasiKontrakController extends AppBaseController
      */
     public function edit($id, Request $request)
     {
-        $evaluasiKontrak = $this->evaluasiKontrakRepository->find($id);
-        $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('nama_pemda', $evaluasiKontrak->nama_pemda)->first();
+        $evaluasiNonfisik = $this->evaluasiNonfisikRepository->find($id);
+        $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('nama_pemda', $evaluasiNonfisik->nama_pemda)->first();
         $step = $request->step;
 
-        if (empty($evaluasiKontrak)) {
-            Flash::error('Evaluasi Kontrak not found');
-            return redirect(route('evaluasiKontraks.index'));
+        if (empty($evaluasiNonfisik)) {
+            Flash::error('Evaluasi Non Fisik not found');
+            return redirect(route('evaluasiNonfisiks.index'));
         }
 
-        return view('evaluasi_kontraks.edit')->with(['evaluasiKontrak' => $evaluasiKontrak, 'suratTugas' => $suratTugas, 'step' => $step]);
+        return view('evaluasi_nonfisiks.edit')->with(['evaluasiNonfisik' => $evaluasiNonfisik, 'suratTugas' => $suratTugas, 'step' => $step]);
     }
 
     /**
-     * Update the specified EvaluasiKontrak in storage.
+     * Update the specified EvaluasiNonfisik in storage.
      *
      * @param int $id
-     * @param UpdateEvaluasiKontrakRequest $request
+     * @param UpdateEvaluasiNonfisikRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateEvaluasiKontrakRequest $request)
+    public function update($id, UpdateEvaluasiNonfisikRequest $request)
     {
-        $evaluasiKontrak = $this->evaluasiKontrakRepository->find($id);
+        $evaluasiNonfisik = $this->evaluasiNonfisikRepository->find($id);
 
-        $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('nama_pemda', $evaluasiKontrak->nama_pemda)->first();
+        $suratTugas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->where('nama_pemda', $evaluasiNonfisik->nama_pemda)->first();
 
-        if (empty($evaluasiKontrak)) {
-            Flash::error('Evaluasi Kontrak not found');
-            return redirect(route('evaluasiKontraks.index'));
+        if (empty($evaluasiNonfisik)) {
+            Flash::error('Evaluasi Non Fisik not found');
+            return redirect(route('evaluasiNonfisiks.index'));
         }
 
         if ($request->target_omspan > 0) {
@@ -212,14 +212,14 @@ class EvaluasiKontrakController extends AppBaseController
         $requestData['fisik_omspan'] = $fisikOmspan;
         $requestData['fisik_auditor'] = $fisikAuditor;
 
-        $this->evaluasiKontrakRepository->update($requestData, $id);
+        $this->evaluasiNonfisikRepository->update($requestData, $id);
 
-        Flash::success('Evaluasi Kontrak updated successfully.');
-        return redirect(url('evaluasiKontraks/' . $suratTugas->id . '/' . $evaluasiKontrak->tahun));
+        Flash::success('Evaluasi Non Fisik updated successfully.');
+        return redirect(url('evaluasiNonfisiks/' . $suratTugas->id . '/' . $evaluasiNonfisik->tahun));
     }
 
     /**
-     * Remove the specified EvaluasiKontrak from storage.
+     * Remove the specified EvaluasiNonfisik from storage.
      *
      * @param int $id
      *
@@ -229,16 +229,16 @@ class EvaluasiKontrakController extends AppBaseController
      */
     public function destroy($id)
     {
-        $evaluasiKontrak = $this->evaluasiKontrakRepository->find($id);
+        $evaluasiNonfisik = $this->evaluasiNonfisikRepository->find($id);
 
-        if (empty($evaluasiKontrak)) {
-            Flash::error('Evaluasi Kontrak not found');
-            return redirect(route('evaluasiKontraks.index'));
+        if (empty($evaluasiNonfisik)) {
+            Flash::error('Evaluasi Non Fisik not found');
+            return redirect(route('evaluasiNonfisiks.index'));
         }
 
-        $this->evaluasiKontrakRepository->delete($id);
+        $this->evaluasiNonfisikRepository->delete($id);
 
-        Flash::success('Evaluasi Kontrak deleted successfully.');
+        Flash::success('Evaluasi Non Fisik deleted successfully.');
         return redirect()->back();
     }
 }
