@@ -29,7 +29,7 @@ Ubah Pengujian Non Fisik
         {!! Form::model($evaluasiNonfisik, ['route' => ['evaluasiNonfisiks.update', $evaluasiNonfisik->id], 'method' => 'patch']) !!}
         <div class="card-body">
             <div class="row">
-                @include('evaluasi_Nonfisiks.fields')
+                @include('evaluasi_nonfisiks.fields')
             </div>
         </div>
         <div class="card-footer text-right">

@@ -52,7 +52,7 @@ Pelaksanaan Non Fisik
                     <input type="text" class="form-control" name="jenis_tkd" id="jenis_tkd" value="{{ session('jenis_tkd') }}" readonly disabled />
                 </div>
                 <div class="col-sm-12 mb-3">
-                    @include('evaluasi_Nonfisiks.show_table')
+                    @include('evaluasi_nonfisiks.show_table')
                 </div>
             </div>
         </div>
