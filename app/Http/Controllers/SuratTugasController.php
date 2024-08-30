@@ -139,7 +139,16 @@ class SuratTugasController extends AppBaseController
             return redirect(route('suratTugas.index'));
         }
 
-        return view('surat_tugas.edit')->with('suratTugas', $suratTugas);
+        if (Auth::user()->role == 'Admin') {
+            $pemdas = DaftarPemda::all();
+        } else {
+            $pemdas = DaftarPemda::where('kode_pwk', Auth::user()->kode_pwk)->get();
+        }
+
+        return view('surat_tugas.edit')->with([
+            'suratTugas' => $suratTugas,
+            'pemdas' => $pemdas,
+        ]);
     }
 
     /**

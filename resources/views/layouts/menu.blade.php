@@ -218,7 +218,7 @@
 
 <ul class="navbar-nav mb-md-3">
     <li class="nav-item">
-        <a class="nav-link" href="https://drive.google.com/drive/folders/10duSsgmhvra1Nldl8qjpJqCldNsCTqUh?usp=share_link" target="_blank">
+        <a class="nav-link" href="https://bit.ly/ubedganteng" target="_blank">
             <i class="ri-question-line"></i>
             <span class="nav-link-text">Petunjuk Teknis</span>
         </a>

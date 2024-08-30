@@ -1,3 +1,17 @@
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('no_st', 'No Surat Tugas') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    <input type="text" class="form-control" name="no_st" value="{{ $pelaporan->st->no_st }}" readonly>
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('nama_penugasan', 'Nama Penugasan') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    <textarea class="form-control" name="nama_penugasan" rows="3" readonly>{{ $pelaporan->st->nama_penugasan }}</textarea>
+</div>
+
 <!-- No Laporan Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('no_laporan', 'No Laporan') !!}

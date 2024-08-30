@@ -12,13 +12,13 @@
                 <th rowspan="2" width="150">Nilai Target</th>
                 <th colspan="2">PAD</th>
                 <th colspan="2">TKD</th>
-                <th rowspan="2" colspan="3">Action</th>
+                <th rowspan="2" colspan="3" width="100">Action</th>
             </tr>
             <tr>
-                <th width="100">Unit Pemenuhan</th>
-                <th width="150">Nilai Pemenuhan</th>
-                <th width="100">Unit Pemenuhan</th>
-                <th width="150">Nilai Pemenuhan</th>
+                <th width="50">Unit Pemenuhan</th>
+                <th width="100">Nilai Pemenuhan</th>
+                <th width="50">Unit Pemenuhan</th>
+                <th width="100">Nilai Pemenuhan</th>
             </tr>
         </thead>
         <tbody>

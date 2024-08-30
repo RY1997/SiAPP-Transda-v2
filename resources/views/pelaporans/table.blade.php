@@ -24,7 +24,6 @@
                 <td>{{ $pelaporan->tgl_laporan->format('d M Y') }}</td>
                 <td>{{ $pelaporan->status_laporan }}</td>
                 <td width="120">
-                    {!! Form::open(['route' => ['pelaporans.destroy', $pelaporan->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         @if ($pelaporan->file_laporan != NULL)
                         <a href="{{ $pelaporan->file_laporan }}" class='btn btn-sm btn-success'>
@@ -34,9 +33,7 @@
                         <a href="{{ route('pelaporans.edit', [$pelaporan->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
-                    {!! Form::close() !!}
                 </td>
             </tr>
             @endforeach
