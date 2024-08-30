@@ -17,7 +17,7 @@ Pelaksanaan Fisik
     </div>
     <div class="col-lg-4 col-5 text-right">
         <a href="{{ route('evaluasiKontraks.index') }}" class="btn btn-danger">Kembali</a>
-        <a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$tahun.'/create') }}" class="btn btn-default">Tambah Pekerjaan</a>
+        <a href="{{ url('evaluasiKontraks/'.$suratTugas->id.'/'.$tahun.'/create') }}" class="btn btn-success">Tambah Pekerjaan</a>
     </div>
 </div>
 @endsection

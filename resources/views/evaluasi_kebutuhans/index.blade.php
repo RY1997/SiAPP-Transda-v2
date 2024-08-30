@@ -15,7 +15,7 @@ Evaluasi Kebutuhan dan Pendanaan
         </nav>
     </div>
     <div class="col-lg-4 col-5 text-right">
-        <a class="btn btn-default float-right"
+        <a class="btn btn-success float-right"
             href="{{ route('evaluasiKebutuhans.create') }}">
             Tambah
         </a>

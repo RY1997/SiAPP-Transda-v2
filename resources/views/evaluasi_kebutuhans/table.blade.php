@@ -61,7 +61,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="12">Surat Tugas belum diinput</td>
+                <td colspan="15">Surat Tugas belum diinput</td>
             </tr>
             @endif
         </tbody>

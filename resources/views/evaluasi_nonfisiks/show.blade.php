@@ -17,7 +17,7 @@ Pelaksanaan Non Fisik
     </div>
     <div class="col-lg-4 col-5 text-right">
         <a href="{{ route('evaluasiNonfisiks.index') }}" class="btn btn-danger">Kembali</a>
-        <a href="{{ url('evaluasiNonfisiks/'.$suratTugas->id.'/'.$tahun.'/create') }}" class="btn btn-default">Tambah Kegiatan</a>
+        <a href="{{ url('evaluasiNonfisiks/'.$suratTugas->id.'/'.$tahun.'/create') }}" class="btn btn-success">Tambah Kegiatan</a>
     </div>
 </div>
 @endsection
