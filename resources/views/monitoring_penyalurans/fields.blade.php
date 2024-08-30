@@ -62,6 +62,7 @@
     {!! Form::textarea('penyebab_tidak_tepat_waktu', null, ['class' => 'form-control', 'rows' => '2']) !!}
 </div>
 
+@if (session('jenis_tkd') == 'Dana Alokasi Umum')
 <!-- Penyaluran Tkd Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('potong_salur', 'Nilai Pemotongan Penyaluran') !!}
@@ -77,6 +78,7 @@
 <div class="form-group col-sm-9 mb-3">
     {!! Form::number('tunda_salur', null, ['class' => 'form-control', 'step' => '0.01']) !!}
 </div>
+@endif
 
 <!-- Tepat Jumlah Field -->
 <div class="form-group col-sm-3 mb-3">
