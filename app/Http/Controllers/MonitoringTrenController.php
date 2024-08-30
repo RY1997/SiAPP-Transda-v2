@@ -122,18 +122,18 @@ class MonitoringTrenController extends AppBaseController
             ];
         } elseif (session('jenis_tkd') == 'Dana Alokasi Umum') {
             $tahap = [
-                ['tahap_salur' => 'Bulan Januari'],
-                ['tahap_salur' => 'Bulan Februari'],
-                ['tahap_salur' => 'Bulan Maret'],
-                ['tahap_salur' => 'Bulan April'],
-                ['tahap_salur' => 'Bulan Mei'],
-                ['tahap_salur' => 'Bulan Juni'],
-                ['tahap_salur' => 'Bulan Juli'],
-                ['tahap_salur' => 'Bulan Agustus'],
-                ['tahap_salur' => 'Bulan September'],
-                ['tahap_salur' => 'Bulan Oktober'],
-                ['tahap_salur' => 'Bulan November'],
-                ['tahap_salur' => 'Bulan Desember'],
+                ['tahap_salur' => '1. Bulan Januari'],
+                ['tahap_salur' => '2. Bulan Februari'],
+                ['tahap_salur' => '3. Bulan Maret'],
+                ['tahap_salur' => '4. Bulan April'],
+                ['tahap_salur' => '5. Bulan Mei'],
+                ['tahap_salur' => '6. Bulan Juni'],
+                ['tahap_salur' => '7. Bulan Juli'],
+                ['tahap_salur' => '8. Bulan Agustus'],
+                ['tahap_salur' => '9. Bulan September'],
+                ['tahap_salur' => '10. Bulan Oktober'],
+                ['tahap_salur' => '11. Bulan November'],
+                ['tahap_salur' => '12. Bulan Desember'],
             ];
         }
 
@@ -166,7 +166,7 @@ class MonitoringTrenController extends AppBaseController
             }
         }
 
-        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('tahap_salur')->get();
+        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->get();
         $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('bidang_tkd')->get();
 
         if (empty($monitoringAlokasis)) {
