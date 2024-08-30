@@ -15,12 +15,12 @@
 </div>
 
 <!-- Evaluasi Upp 1 Penerima Field -->
-<div class="form-group col-sm-3 mb-3">
+<!-- <div class="form-group col-sm-3 mb-3">
     {!! Form::label('evaluasi_upp_1', 'Rerata Hasil Evaluasi UPP menurut Pedoman Permenpan RB Nomor 38 Tahun 2012') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     {!! Form::number('evaluasi_upp_1', null, ['class' => 'form-control', 'step' => '0.01']) !!}
-</div>
+</div> -->
 
 <!-- Evaluasi Upp 2 Penerima Field -->
 <div class="form-group col-sm-3 mb-3">

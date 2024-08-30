@@ -25,14 +25,11 @@
                 <td class="text-right">{{ number_format($monitoringPenggunaan->realisasi_barjas + $monitoringPenggunaan->realisasi_pegawai + $monitoringPenggunaan->realisasi_modal + $monitoringPenggunaan->realisasi_hibah + $monitoringPenggunaan->realisasi_lainnya, 2, ',', '.') }}</td>
                 <td>{{ $monitoringPenggunaan->penyebab_kurang_guna }}</td>
                 <td width="120">
-                    {!! Form::open(['route' => ['monitoringPenggunaans.destroy', $monitoringPenggunaan->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('monitoringPenggunaans.edit', [$monitoringPenggunaan->id]) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
-                    {!! Form::close() !!}
                 </td>
             </tr>
             @endforeach
