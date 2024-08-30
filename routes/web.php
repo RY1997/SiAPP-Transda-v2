@@ -100,3 +100,9 @@ Route::get('kertasKerja/progresIsian', [App\Http\Controllers\ExportController::c
 Route::resource('pelaporans', App\Http\Controllers\PelaporanController::class);
 
 Route::resource('ppbrs', App\Http\Controllers\PPBRController::class);
+
+
+Route::resource('monitoringPps', App\Http\Controllers\MonitoringPpController::class);
+
+
+Route::resource('evaluasiKebutuhans', App\Http\Controllers\EvaluasiKebutuhanController::class);

@@ -118,11 +118,10 @@
     {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01']) !!}
 </div>
 
-<div class="col-sm-12 mb-3">
+<!-- <div class="col-sm-12 mb-3">
     <h5>B. Capaian Kontrak</h5>
 </div>
 
-<!-- Realisasi Bast Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('realisasi_bast', 'Realisasi BAST') !!}
 </div>
@@ -147,7 +146,6 @@
     </div>
 </div>
 
-<!-- Penyebab Realisasi Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('penyebab_realisasi', 'Penyebab Realisasi') !!}
 </div>
@@ -155,7 +153,6 @@
     {!! Form::textarea('penyebab_realisasi', null, ['class' => 'form-control', 'rows' => '3']) !!}
 </div>
 
-<!-- Keterangan Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('keterangan', 'Keterangan') !!}
 </div>
@@ -163,7 +160,6 @@
     {!! Form::textarea('keterangan', null, ['class' => 'form-control', 'rows' => '3']) !!}
 </div>
 
-<!-- Target Omspan Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('Realisasi Capaian dan Pembayaran') !!}
 </div>
@@ -211,7 +207,6 @@
     </div>
 </div>
 
-<!-- Sisa Nilai Kontrak Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('sisa_nilai_kontrak', 'Sisa Nilai Kontrak') !!}
 </div>
@@ -219,16 +214,15 @@
     {!! Form::number('sisa_nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01']) !!}
 </div>
 
-<!-- Penyebab Pembayaran Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('penyebab_pembayaran', 'Penyebab Pembayaran') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     {!! Form::textarea('penyebab_pembayaran', null, ['class' => 'form-control', 'rows' => '3']) !!}
-</div>
+</div> -->
 
 <div class="col-sm-12 mb-3">
-    <h5>C. Pengujian Kontrak</h5>
+    <h5>B. Pengujian Kontrak</h5>
 </div>
 
 <div class="form-group col-sm-3 mb-3">

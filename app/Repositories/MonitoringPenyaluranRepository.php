@@ -24,6 +24,8 @@ class MonitoringPenyaluranRepository extends BaseRepository
         'alokasi_id',
         'tahap_salur',
         'penyaluran_tkd',
+        'potong_salur',
+        'tunda_salur',
         'tepat_jumlah',
         'penyebab_tidak_tepat_jumlah',
         'tgl_salur',

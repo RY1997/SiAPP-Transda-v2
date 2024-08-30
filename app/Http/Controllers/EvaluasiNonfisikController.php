@@ -6,6 +6,7 @@ use App\Http\Requests\CreateEvaluasiNonfisikRequest;
 use App\Http\Requests\UpdateEvaluasiNonfisikRequest;
 use App\Repositories\EvaluasiNonfisikRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DaftarPemda;
 use App\Models\EvaluasiNonfisik;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
@@ -129,6 +130,7 @@ class EvaluasiNonfisikController extends AppBaseController
     public function store(CreateEvaluasiNonfisikRequest $request)
     {
         $input = $request->all();
+        $input['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->first()->kode_pwk;
 
         $evaluasiNonfisik = $this->evaluasiNonfisikRepository->create($input);
 
@@ -211,6 +213,7 @@ class EvaluasiNonfisikController extends AppBaseController
         $requestData = $request->all();
         $requestData['fisik_omspan'] = $fisikOmspan;
         $requestData['fisik_auditor'] = $fisikAuditor;
+        $requestData['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->first()->kode_pwk;
 
         $this->evaluasiNonfisikRepository->update($requestData, $id);
 

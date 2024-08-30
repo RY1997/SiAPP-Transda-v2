@@ -4,6 +4,7 @@
             <tr>
                 <th rowspan="2" style="min-width: 100px;">Tahap Salur</th>
                 <th rowspan="2" style="min-width: 200px;">Nilai Penyaluran</th>
+                <th rowspan="2" style="min-width: 200px;">Nilai Potong/Tunda</th>
                 <th rowspan="2" style="min-width: 100px;">Tanggal Penyaluran</th>
                 <th colspan="2">Ketepatan Jumlah</th>
                 <th colspan="2">Ketepatan Waktu</th>
@@ -23,6 +24,7 @@
                 <td>{{ $monitoringPenyaluran->tahap_salur }}</td>
                 <td class="text-right">{{ number_format($monitoringPenyaluran->penyaluran_tkd, 2, ',', '.') }}</td>
                 <td>{{ $monitoringPenyaluran->tgl_salur }}</td>
+                <td class="text-right">{{ number_format($monitoringPenyaluran->potong_salur + $monitoringPenyaluran->tunda_salur, 2, ',', '.') }}</td>
                 <td>{{ $monitoringPenyaluran->tepat_jumlah }}</td>
                 <td>{{ $monitoringPenyaluran->penyebab_tidak_tepat_jumlah }}</td>
                 <td>{{ $monitoringPenyaluran->tepat_waktu }}</td>
@@ -41,7 +43,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="8" class="text-center">Belum ada data</td>
+                <td colspan="9" class="text-center">Belum ada data</td>
             </tr>
             @endif
         </tbody>

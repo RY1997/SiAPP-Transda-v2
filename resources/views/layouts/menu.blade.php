@@ -110,6 +110,13 @@
             <span class="nav-link-text">Pengelolaan TKD</span>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('monitoringPps*') ? 'active text-primary' : '' }}" href="{{ route('monitoringPps.index') }}">
+            <i class="ri-star-smile-line"></i>
+            <span class="nav-link-text">Kinerja Layanan Publik</span>
+        </a>
+    </li>
 </ul>
 
 <hr class="my-3">
@@ -119,7 +126,7 @@
 </h6>
 
 <ul class="navbar-nav mb-md-3">
-    @if (session('jenis_tkd') == 'Dana Otonomi Khusus')
+    <!-- @if (session('jenis_tkd') == 'Dana Otonomi Khusus')
     <li class="nav-item">
         <a class="nav-link {{ Request::is('kebijakanOtsuses*') ? 'active text-primary' : '' }}" href="{{ route('kebijakanOtsuses.index') }}">
             <i class="ni ni-spaceship"></i>
@@ -156,8 +163,15 @@
             <span class="nav-link-text">Urusan Bersama</span>
         </a>
     </li>
-    @endif
+    @endif -->
 
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiKebutuhans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKebutuhans.index') }}">
+            <i class="ri-exchange-2-line"></i>
+            <span class="nav-link-text">Kebutuhan & Pendanaan</span>
+        </a>
+    </li>
+    
     <li class="nav-item">
         <a class="nav-link {{ Request::is('evaluasiKontraks*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKontraks.index') }}">
             <i class="ri-building-line"></i>
@@ -172,7 +186,7 @@
         </a>
     </li>
 
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link {{ Request::is('evaluasiIndikators*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiIndikators.index') }}">
             <i class="ri-file-chart-line"></i>
             <span class="nav-link-text">Efektivitas TKD</span>
@@ -184,16 +198,16 @@
             <i class="ri-file-chart-2-line"></i>
             <span class="nav-link-text">Pelaporan TKD</span>
         </a>
-    </li>
+    </li> -->
 
-    @if (session('jenis_tkd') == 'Dana Otonomi Khusus')
+    <!-- @if (session('jenis_tkd') == 'Dana Otonomi Khusus')
     <li class="nav-item">
         <a class="nav-link {{ Request::is('silpaOtsuses*') ? 'active text-primary' : '' }}" href="{{ route('silpaOtsuses.index') }}">
             <i class="ni ni-spaceship"></i>
             <span class="nav-link-text">Saldo SILPA</span>
         </a>
     </li>
-    @endif
+    @endif -->
 </ul>
 
 <hr class="my-3">

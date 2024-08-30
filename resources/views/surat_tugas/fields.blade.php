@@ -55,7 +55,7 @@
     <select class="form-control custom-select" id="nama_pemda" name="nama_pemda">
         <option value="" selected="selected">Pilih</option>
         @foreach($pemdas as $pemda)
-        <option value="{{ $pemda->nama_pemda }}" {{ !empty($suratTugas) && $pemda->nama_pemda == $suratTugas->name_pemda ? 'selected' : '' }}>{{ $pemda->nama_pemda }}</option>        
+        <option value="{{ $pemda->nama_pemda }}" {{ !empty($suratTugas) && $pemda->nama_pemda == $suratTugas->nama_pemda ? 'selected' : '' }}>{{ $pemda->nama_pemda }}</option>        
         @endforeach
     </select>    
 </div>

@@ -21,8 +21,8 @@
                 <td>{{ $monitoringPenggunaan->tipe_tkd }}</td>
                 <td>{{ $monitoringPenggunaan->bidang_tkd }}</td>
                 <!-- <td>Alokasi</td> -->
-                <td class="text-right">{{ number_format($monitoringPenggunaan->anggaran_tkd, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringPenggunaan->realisasi_tkd, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenggunaan->anggaran_barjas + $monitoringPenggunaan->anggaran_pegawai + $monitoringPenggunaan->anggaran_modal + $monitoringPenggunaan->anggaran_hibah + $monitoringPenggunaan->anggaran_lainnya, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenggunaan->realisasi_barjas + $monitoringPenggunaan->realisasi_pegawai + $monitoringPenggunaan->realisasi_modal + $monitoringPenggunaan->realisasi_hibah + $monitoringPenggunaan->realisasi_lainnya, 2, ',', '.') }}</td>
                 <td>{{ $monitoringPenggunaan->penyebab_kurang_guna }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['monitoringPenggunaans.destroy', $monitoringPenggunaan->id], 'method' => 'delete']) !!}

@@ -23,7 +23,16 @@ class MonitoringPenggunaanRepository extends BaseRepository
         'jenis_tkd',
         'bidang_tkd',
         'alokasi_id',
-        'penggunaan_tkd',
+        'anggaran_barjas',
+        'anggaran_pegawai',
+        'anggaran_modal',
+        'anggaran_hibah',
+        'anggaran_lainnya',
+        'realisasi_barjas',
+        'realisasi_pegawai',
+        'realisasi_modal',
+        'realisasi_hibah',
+        'realisasi_lainnya',
         'penyebab_kurang_guna'
     ];
 

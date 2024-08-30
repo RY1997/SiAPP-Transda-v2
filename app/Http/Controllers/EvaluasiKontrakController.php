@@ -6,6 +6,7 @@ use App\Http\Requests\CreateEvaluasiKontrakRequest;
 use App\Http\Requests\UpdateEvaluasiKontrakRequest;
 use App\Repositories\EvaluasiKontrakRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DaftarPemda;
 use App\Models\EvaluasiKontrak;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
@@ -129,6 +130,7 @@ class EvaluasiKontrakController extends AppBaseController
     public function store(CreateEvaluasiKontrakRequest $request)
     {
         $input = $request->all();
+        $input['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->first()->kode_pwk;
 
         $evaluasiKontrak = $this->evaluasiKontrakRepository->create($input);
 
@@ -211,6 +213,7 @@ class EvaluasiKontrakController extends AppBaseController
         $requestData = $request->all();
         $requestData['fisik_omspan'] = $fisikOmspan;
         $requestData['fisik_auditor'] = $fisikAuditor;
+        $requestData['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->first()->kode_pwk;
 
         $this->evaluasiKontrakRepository->update($requestData, $id);
 
