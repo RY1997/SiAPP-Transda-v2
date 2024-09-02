@@ -149,9 +149,8 @@ class MonitoringTrenController extends AppBaseController
             ]);
         }
 
-        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('tipe_tkd');
-        $tipeAlokasis = $monitoringAlokasis->groupBy('tipe_tkd')->get();
-        $monitoringAlokasis = $monitoringAlokasis->get();
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('tipe_tkd')->get();
+        $tipeAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->groupBy('tipe_tkd')->get();
 
         foreach ($tipeAlokasis as $alokasi) {
             foreach ($bidang as $item) {
