@@ -166,7 +166,7 @@ class MonitoringTrenController extends AppBaseController
         }
 
         $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->get();
-        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('bidang_tkd')->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->orderBy('bidang_tkd')->orderBy('tipe_tkd')->get();
 
         if (empty($monitoringAlokasis)) {
             Flash::error('Monitoring Alokasi not found');
