@@ -116,98 +116,28 @@ class MonitoringTrenController extends AppBaseController
     {
         $pemda = MonitoringAlokasi::find($id);
 
-        // if (session('jenis_tkd') == 'Dana Otonomi Khusus') {
-        //     $tahap = [
-        //         ['tahap_salur' => 'Tahap I'],
-        //         ['tahap_salur' => 'Tahap II'],
-        //         ['tahap_salur' => 'Tahap III'],
-        //     ];
-        // } elseif (session('jenis_tkd') == 'Dana Alokasi Umum') {
-        //     $tahap = [
-        //         ['tahap_salur' => '1. Bulan Januari'],
-        //         ['tahap_salur' => '2. Bulan Februari'],
-        //         ['tahap_salur' => '3. Bulan Maret'],
-        //         ['tahap_salur' => '4. Bulan April'],
-        //         ['tahap_salur' => '5. Bulan Mei'],
-        //         ['tahap_salur' => '6. Bulan Juni'],
-        //         ['tahap_salur' => '7. Bulan Juli'],
-        //         ['tahap_salur' => '8. Bulan Agustus'],
-        //         ['tahap_salur' => '9. Bulan September'],
-        //         ['tahap_salur' => '10. Bulan Oktober'],
-        //         ['tahap_salur' => '11. Bulan November'],
-        //         ['tahap_salur' => '12. Bulan Desember'],
-        //     ];
-        // }
-
-        $bidang = ParameterTkd::where('jenis_tkd', session('jenis_tkd'))->get();
-
-        MonitoringPenyaluran::updateOrCreate([
-            'kode_pwk' => $pemda->kode_pwk,
-            'tahun' => $pemda->tahun,
-            'nama_pemda' => $pemda->nama_pemda,
-            'jenis_tkd' => session('jenis_tkd')
-        ]);
-
-        // foreach ($tahap as $item) {
-        //     MonitoringPenyaluran::updateOrCreate([
-        //         'kode_pwk' => $pemda->kode_pwk,
-        //         'tahun' => $pemda->tahun,
-        //         'nama_pemda' => $pemda->nama_pemda,
-        //         'jenis_tkd' => session('jenis_tkd'),
-        //         'tahap_salur' => $item['tahap_salur']
-        //     ]);
-        // }
+        if (empty($pemda)) {
+            Flash::error('Pemda not found');
+            return redirect(route('monitoringTrens.index'));
+        }
 
         $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
-            ->selectRaw('*, SUM(alokasi_tkd) as total_alokasi')
+            ->selectRaw('*, SUM(alokasi_tkd) as total_alokasi, SUM(rk_usulan) as total_rk_usulan, SUM(rk_disetujui) as total_rk_disetujui')
             ->groupBy('bidang_tkd')->orderBy('tipe_tkd')->get();
-
-        $tipeAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)
-            ->where('nama_pemda', $pemda->nama_pemda)
-            ->where('jenis_tkd', session('jenis_tkd'))
-            ->groupBy('tipe_tkd')->get();
-
-        // if (session('jenis_tkd') == 'Dana Bagi Hasil') {
-        //     MonitoringPenggunaan::updateOrCreate([
-        //         'kode_pwk' => $pemda->kode_pwk,
-        //         'tahun' => $pemda->tahun,
-        //         'nama_pemda' => $pemda->nama_pemda,
-        //         'jenis_tkd' => session('jenis_tkd'),
-        //         'tipe_tkd' => 'Dana Bagi Hasil',
-        //         'bidang_tkd' => NULL
-        //     ]);
-        // } else {
-        //     foreach ($tipeAlokasis as $alokasi) {
-        //         foreach ($bidang as $item) {
-        //             MonitoringPenggunaan::updateOrCreate([
-        //                 'kode_pwk' => $pemda->kode_pwk,
-        //                 'tahun' => $pemda->tahun,
-        //                 'nama_pemda' => $pemda->nama_pemda,
-        //                 'jenis_tkd' => session('jenis_tkd'),
-        //                 'tipe_tkd' => $alokasi->tipe_tkd,
-        //                 'bidang_tkd' => $item->bidang_tkd
-        //             ]);
-        //         }
-        //     }
-        // }
 
         $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
-            ->selectRaw('*, SUM(penyaluran_tkd) as total_penyaluran')->groupBy('bidang_tkd')->get();
+            ->selectRaw('*, SUM(penyaluran_tkd) as total_penyaluran, SUM(potong_salur) as total_potong_salur, SUM(tunda_salur) as total_tunda_salur')
+            ->groupBy('bidang_tkd')->get();
 
         $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
             ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
             ->groupBy('bidang_tkd')->orderBy('bidang_tkd')->get();
-
-        if (empty($monitoringAlokasis)) {
-            Flash::error('Monitoring Alokasi not found');
-            return redirect(route('monitoringAlokasis.index'));
-        }
 
         return view('monitoring_trens.show')->with([
             'pemda' => $pemda,

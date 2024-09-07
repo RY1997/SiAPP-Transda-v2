@@ -9,7 +9,6 @@
             </tr>
         </thead>
         <tbody>
-            @if ($monitoringAlokasis->count() > 0)
             @foreach($monitoringAlokasis as $monitoringAlokasi)
             <tr>
                 <td>{{ $loop->iteration }}</td>
@@ -24,14 +23,9 @@
                 </td>
             </tr>
             @endforeach
-            @else
-            <tr>
-                <td colspan="4" class="text-center">Tidak ada alokasi</td>
-            </tr>
-            @endif
-            <tr class="bg-light">
-                <td colspan="2" class="text-center">Total Alokasi</td>
-                <td class="text-right">{{ number_format($monitoringAlokasis->total_alokasi,2,',','.') }}</td>
+            <tr class="bg-light font-weight-bold">
+                <td colspan="2" class="text-center">Total</td>
+                <td class="text-right">{{ number_format($monitoringAlokasis->sum('total_alokasi'),2,',','.') }}</td>
                 <td></td>
             </tr>
         </tbody>

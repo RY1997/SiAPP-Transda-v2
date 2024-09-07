@@ -110,168 +110,34 @@ class EvaluasiTrenController extends AppBaseController
     {
         $pemda = MonitoringAlokasi::find($id);
 
-        //Delete Latest Input
-        MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->whereNull('tahap_salur')->delete();
-        MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->whereNull('bidang_tkd')->delete();
-
-        if (session('jenis_tkd') == 'Dana Otonomi Khusus') {
-            $tahap = [
-                ['tahap_salur' => 'Tahap I'],
-                ['tahap_salur' => 'Tahap II'],
-                ['tahap_salur' => 'Tahap III'],
-            ];
-
-            foreach ($tahap as $item1) {
-                MonitoringPenyaluran::updateOrCreate([
-                    'kode_pwk' => $pemda->kode_pwk,
-                    'tahun' => $pemda->tahun,
-                    'nama_pemda' => $pemda->nama_pemda,
-                    'jenis_tkd' => session('jenis_tkd'),
-                    'tahap_salur' => $item1['tahap_salur'],
-                    'bidang_tkd' => NULL
-                ]);
-            }
-        } elseif (session('jenis_tkd') == 'Dana Alokasi Umum') {
-            $tahap = [
-                ['tahap_salur' => 'Bulan Januari'],
-                ['tahap_salur' => 'Bulan Februari'],
-                ['tahap_salur' => 'Bulan Maret'],
-                ['tahap_salur' => 'Bulan April'],
-                ['tahap_salur' => 'Bulan Mei'],
-                ['tahap_salur' => 'Bulan Juni'],
-                ['tahap_salur' => 'Bulan Juli'],
-                ['tahap_salur' => 'Bulan Agustus'],
-                ['tahap_salur' => 'Bulan September'],
-                ['tahap_salur' => 'Bulan Oktober'],
-                ['tahap_salur' => 'Bulan November'],
-                ['tahap_salur' => 'Bulan Desember'],
-            ];
-
-            foreach ($tahap as $item1) {
-                MonitoringPenyaluran::updateOrCreate([
-                    'kode_pwk' => $pemda->kode_pwk,
-                    'tahun' => $pemda->tahun,
-                    'nama_pemda' => $pemda->nama_pemda,
-                    'jenis_tkd' => session('jenis_tkd'),
-                    'tahap_salur' => $item1['tahap_salur'],
-                    'bidang_tkd' => NULL
-                ]);
-            }
-        } elseif (session('jenis_tkd') == 'Dana Bagi Hasil') {
-            $tahap = [
-                ['tahap_salur' => 'Tahap I'],
-                ['tahap_salur' => 'Tahap II'],
-                ['tahap_salur' => 'Tahap III'],
-                ['tahap_salur' => 'Tahap IV']
-            ];
-
-            $jenis = [
-                ['bidang_tkd' => 'DBH CHT'],
-                ['bidang_tkd' => 'DBH Dana Reboisasi'],
-                ['bidang_tkd' => 'DBH Sawit'],
-                ['bidang_tkd' => 'DBH PPh'],
-                ['bidang_tkd' => 'DBH PPB'],
-                ['bidang_tkd' => 'DBH Kehutanan (diluar DBH Reboisasi)'],
-                ['bidang_tkd' => 'DBH Migas'],
-                ['bidang_tkd' => 'DBH Minerba'],
-                ['bidang_tkd' => 'DBH Perikanan'],
-                ['bidang_tkd' => 'DBH Panas Bumi'],
-            ];
-
-            foreach ($tahap as $item1) {
-                foreach ($jenis as $item2) {
-                    MonitoringPenyaluran::updateOrCreate([
-                        'kode_pwk' => $pemda->kode_pwk,
-                        'tahun' => $pemda->tahun,
-                        'nama_pemda' => $pemda->nama_pemda,
-                        'jenis_tkd' => session('jenis_tkd'),
-                        'tahap_salur' => $item1['tahap_salur'],
-                        'bidang_tkd' => $item2['bidang_tkd'],
-                    ]);
-                }
-            }
-        } elseif (session('jenis_tkd') == 'Dana Alokasi Khusus') {
-            $tahap = [
-                ['tahap_salur' => 'Tahap I'],
-                ['tahap_salur' => 'Tahap II'],
-                ['tahap_salur' => 'Tahap III'],
-                ['tahap_salur' => 'Sekaligus']
-            ];
-
-            $bidang = ParameterTkd::where('jenis_tkd', session('jenis_tkd'))->get();
-
-            foreach ($tahap as $item1) {
-                foreach ($bidang as $item2) {
-                    MonitoringPenyaluran::updateOrCreate([
-                        'kode_pwk' => $pemda->kode_pwk,
-                        'tahun' => $pemda->tahun,
-                        'nama_pemda' => $pemda->nama_pemda,
-                        'jenis_tkd' => session('jenis_tkd'),
-                        'tahap_salur' => $item1['tahap_salur'],
-                        'bidang_tkd' => $item2->bidang_tkd,
-                    ]);
-                }
-            }
+        if (empty($pemda)) {
+            Flash::error('Pemda not found');
+            return redirect(route('monitoringTrens.index'));
         }
 
         $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)
-        ->where('nama_pemda', $pemda->nama_pemda)
-        ->where('jenis_tkd', session('jenis_tkd'))
-        ->selectRaw('*, SUM(rk_usulan) as total_rk_usulan, SUM(rk_disetujui) as total_rk_disetujui, SUM(alokasi_tkd) as total_alokasi')
-        ->groupBy('subbidang_tkd')->get();
+            ->where('nama_pemda', $pemda->nama_pemda)
+            ->where('jenis_tkd', session('jenis_tkd'))
+            ->selectRaw('*, SUM(alokasi_tkd) as total_alokasi, SUM(rk_usulan) as total_rk_usulan, SUM(rk_disetujui) as total_rk_disetujui')
+            ->groupBy('subbidang_tkd')->orderBy('tipe_tkd')->get();
 
-        $tipeAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->groupBy('tipe_tkd')->get();
+        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)
+            ->where('nama_pemda', $pemda->nama_pemda)
+            ->where('jenis_tkd', session('jenis_tkd'))
+            ->selectRaw('*, SUM(penyaluran_tkd) as total_penyaluran, SUM(potong_salur) as total_potong_salur, SUM(tunda_salur) as total_tunda_salur')
+            ->groupBy('subbidang_tkd')->get();
 
-        $bidang = ParameterTkd::where('jenis_tkd', session('jenis_tkd'))->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)
+            ->where('nama_pemda', $pemda->nama_pemda)
+            ->where('jenis_tkd', session('jenis_tkd'))
+            ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
+            ->groupBy('subbidang_tkd')->get();
 
-        if ($pemda->jenis_tkd == 'Dana Bagi Hasil') {
-            foreach ($jenis as $alokasi) {
-                foreach ($bidang as $item) {
-                    MonitoringPenggunaan::updateOrCreate([
-                        'kode_pwk' => $pemda->kode_pwk,
-                        'tahun' => $pemda->tahun,
-                        'nama_pemda' => $pemda->nama_pemda,
-                        'jenis_tkd' => session('jenis_tkd'),
-                        'tipe_tkd' => $alokasi['bidang_tkd'],
-                        'bidang_tkd' => $item->bidang_tkd
-                    ]);
-                }
-            }
-        } else {
-            foreach ($tipeAlokasis as $alokasi) {
-                foreach ($bidang as $item) {
-                    MonitoringPenggunaan::updateOrCreate([
-                        'kode_pwk' => $pemda->kode_pwk,
-                        'tahun' => $pemda->tahun,
-                        'nama_pemda' => $pemda->nama_pemda,
-                        'jenis_tkd' => session('jenis_tkd'),
-                        'tipe_tkd' => $alokasi->tipe_tkd,
-                        'bidang_tkd' => $item->bidang_tkd
-                    ]);
-                }
-            }
-        }
-
-        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'));
-
-        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'));
-
-        if (session('jenis_tkd') == 'Dana Bagi Hasil') {
-            $monitoringPenyalurans = $monitoringPenyalurans->groupBy('bidang_tkd')->orderBy('bidang_tkd')->get();
-            $monitoringPenggunaans = $monitoringPenggunaans->groupBy('tipe_tkd')->orderBy('tipe_tkd')->orderBy('bidang_tkd')->get();
-        } else {
-            $monitoringPenyalurans = $monitoringPenyalurans->groupBy('bidang_tkd')->orderBy('bidang_tkd')->get();
-            $monitoringPenggunaans = $monitoringPenggunaans->groupBy('bidang_tkd')->orderBy('tipe_tkd')->orderBy('bidang_tkd')->get();
-        }
-
-        $totalPenggunaan = MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->get();
-
-        return view('evaluasi_trens.show')->with([
+        return view('monitoring_trens.show')->with([
             'pemda' => $pemda,
             'monitoringAlokasis' => $monitoringAlokasis,
             'monitoringPenyalurans' => $monitoringPenyalurans,
             'monitoringPenggunaans' => $monitoringPenggunaans,
-            'totalPenggunaan' => $totalPenggunaan,
         ]);
     }
 
