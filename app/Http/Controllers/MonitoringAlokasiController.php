@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateMonitoringAlokasiRequest;
 use App\Repositories\MonitoringAlokasiRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
+use App\Models\MonitoringAlokasi;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -31,14 +32,7 @@ class MonitoringAlokasiController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $nama_pemda = $request->query('nama_pemda');
-
-        $daftarPemdas = DaftarPemda::where('nama_pemda', 'like', '%' . $nama_pemda . '%')->paginate(10);
-
-        $monitoringAlokasis = $this->monitoringAlokasiRepository->all();
-
-        return view('monitoring_alokasis.index')
-            ->with(['monitoringAlokasis' => $monitoringAlokasis , 'daftarPemdas' => $daftarPemdas , 'nama_pemda' => $nama_pemda]);
+        //
     }
 
     /**
@@ -48,7 +42,7 @@ class MonitoringAlokasiController extends AppBaseController
      */
     public function create()
     {
-        return view('monitoring_alokasis.create');
+        //
     }
 
     /**
@@ -78,15 +72,7 @@ class MonitoringAlokasiController extends AppBaseController
      */
     public function show($id)
     {
-        $monitoringAlokasi = $this->monitoringAlokasiRepository->find($id);
-
-        if (empty($monitoringAlokasi)) {
-            Flash::error('Monitoring Alokasi not found');
-
-            return redirect(route('monitoringAlokasis.index'));
-        }
-
-        return view('monitoring_alokasis.show')->with('monitoringAlokasi', $monitoringAlokasi);
+        //
     }
 
     /**
@@ -98,15 +84,19 @@ class MonitoringAlokasiController extends AppBaseController
      */
     public function edit($id)
     {
-        $monitoringAlokasi = $this->monitoringAlokasiRepository->find($id);
+        $alokasi_id = $this->monitoringAlokasiRepository->find($id);
 
-        if (empty($monitoringAlokasi)) {
-            Flash::error('Monitoring Alokasi not found');
-
-            return redirect(route('monitoringAlokasis.index'));
+        if (empty($alokasi_id)) {
+            Flash::error('Alokasi not found');
+            return redirect()->back();
         }
 
-        return view('monitoring_alokasis.edit')->with('monitoringAlokasi', $monitoringAlokasi);
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $alokasi_id->tahun)->where('nama_pemda', $alokasi_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('bidang_tkd', $alokasi_id->bidang_tkd)->get();
+
+        return view('monitoring_alokasis.edit')->with([
+            'monitoringAlokasis' => $monitoringAlokasis,
+            'alokasi_id' => $monitoringAlokasis->first()
+        ]);
     }
 
     /**

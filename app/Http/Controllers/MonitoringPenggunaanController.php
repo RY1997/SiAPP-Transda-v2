@@ -95,15 +95,7 @@ class MonitoringPenggunaanController extends AppBaseController
      */
     public function show($id)
     {
-        $monitoringPenggunaan = $this->monitoringPenggunaanRepository->find($id);
-
-        if (empty($monitoringPenggunaan)) {
-            Flash::error('Monitoring Penggunaan not found');
-
-            return redirect(route('monitoringPenggunaans.index'));
-        }
-
-        return view('monitoring_penggunaans.show')->with('monitoringPenggunaan', $monitoringPenggunaan);
+        //
     }
 
     /**
@@ -115,15 +107,18 @@ class MonitoringPenggunaanController extends AppBaseController
      */
     public function edit($id)
     {
-        $monitoringPenggunaan = $this->monitoringPenggunaanRepository->find($id);
-        $alokasi_id = MonitoringAlokasi::where('tahun', $monitoringPenggunaan->tahun)->where('nama_pemda', $monitoringPenggunaan->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
+        $penggunaan_id = $this->monitoringPenggunaanRepository->find($id);
 
-        if (empty($monitoringPenggunaan)) {
-            Flash::error('Monitoring Penggunaan not found');
-            return redirect(route('monitoringPenggunaans.index'));
+        if (empty($penggunaan_id)) {
+            Flash::error('Penggunaan not found');
+            return redirect()->back();
         }
 
-        return view('monitoring_penggunaans.edit')->with(['monitoringPenggunaan' => $monitoringPenggunaan, 'alokasi_id' => $alokasi_id->id]);
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $penggunaan_id->tahun)->where('nama_pemda', $penggunaan_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('bidang_tkd', $penggunaan_id->bidang_tkd)->get();
+
+        $alokasi_id = MonitoringAlokasi::where('tahun', $penggunaan_id->tahun)->where('nama_pemda', $penggunaan_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
+
+        return view('evaluasi_penggunaans.edit')->with(['monitoringPenggunaans' => $monitoringPenggunaans, 'alokasi_id' => $alokasi_id]);
     }
 
     /**
@@ -136,20 +131,7 @@ class MonitoringPenggunaanController extends AppBaseController
      */
     public function update($id, UpdateMonitoringPenggunaanRequest $request)
     {
-        $monitoringPenggunaan = $this->monitoringPenggunaanRepository->find($id);
-
-        if (empty($monitoringPenggunaan)) {
-            Flash::error('Monitoring Penggunaan not found');
-
-            return redirect(route('monitoringPenggunaans.index'));
-        }
-
-        $monitoringPenggunaan = $this->monitoringPenggunaanRepository->update($request->all(), $id);
-
-        Flash::success('Monitoring Penggunaan updated successfully.');
-
-        $monitoringAlokasi = MonitoringAlokasi::where('tahun', $monitoringPenggunaan->tahun)->where('nama_pemda', $monitoringPenggunaan->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
-        return redirect(route('monitoringTrens.show', $monitoringAlokasi->id));
+        //
     }
 
     /**
@@ -163,18 +145,6 @@ class MonitoringPenggunaanController extends AppBaseController
      */
     public function destroy($id)
     {
-        $monitoringPenggunaan = $this->monitoringPenggunaanRepository->find($id);
-
-        if (empty($monitoringPenggunaan)) {
-            Flash::error('Monitoring Penggunaan not found');
-
-            return redirect(route('monitoringPenggunaans.index'));
-        }
-
-        $this->monitoringPenggunaanRepository->delete($id);
-
-        Flash::success('Monitoring Penggunaan deleted successfully.');
-
-        return redirect()->back();
+        //
     }
 }

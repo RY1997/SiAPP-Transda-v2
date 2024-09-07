@@ -22,17 +22,24 @@
 </div>
 
 <div class="form-group col-sm-3 mb-3">
+    {!! Form::label('tipe_tkd', 'Karakteristik TKD') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    <input type="text" name="tipe_tkd" id="tipe_tkd" class="form-control" value="{{ $alokasi_id->tipe_tkd }}" readonly>
+</div>
+
+<div class="form-group col-sm-3 mb-3">
     {!! Form::label('bidang_tkd', 'Bidang TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="bidang_tkd" id="bidang_tkd" class="form-control" value="{{ $monitoringPenyalurans->first()->bidang_tkd }}" readonly>
+    <input type="text" name="bidang_tkd" id="bidang_tkd" class="form-control" value="{{ $alokasi_id->bidang_tkd }}" readonly>
 </div>
 
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('subbidang_tkd', 'Subbidang TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="subbidang_tkd" id="subbidang_tkd" class="form-control" value="{{ $monitoringPenyalurans->first()->subbidang_tkd }}" readonly>
+    <input type="text" name="subbidang_tkd" id="subbidang_tkd" class="form-control" value="{{ $alokasi_id->subbidang_tkd }}" readonly>
 </div>
 
 <div class="col-sm-12 mt-2">
@@ -92,7 +99,7 @@
                 </tr>
                 @elseif ($monitoringPenyaluran->jenis_tkd == 'Dana Alokasi Umum')
                 <tr>
-                    <td rowspan="4">{{ $monitoringPenyaluran->tahap_salur }}</td>
+                    <td rowspan="4">{{ $monitoringPenyaluran->uraian }}</td>
                     <td>Tanggal Salur</td>
                     <td><input type="date" class="form-control" name="tgl_salur_{{ $monitoringPenyaluran->id }}" value="{{ $monitoringPenyaluran->tgl_salur != NULL ? date_format($monitoringPenyaluran->tgl_salur, 'Y-m-d') : '' }}"></td>
                 </tr>
@@ -110,9 +117,9 @@
                 </tr>
                 @else
                 <tr>
-                    <td rowspan="2">{{ $monitoringPenyaluran->tahap_salur }}</td>
+                    <td rowspan="2">{{ $monitoringPenyaluran->uraian }}</td>
                     <td>Tanggal Salur</td>
-                    <td><input type="date" class="form-control" name="tgl_salur_{{ $monitoringPenyaluran->id }}" value="{{ $monitoringPenyaluran->tgl_salur != NULL ? date_format($monitoringPenyaluran->tgl_salur, 'Y-m-d') : '' }}"></td>
+                    <td><input type="date" class="form-control" name="tgl_salur_{{ $monitoringPenyaluran->id }}" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->tgl_salur != NULL ? date_format($monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->tgl_salur, 'Y-m-d') : '' }}"></td>
                 </tr>
                 <tr>
                     <td>Nilai Penyaluran (Net)</td>

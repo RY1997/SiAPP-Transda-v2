@@ -11,13 +11,13 @@ Ubah Penyaluran
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark bg-white">
                 <li class="breadcrumb-item"><a href="/home"><i class="fas fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="{{ route('monitoringTrens.index') }}">Pengelolaan TKD</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('monitoringTrens.show', $alokasi_id) }}">{{ $monitoringPenyaluran->nama_pemda }} {{ $monitoringPenyaluran->tahun }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('monitoringTrens.show', $alokasi_id->id) }}">{{ $alokasi_id->nama_pemda }} {{ $alokasi_id->tahun }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Ubah Penyaluran</li>
             </ol>
         </nav>
     </div>
     <div class="col-lg-4 col-5 text-right">
-        <a href="{{ route('monitoringTrens.show', $alokasi_id) }}" class="btn btn-danger">Kembali</a>
+        <a href="{{ route('monitoringTrens.show', $alokasi_id->id) }}" class="btn btn-danger">Kembali</a>
     </div>
 </div>
 @endsection
@@ -26,7 +26,7 @@ Ubah Penyaluran
 <div class="content">
     @include('adminlte-templates::common.errors')
     <div class="card">
-        {!! Form::model($monitoringPenyaluran, ['route' => ['monitoringPenyalurans.update', $monitoringPenyaluran->id], 'method' => 'patch']) !!}
+        {!! Form::open(['route' => 'monitoringPenyalurans.store']) !!}
         <div class="card-body">
             <div class="row">
                 @include('monitoring_penyalurans.fields')
@@ -34,7 +34,7 @@ Ubah Penyaluran
         </div>
         <div class="card-footer text-right">
             {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
-            <a href="{{ route('monitoringTrens.show', $alokasi_id) }}" class="btn btn-danger">Batal</a>
+            <a href="{{ route('monitoringTrens.show', $alokasi_id->id) }}" class="btn btn-danger">Batal</a>
         </div>
         {!! Form::close() !!}
     </div>

@@ -24,7 +24,7 @@
 
 <!-- Tipe Tkd Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('tipe_tkd', 'Tipe TKD') !!}
+    {!! Form::label('tipe_tkd', 'Karakteristik TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     <input class="form-control" maxlength="255" name="tipe_tkd" type="text" id="tipe_tkd" value="{{ $monitoringAlokasis->first()->tipe_tkd }}" readonly>
@@ -116,27 +116,3 @@
         </table>
     </div>
 </div>
-
-<!-- Alokasi Tkd Field -->
-@if ($monitoringAlokasi->jenis_tkd == 'Dana Alokasi Khusus')
-<div class="form-group col-sm-3 mb-3">
-    {!! Form::label('rk_usulan', 'Jumlah Usulan Rencana Kegiatan (RK) (Rp)') !!}
-</div>
-<div class="form-group col-sm-9 mb-3">
-    {!! Form::number('rk_usulan', null, ['class' => 'form-control', 'step' => '0.01']) !!}
-</div>
-
-<div class="form-group col-sm-3 mb-3">
-    {!! Form::label('rk_disetujui', 'Rencana Kegiatan (RK) yang disetujui (Rp)') !!}
-</div>
-<div class="form-group col-sm-9 mb-3">
-    {!! Form::number('rk_disetujui', null, ['class' => 'form-control', 'step' => '0.01']) !!}
-</div>
-
-<div class="form-group col-sm-3 mb-3">
-    {!! Form::label('tgl_juknis', 'Tgl Terbit Juknis') !!}
-</div>
-<div class="form-group col-sm-9 mb-3">
-    <input type="date" class="form-control" name="tgl_juknis" value="{{ !empty($monitoringAlokasi) && $monitoringAlokasi->tgl_juknis != NULL ? date_format($monitoringAlokasi->tgl_juknis, 'Y-m-d') : '' }}">
-</div>
-@endif

@@ -35,7 +35,7 @@
 </div>
 
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('subbidang_tkd', 'Subbidang TKD/Fungsi Belanja') !!}
+    {!! Form::label('subbidang_tkd', 'Subbidang TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     <input class="form-control" name="subbidang_tkd" type="text" id="subbidang_tkd" value="{{ $monitoringPenggunaans->first()->subbidang_tkd }}" readonly>
