@@ -30,12 +30,12 @@
 </h6>
 
 <ul class="navbar-nav mb-md-3">
-    <!-- <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link {{ Request::is('ppbrs*') ? 'active text-primary' : '' }}" href="{{ route('ppbrs.index') }}">
-            <i class="ni ni-pin-3"></i>
+            <i class="ri-road-map-line"></i>
             <span class="nav-link-text">Perencanaan</span>
         </a>
-    </li> -->
+    </li>
 
     <li class="nav-item">
         <a class="nav-link {{ Request::is('suratTugas*') ? 'active text-primary' : '' }}" href="{{ route('suratTugas.index') }}">
@@ -77,7 +77,7 @@
     <li class="nav-item">
         <a class="nav-link {{ Request::is('parameterIndikators*') ? 'active text-primary' : '' }}" href="{{ route('parameterIndikators.index') }}">
             <i class="ri-settings-3-line"></i>
-            <span class="nav-link-text">Indikator Efektivitas</span>
+            <span class="nav-link-text">Indikator Makro</span>
         </a>
     </li>
 
@@ -166,12 +166,19 @@
     @endif -->
 
     <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiTrens*') || Request::is('evaluasiPenyalurans*') || Request::is('evaluasiPenggunaans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiTrens.index') }}">
+            <i class="ri-links-line"></i>
+            <span class="nav-link-text">Pengelolaan TKD</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link {{ Request::is('evaluasiKebutuhans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKebutuhans.index') }}">
             <i class="ri-exchange-2-line"></i>
             <span class="nav-link-text">Kebutuhan & Pendanaan</span>
         </a>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link {{ Request::is('evaluasiKontraks*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKontraks.index') }}">
             <i class="ri-building-line"></i>

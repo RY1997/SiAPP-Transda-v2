@@ -74,9 +74,9 @@ class SuratTugasController extends AppBaseController
         }
 
         if (Auth::user()->role == 'Admin') {
-            $pemdas = DaftarPemda::all();
+            $pemdas = DaftarPemda::where('uji_petik', 'Ya')->get();
         } else {
-            $pemdas = DaftarPemda::where('kode_pwk', Auth::user()->kode_pwk)->get();
+            $pemdas = DaftarPemda::where('uji_petik', 'Ya')->where('kode_pwk', Auth::user()->kode_pwk)->get();
         }
         
         return view('surat_tugas.create')->with([
@@ -140,9 +140,9 @@ class SuratTugasController extends AppBaseController
         }
 
         if (Auth::user()->role == 'Admin') {
-            $pemdas = DaftarPemda::all();
+            $pemdas = DaftarPemda::where('uji_petik', 'Ya')->get();
         } else {
-            $pemdas = DaftarPemda::where('kode_pwk', Auth::user()->kode_pwk)->get();
+            $pemdas = DaftarPemda::where('uji_petik', 'Ya')->where('kode_pwk', Auth::user()->kode_pwk)->get();
         }
 
         return view('surat_tugas.edit')->with([

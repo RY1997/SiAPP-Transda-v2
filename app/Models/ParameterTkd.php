@@ -27,7 +27,13 @@ class ParameterTkd extends Model
 
     public $fillable = [
         'jenis_tkd',
+        'tipe_tkd',
         'bidang_tkd',
+        'subbidang_tkd',
+        'mon_penyaluran',
+        'eva_penyaluran',
+        'mon_penggunaan',
+        'eva_penggunaan',
         'alokasi_minimal'
     ];
 
@@ -39,7 +45,13 @@ class ParameterTkd extends Model
     protected $casts = [
         'id' => 'integer',
         'jenis_tkd' => 'string',
+        'tipe_tkd' => 'string',
         'bidang_tkd' => 'string',
+        'subbidang_tkd' => 'string',
+        'mon_penyaluran' => 'string',
+        'eva_penyaluran' => 'string',
+        'mon_penggunaan' => 'string',
+        'eva_penggunaan' => 'string',
         'alokasi_minimal' => 'decimal:2'
     ];
 

@@ -34,14 +34,7 @@ class MonitoringPenggunaanController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $nama_pemda = $request->query('nama_pemda');
-
-        $daftarPemdas = DaftarPemda::where('nama_pemda', 'like', '%' . $nama_pemda . '%')->paginate(10);
-        
-        $monitoringPenggunaans = $this->monitoringPenggunaanRepository->all();
-
-        return view('monitoring_penggunaans.index')
-            ->with(['monitoringPenggunaans' => $monitoringPenggunaans , 'daftarPemdas' => $daftarPemdas , 'nama_pemda' => $nama_pemda]);
+        //
     }
 
     /**
@@ -51,16 +44,7 @@ class MonitoringPenggunaanController extends AppBaseController
      */
     public function create($pemda_id, $tahun)
     {
-        $pemda = DaftarPemda::find($pemda_id);
-        $bidang_tkds = ParameterTkd::where('jenis_tkd', session('jenis_tkd'))->get();
-        $monitoringPenggunaan = [];
-        return view('monitoring_penggunaans.create')
-            ->with([
-                'pemda' => $pemda,
-                'tahun' => $tahun,
-                'bidang_tkds' => $bidang_tkds,
-                'monitoringPenggunaan' => $monitoringPenggunaan
-            ]);
+        //
     }
 
     /**
@@ -72,13 +56,34 @@ class MonitoringPenggunaanController extends AppBaseController
      */
     public function store(CreateMonitoringPenggunaanRequest $request)
     {
-        $input = $request->all();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('bidang_tkd', $request->bidang_tkd)->where('subbidang_tkd', $request->subbidang_tkd)->get();
 
-        $monitoringPenggunaan = $this->monitoringPenggunaanRepository->create($input);
+        if (empty($monitoringPenggunaans)) {
+            Flash::error('Penggunaan not found');
+            return redirect()->back();
+        }
 
-        Flash::success('Monitoring Penggunaan saved successfully.');
+        foreach ($monitoringPenggunaans as $monitoringPenggunaan) {
+            MonitoringPenggunaan::where('id', $monitoringPenggunaan->id)->update([
+                'jml_kontrak' => $request->{'jml_kontrak_' . $monitoringPenggunaan->id},
+                'anggaran_barjas' => $request->{'anggaran_barjas_' . $monitoringPenggunaan->id},
+                'anggaran_pegawai' => $request->{'anggaran_pegawai_' . $monitoringPenggunaan->id},
+                'anggaran_modal' => $request->{'anggaran_modal_' . $monitoringPenggunaan->id},
+                'anggaran_hibah' => $request->{'anggaran_hibah_' . $monitoringPenggunaan->id},
+                'anggaran_lainnya' => $request->{'anggaran_lainnya_' . $monitoringPenggunaan->id},
+                'realisasi_barjas' => $request->{'realisasi_barjas_' . $monitoringPenggunaan->id},
+                'realisasi_pegawai' => $request->{'realisasi_pegawai_' . $monitoringPenggunaan->id},
+                'realisasi_modal' => $request->{'realisasi_modal_' . $monitoringPenggunaan->id},
+                'realisasi_hibah' => $request->{'realisasi_hibah_' . $monitoringPenggunaan->id},
+                'realisasi_lainnya' => $request->{'realisasi_lainnya_' . $monitoringPenggunaan->id}
+            ]);
+        }
 
-        return redirect(route('monitoringPenggunaans.index'));
+        Flash::success('Penggunaan updated successfully.');
+
+        $monitoringAlokasi = MonitoringAlokasi::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->first();
+
+        return redirect(route('monitoringTrens.show', $monitoringAlokasi->id));
     }
 
     /**

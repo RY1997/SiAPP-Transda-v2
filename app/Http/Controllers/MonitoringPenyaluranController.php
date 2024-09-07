@@ -8,6 +8,7 @@ use App\Repositories\MonitoringPenyaluranRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
 use App\Models\MonitoringAlokasi;
+use App\Models\MonitoringPenyaluran;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -32,14 +33,7 @@ class MonitoringPenyaluranController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $nama_pemda = $request->query('nama_pemda');
-
-        $daftarPemdas = DaftarPemda::where('nama_pemda', 'like', '%' . $nama_pemda . '%')->paginate(10);
-        
-        $monitoringPenyalurans = $this->monitoringPenyaluranRepository->all();
-
-        return view('monitoring_penyalurans.index')
-            ->with(['monitoringPenyalurans' => $monitoringPenyalurans , 'daftarPemdas' => $daftarPemdas , 'nama_pemda' => $nama_pemda]);
+        //
     }
 
     /**
@@ -49,12 +43,7 @@ class MonitoringPenyaluranController extends AppBaseController
      */
     public function create($pemda_id, $tahun)
     {
-        $pemda = DaftarPemda::find($pemda_id);
-        return view('monitoring_penyalurans.create')
-            ->with([
-                'pemda' => $pemda,
-                'tahun' => $tahun,
-            ]);
+        //
     }
 
     /**
@@ -66,13 +55,31 @@ class MonitoringPenyaluranController extends AppBaseController
      */
     public function store(CreateMonitoringPenyaluranRequest $request)
     {
-        $input = $request->all();
+        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('bidang_tkd', $request->bidang_tkd)->where('subbidang_tkd', $request->subbidang_tkd)->get();
 
-        $monitoringPenyaluran = $this->monitoringPenyaluranRepository->create($input);
+        if (empty($monitoringPenyalurans)) {
+            Flash::error('Penggunaan not found');
+            return redirect()->back();
+        }
 
-        Flash::success('Monitoring Penyaluran saved successfully.');
+        foreach ($monitoringPenyalurans as $monitoringPenyaluran) {
+            MonitoringPenyaluran::where('id', $monitoringPenyaluran->id)->update([
+                'tgl_salur' => $request->{'tgl_salur_' . $monitoringPenyaluran->id},
+                'saldo_rkud' => $request->{'saldo_rkud_' . $monitoringPenyaluran->id},
+                'saldo_pokok' => $request->{'saldo_pokok_' . $monitoringPenyaluran->id},
+                'remunerasi' => $request->{'remunerasi_' . $monitoringPenyaluran->id},
+                'penarikan_seluruhnya' => $request->{'penarikan_seluruhnya_' . $monitoringPenyaluran->id},
+                'penyaluran_tkd' => session('jenis_tkd') == 'Dana Bagi Hasil' ? ($request->{'saldo_rkud_' . $monitoringPenyaluran->id} + $request->{'saldo_pokok_' . $monitoringPenyaluran->id} + $request->{'remunerasi_' . $monitoringPenyaluran->id} - $request->{'penarikan_seluruhnya_' . $monitoringPenyaluran->id} - $request->{'potong_salur_' . $monitoringPenyaluran->id} - $request->{'tunda_salur_' . $monitoringPenyaluran->id}) : $request->{'penyaluran_tkd_' . $monitoringPenyaluran->id},
+                'potong_salur' => $request->{'potong_salur_' . $monitoringPenyaluran->id},
+                'tunda_salur' => $request->{'tunda_salur_' . $monitoringPenyaluran->id}
+            ]);
+        }
 
-        return redirect(route('monitoringPenyalurans.index'));
+        Flash::success('Penyaluran updated successfully.');
+
+        $monitoringAlokasi = MonitoringAlokasi::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->first();
+
+        return redirect(route('monitoringTrens.show', $monitoringAlokasi->id));
     }
 
     /**
@@ -84,15 +91,7 @@ class MonitoringPenyaluranController extends AppBaseController
      */
     public function show($id)
     {
-        $monitoringPenyaluran = $this->monitoringPenyaluranRepository->find($id);
-
-        if (empty($monitoringPenyaluran)) {
-            Flash::error('Monitoring Penyaluran not found');
-
-            return redirect(route('monitoringPenyalurans.index'));
-        }
-
-        return view('monitoring_penyalurans.show')->with('monitoringPenyaluran', $monitoringPenyaluran);
+        //
     }
 
     /**
@@ -104,15 +103,18 @@ class MonitoringPenyaluranController extends AppBaseController
      */
     public function edit($id)
     {
-        $monitoringPenyaluran = $this->monitoringPenyaluranRepository->find($id);
-        $alokasi_id = MonitoringAlokasi::where('tahun', $monitoringPenyaluran->tahun)->where('nama_pemda', $monitoringPenyaluran->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
+        $penyaluran_id = $this->monitoringPenyaluranRepository->find($id);
 
-        if (empty($monitoringPenyaluran)) {
-            Flash::error('Monitoring Penyaluran not found');
-            return redirect(route('monitoringPenyalurans.index'));
+        if (empty($penyaluran_id)) {
+            Flash::error('Penyaluran not found');
+            return redirect()->back();
         }
 
-        return view('monitoring_penyalurans.edit')->with(['monitoringPenyaluran' => $monitoringPenyaluran, 'alokasi_id' => $alokasi_id->id]);
+        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $penyaluran_id->tahun)->where('nama_pemda', $penyaluran_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('bidang_tkd', $penyaluran_id->bidang_tkd)->where('subbidang_tkd', $penyaluran_id->subbidang_tkd)->get();
+
+        $alokasi_id = MonitoringAlokasi::where('tahun', $penyaluran_id->tahun)->where('nama_pemda', $penyaluran_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
+
+        return view('monitoring_penyalurans.edit')->with(['monitoringPenyalurans' => $monitoringPenyalurans, 'alokasi_id' => $alokasi_id]);
     }
 
     /**
@@ -125,20 +127,7 @@ class MonitoringPenyaluranController extends AppBaseController
      */
     public function update($id, UpdateMonitoringPenyaluranRequest $request)
     {
-        $monitoringPenyaluran = $this->monitoringPenyaluranRepository->find($id);
-
-        if (empty($monitoringPenyaluran)) {
-            Flash::error('Monitoring Penyaluran not found');
-
-            return redirect(route('monitoringPenyalurans.index'));
-        }
-
-        $monitoringPenyaluran = $this->monitoringPenyaluranRepository->update($request->all(), $id);
-
-        Flash::success('Monitoring Penyaluran updated successfully.');
-
-        $monitoringAlokasi = MonitoringAlokasi::where('tahun', $monitoringPenyaluran->tahun)->where('nama_pemda', $monitoringPenyaluran->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
-        return redirect(route('monitoringTrens.show', $monitoringAlokasi->id));
+        //
     }
 
     /**
@@ -152,18 +141,6 @@ class MonitoringPenyaluranController extends AppBaseController
      */
     public function destroy($id)
     {
-        $monitoringPenyaluran = $this->monitoringPenyaluranRepository->find($id);
-
-        if (empty($monitoringPenyaluran)) {
-            Flash::error('Monitoring Penyaluran not found');
-
-            return redirect(route('monitoringPenyalurans.index'));
-        }
-
-        $this->monitoringPenyaluranRepository->delete($id);
-
-        Flash::success('Monitoring Penyaluran deleted successfully.');
-
-        return redirect()->back();
+        //
     }
 }

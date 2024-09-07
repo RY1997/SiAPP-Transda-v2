@@ -24,6 +24,7 @@ class MonitoringApbdRepository extends BaseRepository
         'belanja_pegawai',
         'belanja_barjas',
         'belanja_modal',
+        'belanja_modal_jalan',
         'belanja_hibah',
         'belanja_lainnya',
         'pendapatan_daerah',

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('page_title')
-Monitoring Pengelolaan
+Monitoring Pengelolaan TKD
 @endpush
 
 @section('header')

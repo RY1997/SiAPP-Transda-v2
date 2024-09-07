@@ -6,6 +6,7 @@ use App\Http\Requests\CreateMonitoringTlRequest;
 use App\Http\Requests\UpdateMonitoringTlRequest;
 use App\Repositories\MonitoringTlRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DaftarPemda;
 use App\Models\MonitoringTl;
 use App\Models\PPBR;
 use App\Models\SuratTugas;
@@ -16,16 +17,29 @@ use Response;
 
 class PPBRController extends AppBaseController
 {
+    public function __construct(Request $request)
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(Request $request)
     {
+        $nama_pemda = $request->nama_pemda;
+
         if (Auth::user()->role == 'Admin') {
-            $ppbr = PPBR::where('jenis_tkd', session('jenis_tkd'))->paginate(20);
+            $ppbr = DaftarPemda::where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+            ->orderBy('uji_petik', 'DESC')->orderBy('kode_pwk')
+            ->paginate(20);
         } else {
-            $ppbr = PPBR::where('kode_pwk', Auth::user()->kode_pwk)->where('jenis_tkd', session('jenis_tkd'))->orderBy('rank_risiko_total', 'DESC')->paginate(20);
+            $ppbr = DaftarPemda::where('kode_pwk', Auth::user()->kode_pwk)
+            ->where('nama_pemda', 'like', '%' . $nama_pemda . '%')->orderBy('uji_petik', 'DESC')->orderBy('kode_pwk')->paginate(20);
         }
 
         return view('ppbr.index')
-            ->with('ppbr', $ppbr);
+            ->with([
+                'ppbr' => $ppbr,
+                'nama_pemda' => $nama_pemda
+            ]);
     }
 
     /**
@@ -104,21 +118,28 @@ class PPBRController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateMonitoringTlRequest $request)
+    public function update($id, Request $request)
     {
-        $monitoringTl = $this->monitoringTlRepository->find($id);
+        $pemda = DaftarPemda::find($id);
 
-        if (empty($monitoringTl)) {
-            Flash::error('Monitoring Tl not found');
-
-            return redirect(route('monitoringTls.index'));
+        if (empty($pemda)) {
+            Flash::error('Pemda not found');
+            return redirect(route('ppbrs.index'));
         }
 
-        $monitoringTl = $this->monitoringTlRepository->update($request->all(), $id);
+        if ($request->action == 'Jadikan Uji Petik') {
+            $uji_petik = 'Ya';
+        } else {
+            $uji_petik = NULL;
+        }
 
-        Flash::success('Monitoring Tl updated successfully.');
+        $pemda = DaftarPemda::where('id', $id)->update([
+            'uji_petik' => $uji_petik
+        ]);
 
-        return redirect(route('monitoringTls.index'));
+        Flash::success('Pemda Uji Petik updated successfully.');
+
+        return redirect(route('ppbrs.index'));
     }
 
     /**

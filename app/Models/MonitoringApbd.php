@@ -50,6 +50,7 @@ class MonitoringApbd extends Model
         'belanja_pegawai',
         'belanja_barjas',
         'belanja_modal',
+        'belanja_modal_jalan',
         'belanja_hibah',
         'belanja_lainnya',
         'pendapatan_daerah',
@@ -59,6 +60,7 @@ class MonitoringApbd extends Model
         'penerimaan_pembiayaan',
         'pengeluaran_pembiayaan',
         'silpa',
+        'kap_fiskal',
         'silpa_tkd'
     ];
 
@@ -76,6 +78,7 @@ class MonitoringApbd extends Model
         'belanja_pegawai' => 'decimal:2',
         'belanja_barjas' => 'decimal:2',
         'belanja_modal' => 'decimal:2',
+        'belanja_modal_jalan' => 'decimal:2',
         'belanja_hibah' => 'decimal:2',
         'belanja_lainnya' => 'decimal:2',
         'pendapatan_daerah' => 'decimal:2',
@@ -85,6 +88,7 @@ class MonitoringApbd extends Model
         'penerimaan_pembiayaan' => 'decimal:2',
         'pengeluaran_pembiayaan' => 'decimal:2',
         'silpa' => 'decimal:2',
+        'kap_fiskal' => 'string',
         'silpa_tkd' => 'decimal:2'
     ];
 
@@ -110,6 +114,7 @@ class MonitoringApbd extends Model
         'penerimaan_pembiayaan' => 'required|numeric',
         'pengeluaran_pembiayaan' => 'required|numeric',
         'silpa' => 'required|numeric',
+        'kap_fiskal' => 'required|string|max:255',
         'silpa_tkd' => 'nullable|numeric',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'

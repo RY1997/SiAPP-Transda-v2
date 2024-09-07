@@ -78,6 +78,13 @@
     {!! Form::number('belanja_modal', null, ['class' => 'form-control', 'step' => '0.01']) !!}
 </div>
 
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('belanja_modal_jalan', 'Belanja Modal (Bidang Jalan)') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    {!! Form::number('belanja_modal_jalan', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+</div>
+
 <!-- Belanja Hibah Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('belanja_hibah', 'Belanja Hibah') !!}

@@ -106,3 +106,10 @@ Route::resource('monitoringPps', App\Http\Controllers\MonitoringPpController::cl
 
 
 Route::resource('evaluasiKebutuhans', App\Http\Controllers\EvaluasiKebutuhanController::class);
+
+Route::resource('evaluasiTrens', App\Http\Controllers\EvaluasiTrenController::class);
+Route::get('evaluasiTrens/{pemda_id}/{tahun}', [App\Http\Controllers\EvaluasiTrenController::class, 'show']);
+
+Route::resource('evaluasiAlokasis', App\Http\Controllers\EvaluasiAlokasiController::class);
+Route::resource('evaluasiPenyalurans', App\Http\Controllers\EvaluasiPenyaluranController::class);
+Route::resource('evaluasiPenggunaans', App\Http\Controllers\EvaluasiPenggunaanController::class);

@@ -5,7 +5,7 @@
                 <th>#</th>
                 <th>Jenis TKD</th>
                 <th>Bidang TKD</th>
-                <th>Alokasi Minimal</th>
+                <th>Subbidang TKD</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -15,7 +15,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $parameterTkd->jenis_tkd }}</td>
                 <td>{{ $parameterTkd->bidang_tkd }}</td>
-                <td>{{ $parameterTkd->alokasi_minimal }}%</td>
+                <td>{{ $parameterTkd->subbidang_tkd }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['parameterTkds.destroy', $parameterTkd->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

@@ -81,7 +81,7 @@ Pengelolaan TKD
                 </div> -->
                 <div class="col-sm-12 mb-3">
                     @include('monitoring_trens.table_penggunaan')
-                    @if ($monitoringPenggunaans->sum('realisasi_tkd') > $monitoringPenyalurans->sum('panyaluran_tkd'))
+                    @if ($monitoringPenggunaans->sum('realisasi_tkd') > $monitoringPenyalurans->sum('penyaluran_tkd'))
                     <p class="text-danger">Catatan : Jumlah Penggunaan melebihi Jumlah Penyaluran. Silahkan periksa kembali.</p>
                     @endif
                 </div>

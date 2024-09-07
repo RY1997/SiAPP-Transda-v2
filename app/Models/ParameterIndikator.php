@@ -29,6 +29,7 @@ class ParameterIndikator extends Model
     public $fillable = [
         'jenis_tkd',
         'bidang_tkd',
+        'batas_indikator',
         'uraian_indikator',
         'satuan_indikator'
     ];
@@ -42,6 +43,7 @@ class ParameterIndikator extends Model
         'id' => 'integer',
         'jenis_tkd' => 'string',
         'bidang_tkd' => 'string',
+        'batas_indikator' => 'string',
         'uraian_indikator' => 'string',
         'satuan_indikator' => 'string'
     ];
@@ -54,6 +56,7 @@ class ParameterIndikator extends Model
     public static $rules = [
         'jenis_tkd' => 'required|string|max:255',
         'bidang_tkd' => 'required|string|max:255',
+        'batas_indikator' => 'required|string|max:255',
         'uraian_indikator' => 'required|string|max:255',
         'satuan_indikator' => 'required|string|max:255',
         'created_at' => 'nullable',

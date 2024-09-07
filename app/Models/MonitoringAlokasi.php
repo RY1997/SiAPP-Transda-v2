@@ -39,6 +39,12 @@ class MonitoringAlokasi extends Model
         'jenis_tkd',
         'tipe_tkd',
         'bidang_tkd',
+        'subbidang_tkd',
+        'uraian',
+        'status_pemda',
+        'rk_usulan',
+        'rk_disetujui',
+        'tgl_juknis',
         'alokasi_tkd'
     ];
 
@@ -55,6 +61,12 @@ class MonitoringAlokasi extends Model
         'jenis_tkd' => 'string',
         'tipe_tkd' => 'string',
         'bidang_tkd' => 'string',
+        'subbidang_tkd' => 'string',
+        'uraian' => 'string',
+        'status_pemda' => 'string',
+        'rk_usulan' => 'decimal:2',
+        'rk_disetujui' => 'decimal:2',
+        'tgl_juknis' => 'date',
         'alokasi_tkd' => 'decimal:2'
     ];
 
@@ -70,10 +82,21 @@ class MonitoringAlokasi extends Model
         'jenis_tkd' => 'nullable|string|max:255',
         'tipe_tkd' => 'nullable|string|max:255',
         'bidang_tkd' => 'nullable|string|max:255',
+        'subbidang_tkd' => 'nullable|string|max:255',
+        'uraian' => 'nullable|string|max:255',
+        'status_pemda' => 'nullable|string|max:255',
+        'rk_usulan' => 'nullable|numeric',
+        'rk_disetujui' => 'nullable|numeric',
+        'tgl_juknis' => 'nullable',
         'alokasi_tkd' => 'required|numeric',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
+
+    public function st()
+    {
+        return $this->belongsTo(\App\Models\SuratTugas::class, 'nama_pemda', 'nama_pemda');
+    }
 
     public function penyaluran()
     {

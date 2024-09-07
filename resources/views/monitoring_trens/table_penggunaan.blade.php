@@ -2,11 +2,12 @@
     <table class="table text-center m-0" id="monitoringPenggunaans-table">
         <thead class="thead-light">
             <tr>
+                <th rowspan="2" style="min-width: 50px;">#</th>
                 <th rowspan="2" style="min-width: 100px;">Tipe TKD</th>
-                <th rowspan="2" style="min-width: 100px;">Bidang TKD</th>
+                <th rowspan="2" style="min-width: 100px;">Bidang TKD/Fungsi Belanja</th>
                 <!-- <th rowspan="2" style="min-width: 100px;">Alokasi</th> -->
                 <th colspan="2">Penggunaan TKD</th>
-                <th rowspan="2" style="min-width: 250px;">Penyebab Realisasi Rendah</th>
+                <!-- <th rowspan="2" style="min-width: 250px;">Penyebab Realisasi Rendah</th> -->
                 <th rowspan="2">Aksi</th>
             </tr>
             <tr>
@@ -21,9 +22,9 @@
                 <td>{{ $monitoringPenggunaan->tipe_tkd }}</td>
                 <td>{{ $monitoringPenggunaan->bidang_tkd }}</td>
                 <!-- <td>Alokasi</td> -->
-                <td class="text-right">{{ number_format($monitoringPenggunaan->anggaran_barjas + $monitoringPenggunaan->anggaran_pegawai + $monitoringPenggunaan->anggaran_modal + $monitoringPenggunaan->anggaran_hibah + $monitoringPenggunaan->anggaran_lainnya, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringPenggunaan->realisasi_barjas + $monitoringPenggunaan->realisasi_pegawai + $monitoringPenggunaan->realisasi_modal + $monitoringPenggunaan->realisasi_hibah + $monitoringPenggunaan->realisasi_lainnya, 2, ',', '.') }}</td>
-                <td>{{ $monitoringPenggunaan->penyebab_kurang_guna }}</td>
+                <td class="text-right">{{ number_format($monitoringPenggunaan->anggaran_barjas + $monitoringPenggunaan->anggaran_pegawai + $monitoringPenggunaan->anggaran_modal + $monitoringPenggunaan->anggaran_hibah + $monitoringPenggunaan->anggaran_lainnya + $monitoringPenggunaan->anggaran_na, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenggunaan->realisasi_barjas + $monitoringPenggunaan->realisasi_pegawai + $monitoringPenggunaan->realisasi_modal + $monitoringPenggunaan->realisasi_hibah + $monitoringPenggunaan->realisasi_lainnya + $monitoringPenggunaan->realisasi_na, 2, ',', '.') }}</td>
+                <!-- <td>{{ $monitoringPenggunaan->penyebab_kurang_guna }}</td> -->
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringPenggunaans.edit', [$monitoringPenggunaan->id]) }}" class='btn btn-sm btn-warning'>
