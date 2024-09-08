@@ -25,9 +25,9 @@
                 @endif
                 <td>{{ $monitoringTren->tahun }}</td>
                 <td class="text-right">{{ number_format($monitoringTren->total_alokasi, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringTren->penyaluran_sum_penyaluran_tkd, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringTren->penggunaan_sum_anggaran_barjas + $monitoringTren->penggunaan_sum_anggaran_pegawai + $monitoringTren->penggunaan_sum_anggaran_modal + $monitoringTren->penggunaan_sum_anggaran_hibah + $monitoringTren->penggunaan_sum_anggaran_lainnya, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringTren->penggunaan_sum_realisasi_barjas + $monitoringTren->penggunaan_sum_realisasi_pegawai + $monitoringTren->penggunaan_sum_realisasi_modal + $monitoringTren->penggunaan_sum_realisasi_hibah + $monitoringTren->penggunaan_sum_realisasi_lainnya, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringTren->total_penyaluran, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringTren->total_anggaran, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringTren->total_realisasi, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('evaluasiTrens.show', $monitoringTren->id) }}" class='btn btn-sm btn-warning'>

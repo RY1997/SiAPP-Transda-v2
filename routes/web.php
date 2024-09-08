@@ -113,3 +113,6 @@ Route::get('evaluasiTrens/{pemda_id}/{tahun}', [App\Http\Controllers\EvaluasiTre
 Route::resource('evaluasiAlokasis', App\Http\Controllers\EvaluasiAlokasiController::class);
 Route::resource('evaluasiPenyalurans', App\Http\Controllers\EvaluasiPenyaluranController::class);
 Route::resource('evaluasiPenggunaans', App\Http\Controllers\EvaluasiPenggunaanController::class);
+
+
+Route::resource('monitoringIndikatorMakros', App\Http\Controllers\MonitoringIndikatorMakroController::class);

@@ -15,6 +15,7 @@ use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class EvaluasiTrenController extends AppBaseController
@@ -46,26 +47,26 @@ class EvaluasiTrenController extends AppBaseController
         });
 
         if (Auth::user()->role != 'Admin') {
-            $monitoringTrens = MonitoringAlokasi::where('kode_pwk', Auth::user()->kode_pwk);
+            $monitoringTrens = $monitoringTrens->where('kode_pwk', Auth::user()->kode_pwk);
         }
 
-        $monitoringTrens = $monitoringTrens->where('jenis_tkd', session('jenis_tkd'))->whereIn('tahun', [2023, 2024])
+        $monitoringTrens = $monitoringTrens->where('jenis_tkd', session('jenis_tkd'))
+            ->whereIn('tahun', [2023, 2024])
             ->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
             ->groupBy('nama_pemda')
             ->groupBy('tahun')
-            ->withSum('penyaluran', 'penyaluran_tkd')
-            ->withSum('penggunaan', 'anggaran_barjas')
-            ->withSum('penggunaan', 'anggaran_pegawai')
-            ->withSum('penggunaan', 'anggaran_modal')
-            ->withSum('penggunaan', 'anggaran_hibah')
-            ->withSum('penggunaan', 'anggaran_lainnya')
-            ->withSum('penggunaan', 'realisasi_barjas')
-            ->withSum('penggunaan', 'realisasi_pegawai')
-            ->withSum('penggunaan', 'realisasi_modal')
-            ->withSum('penggunaan', 'realisasi_hibah')
-            ->withSum('penggunaan', 'realisasi_lainnya')
+            ->withCount(['penyaluran as total_penyaluran' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(penyaluran_tkd) as total_penyaluran'));
+            }])
+            ->withCount(['penggunaan as total_anggaran' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran'));
+            }])
+            ->withCount(['penggunaan as total_realisasi' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi'));
+            }])
             ->selectRaw('SUM(alokasi_tkd) as total_alokasi')
-            ->orderBy('nama_pemda')->orderBy('tahun')
+            ->orderBy('nama_pemda')
+            ->orderBy('tahun')
             ->paginate(50);
 
         return view('evaluasi_trens.index')
@@ -133,7 +134,7 @@ class EvaluasiTrenController extends AppBaseController
             ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
             ->groupBy('subbidang_tkd')->get();
 
-        return view('monitoring_trens.show')->with([
+        return view('evaluasi_trens.show')->with([
             'pemda' => $pemda,
             'monitoringAlokasis' => $monitoringAlokasis,
             'monitoringPenyalurans' => $monitoringPenyalurans,

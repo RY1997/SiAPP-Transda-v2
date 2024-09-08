@@ -112,6 +112,13 @@
     </li>
 
     <li class="nav-item">
+        <a class="nav-link {{ Request::is('monitoringIndikatorMakros*') ? 'active text-primary' : '' }}" href="{{ route('monitoringIndikatorMakros.index') }}">
+            <i class="ri-star-smile-line"></i>
+            <span class="nav-link-text">Capaian Indikator Makro</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link {{ Request::is('monitoringPps*') ? 'active text-primary' : '' }}" href="{{ route('monitoringPps.index') }}">
             <i class="ri-star-smile-line"></i>
             <span class="nav-link-text">Kinerja Layanan Publik</span>
