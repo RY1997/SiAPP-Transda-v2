@@ -3,7 +3,9 @@
         <thead class="thead-light">
             <tr>
                 <th rowspan="2" style="min-width: 50px;">#</th>
-                <th rowspan="2" style="min-width: 100px;">Uraian</th>
+                <th rowspan="2" style="min-width: 100px;">Sifat</th>
+                <th rowspan="2" style="min-width: 100px;">Bidang</th>
+                <th rowspan="2" style="min-width: 100px;">Subbidang</th>
                 <!-- <th rowspan="2" style="min-width: 100px;">Alokasi</th> -->
                 <th colspan="2">Penggunaan TKD</th>
                 <!-- <th rowspan="2" style="min-width: 250px;">Penyebab Realisasi Rendah</th> -->
@@ -19,6 +21,8 @@
             @foreach($monitoringPenggunaans as $monitoringPenggunaan)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $monitoringPenggunaan->tipe_tkd }}</td>
+                <td>{{ $monitoringPenggunaan->bidang_tkd }}</td>
                 <td>{{ $monitoringPenggunaan->subbidang_tkd }}</td>
                 <!-- <td>Alokasi</td> -->
                 <td class="text-right">{{ number_format($monitoringPenggunaan->total_anggaran, 2, ',', '.') }}</td>
@@ -35,7 +39,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="5" class="text-center">Belum ada data</td>
+                <td colspan="7" class="text-center">Belum ada data</td>
             </tr>
             @endif
         </tbody>

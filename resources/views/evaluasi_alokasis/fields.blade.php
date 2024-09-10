@@ -24,7 +24,7 @@
 
 <!-- Tipe Tkd Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('tipe_tkd', 'Karakteristik TKD') !!}
+    {!! Form::label('tipe_tkd', 'Sifat TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     <input class="form-control" maxlength="255" name="tipe_tkd" type="text" id="tipe_tkd" value="{{ $monitoringAlokasis->first()->tipe_tkd }}" readonly>

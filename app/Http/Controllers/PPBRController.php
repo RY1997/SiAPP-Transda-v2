@@ -131,10 +131,11 @@ class PPBRController extends AppBaseController
 
         // MonitoringPenggunaan::whereIn('tahun', ['2020','2021'])->where('bidang_tkd', 'Spesific Grant')->delete();
 
-        $updates = MonitoringPenyaluran::all();
+        $updates = MonitoringPenggunaan::where('tipe_tkd', 'Block Grant')->get();
         foreach ($updates as $update) {
             $update->update([
-                'tipe_tkd' => $update->bidang_tkd,
+                'bidang_tkd' => $update->tipe_tkd,
+                'subbidang_tkd' => $update->tipe_tkd,
             ]);
         }
     }

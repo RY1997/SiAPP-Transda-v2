@@ -3,7 +3,7 @@
     {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $alokasi_id->tahun }}" readonly>
+    <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $monitoringPenyalurans->first()->tahun }}" readonly>
 </div>
 
 <!-- Nama Pemda Field -->
@@ -11,35 +11,35 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $alokasi_id->nama_pemda }}" readonly>
+    <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $monitoringPenyalurans->first()->nama_pemda }}" readonly>
 </div>
 
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="jenis_tkd" id="jenis_tkd" class="form-control" value="{{ $alokasi_id->jenis_tkd }}" readonly>
+    <input type="text" name="jenis_tkd" id="jenis_tkd" class="form-control" value="{{ $monitoringPenyalurans->first()->jenis_tkd }}" readonly>
 </div>
 
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('tipe_tkd', 'Karakteristik TKD') !!}
+    {!! Form::label('tipe_tkd', 'Sifat TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="tipe_tkd" id="tipe_tkd" class="form-control" value="{{ $alokasi_id->tipe_tkd }}" readonly>
+    <input type="text" name="tipe_tkd" id="tipe_tkd" class="form-control" value="{{ $monitoringPenyalurans->first()->tipe_tkd }}" readonly>
 </div>
 
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('bidang_tkd', 'Bidang TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="bidang_tkd" id="bidang_tkd" class="form-control" value="{{ $alokasi_id->bidang_tkd }}" readonly>
+    <input type="text" name="bidang_tkd" id="bidang_tkd" class="form-control" value="{{ $monitoringPenyalurans->first()->bidang_tkd }}" readonly>
 </div>
 
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('subbidang_tkd', 'Subbidang TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="subbidang_tkd" id="subbidang_tkd" class="form-control" value="{{ $alokasi_id->subbidang_tkd }}" readonly>
+    <input type="text" name="subbidang_tkd" id="subbidang_tkd" class="form-control" value="{{ $monitoringPenyalurans->first()->subbidang_tkd }}" readonly>
 </div>
 
 <div class="col-sm-12 mt-2">

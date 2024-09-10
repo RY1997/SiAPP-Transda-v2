@@ -3,7 +3,9 @@
         <thead class="thead-light">
             <tr>
                 <th>#</th>
-                <th>Uraian</th>
+                <th>Sifat</th>
+                <th>Bidang</th>
+                <th>Subbidang</th>
                 @if (session('jenis_tkd') == 'Dana Alokasi Khusus')
                 <th>RK Diusulkan</th>
                 <th>RK Disetujui</th>
@@ -16,6 +18,8 @@
             @foreach($monitoringAlokasis as $monitoringAlokasi)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $monitoringAlokasi->tipe_tkd }}</td>
+                <td>{{ $monitoringAlokasi->bidang_tkd }}</td>
                 <td>{{ $monitoringAlokasi->subbidang_tkd }}</td>
                 @if (session('jenis_tkd') == 'Dana Alokasi Khusus')
                 <td class="text-right">{{ number_format($monitoringAlokasi->total_rk_usulan, 2, ',', '.') }}</td>
@@ -32,7 +36,7 @@
             </tr>
             @endforeach
             <tr class="bg-light">
-                <td colspan="2" class="text-center">Total</td>
+                <td colspan="4" class="text-center">Total</td>
                 @if (session('jenis_tkd') == 'Dana Alokasi Khusus')
                 <td class="text-right">{{ number_format($monitoringAlokasis->sum('total_rk_usulan'),2,',','.') }}</td>
                 <td class="text-right">{{ number_format($monitoringAlokasis->sum('total_rk_disetujui'),2,',','.') }}</td>

@@ -56,7 +56,7 @@ class EvaluasiPenggunaanController extends AppBaseController
      */
     public function store(CreateMonitoringPenggunaanRequest $request)
     {
-        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('bidang_tkd', $request->bidang_tkd)->where('subbidang_tkd', $request->subbidang_tkd)->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('tipe_tkd', $request->tipe_tkd)->where('bidang_tkd', $request->bidang_tkd)->where('subbidang_tkd', $request->subbidang_tkd)->get();
 
         if (empty($monitoringPenggunaans)) {
             Flash::error('Penggunaan not found');
@@ -71,11 +71,13 @@ class EvaluasiPenggunaanController extends AppBaseController
                 'anggaran_modal' => $request->{'anggaran_modal_' . $monitoringPenggunaan->id},
                 'anggaran_hibah' => $request->{'anggaran_hibah_' . $monitoringPenggunaan->id},
                 'anggaran_lainnya' => $request->{'anggaran_lainnya_' . $monitoringPenggunaan->id},
+                'anggaran_na' => $request->{'anggaran_na_' . $monitoringPenggunaan->id},
                 'realisasi_barjas' => $request->{'realisasi_barjas_' . $monitoringPenggunaan->id},
                 'realisasi_pegawai' => $request->{'realisasi_pegawai_' . $monitoringPenggunaan->id},
                 'realisasi_modal' => $request->{'realisasi_modal_' . $monitoringPenggunaan->id},
                 'realisasi_hibah' => $request->{'realisasi_hibah_' . $monitoringPenggunaan->id},
-                'realisasi_lainnya' => $request->{'realisasi_lainnya_' . $monitoringPenggunaan->id}
+                'realisasi_lainnya' => $request->{'realisasi_lainnya_' . $monitoringPenggunaan->id},
+                'realisasi_na' => $request->{'realisasi_na_' . $monitoringPenggunaan->id}
             ]);
         }
 
@@ -114,7 +116,7 @@ class EvaluasiPenggunaanController extends AppBaseController
             return redirect()->back();
         }
 
-        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $penggunaan_id->tahun)->where('nama_pemda', $penggunaan_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('bidang_tkd', $penggunaan_id->bidang_tkd)->where('subbidang_tkd', $penggunaan_id->subbidang_tkd)->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $penggunaan_id->tahun)->where('nama_pemda', $penggunaan_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('tipe_tkd', $penggunaan_id->tipe_tkd)->where('bidang_tkd', $penggunaan_id->bidang_tkd)->where('subbidang_tkd', $penggunaan_id->subbidang_tkd)->get();
 
         $alokasi_id = MonitoringAlokasi::where('tahun', $penggunaan_id->tahun)->where('nama_pemda', $penggunaan_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
 

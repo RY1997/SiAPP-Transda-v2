@@ -54,7 +54,7 @@ class MonitoringSisaTkdController extends AppBaseController
      */
     public function store(CreateMonitoringSisaTkdRequest $request)
     {
-        $monitoringSisaTkds = MonitoringSisaTkd::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('bidang_tkd', $request->bidang_tkd)->where('subbidang_tkd', $request->subbidang_tkd)->get();
+        $monitoringSisaTkds = MonitoringSisaTkd::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('tipe_tkd', $request->tipe_tkd)->where('bidang_tkd', $request->bidang_tkd)->get();
 
         if (empty($monitoringSisaTkds)) {
             Flash::error('Sisa Dana not found');
@@ -105,7 +105,7 @@ class MonitoringSisaTkdController extends AppBaseController
             return redirect()->back();
         }
 
-        $monitoringSisaTkds = MonitoringSisaTkd::where('tahun', $sisa_id->tahun)->where('nama_pemda', $sisa_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('bidang_tkd', $sisa_id->bidang_tkd)->get();
+        $monitoringSisaTkds = MonitoringSisaTkd::where('tahun', $sisa_id->tahun)->where('nama_pemda', $sisa_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('tipe_tkd', $sisa_id->tipe_tkd)->where('bidang_tkd', $sisa_id->bidang_tkd)->get();
 
         $alokasi_id = MonitoringAlokasi::where('tahun', $sisa_id->tahun)->where('nama_pemda', $sisa_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
 

@@ -54,7 +54,7 @@ class EvaluasiAlokasiController extends AppBaseController
      */
     public function store(CreateMonitoringAlokasiRequest $request)
     {
-        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('bidang_tkd', $request->bidang_tkd)->where('subbidang_tkd', $request->subbidang_tkd)->get();
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('tipe_tkd', $request->tipe_tkd)->where('bidang_tkd', $request->bidang_tkd)->where('subbidang_tkd', $request->subbidang_tkd)->get();
 
         if (empty($monitoringAlokasis)) {
             Flash::error('Alokasi not found');
@@ -106,7 +106,7 @@ class EvaluasiAlokasiController extends AppBaseController
             return redirect()->back();
         }
 
-        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $alokasi_id->tahun)->where('nama_pemda', $alokasi_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('bidang_tkd', $alokasi_id->bidang_tkd)->where('subbidang_tkd', $alokasi_id->subbidang_tkd)->get();
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $alokasi_id->tahun)->where('nama_pemda', $alokasi_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('tipe_tkd', $alokasi_id->tipe_tkd)->where('bidang_tkd', $alokasi_id->bidang_tkd)->where('subbidang_tkd', $alokasi_id->subbidang_tkd)->get();
 
         return view('evaluasi_alokasis.edit')->with([
             'monitoringAlokasis' => $monitoringAlokasis,

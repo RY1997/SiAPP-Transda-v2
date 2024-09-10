@@ -113,26 +113,26 @@ class EvaluasiTrenController extends AppBaseController
 
         if (empty($pemda)) {
             Flash::error('Pemda not found');
-            return redirect(route('monitoringTrens.index'));
+            return redirect(route('evaluasiTrens.index'));
         }
 
         $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
             ->selectRaw('*, SUM(alokasi_tkd) as total_alokasi, SUM(rk_usulan) as total_rk_usulan, SUM(rk_disetujui) as total_rk_disetujui')
-            ->groupBy('subbidang_tkd')->orderBy('tipe_tkd')->get();
+            ->groupBy('bidang_tkd', 'subbidang_tkd')->orderBy('tipe_tkd')->get();
 
         $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
             ->selectRaw('*, SUM(penyaluran_tkd) as total_penyaluran, SUM(potong_salur) as total_potong_salur, SUM(tunda_salur) as total_tunda_salur')
-            ->groupBy('subbidang_tkd')->get();
+            ->groupBy('bidang_tkd', 'subbidang_tkd')->get();
 
         $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
             ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
-            ->groupBy('subbidang_tkd')->get();
+            ->groupBy('bidang_tkd', 'subbidang_tkd')->get();
 
         return view('evaluasi_trens.show')->with([
             'pemda' => $pemda,
