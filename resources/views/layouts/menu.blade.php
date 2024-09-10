@@ -111,12 +111,14 @@
         </a>
     </li>
 
+    @if (session('jenis_tkd') == 'Dana Alokasi Khusus')
     <li class="nav-item">
         <a class="nav-link {{ Request::is('monitoringHibahs*') ? 'active text-primary' : '' }}" href="{{ route('monitoringHibahs.index') }}">
             <i class="ri-shake-hands-line"></i>
             <span class="nav-link-text">Pendanaan Hibah</span>
         </a>
     </li>
+    @endif
 
     <li class="nav-item">
         <a class="nav-link {{ Request::is('monitoringIndikatorMakros*') ? 'active text-primary' : '' }}" href="{{ route('monitoringIndikatorMakros.index') }}">
@@ -132,12 +134,14 @@
         </a>
     </li> -->
 
+    @if (session('jenis_tkd') == 'Dana Alokasi Khusus')
     <li class="nav-item">
         <a class="nav-link {{ Request::is('monitoringImmediateOutcomes*') ? 'active text-primary' : '' }}" href="{{ route('monitoringImmediateOutcomes.index') }}">
             <i class="ri-bard-line"></i>
             <span class="nav-link-text">Immediate Outcome</span>
         </a>
     </li>
+    @endif
 </ul>
 
 <hr class="my-3">
