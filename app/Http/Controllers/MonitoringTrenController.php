@@ -138,7 +138,7 @@ class MonitoringTrenController extends AppBaseController
             ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
             ->groupBy('bidang_tkd')->orderBy('bidang_tkd')->get();
 
-        $monitoringPenggunaans = MonitoringSisaTkd::where('tahun', $pemda->tahun)
+        $monitoringSisaTkds = MonitoringSisaTkd::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
             ->selectRaw('*, SUM(sisa_dana_tkd) as total_sisa_dana_tkd, SUM(dianggarkan_kembali) as total_dianggarkan_kembali, SUM(tidak_dianggarkan_kembali) as total_tidak_dianggarkan_kembali')
@@ -149,6 +149,7 @@ class MonitoringTrenController extends AppBaseController
             'monitoringAlokasis' => $monitoringAlokasis,
             'monitoringPenyalurans' => $monitoringPenyalurans,
             'monitoringPenggunaans' => $monitoringPenggunaans,
+            'monitoringSisaTkds' => $monitoringSisaTkds,
         ]);
     }
 
