@@ -42,9 +42,13 @@ class SuratTugasController extends AppBaseController
     public function index(Request $request)
     {
         if (Auth::user()->role == 'Admin') {
-            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('nama_pemda', $request->nama_pemda)->paginate(20);
+            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))
+                ->where('nama_pemda', 'like', '%' . $request->nama_pemda . '%')
+                ->paginate(20);
         } else {
-            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('kode_pwk', Auth::user()->kode_pwk)->where('nama_pemda', $request->nama_pemda)->paginate(20);
+            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('kode_pwk', Auth::user()->kode_pwk)
+                ->where('nama_pemda', 'like', '%' . $request->nama_pemda . '%')
+                ->paginate(20);
         }
 
         return view('surat_tugas.index')->with([
@@ -80,7 +84,7 @@ class SuratTugasController extends AppBaseController
         } else {
             $pemdas = DaftarPemda::where('uji_petik', 'Ya')->where('kode_pwk', Auth::user()->kode_pwk)->get();
         }
-        
+
         return view('surat_tugas.create')->with([
             'pemdas' => $pemdas,
         ]);
