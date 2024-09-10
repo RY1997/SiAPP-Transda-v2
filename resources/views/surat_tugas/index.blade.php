@@ -14,9 +14,8 @@ Pelaksanaan Penugasan
             </ol>
         </nav>
     </div>
-    <div class="row col-lg-4 col-5 text-right">
-        <a class="btn btn-success" href="{{ route('suratTugas.create') }}">Tambah</a>
-        <form class="input-group">
+    <div class="col-lg-3 col-4 text-right">
+        <form class="input-group float-right mb-2">
             <div class="input-group input-group-alternative input-group-merge">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-search"></i></span>
@@ -24,6 +23,11 @@ Pelaksanaan Penugasan
                 <input class="form-control" type="text" name="nama_pemda" value="{{ $nama_pemda ?? NULL }}" placeholder="Ketik Nama Pemda" />
             </div>
         </form>
+    </div>
+    <div class="col-lg-1 col-1 text-right">
+        <a class="btn btn-success float-right" href="{{ route('suratTugas.create') }}">
+            Tambah
+        </a>
     </div>
 </div>
 @endsection
