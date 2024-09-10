@@ -24,7 +24,7 @@
 
 <!-- Tipe Tkd Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('tipe_tkd', 'Karakteristik TKD') !!}
+    {!! Form::label('tipe_tkd', 'Sifat TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
     <input class="form-control" maxlength="255" name="tipe_tkd" type="text" id="tipe_tkd" value="{{ $monitoringAlokasis->first()->tipe_tkd }}" readonly>
@@ -54,7 +54,7 @@
                 <tr>
                     <td>{{ $monitoringAlokasi->subb }}</td>
                     <td>
-                        <select class="form-control custom-select" id="status_pemda" name="status_pemda">
+                        <select class="form-control custom-select" id="status_pemda" name="status_pemda_{{ $monitoringAlokasi->id }}">
                             <option value="" selected>Pilih</option>
                             <option value="Daerah Penghasil" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Daerah Penghasil' ? 'selected' : '' }}>Daerah Penghasil</option>
                             <option value="Pengolah" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Pengolah' ? 'selected' : '' }}>Pengolah</option>
@@ -73,7 +73,6 @@
                     <th rowspan="2" width="100">Uraian</th>
                     <th colspan="2">Perencanaan</th>
                     <th rowspan="2" width="200">Alokasi</th>
-                    <th rowspan="2" width="100">Tanggal Terbit Juknis</th>
                 </tr>
                 <tr>
                     <th width="200">Nilai Usulan Rencana Kegiatan (RK) (Rp)</th>
@@ -87,7 +86,6 @@
                     <td><input class="form-control" step="0.01" name="rk_usulan_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->rk_usulan }}"></td>
                     <td><input class="form-control" step="0.01" name="rk_disetujui_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->rk_disetujui }}"></td>
                     <td><input class="form-control" step="0.01" name="alokasi_tkd_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->alokasi_tkd }}"></td>
-                    <td><input type="date" class="form-control" name="tgl_juknis" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->tgl_juknis != NULL ? date_format($monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->tgl_juknis, 'Y-m-d') : '' }}"></td>
                 </tr>
                 @endforeach
             </tbody>

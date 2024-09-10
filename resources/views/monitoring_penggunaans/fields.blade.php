@@ -3,7 +3,7 @@
     {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $alokasi_id->tahun }}" readonly>
+    <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $monitoringPenggunaans->first()->tahun }}" readonly>
 </div>
 
 <!-- Nama Pemda Field -->
@@ -11,7 +11,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $alokasi_id->nama_pemda }}" readonly>
+    <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $monitoringPenggunaans->first()->nama_pemda }}" readonly>
 </div>
 
 <div class="col-sm-12 mt-2">
@@ -23,7 +23,14 @@
     {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="jenis_tkd" id="jenis_tkd" class="form-control" value="{{ session('jenis_tkd') }}" readonly>
+    <input type="text" name="jenis_tkd" id="jenis_tkd" class="form-control" value="{{ $monitoringPenggunaans->first()->jenis_tkd }}" readonly>
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('tipe_tkd', 'Sifat TKD') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    <input type="text" name="tipe_tkd" id="tipe_tkd" class="form-control" value="{{ $monitoringPenggunaans->first()->tipe_tkd }}" readonly>
 </div>
 
 <!-- Bidang Tkd Field -->
@@ -31,7 +38,7 @@
     {!! Form::label('bidang_tkd', 'Bidang TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input class="form-control" name="bidang_tkd" type="text" id="bidang_tkd" value="{{ $alokasi_id->bidang_tkd }}" readonly>
+    <input class="form-control" name="bidang_tkd" type="text" id="bidang_tkd" value="{{ $monitoringPenggunaans->first()->bidang_tkd }}" readonly>
 </div>
 
 <!-- Penggunaan Tkd Field -->

@@ -3,7 +3,8 @@
         <thead class="thead-light">
             <tr>
                 <th style="min-width: 50px;">#</th>
-                <th style="min-width: 100px;">Uraian</th>
+                <th style="min-width: 100px;">Sifat</th>
+                <th style="min-width: 100px;">Bidang</th>
                 <th style="min-width: 200px;">Nilai Penyaluran</th>
                 <th style="min-width: 200px;">Nilai Potong/Tunda</th>
                 <!-- <th rowspan="2" style="min-width: 100px;">Tanggal Penyaluran</th> -->
@@ -17,6 +18,7 @@
             @foreach($monitoringPenyalurans as $monitoringPenyaluran)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $monitoringPenyaluran->tipe_tkd }}</td>
                 <td>{{ $monitoringPenyaluran->bidang_tkd }}</td>
                 <td class="text-right">{{ number_format($monitoringPenyaluran->total_penyaluran, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringPenyaluran->total_potong_salur + $monitoringPenyaluran->total_tunda_salur, 2, ',', '.') }}</td>

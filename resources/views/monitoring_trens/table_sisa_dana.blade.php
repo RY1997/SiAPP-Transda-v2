@@ -3,7 +3,8 @@
         <thead class="thead-light">
             <tr>
                 <th style="min-width: 50px;">#</th>
-                <th style="min-width: 100px;">Uraian</th>
+                <th style="min-width: 100px;">Sifat</th>
+                <th style="min-width: 100px;">Bidang</th>
                 <th>Sisa Dana</th>
                 <th>Dianggarkan Kembali Tahun Berikutnya</th>
                 <th>Sisa Belum Dianggarkan Kembali</th>
@@ -15,6 +16,7 @@
             @foreach($monitoringSisaTkds as $monitoringSisaTkd)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $monitoringSisaTkd->tipe_tkd }}</td>
                 <td>{{ $monitoringSisaTkd->bidang_tkd }}</td>
                 <td class="text-right">{{ number_format($monitoringSisaTkd->total_sisa_dana_tkd, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringSisaTkd->total_dianggarkan_kembali, 2, ',', '.') }}</td>
@@ -30,7 +32,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="6" class="text-center">Belum ada data</td>
+                <td colspan="7" class="text-center">Belum ada data</td>
             </tr>
             @endif
         </tbody>

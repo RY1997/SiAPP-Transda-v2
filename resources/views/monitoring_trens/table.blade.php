@@ -18,7 +18,7 @@
         <tbody>
             @foreach($monitoringTrens as $monitoringTren)
             <tr>
-                @if ($monitoringTren->tahun == $monitoringTren->first()->tahun)
+                @if ($monitoringTren->tahun == 2020)
                 <td rowspan="5">{{ ceil($loop->iteration / 5 + ($page > 0 ? ($page - 1) : 0) * 5) }}</td>                
                 <td rowspan="5">{{ $monitoringTren->nama_pemda }}</td>
                 @endif

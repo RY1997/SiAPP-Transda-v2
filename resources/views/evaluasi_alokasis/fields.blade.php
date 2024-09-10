@@ -62,7 +62,7 @@
                 <tr>
                     <td>{{ $monitoringAlokasi->uraian }}</td>
                     <td>
-                        <select class="form-control custom-select" id="status_pemda" name="status_pemda">
+                        <select class="form-control custom-select" id="status_pemda" name="status_pemda_{{ $monitoringAlokasi->id }}">
                             <option value="" selected>Pilih</option>
                             <option value="Daerah Penghasil" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Daerah Penghasil' ? 'selected' : '' }}>Daerah Penghasil</option>
                             <option value="Daerah Non Penghasil" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Daerah Non Penghasil' ? 'selected' : '' }}>Daerah Non Penghasil</option>

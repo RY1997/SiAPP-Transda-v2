@@ -56,7 +56,7 @@ class MonitoringPenggunaanController extends AppBaseController
      */
     public function store(CreateMonitoringPenggunaanRequest $request)
     {
-        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('bidang_tkd', $request->bidang_tkd)->where('subbidang_tkd', $request->subbidang_tkd)->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('tipe_tkd', $request->tipe_tkd)->where('bidang_tkd', $request->bidang_tkd)->get();
 
         if (empty($monitoringPenggunaans)) {
             Flash::error('Penggunaan not found');
@@ -114,11 +114,11 @@ class MonitoringPenggunaanController extends AppBaseController
             return redirect()->back();
         }
 
-        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $penggunaan_id->tahun)->where('nama_pemda', $penggunaan_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('bidang_tkd', $penggunaan_id->bidang_tkd)->get();
+        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $penggunaan_id->tahun)->where('nama_pemda', $penggunaan_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('tipe_tkd', $penggunaan_id->tipe_tkd)->where('bidang_tkd', $penggunaan_id->bidang_tkd)->get();
 
         $alokasi_id = MonitoringAlokasi::where('tahun', $penggunaan_id->tahun)->where('nama_pemda', $penggunaan_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
 
-        return view('evaluasi_penggunaans.edit')->with(['monitoringPenggunaans' => $monitoringPenggunaans, 'alokasi_id' => $alokasi_id]);
+        return view('monitoring_penggunaans.edit')->with(['monitoringPenggunaans' => $monitoringPenggunaans, 'alokasi_id' => $alokasi_id]);
     }
 
     /**

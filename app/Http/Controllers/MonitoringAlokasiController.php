@@ -54,13 +54,28 @@ class MonitoringAlokasiController extends AppBaseController
      */
     public function store(CreateMonitoringAlokasiRequest $request)
     {
-        $input = $request->all();
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('tipe_tkd', $request->tipe_tkd)->where('bidang_tkd', $request->bidang_tkd)->get();
 
-        $monitoringAlokasi = $this->monitoringAlokasiRepository->create($input);
+        if (empty($monitoringAlokasis)) {
+            Flash::error('Alokasi not found');
+            return redirect()->back();
+        }
 
-        Flash::success('Monitoring Alokasi saved successfully.');
+        foreach ($monitoringAlokasis as $monitoringAlokasi) {
+            MonitoringAlokasi::where('id', $monitoringAlokasi->id)->update([
+                'status_pemda' => $request->{'status_pemda_' . $monitoringAlokasi->id},
+                'rk_usulan' => $request->{'rk_usulan_' . $monitoringAlokasi->id},
+                'rk_disetujui' => $request->{'rk_disetujui_' . $monitoringAlokasi->id},
+                'tgl_juknis' => $request->{'tgl_juknis_' . $monitoringAlokasi->id},
+                'alokasi_tkd' => $request->{'alokasi_tkd_' . $monitoringAlokasi->id}
+            ]);
+        }
 
-        return redirect(route('monitoringAlokasis.index'));
+        Flash::success('Alokasi updated successfully.');
+
+        $monitoringAlokasi = MonitoringAlokasi::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->first();
+
+        return redirect(route('monitoringTrens.show', $monitoringAlokasi->id));
     }
 
     /**
@@ -91,7 +106,7 @@ class MonitoringAlokasiController extends AppBaseController
             return redirect()->back();
         }
 
-        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $alokasi_id->tahun)->where('nama_pemda', $alokasi_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('bidang_tkd', $alokasi_id->bidang_tkd)->get();
+        $monitoringAlokasis = MonitoringAlokasi::where('tahun', $alokasi_id->tahun)->where('nama_pemda', $alokasi_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('tipe_tkd', $alokasi_id->tipe_tkd)->where('bidang_tkd', $alokasi_id->bidang_tkd)->get();
 
         return view('monitoring_alokasis.edit')->with([
             'monitoringAlokasis' => $monitoringAlokasis,
@@ -109,19 +124,7 @@ class MonitoringAlokasiController extends AppBaseController
      */
     public function update($id, UpdateMonitoringAlokasiRequest $request)
     {
-        $monitoringAlokasi = $this->monitoringAlokasiRepository->find($id);
-
-        if (empty($monitoringAlokasi)) {
-            Flash::error('Monitoring Alokasi not found');
-
-            return redirect(route('monitoringAlokasis.index'));
-        }
-
-        $monitoringAlokasi = $this->monitoringAlokasiRepository->update($request->all(), $id);
-
-        Flash::success('Monitoring Alokasi updated successfully.');
-
-        return redirect(route('monitoringTrens.show', $id));
+        //
     }
 
     /**
@@ -135,18 +138,6 @@ class MonitoringAlokasiController extends AppBaseController
      */
     public function destroy($id)
     {
-        $monitoringAlokasi = $this->monitoringAlokasiRepository->find($id);
-
-        if (empty($monitoringAlokasi)) {
-            Flash::error('Monitoring Alokasi not found');
-
-            return redirect(route('monitoringAlokasis.index'));
-        }
-
-        $this->monitoringAlokasiRepository->delete($id);
-
-        Flash::success('Monitoring Alokasi deleted successfully.');
-
-        return redirect(route('monitoringAlokasis.index'));
+        //
     }
 }
