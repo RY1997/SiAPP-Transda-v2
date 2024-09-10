@@ -57,8 +57,10 @@
                         <select class="form-control custom-select" id="status_pemda" name="status_pemda">
                             <option value="" selected>Pilih</option>
                             <option value="Daerah Penghasil" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Daerah Penghasil' ? 'selected' : '' }}>Daerah Penghasil</option>
-                            <option value="Daerah Non Penghasil" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Daerah Non Penghasil' ? 'selected' : '' }}>Daerah Non Penghasil</option>
-                            <option value="Daerah Lainnya" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Daerah Lainnya' ? 'selected' : '' }}>Daerah Lainnya</option>
+                            <option value="Pengolah" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Pengolah' ? 'selected' : '' }}>Pengolah</option>
+                            <option value="Berbatasan Langsung" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Berbatasan Langsung' ? 'selected' : '' }}>Berbatasan Langsung</option>
+                            <option value="Pemerataan (SDA Migas) atau Daerah Penghasil" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Pemerataan (SDA Migas) atau Daerah Penghasil' ? 'selected' : '' }}>Pemerataan (SDA Migas) atau Daerah Penghasil</option>
+                            <option value="Berbatasan Langsung (Sawit)" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Berbatasan Langsung (Sawit)' ? 'selected' : '' }}>Berbatasan Langsung (Sawit)</option>
                         </select>
                     </td>
                     <td><input class="form-control" step="0.01" name="alokasi_tkd_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->alokasi_tkd }}"></td>

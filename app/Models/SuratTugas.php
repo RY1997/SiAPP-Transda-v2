@@ -170,4 +170,9 @@ class SuratTugas extends Model
     {
         return $this->hasMany(\App\Models\EvaluasiLaporan::class, 'nama_pemda', 'nama_pemda');
     }
+
+    public function prioritas()
+    {
+        return $this->hasMany(\App\Models\EvaluasiPrioritas::class, 'nama_pemda', 'nama_pemda');
+    }
 }

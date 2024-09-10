@@ -10,6 +10,7 @@ use App\Models\DaftarPemda;
 use App\Models\MonitoringAlokasi;
 use App\Models\MonitoringPenggunaan;
 use App\Models\MonitoringPenyaluran;
+use App\Models\MonitoringSisaTkd;
 use App\Models\ParameterTkd;
 use Illuminate\Http\Request;
 use Flash;
@@ -50,22 +51,22 @@ class MonitoringTrenController extends AppBaseController
         }
 
         $monitoringTrens = $monitoringTrens->where('jenis_tkd', session('jenis_tkd'))
-        ->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
-        ->groupBy('nama_pemda')
-        ->groupBy('tahun')
-        ->withCount(['penyaluran as total_penyaluran' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(penyaluran_tkd) as total_penyaluran'));
-        }])
-        ->withCount(['penggunaan as total_anggaran' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran'));
-        }])
-        ->withCount(['penggunaan as total_realisasi' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi'));
-        }])
-        ->selectRaw('SUM(alokasi_tkd) as total_alokasi')
-        ->orderBy('nama_pemda')
-        ->orderBy('tahun')
-        ->paginate(50);
+            ->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+            ->groupBy('nama_pemda')
+            ->groupBy('tahun')
+            ->withCount(['penyaluran as total_penyaluran' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(penyaluran_tkd) as total_penyaluran'));
+            }])
+            ->withCount(['penggunaan as total_anggaran' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran'));
+            }])
+            ->withCount(['penggunaan as total_realisasi' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi'));
+            }])
+            ->selectRaw('SUM(alokasi_tkd) as total_alokasi')
+            ->orderBy('nama_pemda')
+            ->orderBy('tahun')
+            ->paginate(50);
 
         return view('monitoring_trens.index')
             ->with([
@@ -135,6 +136,12 @@ class MonitoringTrenController extends AppBaseController
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
             ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
+            ->groupBy('bidang_tkd')->orderBy('bidang_tkd')->get();
+
+        $monitoringPenggunaans = MonitoringSisaTkd::where('tahun', $pemda->tahun)
+            ->where('nama_pemda', $pemda->nama_pemda)
+            ->where('jenis_tkd', session('jenis_tkd'))
+            ->selectRaw('*, SUM(sisa_dana_tkd) as total_sisa_dana_tkd, SUM(dianggarkan_kembali) as total_dianggarkan_kembali, SUM(tidak_dianggarkan_kembali) as total_tidak_dianggarkan_kembali')
             ->groupBy('bidang_tkd')->orderBy('bidang_tkd')->get();
 
         return view('monitoring_trens.show')->with([

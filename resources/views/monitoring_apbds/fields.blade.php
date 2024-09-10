@@ -14,6 +14,10 @@
     {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
 </div>
 
+<div class="col-sm-12 mb-3">
+    <h5>A. Pendapatan APBD</h5>
+</div>
+
 <!-- Pendapatan Daerah Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('pendapatan_daerah', 'Pendapatan Daerah') !!}
@@ -44,6 +48,10 @@
 </div>
 <div class="form-group col-sm-9 mb-3">
     {!! Form::number('pendapatan_lainnya', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+</div>
+
+<div class="col-sm-12 mb-3">
+    <h5>B. Belanja APBD</h5>
 </div>
 
 <!-- Belanja Daerah Field -->
@@ -78,13 +86,6 @@
     {!! Form::number('belanja_modal', null, ['class' => 'form-control', 'step' => '0.01']) !!}
 </div>
 
-<div class="form-group col-sm-3 mb-3">
-    {!! Form::label('belanja_modal_jalan', 'Belanja Modal (Bidang Jalan)') !!}
-</div>
-<div class="form-group col-sm-9 mb-3">
-    {!! Form::number('belanja_modal_jalan', null, ['class' => 'form-control', 'step' => '0.01']) !!}
-</div>
-
 <!-- Belanja Hibah Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('belanja_hibah', 'Belanja Hibah') !!}
@@ -99,6 +100,35 @@
 </div>
 <div class="form-group col-sm-9 mb-3">
     {!! Form::number('belanja_lainnya', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+</div>
+
+<div class="col-sm-12 mb-3">
+    <h5>C. Belanja Menurut Urusan APBD</h5>
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('belanja_modal_jalan', 'Belanja Modal (Bidang Jalan)') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    {!! Form::number('belanja_modal_jalan', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('belanja_pendidikan', 'Belanja Urusan Pendidikan') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    {!! Form::number('belanja_pendidikan', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('belanja_kesehatan', 'Belanja Urusan Kesehatan') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    {!! Form::number('belanja_kesehatan', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+</div>
+
+<div class="col-sm-12 mb-3">
+    <h5>D. Pembiayaan APBD</h5>
 </div>
 
 <!-- Penerimaan Pembiayaan Field -->

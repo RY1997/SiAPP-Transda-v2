@@ -112,16 +112,30 @@
     </li>
 
     <li class="nav-item">
+        <a class="nav-link {{ Request::is('monitoringHibahs*') ? 'active text-primary' : '' }}" href="{{ route('monitoringHibahs.index') }}">
+            <i class="ri-shake-hands-line"></i>
+            <span class="nav-link-text">Pendanaan Hibah</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link {{ Request::is('monitoringIndikatorMakros*') ? 'active text-primary' : '' }}" href="{{ route('monitoringIndikatorMakros.index') }}">
             <i class="ri-star-smile-line"></i>
             <span class="nav-link-text">Capaian Indikator Makro</span>
         </a>
     </li>
 
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link {{ Request::is('monitoringPps*') ? 'active text-primary' : '' }}" href="{{ route('monitoringPps.index') }}">
             <i class="ri-star-smile-line"></i>
             <span class="nav-link-text">Kinerja Layanan Publik</span>
+        </a>
+    </li> -->
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('monitoringImmediateOutcomes*') ? 'active text-primary' : '' }}" href="{{ route('monitoringImmediateOutcomes.index') }}">
+            <i class="ri-bard-line"></i>
+            <span class="nav-link-text">Immediate Outcome</span>
         </a>
     </li>
 </ul>
@@ -179,12 +193,51 @@
         </a>
     </li>
 
+    @if (session('jenis_tkd') == 'Dana Alokasi Umum')
     <li class="nav-item">
         <a class="nav-link {{ Request::is('evaluasiKebutuhans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKebutuhans.index') }}">
-            <i class="ri-exchange-2-line"></i>
+            <i class="ri-expand-width-line"></i>
             <span class="nav-link-text">Kebutuhan & Pendanaan</span>
         </a>
     </li>
+    @endif
+
+    @if (session('jenis_tkd') == 'Dana Bagi Hasil')
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiPrioritas*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiPrioritas.index') }}">
+            <i class="ri-sort-desc"></i>
+            <span class="nav-link-text">Prioritas Penggunaan</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiKebijakanAlokasis*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKebijakanAlokasis.index') }}">
+            <i class="ri-file-download-line"></i>
+            <span class="nav-link-text">Kebijakan Alokasi</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiKeberlanjutans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKeberlanjutans.index') }}">
+            <i class="ri-contract-right-line"></i>
+            <span class="nav-link-text">Keberlanjutan Kegiatan</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiSisaDaks*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiSisaDaks.index') }}">
+            <i class="ri-coin-line"></i>
+            <span class="nav-link-text">Sisa Dana DAK</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiImmediateOutcomes*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiImmediateOutcomes.index') }}">
+            <i class="ri-bard-line"></i>
+            <span class="nav-link-text">Capaian IO</span>
+        </a>
+    </li>
+    @endif
 
     <li class="nav-item">
         <a class="nav-link {{ Request::is('evaluasiKontraks*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKontraks.index') }}">
@@ -238,3 +291,11 @@
         </a>
     </li>
 </ul>
+<li class="nav-item">
+    <a href="{{ route('monitoringSisaTkds.index') }}"
+       class="nav-link {{ Request::is('monitoringSisaTkds*') ? 'active' : '' }}">
+        <p>Monitoring Sisa Tkds</p>
+    </a>
+</li>
+
+

@@ -62,6 +62,18 @@
                     <td><input class="form-control" step="0.01" name="anggaran_na_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_na }}"></td>
                     <td><input class="form-control" step="0.01" name="realisasi_na_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_na }}"></td>
                 </tr>
+                @elseif ($monitoringPenggunaan->jenis_tkd == 'Dana Alokasi Khusus')
+                <tr>
+                    <td rowspan="2">{{ $monitoringPenggunaan->uraian }}</td>
+                    <td>Jumlah Kontrak</td>
+                    <td><input class="form-control" step="1" name="jml_kontrak_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->jml_kontrak }}" placeholder="Jumlah Kontrak"></td>
+                    <td><input class="form-control" step="0.01" name="nilai_kontrak_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->nilai_kontrak }}" placeholder="Nilai Kontrak"></td>
+                </tr>
+                <tr>
+                    <td>Nilai Penggunaan</td>
+                    <td><input class="form-control" step="0.01" name="anggaran_na_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_na }}"></td>
+                    <td><input class="form-control" step="0.01" name="realisasi_na_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_na }}"></td>
+                </tr>
                 @else
                 <tr>
                     <td rowspan="5">{{ $monitoringPenggunaan->uraian }}</td>

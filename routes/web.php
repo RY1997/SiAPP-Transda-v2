@@ -116,3 +116,38 @@ Route::resource('evaluasiPenggunaans', App\Http\Controllers\EvaluasiPenggunaanCo
 
 
 Route::resource('monitoringIndikatorMakros', App\Http\Controllers\MonitoringIndikatorMakroController::class);
+
+
+
+
+
+
+Route::resource('evaluasiPrioritas', App\Http\Controllers\EvaluasiPrioritasController::class);
+
+Route::resource('evaluasiKeberlanjutans', App\Http\Controllers\EvaluasiKeberlanjutanController::class);
+
+
+
+
+
+
+
+
+Route::resource('evaluasiKebijakanAlokasis', App\Http\Controllers\EvaluasiKebijakanAlokasiController::class);
+
+
+Route::resource('evaluasiSisaDaks', App\Http\Controllers\EvaluasiSisaDakController::class);
+
+
+Route::resource('evaluasiImmediateOutcomes', App\Http\Controllers\EvaluasiImmediateOutcomeController::class);
+
+
+Route::resource('monitoringImmediateOutcomes', App\Http\Controllers\MonitoringImmediateOutcomeController::class);
+
+
+Route::resource('monitoringHibahs', App\Http\Controllers\MonitoringHibahController::class);
+
+
+
+
+Route::resource('monitoringSisaTkds', App\Http\Controllers\MonitoringSisaTkdController::class);
