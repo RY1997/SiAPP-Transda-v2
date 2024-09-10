@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            @if ($suratTugas->count() > 0)
+            @if ($monitoringTrens->count() > 0)
             @foreach($monitoringTrens as $monitoringTren)
             <tr>
                 @if ($monitoringTren->tahun == 2023)
