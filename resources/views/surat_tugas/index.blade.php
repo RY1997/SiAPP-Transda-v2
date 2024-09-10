@@ -14,7 +14,7 @@ Pelaksanaan Penugasan
             </ol>
         </nav>
     </div>
-    <div class="col-lg-4 col-5 text-right">
+    <div class="row col-lg-4 col-5 text-right">
         <a class="btn btn-success" href="{{ route('suratTugas.create') }}">Tambah</a>
         <form class="input-group">
             <div class="input-group input-group-alternative input-group-merge">
