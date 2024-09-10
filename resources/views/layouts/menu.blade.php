@@ -216,7 +216,9 @@
             <span class="nav-link-text">Kebijakan Alokasi</span>
         </a>
     </li>
+    @endif
 
+    @if (session('jenis_tkd') == 'Dana Alokasi Khusus')
     <li class="nav-item">
         <a class="nav-link {{ Request::is('evaluasiKeberlanjutans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKeberlanjutans.index') }}">
             <i class="ri-contract-right-line"></i>
@@ -285,17 +287,11 @@
 
 <ul class="navbar-nav mb-md-3">
     <li class="nav-item">
-        <a class="nav-link" href="https://bit.ly/ubedganteng" target="_blank">
+        <a class="nav-link" href="http://bit.ly/TKD2024New" target="_blank">
             <i class="ri-question-line"></i>
             <span class="nav-link-text">Petunjuk Teknis</span>
         </a>
     </li>
 </ul>
-<li class="nav-item">
-    <a href="{{ route('monitoringSisaTkds.index') }}"
-       class="nav-link {{ Request::is('monitoringSisaTkds*') ? 'active' : '' }}">
-        <p>Monitoring Sisa Tkds</p>
-    </a>
-</li>
 
 
