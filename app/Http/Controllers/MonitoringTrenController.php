@@ -42,16 +42,15 @@ class MonitoringTrenController extends AppBaseController
 
         if (Auth::user()->role == 'Admin') {
             if (session('jenis_tkd') == 'Dana Otonomi Khusus') {
-                $monitoringTrens = MonitoringAlokasi::whereIn('kode_pwk', ['PW01', 'PW26', 'PW27']);
+                $monitoringTrens = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'))->whereIn('kode_pwk', ['PW01', 'PW26', 'PW27']);
             } else {
-                $monitoringTrens = MonitoringAlokasi::query();
+                $monitoringTrens = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'));
             }
         } else {
             $monitoringTrens = MonitoringAlokasi::where('kode_pwk', Auth::user()->kode_pwk);
         }
 
-        $monitoringTrens = $monitoringTrens->where('jenis_tkd', session('jenis_tkd'))
-            ->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+        $monitoringTrens = $monitoringTrens->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
             ->groupBy('nama_pemda')
             ->groupBy('tahun')
             ->withCount(['penyaluran as total_penyaluran' => function ($query) {

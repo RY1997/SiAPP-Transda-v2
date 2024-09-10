@@ -10,4 +10,8 @@ class DaftarPemda extends Model
     use HasFactory;
 
     public $table = 'pm_pemda';
+
+    public $fillable = [
+        'antrian',
+    ];
 }

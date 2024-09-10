@@ -42,7 +42,7 @@ class EvaluasiTrenController extends AppBaseController
 
         $nama_pemda = $request->query('nama_pemda');
 
-        $monitoringTrens = MonitoringAlokasi::whereHas('st', function ($query) {
+        $monitoringTrens = MonitoringAlokasi::whereIn('tahun', [2023, 2024])->where('jenis_tkd', session('jenis_tkd'))->whereHas('st', function ($query) {
             $query->where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi');
         });
 
@@ -50,9 +50,7 @@ class EvaluasiTrenController extends AppBaseController
             $monitoringTrens = $monitoringTrens->where('kode_pwk', Auth::user()->kode_pwk);
         }
 
-        $monitoringTrens = $monitoringTrens->where('jenis_tkd', session('jenis_tkd'))
-            ->whereIn('tahun', [2023, 2024])
-            ->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+        $monitoringTrens = $monitoringTrens->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
             ->groupBy('nama_pemda')
             ->groupBy('tahun')
             ->withCount(['penyaluran as total_penyaluran' => function ($query) {

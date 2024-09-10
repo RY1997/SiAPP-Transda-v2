@@ -10,6 +10,7 @@ use App\Models\DaftarPemda;
 use App\Models\MonitoringPenggunaan;
 use App\Models\MonitoringPenyaluran;
 use App\Models\MonitoringTl;
+use App\Models\ParameterTkd;
 use App\Models\PPBR;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class PPBRController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
         // Otsus
         // $pemdas = DaftarPemda::whereIn('kode_pwk', ['PW01', 'PW26', 'PW27'])->get();
@@ -131,13 +132,116 @@ class PPBRController extends AppBaseController
 
         // MonitoringPenggunaan::whereIn('tahun', ['2020','2021'])->where('bidang_tkd', 'Spesific Grant')->delete();
 
-        $updates = MonitoringPenggunaan::where('tipe_tkd', 'Block Grant')->get();
-        foreach ($updates as $update) {
-            $update->update([
-                'bidang_tkd' => $update->tipe_tkd,
-                'subbidang_tkd' => $update->tipe_tkd,
-            ]);
-        }
+        // $updates = MonitoringPenggunaan::where('tipe_tkd', 'Block Grant')->get();
+        // foreach ($updates as $update) {
+        //     $update->update([
+        //         'bidang_tkd' => $update->tipe_tkd,
+        //         'subbidang_tkd' => $update->tipe_tkd,
+        //     ]);
+        // }
+
+        // DAU
+
+        // Ambil satu record dari DaftarPemda yang belum diproses (antrian null)
+        // $pemda = DaftarPemda::whereNull('antrian')->get();
+
+        // // Ambil semua bidang yang tidak termasuk 'Dana Otonomi Khusus'
+        // $bidangs = ParameterTkd::where('jenis_tkd', '<>', 'Dana Otonomi Khusus')->get();
+        // $monitoringTahuns = [
+        //     ['tahun' => '2020'],
+        //     ['tahun' => '2021'],
+        //     ['tahun' => '2022'],
+        //     ['tahun' => '2023'],
+        //     ['tahun' => '2024'],
+        // ];
+
+        // // Lakukan pemrosesan untuk setiap tahun dan bidang
+
+        // foreach ($pemda as $pemdas) {
+        //     foreach ($monitoringTahuns as $tahun) {
+        //         foreach ($bidangs as $bidang) {
+        //             // Cek kondisi uji petik
+        //             if ($pemdas->uji_petik == 'Ya' && ($tahun['tahun'] == '2023' || $tahun['tahun'] == '2024')) {
+        //                 // Proses eva_penyaluran
+        //                 if (!empty($bidang->eva_penyaluran)) {
+        //                     $uraianSalurs = explode(';', $bidang->eva_penyaluran);
+        //                     foreach ($uraianSalurs as $item) {
+        //                         MonitoringPenyaluran::create([
+        //                             'tahun' => $tahun['tahun'],
+        //                             'kode_pwk' => $pemdas->kode_pwk,
+        //                             'nama_pemda' => $pemdas->nama_pemda,
+        //                             'jenis_tkd' => $bidang->jenis_tkd,
+        //                             'tipe_tkd' => $bidang->tipe_tkd,
+        //                             'bidang_tkd' => $bidang->bidang_tkd,
+        //                             'subbidang_tkd' => $bidang->subbidang_tkd,
+        //                             'uraian' => $item,
+        //                         ]);
+        //                     }
+        //                 }
+
+        //                 // Proses eva_penggunaan
+        //                 if (!empty($bidang->eva_penggunaan)) {
+        //                     $uraianGunas = explode(';', $bidang->eva_penggunaan);
+        //                     foreach ($uraianGunas as $item) {
+        //                         MonitoringPenggunaan::create([
+        //                             'tahun' => $tahun['tahun'],
+        //                             'kode_pwk' => $pemdas->kode_pwk,
+        //                             'nama_pemda' => $pemdas->nama_pemda,
+        //                             'jenis_tkd' => $bidang->jenis_tkd,
+        //                             'tipe_tkd' => $bidang->tipe_tkd,
+        //                             'bidang_tkd' => $bidang->bidang_tkd,
+        //                             'subbidang_tkd' => $bidang->subbidang_tkd,
+        //                             'uraian' => $item,
+        //                         ]);
+        //                     }
+        //                 }
+        //             } else {
+        //                 // Proses mon_penyaluran
+        //                 if (!empty($bidang->mon_penyaluran)) {
+        //                     $uraianSalurs = explode(';', $bidang->mon_penyaluran);
+        //                     foreach ($uraianSalurs as $item) {
+        //                         MonitoringPenyaluran::create([
+        //                             'tahun' => $tahun['tahun'],
+        //                             'kode_pwk' => $pemdas->kode_pwk,
+        //                             'nama_pemda' => $pemdas->nama_pemda,
+        //                             'jenis_tkd' => $bidang->jenis_tkd,
+        //                             'tipe_tkd' => $bidang->tipe_tkd,
+        //                             'bidang_tkd' => $bidang->bidang_tkd,
+        //                             'subbidang_tkd' => $bidang->subbidang_tkd,
+        //                             'uraian' => $item,
+        //                         ]);
+        //                     }
+        //                 }
+
+        //                 // Proses mon_penggunaan
+        //                 if (!empty($bidang->mon_penggunaan)) {
+        //                     $uraianGunas = explode(';', $bidang->mon_penggunaan);
+        //                     foreach ($uraianGunas as $item) {
+        //                         MonitoringPenggunaan::create([
+        //                             'tahun' => $tahun['tahun'],
+        //                             'kode_pwk' => $pemdas->kode_pwk,
+        //                             'nama_pemda' => $pemdas->nama_pemda,
+        //                             'jenis_tkd' => $bidang->jenis_tkd,
+        //                             'tipe_tkd' => $bidang->tipe_tkd,
+        //                             'bidang_tkd' => $bidang->bidang_tkd,
+        //                             'subbidang_tkd' => $bidang->subbidang_tkd,
+        //                             'uraian' => $item,
+        //                         ]);
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+
+        //     // Setelah selesai, tandai record sebagai diproses dengan memberikan nilai antrian
+        //     $pemdas->update([
+        //         'antrian' => 1
+        //     ]);
+        // }
+
+
+        // Jika tidak ada pemda dengan antrian null, redirect ke home
+        // return redirect(route('ppbrs.create'));
     }
 
     /**
@@ -181,15 +285,107 @@ class PPBRController extends AppBaseController
      */
     public function edit($id)
     {
-        $monitoringTl = $this->monitoringTlRepository->find($id);
+        // Ambil satu record dari DaftarPemda yang belum diproses (antrian null)
+        $pemdas = DaftarPemda::whereNull('antrian')->first();
 
-        if (empty($monitoringTl)) {
-            Flash::error('Monitoring Tl not found');
+        if ($pemdas) {
+            // Ambil semua bidang yang tidak termasuk 'Dana Otonomi Khusus'
+            $bidangs = ParameterTkd::where('jenis_tkd', '<>', 'Dana Otonomi Khusus')->get();
+            $monitoringTahuns = [
+                ['tahun' => '2020'],
+                ['tahun' => '2021'],
+                ['tahun' => '2022'],
+                ['tahun' => '2023'],
+                ['tahun' => '2024'],
+            ];
 
-            return redirect(route('monitoringTls.index'));
+            // Lakukan pemrosesan untuk setiap tahun dan bidang
+            foreach ($monitoringTahuns as $tahun) {
+                foreach ($bidangs as $bidang) {
+                    // Cek kondisi uji petik
+                    if ($pemdas->uji_petik == 'Ya' && ($tahun['tahun'] == '2023' || $tahun['tahun'] == '2024')) {
+                        // Proses eva_penyaluran
+                        if (!empty($bidang->eva_penyaluran)) {
+                            $uraianSalurs = explode(';', $bidang->eva_penyaluran);
+                            foreach ($uraianSalurs as $item) {
+                                MonitoringPenyaluran::firstOrCreate([
+                                    'tahun' => $tahun['tahun'],
+                                    'kode_pwk' => $pemdas->kode_pwk,
+                                    'nama_pemda' => $pemdas->nama_pemda,
+                                    'jenis_tkd' => $bidang->jenis_tkd,
+                                    'tipe_tkd' => $bidang->tipe_tkd,
+                                    'bidang_tkd' => $bidang->bidang_tkd,
+                                    'subbidang_tkd' => $bidang->subbidang_tkd,
+                                    'uraian' => $item,
+                                ]);
+                            }
+                        }
+
+                        // Proses eva_penggunaan
+                        if (!empty($bidang->eva_penggunaan)) {
+                            $uraianGunas = explode(';', $bidang->eva_penggunaan);
+                            foreach ($uraianGunas as $item) {
+                                MonitoringPenggunaan::firstOrCreate([
+                                    'tahun' => $tahun['tahun'],
+                                    'kode_pwk' => $pemdas->kode_pwk,
+                                    'nama_pemda' => $pemdas->nama_pemda,
+                                    'jenis_tkd' => $bidang->jenis_tkd,
+                                    'tipe_tkd' => $bidang->tipe_tkd,
+                                    'bidang_tkd' => $bidang->bidang_tkd,
+                                    'subbidang_tkd' => $bidang->subbidang_tkd,
+                                    'uraian' => $item,
+                                ]);
+                            }
+                        }
+                    } else {
+                        // Proses mon_penyaluran
+                        if (!empty($bidang->mon_penyaluran)) {
+                            $uraianSalurs = explode(';', $bidang->mon_penyaluran);
+                            foreach ($uraianSalurs as $item) {
+                                MonitoringPenyaluran::firstOrCreate([
+                                    'tahun' => $tahun['tahun'],
+                                    'kode_pwk' => $pemdas->kode_pwk,
+                                    'nama_pemda' => $pemdas->nama_pemda,
+                                    'jenis_tkd' => $bidang->jenis_tkd,
+                                    'tipe_tkd' => $bidang->tipe_tkd,
+                                    'bidang_tkd' => $bidang->bidang_tkd,
+                                    'subbidang_tkd' => $bidang->subbidang_tkd,
+                                    'uraian' => $item,
+                                ]);
+                            }
+                        }
+
+                        // Proses mon_penggunaan
+                        if (!empty($bidang->mon_penggunaan)) {
+                            $uraianGunas = explode(';', $bidang->mon_penggunaan);
+                            foreach ($uraianGunas as $item) {
+                                MonitoringPenggunaan::firstOrCreate([
+                                    'tahun' => $tahun['tahun'],
+                                    'kode_pwk' => $pemdas->kode_pwk,
+                                    'nama_pemda' => $pemdas->nama_pemda,
+                                    'jenis_tkd' => $bidang->jenis_tkd,
+                                    'tipe_tkd' => $bidang->tipe_tkd,
+                                    'bidang_tkd' => $bidang->bidang_tkd,
+                                    'subbidang_tkd' => $bidang->subbidang_tkd,
+                                    'uraian' => $item,
+                                ]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Setelah selesai, tandai record sebagai diproses dengan memberikan nilai antrian
+            $pemdas->update([
+                'antrian' => 1
+            ]);
+
+            // Redirect ke halaman berikutnya
+            redirect(route('ppbrs.create'));
+        } else {
+            // Jika tidak ada pemda dengan antrian null, redirect ke home
+            redirect(route('home'));
         }
-
-        return view('monitoring_tls.edit')->with('monitoringTl', $monitoringTl);
     }
 
     /**
