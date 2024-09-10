@@ -19,14 +19,14 @@ Pelaksanaan Penugasan
             href="{{ route('suratTugas.create') }}">
             Tambah
         </a>
-        <!-- <form class="input-group float-right mb-2">
+        <form class="input-group float-right mb-2">
             <div class="input-group input-group-alternative input-group-merge">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-search"></i></span>
                 </div>
-                <input class="form-control" type="text" name="name" value="{{ $search['name'] ?? NULL }}" placeholder="Ketik Nama" />
+                <input class="form-control" type="text" name="nama_pemda" value="{{ $nama_pemda ?? NULL }}" placeholder="Ketik Nama Pemda" />
             </div>
-        </form> -->
+        </form>
     </div>
 </div>
 @endsection
