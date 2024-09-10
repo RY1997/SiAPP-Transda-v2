@@ -15,11 +15,8 @@ Pelaksanaan Penugasan
         </nav>
     </div>
     <div class="col-lg-4 col-5 text-right">
-        <a class="btn btn-success float-right"
-            href="{{ route('suratTugas.create') }}">
-            Tambah
-        </a>
-        <form class="input-group float-right mb-2">
+        <a class="btn btn-success" href="{{ route('suratTugas.create') }}">Tambah</a>
+        <form class="input-group">
             <div class="input-group input-group-alternative input-group-merge">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-search"></i></span>
