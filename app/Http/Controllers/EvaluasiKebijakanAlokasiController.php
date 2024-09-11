@@ -142,6 +142,9 @@ class EvaluasiKebijakanAlokasiController extends AppBaseController
             return redirect(route('evaluasiKebijakanAlokasis.index'));
         }
 
+        $input['tahun'] = 2024;
+        $input['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->first()->kode_pwk;
+
         $evaluasiKebijakanAlokasi = $this->evaluasiKebijakanAlokasiRepository->update($request->all(), $id);
 
         Flash::success('Evaluasi Kebijakan Alokasi updated successfully.');

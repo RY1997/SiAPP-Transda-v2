@@ -66,6 +66,8 @@ class EvaluasiImmediateOutcomeController extends AppBaseController
     public function store(CreateEvaluasiImmediateOutcomeRequest $request)
     {
         $input = $request->all();
+        $input['tahun'] = 2023;
+        $input['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->first()->kode_pwk;
 
         $evaluasiImmediateOutcome = $this->evaluasiImmediateOutcomeRepository->create($input);
 
@@ -131,6 +133,9 @@ class EvaluasiImmediateOutcomeController extends AppBaseController
 
             return redirect(route('evaluasiImmediateOutcomes.index'));
         }
+
+        $input['tahun'] = 2023;
+        $input['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->first()->kode_pwk;
 
         $evaluasiImmediateOutcome = $this->evaluasiImmediateOutcomeRepository->update($request->all(), $id);
 
