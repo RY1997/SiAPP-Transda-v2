@@ -44,7 +44,7 @@
     {!! Form::label('jenis_tkd', 'Lingkup Penugasan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" class="form-control" id="jenis_tkd" name="jenis_tkd" value="{{ !empty($suratTugas) && $suratTugas->jenis_tkd != NULL : session('jenis_tkd') }}" readonly>
+    <input type="text" class="form-control" id="jenis_tkd" name="jenis_tkd" value="{{ !empty($suratTugas) && $suratTugas->jenis_tkd != NULL ? $suratTugas->jenis_tkd : session('jenis_tkd') }}" readonly>
 </div>
 
 <!-- Nama Pemda Field -->
