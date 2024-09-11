@@ -113,6 +113,58 @@ class EvaluasiTrenController extends AppBaseController
             return redirect(route('evaluasiTrens.index'));
         }
 
+        $pemdas = DaftarPemda::where('nama_pemda', $pemda->nama_pemda)->first();
+        $bidangs = ParameterTkd::where('jenis_tkd', $pemda->jenis_tkd)->get();
+        $monitoringTahuns = [
+            ['tahun' => '2020'],
+            ['tahun' => '2021'],
+            ['tahun' => '2022'],
+            ['tahun' => '2023'],
+            ['tahun' => '2024'],
+        ];
+
+        // Lakukan pemrosesan untuk setiap tahun dan bidang
+        foreach ($monitoringTahuns as $tahun) {
+            foreach ($bidangs as $bidang) {
+                // Cek kondisi uji petik
+                if ($pemdas->uji_petik == 'Ya' && ($tahun['tahun'] == '2023' || $tahun['tahun'] == '2024')) {
+                    // Proses eva_penggunaan
+                    if (!empty($bidang->eva_penggunaan)) {
+                        $uraianGunas = explode(';', $bidang->eva_penggunaan);
+                        foreach ($uraianGunas as $item) {
+                            MonitoringPenggunaan::updateOrCreate([
+                                'tahun' => $tahun['tahun'],
+                                'kode_pwk' => $pemdas->kode_pwk,
+                                'nama_pemda' => $pemdas->nama_pemda,
+                                'jenis_tkd' => $bidang->jenis_tkd,
+                                'tipe_tkd' => $bidang->tipe_tkd,
+                                'bidang_tkd' => $bidang->bidang_tkd,
+                                'subbidang_tkd' => $bidang->subbidang_tkd,
+                                'uraian' => $item,
+                            ]);
+                        }
+                    }
+                } else {
+                    // Proses mon_penggunaan
+                    if (!empty($bidang->mon_penggunaan)) {
+                        $uraianGunas = explode(';', $bidang->mon_penggunaan);
+                        foreach ($uraianGunas as $item) {
+                            MonitoringPenggunaan::updateOrCreate([
+                                'tahun' => $tahun['tahun'],
+                                'kode_pwk' => $pemdas->kode_pwk,
+                                'nama_pemda' => $pemdas->nama_pemda,
+                                'jenis_tkd' => $bidang->jenis_tkd,
+                                'tipe_tkd' => $bidang->tipe_tkd,
+                                'bidang_tkd' => $bidang->bidang_tkd,
+                                'subbidang_tkd' => $bidang->subbidang_tkd,
+                                'uraian' => $item,
+                            ]);
+                        }
+                    }
+                }
+            }
+        }
+
         $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
