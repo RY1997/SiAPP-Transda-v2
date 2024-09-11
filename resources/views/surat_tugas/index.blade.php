@@ -15,7 +15,7 @@ Pelaksanaan Penugasan
         </nav>
     </div>
     <div class="col-lg-3 col-4 text-right">
-        <form class="input-group float-right p-1">
+        <form class="input-group float-right p-2">
             <div class="input-group input-group-alternative input-group-merge">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-search"></i></span>
