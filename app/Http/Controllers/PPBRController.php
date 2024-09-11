@@ -445,7 +445,7 @@ class PPBRController extends AppBaseController
                         $uraianGunas = explode(';', $bidang->eva_penggunaan);
                         foreach ($uraianGunas as $item) {
                             MonitoringPenggunaan::create([
-                                'tahun' => $tahun['tahun'],
+                                'tahun' => $tahun,
                                 'kode_pwk' => $pemda->kode_pwk,
                                 'nama_pemda' => $pemda->nama_pemda,
                                 'jenis_tkd' => $bidang->jenis_tkd,
@@ -487,7 +487,7 @@ class PPBRController extends AppBaseController
                         $uraianGunas = explode(';', $bidang->mon_penggunaan);
                         foreach ($uraianGunas as $item) {
                             MonitoringPenggunaan::create([
-                                'tahun' => $tahun['tahun'],
+                                'tahun' => $tahun,
                                 'kode_pwk' => $pemda->kode_pwk,
                                 'nama_pemda' => $pemda->nama_pemda,
                                 'jenis_tkd' => $bidang->jenis_tkd,
