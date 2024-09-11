@@ -1,17 +1,14 @@
-<!-- Tahun Field -->
-<div class="form-group col-sm-3 mb-3">
-    {!! Form::label('tahun', 'Tahun') !!}
-</div>
-<div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'readonly']) !!}
-</div>
-
 <!-- Nama Pemda Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'readonly']) !!}
+    <select class="form-control custom-select" id="nama_pemda" name="nama_pemda">
+        <option value="" selected="selected">Pilih</option>
+        @foreach($pemdas as $pemda)
+        <option value="{{ $pemda->nama_pemda }}" {{ !empty($suratTugas) && $pemda->nama_pemda == $suratTugas->nama_pemda ? 'selected' : '' }}>{{ $pemda->nama_pemda }}</option>
+        @endforeach
+    </select>
 </div>
 
 <!-- Bidang Tkd Field -->
@@ -59,7 +56,7 @@
     {!! Form::label('rekon_triwulanan', 'Rekonsiliasi Triwulanan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('rekon_triwulanan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::select('rekon_triwulanan', ['' => 'Pilih', 'Ya' => 'Ya', 'Tidak' => 'Tidak'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <!-- Keterlibatan Pemda Penghasil Field -->
@@ -67,7 +64,7 @@
     {!! Form::label('keterlibatan_penghasil', 'Keterlibatan Pemda Penghasil') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('keterlibatan_penghasil', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::select('keterlibatan_penghasil', ['' => 'Pilih', 'Ya' => 'Ya', 'Tidak' => 'Tidak'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <div class="col-sm-12 mb-3">

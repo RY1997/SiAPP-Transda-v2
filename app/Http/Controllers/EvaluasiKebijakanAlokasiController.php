@@ -6,9 +6,11 @@ use App\Http\Requests\CreateEvaluasiKebijakanAlokasiRequest;
 use App\Http\Requests\UpdateEvaluasiKebijakanAlokasiRequest;
 use App\Repositories\EvaluasiKebijakanAlokasiRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DaftarPemda;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class EvaluasiKebijakanAlokasiController extends AppBaseController
@@ -44,7 +46,14 @@ class EvaluasiKebijakanAlokasiController extends AppBaseController
      */
     public function create()
     {
-        return view('evaluasi_kebijakan_alokasis.create');
+        if (Auth::user()->role == 'Admin') {
+            $pemdas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->get();
+        } else {
+            $pemdas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->get();
+        }
+        return view('evaluasi_kebijakan_alokasis.create')->with([
+            'pemdas' => $pemdas,
+        ]);
     }
 
     /**
@@ -57,6 +66,8 @@ class EvaluasiKebijakanAlokasiController extends AppBaseController
     public function store(CreateEvaluasiKebijakanAlokasiRequest $request)
     {
         $input = $request->all();
+        $input['tahun'] = 2024;
+        $input['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->first()->kode_pwk;
 
         $evaluasiKebijakanAlokasi = $this->evaluasiKebijakanAlokasiRepository->create($input);
 
@@ -98,11 +109,19 @@ class EvaluasiKebijakanAlokasiController extends AppBaseController
 
         if (empty($evaluasiKebijakanAlokasi)) {
             Flash::error('Evaluasi Kebijakan Alokasi not found');
-
             return redirect(route('evaluasiKebijakanAlokasis.index'));
         }
 
-        return view('evaluasi_kebijakan_alokasis.edit')->with('evaluasiKebijakanAlokasi', $evaluasiKebijakanAlokasi);
+        if (Auth::user()->role == 'Admin') {
+            $pemdas = SuratTugas::where('jenis_penugasan', 'Evaluasi')->get();
+        } else {
+            $pemdas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->get();
+        }
+
+        return view('evaluasi_kebijakan_alokasis.edit')->with([
+            'evaluasiKebijakanAlokasi' => $evaluasiKebijakanAlokasi,
+            'pemdas' => $pemdas,
+        ]);
     }
 
     /**

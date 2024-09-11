@@ -38,12 +38,15 @@
                 <td>{{ $evaluasiKebijakanAlokasi->kesesuaian_pusat }}</td>
                 <td>{{ $evaluasiKebijakanAlokasi->alokasi_opd }}</td>
                 <td width="120">
+                    {!! Form::open(['route' => ['evaluasiKebijakanAlokasis.destroy', $evaluasiKebijakanAlokasi->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('evaluasiKebijakanAlokasis.edit', [$evaluasiKebijakanAlokasi->id]) }}"
                             class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
+                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
+                    {!! Form::close() !!}
                 </td>
             </tr>
             @endforeach

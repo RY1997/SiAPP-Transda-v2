@@ -15,6 +15,7 @@ Evaluasi Kebijakan Pengalokasian
         </nav>
     </div>
     <div class="col-lg-4 col-5 text-right">
+    <a href="{{ route('evaluasiKebijakanAlokasis.create') }}" class="btn btn-success">Tambah Kebijakan</a>
     </div>
 </div>
 @endsection
