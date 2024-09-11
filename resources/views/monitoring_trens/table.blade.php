@@ -19,14 +19,29 @@
             @foreach($monitoringTrens as $monitoringTren)
             <tr>
                 @if ($monitoringTren->tahun == 2020)
-                <td rowspan="5">{{ ceil($loop->iteration / 5 + ($page > 0 ? ($page - 1) : 0) * 5) }}</td>                
+                <td rowspan="5">{{ ceil($loop->iteration / 5 + ($page > 0 ? ($page - 1) : 0) * 5) }}</td>
                 <td rowspan="5">{{ $monitoringTren->nama_pemda }}</td>
                 @endif
                 <td>{{ $monitoringTren->tahun }}</td>
                 <td class="text-right">{{ number_format($monitoringTren->total_alokasi, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringTren->total_penyaluran, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringTren->total_anggaran, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringTren->total_realisasi, 2, ',', '.') }}</td>
+                @php
+                $totalPenyaluranTKD = App\Models\MonitoringPenyaluran::where('jenis_tkd', session('jenis_tkd'))
+                ->where('tahun', $monitoringTren->tahun)
+                ->sum('penyaluran_tkd');
+                @endphp
+                <td class="text-right">{{ number_format($totalPenyaluranTKD, 2, ',', '.') }}</td>
+                @php
+                $totalAnggaranTKD = App\Models\MonitoringPenggunaan::where('jenis_tkd', session('jenis_tkd'))
+                ->where('tahun', $monitoringTren->tahun)->selectRaw('SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran')
+                ->groupBy('nama_pemda')->pluck('total_anggaran')->first();
+                @endphp
+                <td class="text-right">{{ number_format($totalAnggaranTKD, 2, ',', '.') }}</td>
+                @php
+                $totalRealisasiTKD = App\Models\MonitoringPenggunaan::where('jenis_tkd', session('jenis_tkd'))
+                ->where('tahun', $monitoringTren->tahun)->selectRaw('SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
+                ->groupBy('nama_pemda')->pluck('total_realisasi')->first();
+                @endphp
+                <td class="text-right">{{ number_format($totalRealisasiTKD, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringTrens.show', $monitoringTren->id) }}" class='btn btn-sm btn-warning'>
