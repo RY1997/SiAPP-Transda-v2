@@ -421,8 +421,6 @@ class PPBRController extends AppBaseController
             $bidangs = ParameterTkd::where('jenis_tkd', '<>', 'Dana Otonomi Khusus')->get();
             foreach ([2023, 2024] as $tahun) {
                 foreach ($bidangs as $bidang) {
-                    MonitoringPenyaluran::where('nama_pemda', $pemda->nama_pemda)->whereIn('tahun', ['2023', '2024'])->get();
-                    MonitoringPenggunaan::where('nama_pemda', $pemda->nama_pemda)->whereIn('tahun', ['2023', '2024'])->get();
                     // Proses eva_penyaluran
                     if (!empty($bidang->eva_penyaluran)) {
                         $uraianSalurs = explode(';', $bidang->eva_penyaluran);
