@@ -7,6 +7,9 @@ use App\Http\Requests\UpdateMonitoringTlRequest;
 use App\Repositories\MonitoringTlRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
+use App\Models\EvaluasiKebijakanAlokasi;
+use App\Models\EvaluasiKebutuhan;
+use App\Models\EvaluasiSisaDak;
 use App\Models\MonitoringHibah;
 use App\Models\MonitoringImmediateOutcome;
 use App\Models\MonitoringPenggunaan;
@@ -146,7 +149,7 @@ class PPBRController extends AppBaseController
         // DAU
 
         // Ambil satu record dari DaftarPemda yang belum diproses (antrian null)
-        $pemdas = DaftarPemda::whereNull('antrian')->get();
+        // $pemdas = DaftarPemda::whereNull('antrian')->get();
         // foreach ($pemdas as $pemda) {
         //     $pemda->update([
         //         'antrian' => NULL,
@@ -247,21 +250,21 @@ class PPBRController extends AppBaseController
         //     ]);
         // }
 
-        // $tkd_array = [
-        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Air Minum'],
-        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Sanitasi'],
-        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Pertanian'],
-        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Irigasi'],
-        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Kelautan dan Perikanan'],
-        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Jalan'],
-        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Kehutanan'],
-        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Pendidikan'],
-        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Kesehatan'],
-        //     ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Bantuan Operasional Satuan Pendidikan (BOSP)'],
-        //     ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Tunjangan Guru ASN Daerah'],
-        //     ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Bantuan Operasional Kesehatan'],
-        //     ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Bantuan Operasional Keluarga Berencana']
-        // ];
+        $tkd_array = [
+            ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Air Minum'],
+            ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Sanitasi'],
+            ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Pertanian'],
+            ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Irigasi'],
+            ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Kelautan dan Perikanan'],
+            ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Jalan'],
+            ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Kehutanan'],
+            ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Pendidikan'],
+            ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Kesehatan'],
+            ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Bantuan Operasional Satuan Pendidikan (BOSP)'],
+            ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Tunjangan Guru ASN Daerah'],
+            ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Bantuan Operasional Kesehatan'],
+            ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Bantuan Operasional Keluarga Berencana']
+        ];
 
         // foreach ($pemdas as $pemda) {
         //     MonitoringImmediateOutcome::create([
@@ -341,6 +344,57 @@ class PPBRController extends AppBaseController
         //     // Setelah selesai, tandai record sebagai diproses dengan memberikan nilai antrian
         //     $pemda->update([
         //         'antrian' => 1
+        //     ]);
+        // }
+
+        // $pemdas = DaftarPemda::where('uji_petik', 'Ya')->get();
+        // foreach ($pemdas as $pemda) {
+        //     EvaluasiKebutuhan::create([
+        //         'tahun' => 2023,
+        //         'kode_pwk' => $pemda->kode_pwk,
+        //         'nama_pemda' => $pemda->nama_pemda,
+        //         'jenis_tkd' => 'Dana Alokasi Umum',
+        //         'bidang' => 'Belanja Pegawai',
+        //         'program' => 'Program Penunjang Urusan Pemerintah Daerah',
+        //         'kegiatan' => 'Penyediaan Gaji dan Tunjangan ASN',
+        //         'indikator_kegiatan' => 'Pembayaran gaji, tunjangan dan tambahan penghasilan ASN',
+        //         'satuan' => 'ASN'
+        //     ]);
+
+        //     EvaluasiKebutuhan::create([
+        //         'tahun' => 2023,
+        //         'kode_pwk' => $pemda->kode_pwk,
+        //         'nama_pemda' => $pemda->nama_pemda,
+        //         'jenis_tkd' => 'Dana Alokasi Umum',
+        //         'bidang' => 'Belanja Pegawai',
+        //         'program' => 'Program Penunjang Urusan Pemerintah Daerah',
+        //         'kegiatan' => 'Penyediaan Gaji dan Tunjangan PPPK',
+        //         'indikator_kegiatan' => 'Pembayaran gaji, tunjangan dan tambahan penghasilan PPPK',
+        //         'satuan' => 'PPPK'
+        //     ]);
+
+        //     EvaluasiKebutuhan::create([
+        //         'tahun' => 2024,
+        //         'kode_pwk' => $pemda->kode_pwk,
+        //         'nama_pemda' => $pemda->nama_pemda,
+        //         'jenis_tkd' => 'Dana Alokasi Umum',
+        //         'bidang' => 'Belanja Pegawai',
+        //         'program' => 'Program Penunjang Urusan Pemerintah Daerah',
+        //         'kegiatan' => 'Penyediaan Gaji dan Tunjangan ASN',
+        //         'indikator_kegiatan' => 'Pembayaran gaji, tunjangan dan tambahan penghasilan ASN',
+        //         'satuan' => 'ASN'
+        //     ]);
+
+        //     EvaluasiKebutuhan::create([
+        //         'tahun' => 2024,
+        //         'kode_pwk' => $pemda->kode_pwk,
+        //         'nama_pemda' => $pemda->nama_pemda,
+        //         'jenis_tkd' => 'Dana Alokasi Umum',
+        //         'bidang' => 'Belanja Pegawai',
+        //         'program' => 'Program Penunjang Urusan Pemerintah Daerah',
+        //         'kegiatan' => 'Penyediaan Gaji dan Tunjangan PPPK',
+        //         'indikator_kegiatan' => 'Pembayaran gaji, tunjangan dan tambahan penghasilan PPPK',
+        //         'satuan' => 'PPPK'
         //     ]);
         // }
 

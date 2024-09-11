@@ -4,7 +4,7 @@
             <tr>
                 <th>#</th>
                 <th>Nama Pemda</th>
-                <th>Tahun</th>
+                <!-- <th>Tahun</th> -->
                 <th>Jenis DBH</th>
                 <th>Dasar Penetapan Alokasi</th>
                 <th>Perhitungan Realisasi</th>
@@ -25,7 +25,7 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $evaluasiKebijakanAlokasi->nama_pemda }}</td>
-                <td>{{ $evaluasiKebijakanAlokasi->tahun }}</td>
+                <!-- <td>{{ $evaluasiKebijakanAlokasi->tahun }}</td> -->
                 <td>{{ $evaluasiKebijakanAlokasi->bidang_tkd }}</td>
                 <td>{{ $evaluasiKebijakanAlokasi->dasar_penetapan }}</td>
                 <td>{{ $evaluasiKebijakanAlokasi->perhitungan_realisasi }}</td>
@@ -49,7 +49,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="15">Surat Tugas Belum Diinput</td>
+                <td colspan="14">Surat Tugas Belum Diinput</td>
             </tr>
             @endif
         </tbody>
