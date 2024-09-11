@@ -28,19 +28,7 @@
             <tbody>
                 @foreach($monitoringHibahs as $monitoringHibah)
                 <tr>
-                    <td>Pinjaman Luar Negeri yang Diterushibahkan</td>
-                    <td><input class="form-control" step="0.01" name="alokasi_hibah_{{ $monitoringHibah->id }}" type="number" value="{{ $monitoringHibahs->where('id', $monitoringHibah->id)->first()->alokasi_hibah }}"></td>
-                    <td><input class="form-control" step="0.01" name="penyaluran_hibah_{{ $monitoringHibah->id }}" type="number" value="{{ $monitoringHibahs->where('id', $monitoringHibah->id)->first()->penyaluran_hibah }}"></td>
-                    <td><input class="form-control" step="0.01" name="penggunaan_hibah_{{ $monitoringHibah->id }}" type="number" value="{{ $monitoringHibahs->where('id', $monitoringHibah->id)->first()->penggunaan_hibah }}"></td>
-                </tr>
-                <tr>
-                    <td>Hibah Luar Negeri yang Diterushibahkan</td>
-                    <td><input class="form-control" step="0.01" name="alokasi_hibah_{{ $monitoringHibah->id }}" type="number" value="{{ $monitoringHibahs->where('id', $monitoringHibah->id)->first()->alokasi_hibah }}"></td>
-                    <td><input class="form-control" step="0.01" name="penyaluran_hibah_{{ $monitoringHibah->id }}" type="number" value="{{ $monitoringHibahs->where('id', $monitoringHibah->id)->first()->penyaluran_hibah }}"></td>
-                    <td><input class="form-control" step="0.01" name="penggunaan_hibah_{{ $monitoringHibah->id }}" type="number" value="{{ $monitoringHibahs->where('id', $monitoringHibah->id)->first()->penggunaan_hibah }}"></td>
-                </tr>
-                <tr>
-                    <td>Penerimaan Dalam Negeri yang Dihibahkan</td>
+                    <td>{{ $monitoringHibah->uraian_hibah }}</td>
                     <td><input class="form-control" step="0.01" name="alokasi_hibah_{{ $monitoringHibah->id }}" type="number" value="{{ $monitoringHibahs->where('id', $monitoringHibah->id)->first()->alokasi_hibah }}"></td>
                     <td><input class="form-control" step="0.01" name="penyaluran_hibah_{{ $monitoringHibah->id }}" type="number" value="{{ $monitoringHibahs->where('id', $monitoringHibah->id)->first()->penyaluran_hibah }}"></td>
                     <td><input class="form-control" step="0.01" name="penggunaan_hibah_{{ $monitoringHibah->id }}" type="number" value="{{ $monitoringHibahs->where('id', $monitoringHibah->id)->first()->penggunaan_hibah }}"></td>

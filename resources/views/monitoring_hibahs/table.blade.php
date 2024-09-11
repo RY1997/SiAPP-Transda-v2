@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($monitoringHibahs->where('tahun', '2023') as $monitoringHibah)
+            @foreach($monitoringHibahs->where('tahun', '2023')->where('uraian_hibah', 'Pinjaman Luar Negeri yang Diterushibahkan') as $monitoringHibah)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $monitoringHibah->nama_pemda }}</td>
