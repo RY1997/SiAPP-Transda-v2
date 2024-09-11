@@ -149,12 +149,12 @@ class PPBRController extends AppBaseController
         // DAU
 
         // Ambil satu record dari DaftarPemda yang belum diproses (antrian null)
-        // $pemdas = DaftarPemda::whereNull('antrian')->get();
-        // foreach ($pemdas as $pemda) {
-        //     $pemda->update([
-        //         'antrian' => NULL,
-        //     ]);
-        // }
+        $pemdas = DaftarPemda::all();
+        foreach ($pemdas as $pemda) {
+            $pemda->update([
+                'antrian' => NULL,
+            ]);
+        }
 
         // // Ambil semua bidang yang tidak termasuk 'Dana Otonomi Khusus'
         // $bidangs = ParameterTkd::where('jenis_tkd', '<>', 'Dana Otonomi Khusus')->get();
