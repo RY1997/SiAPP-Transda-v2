@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\EvaluasiIndikatorRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\SuratTugas;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -38,69 +39,69 @@ class ExportController extends AppBaseController
     public function progres()
     {
         $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->orderBy('kode_pwk')->orderBy('nama_pemda', 'DESC')->orderBy('jenis_penugasan', 'DESC')
-        ->withCount(['apbd as belum_apbd' => function ($query) {
-            $query->where('belanja_pegawai', '=', 0);
-        }])
-        ->withCount(['alokasi as belum_alokasi' => function ($query) {
-            $query->where('alokasi_tkd', '=', 0)->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['penyaluran as belum_penyaluran' => function ($query) {
-            $query->where('penyaluran_tkd', '=', 0)->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['penggunaan as belum_penggunaan' => function ($query) {
-            $query->whereNull('realisasi_tkd')->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['penetapan as belum_penetapan' => function ($query) {
-            $query->whereNull('simpulan_penetapan')->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['penetapan as jml_penetapan' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['jakda as belum_jakda' => function ($query) {
-            $query->whereNull('simpulan_tl')->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['jakda as jml_jakda' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['rengar as belum_relevan' => function ($query) {
-            $query->whereNull('relevansi_subkegiatan')->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['rengar as jml_relevan' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['ripp as belum_ripp' => function ($query) {
-            $query->whereNull('uraian_ripp')->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['ripp as jml_ripp' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['rengar as belum_urusan' => function ($query) {
-            $query->whereNull('urusan_subkegiatan')->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['rengar as jml_urusan' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['kontrak as jml_kontrak' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['silpa as belum_silpa' => function ($query) {
-            $query->whereNull('dianggarkan_relevan')->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['silpa as jml_silpa' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['efektivitas as belum_efektivitas' => function ($query) {
-            $query->whereNull('realisasi')->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['efektivitas as jml_efektivitas' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['pelaporan as belum_pelaporan' => function ($query) {
-            $query->whereNull('keberadaan_laporan')->where('jenis_tkd', session('jenis_tkd'));
-        }])
-        ->withCount(['pelaporan as jml_pelaporan' => function ($query) {
-            $query->where('jenis_tkd', session('jenis_tkd'));
-        }])->get();
+            ->withCount(['apbd as belum_apbd' => function ($query) {
+                $query->where('belanja_pegawai', '=', 0);
+            }])
+            ->withCount(['alokasi as belum_alokasi' => function ($query) {
+                $query->where('alokasi_tkd', '=', 0)->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['penyaluran as belum_penyaluran' => function ($query) {
+                $query->where('penyaluran_tkd', '=', 0)->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['penggunaan as belum_penggunaan' => function ($query) {
+                $query->whereNull('realisasi_tkd')->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['penetapan as belum_penetapan' => function ($query) {
+                $query->whereNull('simpulan_penetapan')->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['penetapan as jml_penetapan' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['jakda as belum_jakda' => function ($query) {
+                $query->whereNull('simpulan_tl')->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['jakda as jml_jakda' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['rengar as belum_relevan' => function ($query) {
+                $query->whereNull('relevansi_subkegiatan')->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['rengar as jml_relevan' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['ripp as belum_ripp' => function ($query) {
+                $query->whereNull('uraian_ripp')->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['ripp as jml_ripp' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['rengar as belum_urusan' => function ($query) {
+                $query->whereNull('urusan_subkegiatan')->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['rengar as jml_urusan' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['kontrak as jml_kontrak' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['silpa as belum_silpa' => function ($query) {
+                $query->whereNull('dianggarkan_relevan')->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['silpa as jml_silpa' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['efektivitas as belum_efektivitas' => function ($query) {
+                $query->whereNull('realisasi')->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['efektivitas as jml_efektivitas' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['pelaporan as belum_pelaporan' => function ($query) {
+                $query->whereNull('keberadaan_laporan')->where('jenis_tkd', session('jenis_tkd'));
+            }])
+            ->withCount(['pelaporan as jml_pelaporan' => function ($query) {
+                $query->where('jenis_tkd', session('jenis_tkd'));
+            }])->get();
 
         if (session('jenis_tkd') == 'Dana Otonomi Khusus') {
             $templatePath = 'Template Otsus/Template Progres Isian.xlsx';
@@ -132,7 +133,7 @@ class ExportController extends AppBaseController
                     $sheet->setCellValue('L' . $rowIndex, $st->jml_jakda = 0 || $st->belum_jakda > 0 ? 'BELUM' : 'SUDAH');
                     $sheet->setCellValue('M' . $rowIndex, $st->jml_relevan = 0 || $st->belum_relevan > 0 ? 'BELUM' : 'SUDAH');
                     if ($st->kode_pwk == 'PW26' || $st->kode_pwk == 'PW27') {
-                    $sheet->setCellValue('N' . $rowIndex, $st->jml_ripp = 0 || $st->belum_ripp > 0 ? 'BELUM' : 'SUDAH');
+                        $sheet->setCellValue('N' . $rowIndex, $st->jml_ripp = 0 || $st->belum_ripp > 0 ? 'BELUM' : 'SUDAH');
                     }
                     $sheet->setCellValue('O' . $rowIndex, $st->jml_urusan = 0 || $st->belum_urusan > 0 ? 'BELUM' : 'SUDAH');
                     $sheet->setCellValue('P' . $rowIndex, $st->jml_kontrak > 0 ? 'SUDAH' : 'BELUM');
@@ -151,5 +152,39 @@ class ExportController extends AppBaseController
 
             return response()->download($excelFilePath)->deleteFileAfterSend(true);
         }
+    }
+
+    public function progresST()
+    {
+        $users = User::where('kode_pwk', 'like', '%PW%')->orderBy('kode_pwk')->get();
+
+        $templatePath = 'templates/Monitoring ST.xlsx';
+
+        // Baca template
+        $spreadsheet = IOFactory::load($templatePath);
+
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->setCellValue('A4', 'Per ' . now()->format('d M Y H:i'));
+
+        $rowIndex = 7;
+
+        foreach ($users as $pwk) {
+            $sheet->setCellValue('B' . $rowIndex, $pwk->kode_pwk);
+            $sheet->setCellValue('C' . $rowIndex, $pwk->name);
+            $sheet->setCellValue('D' . $rowIndex, SuratTugas::where('kode_pwk', $pwk->kode_pwk)->where('jenis_penugasan', 'Monitoring')->count());
+            $sheet->setCellValue('E' . $rowIndex, SuratTugas::where('kode_pwk', $pwk->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Alokasi Umum')->count());
+            $sheet->setCellValue('F' . $rowIndex, SuratTugas::where('kode_pwk', $pwk->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Bagi Hasil')->count());
+            $sheet->setCellValue('G' . $rowIndex, SuratTugas::where('kode_pwk', $pwk->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Alokasi Khusus')->count());
+            $rowIndex++;
+        }
+
+        $excelFilePath = 'exports/Progres ST per ' . now()->format('d M Y H:i') . '.xlsx';
+
+        // Save as Excel file
+        $excelWriter = new Xlsx($spreadsheet);
+        $excelWriter->save($excelFilePath);
+
+        return response()->download($excelFilePath)->deleteFileAfterSend(true);
     }
 }

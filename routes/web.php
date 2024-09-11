@@ -95,6 +95,7 @@ Route::resource('suratTugas', App\Http\Controllers\SuratTugasController::class);
 Route::get('kertasKerja', [App\Http\Controllers\ExportController::class, 'index'])->name('kertasKerja.index');
 
 Route::get('kertasKerja/progresIsian', [App\Http\Controllers\ExportController::class, 'progres'])->name('kertasKerja.progres');
+Route::get('kertasKerja/progresST', [App\Http\Controllers\ExportController::class, 'progresST'])->name('kertasKerja.progresST');
 
 
 Route::resource('pelaporans', App\Http\Controllers\PelaporanController::class);
