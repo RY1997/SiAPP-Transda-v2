@@ -263,86 +263,86 @@ class PPBRController extends AppBaseController
         //     ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Bantuan Operasional Keluarga Berencana']
         // ];
 
-        foreach ($pemdas as $pemda) {
-            MonitoringImmediateOutcome::create([
-                'tahun' => 2023,
-                'kode_pwk' => $pemda->kode_pwk,
-                'nama_pemda' => $pemda->nama_pemda,
-                'jenis_tkd' => 'Dana Alokasi Khusus',
-                'tipe_tkd' => 'Bidang DAK Fisik',
-                'bidang_tkd' => 'Pendidikan',
-                'subbidang_tkd' => 'Pendidikan',
-            ]);
+        // foreach ($pemdas as $pemda) {
+        //     MonitoringImmediateOutcome::create([
+        //         'tahun' => 2023,
+        //         'kode_pwk' => $pemda->kode_pwk,
+        //         'nama_pemda' => $pemda->nama_pemda,
+        //         'jenis_tkd' => 'Dana Alokasi Khusus',
+        //         'tipe_tkd' => 'Bidang DAK Fisik',
+        //         'bidang_tkd' => 'Pendidikan',
+        //         'subbidang_tkd' => 'Pendidikan',
+        //     ]);
 
-            MonitoringImmediateOutcome::create([
-                'tahun' => 2023,
-                'kode_pwk' => $pemda->kode_pwk,
-                'nama_pemda' => $pemda->nama_pemda,
-                'jenis_tkd' => 'Dana Alokasi Khusus',
-                'tipe_tkd' => 'Bidang DAK Fisik',
-                'bidang_tkd' => 'Air Minum',
-                'subbidang_tkd' => 'Air Minum',
-            ]);
+        //     MonitoringImmediateOutcome::create([
+        //         'tahun' => 2023,
+        //         'kode_pwk' => $pemda->kode_pwk,
+        //         'nama_pemda' => $pemda->nama_pemda,
+        //         'jenis_tkd' => 'Dana Alokasi Khusus',
+        //         'tipe_tkd' => 'Bidang DAK Fisik',
+        //         'bidang_tkd' => 'Air Minum',
+        //         'subbidang_tkd' => 'Air Minum',
+        //     ]);
 
-            MonitoringImmediateOutcome::create([
-                'tahun' => 2023,
-                'kode_pwk' => $pemda->kode_pwk,
-                'nama_pemda' => $pemda->nama_pemda,
-                'jenis_tkd' => 'Dana Alokasi Khusus',
-                'tipe_tkd' => 'Bidang DAK Fisik',
-                'bidang_tkd' => 'Sanitasi',
-                'subbidang_tkd' => 'Sanitasi',
-            ]);
+        //     MonitoringImmediateOutcome::create([
+        //         'tahun' => 2023,
+        //         'kode_pwk' => $pemda->kode_pwk,
+        //         'nama_pemda' => $pemda->nama_pemda,
+        //         'jenis_tkd' => 'Dana Alokasi Khusus',
+        //         'tipe_tkd' => 'Bidang DAK Fisik',
+        //         'bidang_tkd' => 'Sanitasi',
+        //         'subbidang_tkd' => 'Sanitasi',
+        //     ]);
 
-            MonitoringImmediateOutcome::create([
-                'tahun' => 2023,
-                'kode_pwk' => $pemda->kode_pwk,
-                'nama_pemda' => $pemda->nama_pemda,
-                'jenis_tkd' => 'Dana Alokasi Khusus',
-                'tipe_tkd' => 'Bidang DAK Fisik',
-                'bidang_tkd' => 'Irigasi',
-                'subbidang_tkd' => 'Irigasi',
-            ]);
+        //     MonitoringImmediateOutcome::create([
+        //         'tahun' => 2023,
+        //         'kode_pwk' => $pemda->kode_pwk,
+        //         'nama_pemda' => $pemda->nama_pemda,
+        //         'jenis_tkd' => 'Dana Alokasi Khusus',
+        //         'tipe_tkd' => 'Bidang DAK Fisik',
+        //         'bidang_tkd' => 'Irigasi',
+        //         'subbidang_tkd' => 'Irigasi',
+        //     ]);
 
-            MonitoringImmediateOutcome::create([
-                'tahun' => 2023,
-                'kode_pwk' => $pemda->kode_pwk,
-                'nama_pemda' => $pemda->nama_pemda,
-                'jenis_tkd' => 'Dana Alokasi Khusus',
-                'tipe_tkd' => 'Bidang DAK Fisik',
-                'bidang_tkd' => 'Pertanian',
-                'subbidang_tkd' => 'Pertanian',
-            ]);
+        //     MonitoringImmediateOutcome::create([
+        //         'tahun' => 2023,
+        //         'kode_pwk' => $pemda->kode_pwk,
+        //         'nama_pemda' => $pemda->nama_pemda,
+        //         'jenis_tkd' => 'Dana Alokasi Khusus',
+        //         'tipe_tkd' => 'Bidang DAK Fisik',
+        //         'bidang_tkd' => 'Pertanian',
+        //         'subbidang_tkd' => 'Pertanian',
+        //     ]);
 
-            MonitoringImmediateOutcome::create([
-                'tahun' => 2023,
-                'kode_pwk' => $pemda->kode_pwk,
-                'nama_pemda' => $pemda->nama_pemda,
-                'jenis_tkd' => 'Dana Alokasi Khusus',
-                'tipe_tkd' => 'Bidang DAK Fisik',
-                'bidang_tkd' => 'Kelautan dan Perikanan',
-                'subbidang_tkd' => 'Kelautan dan Perikanan',
-            ]);
+        //     MonitoringImmediateOutcome::create([
+        //         'tahun' => 2023,
+        //         'kode_pwk' => $pemda->kode_pwk,
+        //         'nama_pemda' => $pemda->nama_pemda,
+        //         'jenis_tkd' => 'Dana Alokasi Khusus',
+        //         'tipe_tkd' => 'Bidang DAK Fisik',
+        //         'bidang_tkd' => 'Kelautan dan Perikanan',
+        //         'subbidang_tkd' => 'Kelautan dan Perikanan',
+        //     ]);
 
-            foreach ([2023,2024] as $tahun) {
-                foreach (['Pinjaman Luar Negeri yang Diterushibahkan', 'Hibah Luar Negeri yang Diterushibahkan', 'Penerimaan Dalam Negeri yang Dihibahkan'] as $hibah) {
-                    MonitoringHibah::create([
-                        'tahun' => $tahun,
-                        'kode_pwk' => $pemda->kode_pwk,
-                        'nama_pemda' => $pemda->nama_pemda,
-                        'jenis_tkd' => 'Dana Alokasi Khusus',
-                        'tipe_tkd' => 'Bidang DAK Fisik',
-                        'bidang_tkd' => 'Kelautan dan Perikanan',
-                        'uraian_hibah' => $hibah,
-                    ]);
-                }
-            }
+        //     foreach ([2023,2024] as $tahun) {
+        //         foreach (['Pinjaman Luar Negeri yang Diterushibahkan', 'Hibah Luar Negeri yang Diterushibahkan', 'Penerimaan Dalam Negeri yang Dihibahkan'] as $hibah) {
+        //             MonitoringHibah::create([
+        //                 'tahun' => $tahun,
+        //                 'kode_pwk' => $pemda->kode_pwk,
+        //                 'nama_pemda' => $pemda->nama_pemda,
+        //                 'jenis_tkd' => 'Dana Alokasi Khusus',
+        //                 'tipe_tkd' => 'Bidang DAK Fisik',
+        //                 'bidang_tkd' => 'Kelautan dan Perikanan',
+        //                 'uraian_hibah' => $hibah,
+        //             ]);
+        //         }
+        //     }
 
-            // Setelah selesai, tandai record sebagai diproses dengan memberikan nilai antrian
-            $pemda->update([
-                'antrian' => 1
-            ]);
-        }
+        //     // Setelah selesai, tandai record sebagai diproses dengan memberikan nilai antrian
+        //     $pemda->update([
+        //         'antrian' => 1
+        //     ]);
+        // }
 
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home
@@ -411,10 +411,95 @@ class PPBRController extends AppBaseController
             return redirect(route('ppbrs.index'));
         }
 
+        MonitoringPenyaluran::where('nama_pemda', $pemda->nama_pemda)->whereIn('tahun', ['2023', '2024'])->get();
+        MonitoringPenggunaan::where('nama_pemda', $pemda->nama_pemda)->whereIn('tahun', ['2023', '2024'])->get();
+
         if ($request->action == 'Jadikan Uji Petik') {
             $uji_petik = 'Ya';
+
+            $pemda = DaftarPemda::where('id', $id)->first();
+            $bidangs = ParameterTkd::where('jenis_tkd', '<>', 'Dana Otonomi Khusus')->get();
+            foreach ([2023, 2024] as $tahun) {
+                foreach ($bidangs as $bidang) {
+                    MonitoringPenyaluran::where('nama_pemda', $pemda->nama_pemda)->whereIn('tahun', ['2023', '2024'])->get();
+                    MonitoringPenggunaan::where('nama_pemda', $pemda->nama_pemda)->whereIn('tahun', ['2023', '2024'])->get();
+                    // Proses eva_penyaluran
+                    if (!empty($bidang->eva_penyaluran)) {
+                        $uraianSalurs = explode(';', $bidang->eva_penyaluran);
+                        foreach ($uraianSalurs as $item) {
+                            MonitoringPenyaluran::create([
+                                'tahun' => $tahun,
+                                'kode_pwk' => $pemda->kode_pwk,
+                                'nama_pemda' => $pemda->nama_pemda,
+                                'jenis_tkd' => $bidang->jenis_tkd,
+                                'tipe_tkd' => $bidang->tipe_tkd,
+                                'bidang_tkd' => $bidang->bidang_tkd,
+                                'subbidang_tkd' => $bidang->subbidang_tkd,
+                                'uraian' => $item,
+                            ]);
+                        }
+                    }
+
+                    // Proses eva_penggunaan
+                    if (!empty($bidang->eva_penggunaan)) {
+                        $uraianGunas = explode(';', $bidang->eva_penggunaan);
+                        foreach ($uraianGunas as $item) {
+                            MonitoringPenggunaan::create([
+                                'tahun' => $tahun['tahun'],
+                                'kode_pwk' => $pemda->kode_pwk,
+                                'nama_pemda' => $pemda->nama_pemda,
+                                'jenis_tkd' => $bidang->jenis_tkd,
+                                'tipe_tkd' => $bidang->tipe_tkd,
+                                'bidang_tkd' => $bidang->bidang_tkd,
+                                'subbidang_tkd' => $bidang->subbidang_tkd,
+                                'uraian' => $item,
+                            ]);
+                        }
+                    }
+                }
+            }
         } else {
             $uji_petik = NULL;
+
+            $pemda = DaftarPemda::where('id', $id)->first();
+            $bidangs = ParameterTkd::where('jenis_tkd', '<>', 'Dana Otonomi Khusus')->get();
+            foreach ([2023, 2024] as $tahun) {
+                foreach ($bidangs as $bidang) {
+                    // Proses mon_penyaluran
+                    if (!empty($bidang->mon_penyaluran)) {
+                        $uraianSalurs = explode(';', $bidang->mon_penyaluran);
+                        foreach ($uraianSalurs as $item) {
+                            MonitoringPenyaluran::create([
+                                'tahun' => $tahun,
+                                'kode_pwk' => $pemda->kode_pwk,
+                                'nama_pemda' => $pemda->nama_pemda,
+                                'jenis_tkd' => $bidang->jenis_tkd,
+                                'tipe_tkd' => $bidang->tipe_tkd,
+                                'bidang_tkd' => $bidang->bidang_tkd,
+                                'subbidang_tkd' => $bidang->subbidang_tkd,
+                                'uraian' => $item,
+                            ]);
+                        }
+                    }
+
+                    // Proses mon_penggunaan
+                    if (!empty($bidang->mon_penggunaan)) {
+                        $uraianGunas = explode(';', $bidang->mon_penggunaan);
+                        foreach ($uraianGunas as $item) {
+                            MonitoringPenggunaan::create([
+                                'tahun' => $tahun['tahun'],
+                                'kode_pwk' => $pemda->kode_pwk,
+                                'nama_pemda' => $pemda->nama_pemda,
+                                'jenis_tkd' => $bidang->jenis_tkd,
+                                'tipe_tkd' => $bidang->tipe_tkd,
+                                'bidang_tkd' => $bidang->bidang_tkd,
+                                'subbidang_tkd' => $bidang->subbidang_tkd,
+                                'uraian' => $item,
+                            ]);
+                        }
+                    }
+                }
+            }
         }
 
         $pemda = DaftarPemda::where('id', $id)->update([
