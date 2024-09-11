@@ -390,7 +390,7 @@ class PPBRController extends AppBaseController
      */
     public function edit($id)
     {
-        $lastPenggunaan = MonitoringPenggunaan::orderBy('id', 'DESC')->first();
+        $lastPenggunaan = MonitoringPenyaluran::orderBy('id', 'DESC')->first();
         dd($lastPenggunaan);
     }
 
