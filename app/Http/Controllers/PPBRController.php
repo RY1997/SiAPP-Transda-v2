@@ -411,6 +411,8 @@ class PPBRController extends AppBaseController
             return redirect(route('ppbrs.index'));
         }
 
+        dd($pemda);
+
         MonitoringPenyaluran::where('nama_pemda', $pemda->nama_pemda)->whereIn('tahun', ['2023', '2024'])->get();
         MonitoringPenggunaan::where('nama_pemda', $pemda->nama_pemda)->whereIn('tahun', ['2023', '2024'])->get();
 
