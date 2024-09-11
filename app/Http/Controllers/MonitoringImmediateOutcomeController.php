@@ -36,10 +36,10 @@ class MonitoringImmediateOutcomeController extends AppBaseController
             ->where('nama_pemda', 'like', '%' . $request->nama_pemda . '%')
             ->groupBy('nama_pemda');
 
-        if (Auth::user()->role == 'admin') {
-            $monitoringImmediateOutcomes = $monitoringImmediateOutcomes->paginate(10);
+        if (Auth::user()->role == 'Admin') {
+            $monitoringImmediateOutcomes = $monitoringImmediateOutcomes->paginate(20);
         } else {
-            $monitoringImmediateOutcomes = $monitoringImmediateOutcomes->where('kode_pwk', Auth::user()->kode_pwk)->paginate(10);
+            $monitoringImmediateOutcomes = $monitoringImmediateOutcomes->where('kode_pwk', Auth::user()->kode_pwk)->paginate(20);
         }
 
         return view('monitoring_immediate_outcomes.index')

@@ -37,7 +37,7 @@
                 <td>{{ $monitoringAlokasis->where('nama_pemda', $daftarPemda->nama_pemda)->where('tahun', $tahun)->where('jenis_tkd', 'DBH')->sum('alokasi_tkd') }}</td>
                 <td width="120">
                     <div class='btn-group'>
-                        <a href="{{ url('monitoringAlokasis/'.$daftarPemda->id.'/'.$tahun) }}" class='btn btn-warning btn-xs'>
+                        <a href="{{ url('monitoringAlokasis/'.$daftarPemda->id.'/'.$tahun) }}" class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

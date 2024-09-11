@@ -40,7 +40,7 @@
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('evaluasiKebijakanAlokasis.edit', [$evaluasiKebijakanAlokasi->id]) }}"
-                            class='btn btn-warning btn-xs'>
+                            class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

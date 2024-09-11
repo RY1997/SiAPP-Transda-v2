@@ -36,11 +36,11 @@
                     {!! Form::open(['route' => ['monitoringPenyalurans.destroy', $monitoringPenyaluran->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('monitoringPenyalurans.show', [$monitoringPenyaluran->id]) }}"
-                           class='btn btn-warning btn-xs'>
+                           class='btn btn-sm btn-warning'>
                             <i class="far fa-eye"></i>
                         </a>
                         <a href="{{ route('monitoringPenyalurans.edit', [$monitoringPenyaluran->id]) }}"
-                           class='btn btn-warning btn-xs'>
+                           class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}

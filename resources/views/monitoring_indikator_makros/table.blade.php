@@ -30,7 +30,7 @@
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringIndikatorMakros.edit', [$monitoringIndikatorMakro->id]) }}"
-                            class='btn btn-warning btn-xs'>
+                            class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

@@ -28,14 +28,19 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $monitoringHibah->nama_pemda }}</td>
                 <td>{{ $monitoringHibah->tahun }}</td>
-                <td>{{ $monitoringHibah->uraian_hibah }}</td>
-                <td>{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Pinjaman Luar Negeri yang Diterushibahkan')->first()->alokasi_hibah,2,',','.') }}</td>
-                <td>{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Hibah Luar Negeri yang Diterushibahkan')->first()->alokasi_hibah,2,',','.') }}</td>
-                <td>{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Penerimaan Dalam Negeri yang DIhibahkan')->first()->alokasi_hibah,2,',','.') }}</td>
+                <td class="text-right">{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Pinjaman Luar Negeri yang Diterushibahkan')->first()->alokasi_hibah,2,',','.') }}</td>
+                <td class="text-right">{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Pinjaman Luar Negeri yang Diterushibahkan')->first()->penyaluran_hibah,2,',','.') }}</td>
+                <td class="text-right">{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Pinjaman Luar Negeri yang Diterushibahkan')->first()->penggunaan_hibah,2,',','.') }}</td>
+                <td class="text-right">{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Hibah Luar Negeri yang Diterushibahkan')->first()->alokasi_hibah,2,',','.') }}</td>
+                <td class="text-right">{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Hibah Luar Negeri yang Diterushibahkan')->first()->penyaluran_hibah,2,',','.') }}</td>
+                <td class="text-right">{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Hibah Luar Negeri yang Diterushibahkan')->first()->penggunaan_hibah,2,',','.') }}</td>
+                <td class="text-right">{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Penerimaan Dalam Negeri yang Dihibahkan')->first()->alokasi_hibah,2,',','.') }}</td>
+                <td class="text-right">{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Penerimaan Dalam Negeri yang Dihibahkan')->first()->penyaluran_hibah,2,',','.') }}</td>
+                <td class="text-right">{{ number_format($monitoringHibahs->where('tahun', $monitoringHibah->tahun)->where('uraian_hibah', 'Penerimaan Dalam Negeri yang Dihibahkan')->first()->penggunaan_hibah,2,',','.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringHibahs.edit', [$monitoringHibah->id]) }}"
-                            class='btn btn-warning btn-xs'>
+                            class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                     </div>

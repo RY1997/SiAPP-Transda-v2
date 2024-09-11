@@ -7,8 +7,11 @@ use App\Http\Requests\UpdateMonitoringTlRequest;
 use App\Repositories\MonitoringTlRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
+use App\Models\MonitoringHibah;
+use App\Models\MonitoringImmediateOutcome;
 use App\Models\MonitoringPenggunaan;
 use App\Models\MonitoringPenyaluran;
+use App\Models\MonitoringSisaTkd;
 use App\Models\MonitoringTl;
 use App\Models\ParameterTkd;
 use App\Models\PPBR;
@@ -143,7 +146,12 @@ class PPBRController extends AppBaseController
         // DAU
 
         // Ambil satu record dari DaftarPemda yang belum diproses (antrian null)
-        // $pemda = DaftarPemda::whereNull('antrian')->get();
+        $pemdas = DaftarPemda::whereNull('antrian')->get();
+        // foreach ($pemdas as $pemda) {
+        //     $pemda->update([
+        //         'antrian' => NULL,
+        //     ]);
+        // }
 
         // // Ambil semua bidang yang tidak termasuk 'Dana Otonomi Khusus'
         // $bidangs = ParameterTkd::where('jenis_tkd', '<>', 'Dana Otonomi Khusus')->get();
@@ -238,6 +246,103 @@ class PPBRController extends AppBaseController
         //         'antrian' => 1
         //     ]);
         // }
+
+        // $tkd_array = [
+        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Air Minum'],
+        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Sanitasi'],
+        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Pertanian'],
+        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Irigasi'],
+        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Kelautan dan Perikanan'],
+        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Jalan'],
+        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Kehutanan'],
+        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Pendidikan'],
+        //     ['tipe_tkd' => 'Bidang DAK Fisik', 'jenis_tkd' => 'Kesehatan'],
+        //     ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Bantuan Operasional Satuan Pendidikan (BOSP)'],
+        //     ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Tunjangan Guru ASN Daerah'],
+        //     ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Bantuan Operasional Kesehatan'],
+        //     ['tipe_tkd' => 'Bidang DAK Non Fisik', 'jenis_tkd' => 'Bantuan Operasional Keluarga Berencana']
+        // ];
+
+        foreach ($pemdas as $pemda) {
+            MonitoringImmediateOutcome::create([
+                'tahun' => 2023,
+                'kode_pwk' => $pemda->kode_pwk,
+                'nama_pemda' => $pemda->nama_pemda,
+                'jenis_tkd' => 'Dana Alokasi Khusus',
+                'tipe_tkd' => 'Bidang DAK Fisik',
+                'bidang_tkd' => 'Pendidikan',
+                'subbidang_tkd' => 'Pendidikan',
+            ]);
+
+            MonitoringImmediateOutcome::create([
+                'tahun' => 2023,
+                'kode_pwk' => $pemda->kode_pwk,
+                'nama_pemda' => $pemda->nama_pemda,
+                'jenis_tkd' => 'Dana Alokasi Khusus',
+                'tipe_tkd' => 'Bidang DAK Fisik',
+                'bidang_tkd' => 'Air Minum',
+                'subbidang_tkd' => 'Air Minum',
+            ]);
+
+            MonitoringImmediateOutcome::create([
+                'tahun' => 2023,
+                'kode_pwk' => $pemda->kode_pwk,
+                'nama_pemda' => $pemda->nama_pemda,
+                'jenis_tkd' => 'Dana Alokasi Khusus',
+                'tipe_tkd' => 'Bidang DAK Fisik',
+                'bidang_tkd' => 'Sanitasi',
+                'subbidang_tkd' => 'Sanitasi',
+            ]);
+
+            MonitoringImmediateOutcome::create([
+                'tahun' => 2023,
+                'kode_pwk' => $pemda->kode_pwk,
+                'nama_pemda' => $pemda->nama_pemda,
+                'jenis_tkd' => 'Dana Alokasi Khusus',
+                'tipe_tkd' => 'Bidang DAK Fisik',
+                'bidang_tkd' => 'Irigasi',
+                'subbidang_tkd' => 'Irigasi',
+            ]);
+
+            MonitoringImmediateOutcome::create([
+                'tahun' => 2023,
+                'kode_pwk' => $pemda->kode_pwk,
+                'nama_pemda' => $pemda->nama_pemda,
+                'jenis_tkd' => 'Dana Alokasi Khusus',
+                'tipe_tkd' => 'Bidang DAK Fisik',
+                'bidang_tkd' => 'Pertanian',
+                'subbidang_tkd' => 'Pertanian',
+            ]);
+
+            MonitoringImmediateOutcome::create([
+                'tahun' => 2023,
+                'kode_pwk' => $pemda->kode_pwk,
+                'nama_pemda' => $pemda->nama_pemda,
+                'jenis_tkd' => 'Dana Alokasi Khusus',
+                'tipe_tkd' => 'Bidang DAK Fisik',
+                'bidang_tkd' => 'Kelautan dan Perikanan',
+                'subbidang_tkd' => 'Kelautan dan Perikanan',
+            ]);
+
+            foreach ([2023,2024] as $tahun) {
+                foreach (['Pinjaman Luar Negeri yang Diterushibahkan', 'Hibah Luar Negeri yang Diterushibahkan', 'Penerimaan Dalam Negeri yang Dihibahkan'] as $hibah) {
+                    MonitoringHibah::create([
+                        'tahun' => $tahun,
+                        'kode_pwk' => $pemda->kode_pwk,
+                        'nama_pemda' => $pemda->nama_pemda,
+                        'jenis_tkd' => 'Dana Alokasi Khusus',
+                        'tipe_tkd' => 'Bidang DAK Fisik',
+                        'bidang_tkd' => 'Kelautan dan Perikanan',
+                        'uraian_hibah' => $hibah,
+                    ]);
+                }
+            }
+
+            // Setelah selesai, tandai record sebagai diproses dengan memberikan nilai antrian
+            $pemda->update([
+                'antrian' => 1
+            ]);
+        }
 
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home

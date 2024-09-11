@@ -33,7 +33,7 @@
                     {!! Form::open(['route' => ['evaluasiImmediateOutcomes.destroy', $evaluasiImmediateOutcome->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('evaluasiImmediateOutcomes.edit', [$evaluasiImmediateOutcome->id]) }}"
-                            class='btn btn-warning btn-xs'>
+                            class='btn btn-sm btn-warning'>
                             <i class="far fa-edit"></i>
                         </a>
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}

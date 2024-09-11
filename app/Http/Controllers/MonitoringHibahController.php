@@ -34,14 +34,17 @@ class MonitoringHibahController extends AppBaseController
     {
         $monitoringHibahs = MonitoringHibah::where('nama_pemda', 'like', '%' . $request->nama_pemda . '%');
 
-        if (Auth::user()->role == 'admin') {
-            $monitoringHibahs = $monitoringHibahs->paginate(30);
+        if (Auth::user()->role == 'Admin') {
+            $monitoringHibahs = $monitoringHibahs->paginate(40);
         } else {
-            $monitoringHibahs = $monitoringHibahs->where('kode_pwk', Auth::user()->kode_pwk)->paginate(30);
+            $monitoringHibahs = $monitoringHibahs->where('kode_pwk', Auth::user()->kode_pwk)->paginate(40);
         }
 
         return view('monitoring_hibahs.index')
-            ->with('monitoringHibahs', $monitoringHibahs);
+            ->with([
+                'monitoringHibahs' => $monitoringHibahs,
+                'nama_pemda' => $request->nama_pemda
+            ]);
     }
 
     /**
