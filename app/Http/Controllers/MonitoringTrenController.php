@@ -53,23 +53,22 @@ class MonitoringTrenController extends AppBaseController
         $monitoringTrens = $monitoringTrens->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
             ->groupBy('nama_pemda')
             ->groupBy('tahun')
-            // ->withCount(['penyaluran as total_penyaluran' => function ($query) {
-            //     $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(penyaluran_tkd) as total_penyaluran'));
-            // }])
-            // ->withCount(['penggunaan as total_anggaran' => function ($query) {
-            //     $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran'));
-            // }])
-            // ->withCount(['penggunaan as total_realisasi' => function ($query) {
-            //     $query->where('jenis_tkd', session('jenis_tkd'))->select(DB::raw('SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi'));
-            // }])
             ->selectRaw('*, SUM(alokasi_tkd) as total_alokasi')
             ->orderBy('nama_pemda')
             ->orderBy('tahun')
             ->paginate(50);
+        $monitoringPenyalurans = MonitoringPenyaluran::whereIn('nama_pemda', $monitoringTrens->pluck('nama_pemda'))->selectRaw('*, SUM(penyaluran_tkd) as total_penyaluran')->where('jenis_tkd', session('jenis_tkd'))
+        ->groupBy('nama_pemda')->groupBy('tahun')->get();
+
+        $monitoringPenggunaans = MonitoringPenggunaan::whereIn('nama_pemda', $monitoringTrens->pluck('nama_pemda'))->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
+            ->where('jenis_tkd', session('jenis_tkd'))
+            ->groupBy('nama_pemda')->groupBy('tahun')->get();
 
         return view('monitoring_trens.index')
             ->with([
                 'monitoringTrens' => $monitoringTrens,
+                'monitoringPenyalurans' => $monitoringPenyalurans,
+                'monitoringPenggunaans' => $monitoringPenggunaans,
                 'nama_pemda' => $nama_pemda,
                 'page' => $request->page
             ]);
