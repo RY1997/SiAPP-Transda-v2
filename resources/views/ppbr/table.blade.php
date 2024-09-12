@@ -22,9 +22,9 @@
                     {!! Form::model($ppbrItem, ['route' => ['ppbrs.update', $ppbrItem->id], 'method' => 'patch']) !!}
                     <div class='btn-group'>
                         @if ($ppbrItem->uji_petik == 'Ya')
-                        {!! Form::submit('Batalkan Uji Petik', ['class' => 'btn btn-danger btn-sm', 'name' => 'action']) !!}
+                        {!! Form::submit('Batalkan Uji Petik', ['class' => 'btn btn-danger btn-sm', 'name' => 'action', 'onclick' => 'return confirm("Apakah Anda yakin ingin membatalkan uji petik? Semua data terkait Penyaluran dan Penggunaan akan dihapus")']) !!}
                         @else
-                        {!! Form::submit('Jadikan Uji Petik', ['class' => 'btn btn-primary btn-sm', 'name' => 'action']) !!}
+                        {!! Form::submit('Jadikan Uji Petik', ['class' => 'btn btn-primary btn-sm', 'name' => 'action', 'onclick' => 'return confirm("Apakah Anda yakin ingin menjadikan uji petik? Semua data terkait Penyaluran dan Penggunaan akan dihapus")']) !!}
                         @endif
                     </div>
                     {!! Form::close() !!}
