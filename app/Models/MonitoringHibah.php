@@ -67,9 +67,9 @@ class MonitoringHibah extends Model
      * @var array
      */
     public static $rules = [
-        'tahun' => 'required|string|max:255',
-        'kode_pwk' => 'required|string|max:255',
-        'nama_pemda' => 'required|string|max:255',
+        'tahun' => 'nullable|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
+        'nama_pemda' => 'nullable|string|max:255',
         'jenis_tkd' => 'nullable|string|max:255',
         'uraian_hibah' => 'nullable|string|max:255',
         'alokasi_hibah' => 'nullable|numeric',

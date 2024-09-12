@@ -88,7 +88,7 @@ class MonitoringAlokasi extends Model
         'rk_usulan' => 'nullable|numeric',
         'rk_disetujui' => 'nullable|numeric',
         'tgl_juknis' => 'nullable',
-        'alokasi_tkd' => 'required|numeric',
+        'alokasi_tkd' => 'nullable|numeric',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

@@ -18,9 +18,40 @@
     <h5>A. Pendapatan APBD</h5>
 </div>
 
+<div class="form-group col-sm-12 mb-3">
+    <div class="table-responsive card mb-0">
+        <table id="realisasiCapaian" class="table text-center m-0">
+            <thead class="thead-light">
+                <tr>
+                    <th width="200">Jenis Pendapatan</th>
+                    <th width="200">Anggaran</th>
+                    <th width="200">Realisasi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{!! Form::label('pendapatan_daerah', 'Pendapatan Daerah') !!}</td>
+                    <td>{!! Form::number('pendapatan_daerah', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('rpendapatan_daerah', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                </tr>
+                <tr>
+                    <td>{!! Form::label('pendapatan_pad', 'Pendapatan PAD') !!}</td>
+                    <td>{!! Form::number('pendapatan_pad', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('rpendapatan_pad', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                </tr>
+                <tr>
+                    <td>{!! Form::label('pendapatan_daerah', 'Pendapatan Daerah') !!}</td>
+                    <td>{!! Form::number('pendapatan_daerah', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('rpendapatan_daerah', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <!-- Pendapatan Daerah Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('pendapatan_daerah', 'Pendapatan Daerah') !!}
+    
 </div>
 <div class="form-group col-sm-9 mb-3">
     {!! Form::number('pendapatan_daerah', null, ['class' => 'form-control', 'step' => '0.01']) !!}
