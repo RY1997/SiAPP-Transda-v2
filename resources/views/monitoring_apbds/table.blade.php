@@ -2,14 +2,18 @@
     <table class="table text-center m-0" id="monitoringApbds-table">
         <thead class="thead-light">
             <tr>
-                <th width="50">#</th>
-                <th width="150">Nama Pemda</th>
-                <th width="100">Tahun</th>
+                <th rowspan="2" width="50">#</th>
+                <th rowspan="2" width="150">Nama Pemda</th>
+                <th rowspan="2" width="100">Tahun</th>
+                <th colspan="2">Anggaran</th>
+                <th colspan="2">Realisasi</th>
+                <th rowspan="2" colspan="3">Aksi</th>
+            </tr>
+            <tr>
                 <th width="200">Pendapatan Daerah</th>
                 <th width="200">Belanja Daerah</th>
-                <th width="200">Pembiayaan Daerah</th>
-                <th width="200">SiLPA</th>
-                <th colspan="3">Aksi</th>
+                <th width="200">Pendapatan Daerah</th>
+                <th width="200">Belanja Daerah</th>
             </tr>
         </thead>
         <tbody>
@@ -22,8 +26,8 @@
                 <td class="text-center">{{ $monitoringApbd->tahun }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->pendapatan_pad + $monitoringApbd->pendapatan_transfer + $monitoringApbd->pendapatan_lainnya, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->belanja_pegawai + $monitoringApbd->belanja_barjas + $monitoringApbd->belanja_modal + $monitoringApbd->belanja_hibah + $monitoringApbd->belanja_lainnya, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->penerimaan_pembiayaan - $monitoringApbd->pengeluaran_pembiayaan, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->silpa, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->rpendapatan_pad + $monitoringApbd->rpendapatan_transfer + $monitoringApbd->rpendapatan_lainnya, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->rbelanja_pegawai + $monitoringApbd->rbelanja_barjas + $monitoringApbd->rbelanja_modal + $monitoringApbd->rbelanja_hibah + $monitoringApbd->rbelanja_lainnya, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringApbds.edit', $monitoringApbd->id) }}" class='btn btn-sm btn-warning'>
