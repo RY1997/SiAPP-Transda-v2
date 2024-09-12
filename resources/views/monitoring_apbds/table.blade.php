@@ -20,8 +20,8 @@
                 <td rowspan="5">{{ $monitoringApbd->nama_pemda }}</td>
                 @endif
                 <td class="text-center">{{ $monitoringApbd->tahun }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->pendapatan_daerah, 2, ',', '.') : number_format($monitoringApbd->pendapatan_pad + $monitoringApbd->pendapatan_transfer + $monitoringApbd->pendapatan_lainnya, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringApbd->belanja_daerah, 2, ',', '.') : number_format($monitoringApbd->belanja_pegawai + $monitoringApbd->belanja_barjas + $monitoringApbd->belanja_modal + $monitoringApbd->belanja_hibah + $monitoringApbd->belanja_lainnya, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->pendapatan_pad + $monitoringApbd->pendapatan_transfer + $monitoringApbd->pendapatan_lainnya, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringApbd->belanja_pegawai + $monitoringApbd->belanja_barjas + $monitoringApbd->belanja_modal + $monitoringApbd->belanja_hibah + $monitoringApbd->belanja_lainnya, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->penerimaan_pembiayaan - $monitoringApbd->pengeluaran_pembiayaan, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringApbd->silpa, 2, ',', '.') }}</td>
                 <td width="120">
