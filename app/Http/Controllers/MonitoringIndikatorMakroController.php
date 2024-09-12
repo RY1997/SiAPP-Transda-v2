@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateMonitoringIndikatorMakroRequest;
 use App\Repositories\MonitoringIndikatorMakroRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
+use App\Models\MonitoringImmediateOutcome;
 use App\Models\MonitoringIndikatorMakro;
 use App\Models\ParameterIndikator;
 use Illuminate\Http\Request;
@@ -52,6 +53,8 @@ class MonitoringIndikatorMakroController extends AppBaseController
                     ]);
                 }
             }
+
+            return redirect(route('MonitoringImmediateOutcomes.index'));
         }
 
         if (Auth::user()->role == 'Admin') {
