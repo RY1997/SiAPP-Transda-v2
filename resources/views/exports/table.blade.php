@@ -5,9 +5,10 @@
                 <th width="50">#</th>
                 <th width="50">Kode Perwakilan</th>
                 <th width="100">Nama Pemda</th>
-                <th width="200">Progres Monitoring</th>
-                <th width="200">Progres Evaluasi</th>
-                <th width="200">Aksi</th>
+                <th width="300">Nama Penugasan</th>
+                <th width="100">Progres Monitoring</th>
+                <th width="100">Progres Evaluasi</th>
+                <th width="300">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +18,9 @@
                 <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $st->kode_pwk }}</td>
                 <td>{{ $st->nama_pemda }}</td>
+                <td>{{ $st->nama_penugasan }}</td>
+                <td> XX,XX %</td>
+                <td> XX,XX %</td>
                 <td>
                     <div class="btn-group" role="group">
                         <button class="btn btn-info rounded-0 dropdown-toggle" type="button" id="dropdownMonitoring" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,7 +57,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="4">Surat Tugas belum diinput</td>
+                <td colspan="7">Surat Tugas belum diinput</td>
             </tr>
             @endif
         </tbody>

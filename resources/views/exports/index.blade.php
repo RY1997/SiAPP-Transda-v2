@@ -25,7 +25,7 @@ Progres dan Hasil Pengawasan
         </form>
     </div>
     <div class="col-lg-1 col-1 text-right">
-        <a class="btn btn-success float-right" href="{{ route('kertasKerja.progres') }}">Progres ST</a>
+        <a class="btn btn-success float-right" href="{{ route('kertasKerja.progresST') }}">Progres</a>
     </div>
 </div>
 @endsection

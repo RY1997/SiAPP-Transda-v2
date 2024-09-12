@@ -64,20 +64,20 @@ class SuratTugasController extends AppBaseController
      */
     public function create(Request $request)
     {
-        if (!empty($request->semula) && !empty($request->menjadi)) {
-            SuratTugas::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
-            Pelaporan::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
-            MonitoringTl::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
-            MonitoringTl::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
-            KebijakanOtsus::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
-            SilpaOtsus::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
-            EvaluasiIndikator::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
-            EvaluasiKontrak::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
-            EvaluasiLaporan::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+        // if (!empty($request->semula) && !empty($request->menjadi)) {
+        //     SuratTugas::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+        //     Pelaporan::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+        //     MonitoringTl::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+        //     MonitoringTl::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+        //     KebijakanOtsus::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+        //     SilpaOtsus::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+        //     EvaluasiIndikator::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+        //     EvaluasiKontrak::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
+        //     EvaluasiLaporan::where('nama_pemda', $request->semula)->update(['nama_pemda' => $request->menjadi]);
 
-            Flash::error('Berhasil');
-            return redirect()->back();
-        }
+        //     Flash::error('Berhasil');
+        //     return redirect()->back();
+        // }
 
         if (Auth::user()->role == 'Admin') {
             $pemdas = DaftarPemda::where('uji_petik', 'Ya')->get();
@@ -100,6 +100,7 @@ class SuratTugasController extends AppBaseController
     public function store(CreateSuratTugasRequest $request)
     {
         $input = $request->all();
+        $input['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->pluck('kode_pwk')->first();
 
         $suratTugas = $this->suratTugasRepository->create($input);
 
