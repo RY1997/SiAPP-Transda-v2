@@ -33,7 +33,10 @@ class ExportController extends AppBaseController
         }
 
         return view('exports.index')
-            ->with('suratTugas', $suratTugas);
+            ->with([
+                'suratTugas' => $suratTugas,
+                'nama_pemda' => $request->nama_pemda,
+            ]);
     }
 
     public function progres()
