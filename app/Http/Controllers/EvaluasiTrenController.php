@@ -50,7 +50,7 @@ class EvaluasiTrenController extends AppBaseController
             $monitoringTrens = $monitoringTrens->where('kode_pwk', Auth::user()->kode_pwk);
         }
 
-        $monitoringTrens = $monitoringTrens->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+        $monitoringTrens = $monitoringTrens
             ->groupBy('nama_pemda')
             ->groupBy('tahun')
             ->selectRaw('*, SUM(alokasi_tkd) as total_alokasi')

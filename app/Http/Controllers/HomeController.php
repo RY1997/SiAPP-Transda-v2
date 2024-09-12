@@ -36,7 +36,7 @@ class HomeController extends Controller
         
         $totalAlokasis = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'))->selectRaw('tahun , SUM(alokasi_tkd) AS sum_alokasi')->groupBy('tahun')->groupBy('bidang_tkd')->get();
         $totalPenyalurans = MonitoringPenyaluran::where('jenis_tkd', session('jenis_tkd'))->selectRaw('tahun , SUM(penyaluran_tkd) AS sum_penyaluran')->groupBy('tahun')->get();
-        $totalPenggunaans = MonitoringPenggunaan::where('jenis_tkd', session('jenis_tkd'))->selectRaw('tahun , SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya) AS sum_penganggaran , SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya) AS sum_penggunaan')->groupBy('tahun')->groupBy('bidang_tkd')->get();
+        $totalPenggunaans = MonitoringPenggunaan::where('jenis_tkd', session('jenis_tkd'))->selectRaw('tahun , SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) AS sum_penganggaran , SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) AS sum_penggunaan')->groupBy('tahun')->groupBy('bidang_tkd')->get();
         $apbds = MonitoringApbd::selectRaw('tahun , SUM(pendapatan_pad) AS sum_pad')->groupBy('tahun')->get();
 
         $bidangTkds = ParameterTkd::where('jenis_tkd', session('jenis_tkd'))->get();
