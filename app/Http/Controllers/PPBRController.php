@@ -400,19 +400,7 @@ class PPBRController extends AppBaseController
         // }
 
         $fieldsToUpdate = [
-            'jml_kontrak',
-            'anggaran_barjas',
-            'anggaran_pegawai',
-            'anggaran_modal',
-            'anggaran_hibah',
-            'anggaran_lainnya',
-            'anggaran_na',
-            'realisasi_barjas',
-            'realisasi_pegawai',
-            'realisasi_modal',
-            'realisasi_hibah',
-            'realisasi_lainnya',
-            'realisasi_na'
+            'nilai_kontrak',
         ];
         
         foreach ($fieldsToUpdate as $field) {
