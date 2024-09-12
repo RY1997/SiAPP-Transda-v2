@@ -25,8 +25,8 @@
                 <td>{{ $monitoringPenggunaan->bidang_tkd }}</td>
                 <td>{{ $monitoringPenggunaan->subbidang_tkd }}</td>
                 <!-- <td>Alokasi</td> -->
-                <td class="text-right">{{ number_format($monitoringPenggunaan->sum('total_anggaran'), 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringPenggunaan->sum('total_realisasi'), 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenggunaan->total_anggaran, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenggunaan->total_realisasi, 2, ',', '.') }}</td>
                 <!-- <td>{{ $monitoringPenggunaan->penyebab_kurang_guna }}</td> -->
                 <td width="120">
                     <div class='btn-group'>
