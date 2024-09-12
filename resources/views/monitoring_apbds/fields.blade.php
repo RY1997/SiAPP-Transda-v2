@@ -63,7 +63,7 @@
         <table id="realisasiCapaian" class="table text-center m-0">
             <thead class="thead-light">
                 <tr>
-                    <th width="200">Jenis Pendapatan</th>
+                    <th width="200">Jenis Belanja</th>
                     <th width="200">Anggaran</th>
                     <th width="200">Realisasi</th>
                 </tr>
@@ -113,7 +113,7 @@
         <table id="realisasiCapaian" class="table text-center m-0">
             <thead class="thead-light">
                 <tr>
-                    <th width="200">Jenis Pendapatan</th>
+                    <th width="200">Jenis Belanja</th>
                     <th width="200">Anggaran</th>
                     <th width="200">Realisasi</th>
                 </tr>
@@ -148,7 +148,7 @@
         <table id="realisasiCapaian" class="table text-center m-0">
             <thead class="thead-light">
                 <tr>
-                    <th width="200">Jenis Pendapatan</th>
+                    <th width="200">Jenis Pembiayaan</th>
                     <th width="200">Anggaran</th>
                     <th width="200">Realisasi</th>
                 </tr>
