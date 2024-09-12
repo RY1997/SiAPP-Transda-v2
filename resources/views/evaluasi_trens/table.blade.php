@@ -26,8 +26,8 @@
                 <td>{{ $monitoringTren->tahun }}</td>
                 <td class="text-right">{{ number_format($monitoringTren->total_alokasi, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringPenyalurans->where('tahun', $monitoringTren->tahun)->where('nama_pemda', $monitoringTren->nama_pemda)->first()->total_penyaluran, 2, ',', '.') }}</td>
-                <td class="text-right">{{ !empty($monitoringPenggunaans) ? number_format($monitoringPenggunaans->where('tahun', $monitoringTren->tahun)->where('nama_pemda', $monitoringTren->nama_pemda)->first()->total_anggaran, 2, ',', '.') : '0,00' }}</td>
-                <td class="text-right">{{ !empty($monitoringPenggunaans) ? number_format($monitoringPenggunaans->where('tahun', $monitoringTren->tahun)->where('nama_pemda', $monitoringTren->nama_pemda)->first()->total_realisasi, 2, ',', '.') : '0,00' }}</td>
+                <td class="text-right">{{ !empty($monitoringPenggunaans) ? number_format($monitoringPenggunaans->where('tahun', $monitoringTren->tahun)->where('nama_pemda', $monitoringTren->nama_pemda)->sum('total_anggaran'), 2, ',', '.') : '0,00' }}</td>
+                <td class="text-right">{{ !empty($monitoringPenggunaans) ? number_format($monitoringPenggunaans->where('tahun', $monitoringTren->tahun)->where('nama_pemda', $monitoringTren->nama_pemda)->sum('total_realisasi'), 2, ',', '.') : '0,00' }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('evaluasiTrens.show', $monitoringTren->id) }}" class='btn btn-sm btn-warning'>
