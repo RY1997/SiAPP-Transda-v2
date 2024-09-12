@@ -24,7 +24,7 @@
                 @endif
                 <td>{{ $monitoringTren->tahun }}</td>
                 <td class="text-right">{{ number_format($monitoringTren->total_alokasi, 2, ',', '.') }}</td>
-                <td class="text-right">{{ number_format($monitoringPenyalurans->where('tahun', $monitoringTren->tahun)->where('nama_pemda', $monitoringTren->nama_pemda)->first()->total_penyaluran, 2, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($monitoringPenyalurans->where('tahun', $monitoringTren->tahun)->where('nama_pemda', $monitoringTren->nama_pemda)->sum('total_penyaluran'), 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringPenggunaans->where('tahun', $monitoringTren->tahun)->where('nama_pemda', $monitoringTren->nama_pemda)->sum('total_anggaran'), 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringPenggunaans->where('tahun', $monitoringTren->tahun)->where('nama_pemda', $monitoringTren->nama_pemda)->sum('total_realisasi'), 2, ',', '.') }}</td>
                 <td width="120">
