@@ -399,6 +399,26 @@ class PPBRController extends AppBaseController
         //     ]);
         // }
 
+        $fieldsToUpdate = [
+            'jml_kontrak',
+            'anggaran_barjas',
+            'anggaran_pegawai',
+            'anggaran_modal',
+            'anggaran_hibah',
+            'anggaran_lainnya',
+            'anggaran_na',
+            'realisasi_barjas',
+            'realisasi_pegawai',
+            'realisasi_modal',
+            'realisasi_hibah',
+            'realisasi_lainnya',
+            'realisasi_na'
+        ];
+        
+        foreach ($fieldsToUpdate as $field) {
+            MonitoringPenggunaan::whereNull($field)->update([$field => 0]);
+        }        
+
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home
         // return redirect(route('ppbrs.create'));
