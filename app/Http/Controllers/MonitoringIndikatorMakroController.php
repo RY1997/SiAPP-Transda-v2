@@ -13,6 +13,7 @@ use App\Models\ParameterIndikator;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class MonitoringIndikatorMakroController extends AppBaseController
@@ -40,23 +41,29 @@ class MonitoringIndikatorMakroController extends AppBaseController
         if (Auth::user()->role == 'Admin') {
             $monitoringIndikatorMakros = MonitoringIndikatorMakro::query();
         } else {
-            // $pemdas = DaftarPemda::where('kode_pwk', Auth::user()->kode_pwk)->get();
-            // $indikators = ParameterIndikator::all();
+            $pemdas = DaftarPemda::where('kode_pwk', Auth::user()->kode_pwk)->get();
+            $indikators = ParameterIndikator::all();
 
-            // foreach ($pemdas as $pemda) {
-            //     foreach ($indikators as $indikator) {
-            //         foreach ([2020, 2021, 2022, 2023, 2024] as $tahun) {
-            //             MonitoringIndikatorMakro::updateOrCreate([
-            //                 'tahun' => $tahun,
-            //                 'kode_pwk' => $pemda->kode_pwk,
-            //                 'nama_pemda' => $pemda->nama_pemda,
-            //                 'uraian_indikator' => $indikator->uraian_indikator
-            //             ], [
-            //                 'batas_indikator' => $indikator->batas_indikator
-            //             ]);
-            //         }
-            //     }
-            // }
+            DB::transaction(function () use ($pemdas, $indikators) {
+                foreach ($pemdas as $pemda) {
+                    foreach ($indikators as $indikator) {
+                        foreach ([2020, 2021, 2022, 2023, 2024] as $tahun) {
+                            MonitoringIndikatorMakro::updateOrCreate(
+                                [
+                                    'tahun' => $tahun,
+                                    'kode_pwk' => $pemda->kode_pwk,
+                                    'nama_pemda' => $pemda->nama_pemda,
+                                    'uraian_indikator' => $indikator->uraian_indikator
+                                ],
+                                [
+                                    'batas_indikator' => $indikator->batas_indikator
+                                ]
+                            );
+                        }
+                    }
+                }
+            });
+            
 
             $monitoringIndikatorMakros = MonitoringIndikatorMakro::where('kode_pwk', Auth::user()->kode_pwk);
         }
