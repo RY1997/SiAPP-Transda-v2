@@ -399,15 +399,6 @@ class PPBRController extends AppBaseController
         //     ]);
         // }
 
-        $fieldsToUpdate = [
-            'nilai_kontrak',
-        ];
-        
-        foreach ($fieldsToUpdate as $field) {
-            MonitoringPenggunaan::whereNull($field)->update([$field => 0]);
-        }        
-
-
         // Jika tidak ada pemda dengan antrian null, redirect ke home
         // return redirect(route('ppbrs.create'));
     }

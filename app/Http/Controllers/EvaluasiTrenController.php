@@ -185,8 +185,6 @@ class EvaluasiTrenController extends AppBaseController
             ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
             ->groupBy('bidang_tkd', 'subbidang_tkd')->get();
 
-            dd($monitoringPenggunaans);
-
         return view('evaluasi_trens.show')->with([
             'pemda' => $pemda,
             'monitoringAlokasis' => $monitoringAlokasis,
