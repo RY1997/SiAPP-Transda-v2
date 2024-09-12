@@ -53,8 +53,6 @@ class MonitoringIndikatorMakroController extends AppBaseController
                     ]);
                 }
             }
-
-            return redirect(route('monitoringIndikatorMakros.index'));
         }
 
         if (Auth::user()->role == 'Admin') {
