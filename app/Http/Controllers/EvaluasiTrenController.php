@@ -113,10 +113,6 @@ class EvaluasiTrenController extends AppBaseController
             return redirect(route('evaluasiTrens.index'));
         }
 
-        $formCount = MonitoringPenggunaan::where('tahun', $pemda->tahun)
-            ->where('nama_pemda', $pemda->nama_pemda)
-            ->where('jenis_tkd', session('jenis_tkd'))->count();
-
         if (MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->count() == 0) {
             $pemdas = DaftarPemda::where('nama_pemda', $pemda->nama_pemda)->first();
             $bidangs = ParameterTkd::where('jenis_tkd', $pemda->jenis_tkd)->get();
@@ -188,6 +184,8 @@ class EvaluasiTrenController extends AppBaseController
             ->where('jenis_tkd', session('jenis_tkd'))
             ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
             ->groupBy('bidang_tkd', 'subbidang_tkd')->get();
+
+        dd($monitoringPenggunaans);
 
         return view('evaluasi_trens.show')->with([
             'pemda' => $pemda,
