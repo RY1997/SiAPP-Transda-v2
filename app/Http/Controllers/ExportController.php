@@ -27,9 +27,9 @@ class ExportController extends AppBaseController
     public function index(Request $request)
     {
         if (Auth::user()->role == 'Admin') {
-            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->orderBy('kode_pwk')->orderBy('nama_pemda')->get();
+            $suratTugas = SuratTugas::orderBy('kode_pwk')->orderBy('nama_pemda')->paginate(20);
         } else {
-            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('kode_pwk', Auth::user()->kode_pwk)->orderBy('nama_pemda')->get();
+            $suratTugas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk)->orderBy('kode_pwk')->orderBy('nama_pemda')->paginate(20);
         }
 
         return view('exports.index')

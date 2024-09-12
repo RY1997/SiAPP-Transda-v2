@@ -1,11 +1,13 @@
-<div class="card mb-0">
-    <table class="table text-center m-0" id="exports-table">
+<div class="table-responsive card mb-0">
+    <table class="table text-center m-0" id="evaluasiRengars-table">
         <thead class="thead-light">
             <tr>
-                <th width="5%">#</th>
-                <th width="30%">Kode Perwakilan</th>
-                <th width="30%">Nama Pemda</th>
-                <th width="35%">Aksi</th>
+                <th width="50">#</th>
+                <th width="50">Kode Perwakilan</th>
+                <th width="100">Nama Pemda</th>
+                <th width="200">Progres Monitoring</th>
+                <th width="200">Progres Evaluasi</th>
+                <th width="200">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -17,9 +19,6 @@
                 <td>{{ $st->nama_pemda }}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <a class="btn btn-secondary rounded-start" href="{{ route('kertasKerja.progres') }}">
-                            Progres Isian
-                        </a>
                         <button class="btn btn-info rounded-0 dropdown-toggle" type="button" id="dropdownMonitoring" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Monitoring
                         </button>
@@ -59,4 +58,9 @@
             @endif
         </tbody>
     </table>
+    <div class="card-footer clearfix">
+        <div class="float-right d-flex justify-content-center">
+            @include('adminlte-templates::common.paginate', ['records' => $suratTugas])
+        </div>
+    </div>
 </div>

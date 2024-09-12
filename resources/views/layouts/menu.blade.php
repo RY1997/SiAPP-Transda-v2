@@ -44,17 +44,17 @@
         </a>
     </li>
 
-    <!-- <li class="nav-item">
-        <a class="nav-link {{ Request::is('kertasKerja*') ? 'active text-primary' : '' }}" href="{{ route('kertasKerja.index') }}">
-            <i class="ni ni-pin-3"></i>
-            <span class="nav-link-text">Kertas Kerja</span>
-        </a>
-    </li> -->
-
     <li class="nav-item">
         <a class="nav-link {{ Request::is('pelaporans*') ? 'active text-primary' : '' }}" href="{{ route('pelaporans.index') }}">
             <i class="ri-file-upload-line"></i>
             <span class="nav-link-text">Pelaporan</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('kertasKerja*') ? 'active text-primary' : '' }}" href="{{ route('kertasKerja.index') }}">
+            <i class="ni ni-pin-3"></i>
+            <span class="nav-link-text">Progres dan Hasil</span>
         </a>
     </li>
 </ul>
