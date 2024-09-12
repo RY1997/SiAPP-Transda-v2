@@ -129,7 +129,7 @@ class PPBRController extends AppBaseController
         //                 'jenis_tkd' => 'Dana Otonomi Khusus',
         //                 'tipe_tkd' => 'Spesific Grant',
         //                 'bidang_tkd' => 'Spesific Grant',
-        //                 'subbidang_tkd' => 'Spesific Grant',
+        //                 'subbidang_tkd' => $bidang['bidang'],
         //                 'uraian' => $bidang['bidang'],
         //             ]);
         //         }
@@ -470,88 +470,8 @@ class PPBRController extends AppBaseController
 
         if ($request->action == 'Jadikan Uji Petik') {
             $uji_petik = 'Ya';
-
-            $pemda = DaftarPemda::where('id', $id)->first();
-            $bidangs = ParameterTkd::where('jenis_tkd', '<>', 'Dana Otonomi Khusus')->get();
-            foreach ([2023, 2024] as $tahun) {
-                foreach ($bidangs as $bidang) {
-                    // Proses eva_penyaluran
-                    if (!empty($bidang->eva_penyaluran)) {
-                        $uraianSalurs = explode(';', $bidang->eva_penyaluran);
-                        foreach ($uraianSalurs as $item) {
-                            MonitoringPenyaluran::create([
-                                'tahun' => $tahun,
-                                'kode_pwk' => $pemda->kode_pwk,
-                                'nama_pemda' => $pemda->nama_pemda,
-                                'jenis_tkd' => $bidang->jenis_tkd,
-                                'tipe_tkd' => $bidang->tipe_tkd,
-                                'bidang_tkd' => $bidang->bidang_tkd,
-                                'subbidang_tkd' => $bidang->subbidang_tkd,
-                                'uraian' => $item,
-                            ]);
-                        }
-                    }
-
-                    // Proses eva_penggunaan
-                    if (!empty($bidang->eva_penggunaan)) {
-                        $uraianGunas = explode(';', $bidang->eva_penggunaan);
-                        foreach ($uraianGunas as $item) {
-                            MonitoringPenggunaan::create([
-                                'tahun' => $tahun,
-                                'kode_pwk' => $pemda->kode_pwk,
-                                'nama_pemda' => $pemda->nama_pemda,
-                                'jenis_tkd' => $bidang->jenis_tkd,
-                                'tipe_tkd' => $bidang->tipe_tkd,
-                                'bidang_tkd' => $bidang->bidang_tkd,
-                                'subbidang_tkd' => $bidang->subbidang_tkd,
-                                'uraian' => $item,
-                            ]);
-                        }
-                    }
-                }
-            }
         } else {
             $uji_petik = NULL;
-
-            $pemda = DaftarPemda::where('id', $id)->first();
-            $bidangs = ParameterTkd::where('jenis_tkd', '<>', 'Dana Otonomi Khusus')->get();
-            foreach ([2023, 2024] as $tahun) {
-                foreach ($bidangs as $bidang) {
-                    // Proses mon_penyaluran
-                    if (!empty($bidang->mon_penyaluran)) {
-                        $uraianSalurs = explode(';', $bidang->mon_penyaluran);
-                        foreach ($uraianSalurs as $item) {
-                            MonitoringPenyaluran::create([
-                                'tahun' => $tahun,
-                                'kode_pwk' => $pemda->kode_pwk,
-                                'nama_pemda' => $pemda->nama_pemda,
-                                'jenis_tkd' => $bidang->jenis_tkd,
-                                'tipe_tkd' => $bidang->tipe_tkd,
-                                'bidang_tkd' => $bidang->bidang_tkd,
-                                'subbidang_tkd' => $bidang->subbidang_tkd,
-                                'uraian' => $item,
-                            ]);
-                        }
-                    }
-
-                    // Proses mon_penggunaan
-                    if (!empty($bidang->mon_penggunaan)) {
-                        $uraianGunas = explode(';', $bidang->mon_penggunaan);
-                        foreach ($uraianGunas as $item) {
-                            MonitoringPenggunaan::create([
-                                'tahun' => $tahun,
-                                'kode_pwk' => $pemda->kode_pwk,
-                                'nama_pemda' => $pemda->nama_pemda,
-                                'jenis_tkd' => $bidang->jenis_tkd,
-                                'tipe_tkd' => $bidang->tipe_tkd,
-                                'bidang_tkd' => $bidang->bidang_tkd,
-                                'subbidang_tkd' => $bidang->subbidang_tkd,
-                                'uraian' => $item,
-                            ]);
-                        }
-                    }
-                }
-            }
         }
 
         $pemda = DaftarPemda::where('id', $id)->update([
