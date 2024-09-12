@@ -6,7 +6,9 @@ use App\Http\Requests\CreateMonitoringIndikatorMakroRequest;
 use App\Http\Requests\UpdateMonitoringIndikatorMakroRequest;
 use App\Repositories\MonitoringIndikatorMakroRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DaftarPemda;
 use App\Models\MonitoringIndikatorMakro;
+use App\Models\ParameterIndikator;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +35,24 @@ class MonitoringIndikatorMakroController extends AppBaseController
     public function index(Request $request)
     {
         $nama_pemda = $request->query('nama_pemda');
+
+        $pemdas = DaftarPemda::all();
+        $indikators = ParameterIndikator::all();
+
+        foreach ($pemdas as $pemda) {
+            foreach ($indikators as $indikator) {
+                foreach ([2020,2021,2022,2023,2024] as $tahun) {
+                    MonitoringIndikatorMakro::updateOrCreate([
+                        'tahun' => $tahun,
+                        'kode_pwk' => $pemda->kode_pwk,
+                        'nama_pemda' => $pemda->nama_pemda,
+                        'uraian_indikator' => $indikator->uraian_indikator
+                    ],[
+                        'batas_indikator' => $indikator->batas_indikator
+                    ]);
+                }
+            }
+        }
 
         if (Auth::user()->role == 'Admin') {
             $monitoringIndikatorMakros = MonitoringIndikatorMakro::query();
