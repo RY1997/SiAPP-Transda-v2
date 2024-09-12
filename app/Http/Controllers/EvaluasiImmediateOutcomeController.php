@@ -113,7 +113,16 @@ class EvaluasiImmediateOutcomeController extends AppBaseController
             return redirect(route('evaluasiImmediateOutcomes.index'));
         }
 
-        return view('evaluasi_immediate_outcomes.edit')->with('evaluasiImmediateOutcome', $evaluasiImmediateOutcome);
+        if (Auth::user()->role == 'Admin') {
+            $pemdas = DaftarPemda::where('uji_petik', 'Ya')->get();
+        } else {
+            $pemdas = DaftarPemda::where('uji_petik', 'Ya')->where('kode_pwk', Auth::user()->kode_pwk)->get();
+        }
+
+        return view('evaluasi_immediate_outcomes.edit')->with([
+            'evaluasiImmediateOutcome' => $evaluasiImmediateOutcome,
+            'pemdas' => $pemdas
+        ]);
     }
 
     /**
