@@ -26,7 +26,7 @@
                         <button class="btn btn-info rounded-0 dropdown-toggle" type="button" id="dropdownMonitoring" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Monitoring
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMonitoring" style="">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMonitoring">
                             <li>
                                 <a class="dropdown-item" href="#">Action</a>
                             </li>
@@ -40,7 +40,7 @@
                         <button class="btn btn-success dropdown-toggle rounded-end" type="button" id="dropdownEvaluasi" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Evaluasi
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownEvaluasi" style="">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownEvaluasi">
                             <li>
                                 <a class="dropdown-item" href="#">Action</a>
                             </li>

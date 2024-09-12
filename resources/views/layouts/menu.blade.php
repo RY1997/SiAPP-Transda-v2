@@ -53,7 +53,7 @@
 
     <li class="nav-item">
         <a class="nav-link {{ Request::is('kertasKerja*') ? 'active text-primary' : '' }}" href="{{ route('kertasKerja.index') }}">
-            <i class="ni ni-pin-3"></i>
+            <i class="ri-file-chart-line"></i>
             <span class="nav-link-text">Progres dan Hasil</span>
         </a>
     </li>
