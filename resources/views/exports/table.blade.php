@@ -8,7 +8,7 @@
                 <th width="300">Nama Penugasan</th>
                 <th width="100">Progres Monitoring</th>
                 <th width="100">Progres Evaluasi</th>
-                <th width="300">Aksi</th>
+                <th width="150">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -23,34 +23,17 @@
                 <td> XX,XX %</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <button class="btn btn-info rounded-0 dropdown-toggle" type="button" id="dropdownMonitoring" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Monitoring
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMonitoring">
-                            <li>
-                                <a class="dropdown-item" href="#">Action</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Another action</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </li>
-                        </ul>
-                        <button class="btn btn-success dropdown-toggle rounded-end" type="button" id="dropdownEvaluasi" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Evaluasi
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownEvaluasi">
-                            <li>
-                                <a class="dropdown-item" href="#">Action</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Another action</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </li>
-                        </ul>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Kertas Kerja
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Data Umum</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Tren Pengelolaan TKD</a>
+                                <a class="dropdown-item" href="#">Capaian Indikator Makro</a>
+                            </div>
+                        </div>
                     </div>
                 </td>
             </tr>
