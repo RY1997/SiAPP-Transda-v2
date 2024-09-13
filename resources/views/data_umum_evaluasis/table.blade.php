@@ -15,8 +15,8 @@
         <tbody>
             @foreach($dataUmumTkds as $dataUmumTkd)
             <tr>
-                @if ($dataUmumTkd->tahun == 2020)
-                <td rowspan="5">{{ ceil($loop->iteration / 5 + ($page > 0 ? ($page - 1) : 0) * 5) }}</td>
+                @if ($dataUmumTkd->tahun == 2023)
+                <td rowspan="5">{{ ceil($loop->iteration / 2 + ($page > 0 ? ($page - 1) : 0) * 2) }}</td>
                 <td rowspan="5">{{ $dataUmumTkd->nama_pemda }}</td>
                 @endif
                 <td class="text-right">{{ $dataUmumTkd->tahun }}</td>
