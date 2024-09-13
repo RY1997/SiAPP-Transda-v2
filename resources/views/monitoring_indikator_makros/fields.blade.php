@@ -19,8 +19,8 @@
         <table id="realisasiCapaian" class="table text-center m-0">
             <thead class="thead-light">
                 <tr>
-                    <th width="300">Indikator Makro</th>
-                    <th width="100">Tahun</th>
+                    <th rowspan="2" width="300">Indikator Makro</th>
+                    <th rowspan="2" width="100">Tahun</th>
                     <th colspan="4">Capaian Indikator Makro</th>
                 </tr>
                 <tr>
