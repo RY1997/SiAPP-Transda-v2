@@ -420,10 +420,10 @@ class PPBRController extends AppBaseController
         ];
 
         foreach ($fieldsToUpdate as $field) {
-            EvaluasiKebijakanAlokasi::whereNull($field)->update([$field => 0]);
+            EvaluasiKebutuhan::whereNull($field)->update([$field => 0]);
         }
 
-        EvaluasiKebijakanAlokasi::whereNull('jenis_tkd')->update(['jenis_tkd' => 'Dana Alokasi Umum']);
+        EvaluasiKebutuhan::whereNull('jenis_tkd')->update(['jenis_tkd' => 'Dana Alokasi Umum']);
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home
         // return redirect(route('ppbrs.create'));
