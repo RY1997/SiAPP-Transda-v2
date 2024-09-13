@@ -65,7 +65,7 @@ class MonitoringIndikatorMakroController extends AppBaseController
         }
 
         $monitoringIndikatorMakros = $monitoringIndikatorMakros->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
-            ->paginate(100);
+            ->orderBy('nama_pemda')->orderBy('tahun')->paginate(100);
 
         return view('monitoring_indikator_makros.index')
             ->with([
