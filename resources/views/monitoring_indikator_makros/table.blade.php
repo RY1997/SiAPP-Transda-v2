@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($monitoringIndikatorMakros->where('tahun', '2020') as $monitoringIndikatorMakro)
+            @foreach($monitoringIndikatorMakrosIndex as $monitoringIndikatorMakro)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $monitoringIndikatorMakro->nama_pemda }}</td>
@@ -41,7 +41,7 @@
     </table>
     <div class="card-footer clearfix">
         <div class="float-right d-flex justify-content-center">
-            @include('adminlte-templates::common.paginate', ['records' => $monitoringIndikatorMakros])
+            @include('adminlte-templates::common.paginate', ['records' => $monitoringIndikatorMakrosIndex])
         </div>
     </div>
 </div>

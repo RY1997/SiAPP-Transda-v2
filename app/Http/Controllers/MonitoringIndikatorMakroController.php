@@ -40,6 +40,7 @@ class MonitoringIndikatorMakroController extends AppBaseController
 
         if (Auth::user()->role == 'Admin') {
             $monitoringIndikatorMakros = MonitoringIndikatorMakro::query();
+            $monitoringIndikatorMakrosIndex = MonitoringIndikatorMakro::query();
         } else {
             // $pemdas = DaftarPemda::where('kode_pwk', Auth::user()->kode_pwk)->get();
             // $indikators = ParameterIndikator::all();
@@ -62,13 +63,18 @@ class MonitoringIndikatorMakroController extends AppBaseController
             // }
 
             $monitoringIndikatorMakros = MonitoringIndikatorMakro::where('kode_pwk', Auth::user()->kode_pwk);
+            $monitoringIndikatorMakrosIndex = MonitoringIndikatorMakro::where('kode_pwk', Auth::user()->kode_pwk);
         }
 
-        $monitoringIndikatorMakros = $monitoringIndikatorMakros->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
-            ->orderBy('nama_pemda')->orderBy('tahun')->orderBy('uraian_indikator')->paginate(100);
+        $monitoringIndikatorMakrosIndex = $monitoringIndikatorMakrosIndex->where('tahun', '2020')->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+            ->orderBy('nama_pemda')->orderBy('tahun')->orderBy('uraian_indikator')->paginate(20);
+        
+        $monitoringIndikatorMakros = $monitoringIndikatorMakros->whereIn('nama_pemda', $monitoringIndikatorMakrosIndex->nama_pemda)
+            ->get();
 
         return view('monitoring_indikator_makros.index')
             ->with([
+                'monitoringIndikatorMakrosIndex' => $monitoringIndikatorMakrosIndex,
                 'monitoringIndikatorMakros' => $monitoringIndikatorMakros,
                 'nama_pemda' => $nama_pemda,
             ]);
