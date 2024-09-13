@@ -401,16 +401,29 @@ class PPBRController extends AppBaseController
         // }
 
         $fieldsToUpdate = [
-            'nilai_penyaluran',
-            'nilai_penggunaan',
-            'sisa_dak_sebelumnya',
-            'penganggaran_bidang_sama',
-            'penganggaran_bidang_lainnya'
+            'nilai_target',
+            'unit_target',
+            'nilai_pad',
+            'unit_pad',
+            'nilai_dau',
+            'unit_dau',
+            'nilai_dbh',
+            'unit_dbh',
+            'nilai_dak',
+            'unit_dak',
+            'nilai_otsus',
+            'unit_otsus',
+            'unit_selesai',
+            'unit_tidak_selesai',
+            'unit_tidak_dilaksanakan',
+            'unit_tahun_selanjutnya',
         ];
 
         foreach ($fieldsToUpdate as $field) {
             EvaluasiSisaDak::whereNull($field)->update([$field => 0]);
         }
+
+        EvaluasiSisaDak::whereNull('jenis_tkd')->update(['jenis_tkd' => 'Dana Alokasi Umum']);
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home
         // return redirect(route('ppbrs.create'));
