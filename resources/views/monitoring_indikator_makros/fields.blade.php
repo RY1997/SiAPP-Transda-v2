@@ -49,7 +49,7 @@
                     <td rowspan="5">{{ $monitoringIndikatorMakro->uraian_indikator }}</td>
                     @endif
                     <td>{{ $monitoringIndikatorMakro->tahun }}</td>
-                    <td><input class="form-control" step="0.001" name="capaian_4_{{ $monitoringIndikatorMakro->id . '_' . $monitoringIndikatorMakro->tahun }}" type="number" value="{{ $monitoringIndikatorMakros->where('id', $monitoringIndikatorMakro->id)->where('tahun', $monitoringIndikatorMakro->tahun)->first()->capaian_4 }}"></td>
+                    <td colspan="4"><input class="form-control" step="0.001" name="capaian_4_{{ $monitoringIndikatorMakro->id . '_' . $monitoringIndikatorMakro->tahun }}" type="number" value="{{ $monitoringIndikatorMakros->where('id', $monitoringIndikatorMakro->id)->where('tahun', $monitoringIndikatorMakro->tahun)->first()->capaian_4 }}"></td>
                 </tr>
                 @endif
                 @endforeach
