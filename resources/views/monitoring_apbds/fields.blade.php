@@ -30,11 +30,6 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{!! Form::label('pendapatan_daerah', 'Pendapatan Daerah') !!}</td>
-                    <td>{!! Form::number('pendapatan_daerah', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rpendapatan_daerah', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                </tr>
-                <tr>
                     <td>{!! Form::label('pendapatan_pad', 'Pendapatan PAD') !!}</td>
                     <td>{!! Form::number('pendapatan_pad', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
                     <td>{!! Form::number('rpendapatan_pad', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
@@ -69,11 +64,6 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>{!! Form::label('belanja_daerah', 'Belanja Daerah') !!}</td>
-                    <td>{!! Form::number('belanja_daerah', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rbelanja_daerah', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                </tr>
                 <tr>
                     <td>{!! Form::label('belanja_pegawai', 'Belanja Pegawai') !!}</td>
                     <td>{!! Form::number('belanja_pegawai', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
