@@ -21,7 +21,7 @@
                 <tr>
                     <th width="300">Indikator Makro</th>
                     <th width="100">Tahun</th>
-                    <th colspan="5">Capaian Indikator Makro</th>
+                    <th colspan="4">Capaian Indikator Makro</th>
                 </tr>
                 <tr>
                     <th width="150">Triwulan I</th>

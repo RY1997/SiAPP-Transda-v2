@@ -142,7 +142,7 @@ class MonitoringIndikatorMakroController extends AppBaseController
             return redirect()->back();
         }
 
-        $monitoringIndikatorMakros = MonitoringIndikatorMakro::where('nama_pemda', $indikator->nama_pemda)->where('uraian_indikator', $indikator->uraian_indikator)->get();
+        $monitoringIndikatorMakros = MonitoringIndikatorMakro::where('nama_pemda', $indikator->nama_pemda)->where('uraian_indikator', $indikator->uraian_indikator)->orderBy('tahun')->get();
 
         return view('monitoring_indikator_makros.edit')->with([
             'monitoringIndikatorMakros' => $monitoringIndikatorMakros,
