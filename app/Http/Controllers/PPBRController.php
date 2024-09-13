@@ -400,13 +400,12 @@ class PPBRController extends AppBaseController
         // }
 
         $fieldsToUpdate = [
-            'alokasi_hibah',
-            'penyaluran_hibah',
-            'penggunaan_hibah'
+            'target',
+            'capaian',
         ];
 
         foreach ($fieldsToUpdate as $field) {
-            MonitoringHibah::whereNull($field)->update([$field => 0]);
+            MonitoringImmediateOutcome::whereNull($field)->update([$field => 0]);
         }
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home
