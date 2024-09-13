@@ -41,7 +41,7 @@
     </table>
     <div class="card-footer clearfix">
         <div class="float-right d-flex justify-content-center">
-            @include('adminlte-templates::common.paginate', ['records' => $monitoringIndikatorMakros->where('tahun', '2020')])
+            @include('adminlte-templates::common.paginate', ['records' => $monitoringIndikatorMakros])
         </div>
     </div>
 </div>
