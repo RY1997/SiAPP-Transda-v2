@@ -45,7 +45,7 @@
                     <td>{!! Form::number('rpendapatan_transfer', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
                 </tr>
                 <tr>
-                    <td>{!! Form::label('pendapatan_lainnya', 'Pendapatan Transfer') !!}</td>
+                    <td>{!! Form::label('pendapatan_lainnya', 'Pendapatan Lainnya') !!}</td>
                     <td>{!! Form::number('pendapatan_lainnya', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
                     <td>{!! Form::number('rpendapatan_lainnya', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
                 </tr>
@@ -160,7 +160,7 @@
                     <td>{!! Form::number('rpenerimaan_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
                 </tr>
                 <tr>
-                    <td>{!! Form::label('pengeluaran_pembiayaan', 'Belanja Urusan Pendidikan') !!}</td>
+                    <td>{!! Form::label('pengeluaran_pembiayaan', 'Pengeluaran Pembiayaan') !!}</td>
                     <td>{!! Form::number('pengeluaran_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
                     <td>{!! Form::number('rpengeluaran_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
                 </tr>
