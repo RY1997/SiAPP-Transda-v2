@@ -400,8 +400,9 @@ class PPBRController extends AppBaseController
         // }
 
         $fieldsToUpdate = [
-            'rk_usulan',
-            'rk_disetujui',
+            'alokasi_hibah',
+            'penyaluran_hibah',
+            'penggunaan_hibah'
         ];
 
         foreach ($fieldsToUpdate as $field) {
