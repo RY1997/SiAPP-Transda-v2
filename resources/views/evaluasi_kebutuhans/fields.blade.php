@@ -56,7 +56,7 @@
     @if (!empty($evaluasiKebutuhan) && $evaluasiKebutuhan->bidang == 'Belanja Pegawai')
     {!! Form::text('kode_program', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
     @else
-    {!! Form::text('kode_program', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::text('kode_program', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'placeholder'=>'Kode']) !!}
     @endif
 </div>
 <div class="form-group col-sm-7 mb-3">
@@ -75,7 +75,7 @@
     @if (!empty($evaluasiKebutuhan) && $evaluasiKebutuhan->bidang == 'Belanja Pegawai')
     {!! Form::text('kode_kegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
     @else
-    {!! Form::text('kode_kegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::text('kode_kegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'placeholder'=>'Kode']) !!}
     @endif
 </div>
 <div class="form-group col-sm-7 mb-3">
