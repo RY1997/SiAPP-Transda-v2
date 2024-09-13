@@ -399,6 +399,15 @@ class PPBRController extends AppBaseController
         //     ]);
         // }
 
+        $fieldsToUpdate = [
+            'rk_usulan',
+            'rk_disetujui',
+        ];
+
+        foreach ($fieldsToUpdate as $field) {
+            MonitoringAlokasi::whereNull($field)->update([$field => 0]);
+        }
+
         // Jika tidak ada pemda dengan antrian null, redirect ke home
         // return redirect(route('ppbrs.create'));
     }
