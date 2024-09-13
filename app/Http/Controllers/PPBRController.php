@@ -13,6 +13,7 @@ use App\Models\EvaluasiSisaDak;
 use App\Models\MonitoringAlokasi;
 use App\Models\MonitoringHibah;
 use App\Models\MonitoringImmediateOutcome;
+use App\Models\MonitoringIndikatorMakro;
 use App\Models\MonitoringPenggunaan;
 use App\Models\MonitoringPenyaluran;
 use App\Models\MonitoringSisaTkd;
@@ -400,12 +401,14 @@ class PPBRController extends AppBaseController
         // }
 
         $fieldsToUpdate = [
-            'target',
-            'capaian',
+            'capaian_1',
+            'capaian_2',
+            'capaian_3',
+            'capaian_4',
         ];
 
         foreach ($fieldsToUpdate as $field) {
-            MonitoringImmediateOutcome::whereNull($field)->update([$field => 0]);
+            MonitoringIndikatorMakro::whereNull($field)->update([$field => 0]);
         }
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home
