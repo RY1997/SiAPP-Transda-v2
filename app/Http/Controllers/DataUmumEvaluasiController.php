@@ -41,7 +41,7 @@ class DataUmumEvaluasiController extends AppBaseController
 
         $dataUmumTkds = $dataUmumTkds
         ->selectRaw('*, SUM(alokasi_tkd) as total_alokasi, SUM(penyaluran_tkd) as total_penyaluran, SUM(penganggaran_tkd) as total_penganggaran, SUM(penggunaan_tkd) as total_penggunaan')
-        ->groupBy('nama_pemda')->groupBy('tahun')->orderBy('nama_pemda')->orderBy('tahun')->paginate(100);
+        ->groupBy('nama_pemda')->groupBy('tahun')->orderBy('nama_pemda')->orderBy('tahun')->paginate(40);
 
         return view('data_umum_evaluasis.index')
             ->with([
