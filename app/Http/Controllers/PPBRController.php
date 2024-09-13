@@ -401,12 +401,13 @@ class PPBRController extends AppBaseController
         // }
 
         $fieldsToUpdate = [
-            'potong_salur',
-            'tunda_salur',
+            'sisa_dana_tkd',
+            'dianggarkan_kembali',
+            'tidak_dianggarkan_kembali',
         ];
 
         foreach ($fieldsToUpdate as $field) {
-            MonitoringPenyaluran::whereNull($field)->update([$field => 0]);
+            MonitoringSisaTkd::whereNull($field)->update([$field => 0]);
         }
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home
