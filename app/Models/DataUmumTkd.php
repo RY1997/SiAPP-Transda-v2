@@ -79,18 +79,18 @@ class DataUmumTkd extends Model
      * @var array
      */
     public static $rules = [
-        'tahun' => 'required|string|max:255',
-        'kode_pwk' => 'required|string|max:255',
-        'nama_pemda' => 'required|string|max:255',
-        'jenis_tkd' => 'required|string|max:255',
-        'tipe_tkd' => 'required|string|max:255',
-        'bidang_tkd' => 'required|string|max:255',
-        'subbidang_tkd' => 'required|string|max:255',
-        'uraian' => 'required|string|max:255',
-        'alokasi_tkd' => 'required|numeric',
-        'penyaluran_tkd' => 'required|numeric',
-        'penganggaran_tkd' => 'required|numeric',
-        'penggunaan_tkd' => 'required|numeric',
+        'tahun' => 'nullable|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
+        'nama_pemda' => 'nullable|string|max:255',
+        'jenis_tkd' => 'nullable|string|max:255',
+        'tipe_tkd' => 'nullable|string|max:255',
+        'bidang_tkd' => 'nullable|string|max:255',
+        'subbidang_tkd' => 'nullable|string|max:255',
+        'uraian' => 'nullable|string|max:255',
+        'alokasi_tkd' => 'nullable|numeric',
+        'penyaluran_tkd' => 'nullable|numeric',
+        'penganggaran_tkd' => 'nullable|numeric',
+        'penggunaan_tkd' => 'nullable|numeric',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
