@@ -406,7 +406,7 @@ class PPBRController extends AppBaseController
         ];
 
         foreach ($fieldsToUpdate as $field) {
-            MonitoringAlokasi::whereNull($field)->update([$field => 0]);
+            MonitoringHibah::whereNull($field)->update([$field => 0]);
         }
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home
