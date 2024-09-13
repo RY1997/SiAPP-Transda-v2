@@ -52,7 +52,14 @@
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('program', 'Nama Program') !!}
 </div>
-<div class="form-group col-sm-9 mb-3">
+<div class="form-group col-sm-2 mb-3">
+    @if (!empty($evaluasiKebutuhan) && $evaluasiKebutuhan->bidang == 'Belanja Pegawai')
+    {!! Form::text('kode_program', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    @else
+    {!! Form::text('kode_program', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    @endif
+</div>
+<div class="form-group col-sm-7 mb-3">
     @if (!empty($evaluasiKebutuhan) && $evaluasiKebutuhan->bidang == 'Belanja Pegawai')
     {!! Form::textarea('program', null, ['class' => 'form-control', 'rows' => '3', 'readonly']) !!}
     @else
@@ -64,7 +71,14 @@
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('kegiatan', 'Nama Kegiatan') !!}
 </div>
-<div class="form-group col-sm-9 mb-3">
+<div class="form-group col-sm-2 mb-3">
+    @if (!empty($evaluasiKebutuhan) && $evaluasiKebutuhan->bidang == 'Belanja Pegawai')
+    {!! Form::text('kode_kegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly']) !!}
+    @else
+    {!! Form::text('kode_kegiatan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    @endif
+</div>
+<div class="form-group col-sm-7 mb-3">
     @if (!empty($evaluasiKebutuhan) && $evaluasiKebutuhan->bidang == 'Belanja Pegawai')
     {!! Form::textarea('kegiatan', null, ['class' => 'form-control', 'rows' => '3', 'readonly']) !!}
     @else
@@ -178,7 +192,7 @@
 </div>
 
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('dak', 'TKD - Otsus') !!}
+    {!! Form::label('otsus', 'TKD - Otsus') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
     {!! Form::number('unit_otsus', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit']) !!}
@@ -190,6 +204,38 @@
         </div>
         <input class="form-control" name="nilai_otsus" type="number" id="nilai_otsus" placeholder="Nilai Kebutuhan" aria-describedby="nilai_otsus">
     </div>
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('unit_selesai', 'Jumlah Unit Selesai') !!}
+</div>
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::number('unit_selesai', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="col-sm-12 mb-3">
+    <h5>Penyelesaian Unit</h5>
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('unit_tidak_selesai', 'Jumlah Unit Tidak Selesai') !!}
+</div>
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::number('unit_tidak_selesai', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('unit_tidak_dilaksanakan', 'Jumlah Unit Tidak Dilaksanakan') !!}
+</div>
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::number('unit_tidak_dilaksanakan', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('unit_tahun_selanjutnya', 'Jumlah Unit Dilaksanakan pada Tahun Berikutnya') !!}
+</div>
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::number('unit_tahun_selanjutnya', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="col-sm-12 mb-3">

@@ -107,6 +107,7 @@ class EvaluasiKebutuhanController extends AppBaseController
     {
         $input = $request->all();
         $input['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->first()->kode_pwk;
+        $input['jenis_tkd'] = 'Dana Alokasi Umum';
 
         $evaluasiKebutuhan = $this->evaluasiKebutuhanRepository->create($input);
 
