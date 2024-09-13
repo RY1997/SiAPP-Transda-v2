@@ -71,7 +71,7 @@ class EvaluasiAlokasiController extends AppBaseController
             ]);
         }
 
-        Flash::success('Penyaluran updated successfully.');
+        Flash::success('Alokasi updated successfully.');
 
         $monitoringAlokasi = MonitoringAlokasi::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->first();
 

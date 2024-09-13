@@ -105,6 +105,13 @@
     </li>
 
     <li class="nav-item">
+        <a class="nav-link {{ Request::is('monitoringDataUmumTkds*') ? 'active text-primary' : '' }}" href="{{ route('monitoringDataUmumTkds.index') }}">
+            <i class="ri-bank-line"></i>
+            <span class="nav-link-text">Data Umum TKD</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link {{ Request::is('monitoringTrens*') || Request::is('monitoringPenyalurans*') || Request::is('monitoringPenggunaans*') ? 'active text-primary' : '' }}" href="{{ route('monitoringTrens.index') }}">
             <i class="ri-links-line"></i>
             <span class="nav-link-text">Pengelolaan TKD</span>
@@ -190,6 +197,13 @@
     </li>
     @endif -->
 
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiDataUmumTkds*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiDataUmumTkds.index') }}">
+            <i class="ri-bank-line"></i>
+            <span class="nav-link-text">Data Umum TKD</span>
+        </a>
+    </li>
+    
     <li class="nav-item">
         <a class="nav-link {{ Request::is('evaluasiTrens*') || Request::is('evaluasiPenyalurans*') || Request::is('evaluasiPenggunaans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiTrens.index') }}">
             <i class="ri-links-line"></i>
@@ -297,5 +311,4 @@
         </a>
     </li>
 </ul>
-
 

@@ -152,3 +152,9 @@ Route::resource('monitoringHibahs', App\Http\Controllers\MonitoringHibahControll
 
 
 Route::resource('monitoringSisaTkds', App\Http\Controllers\MonitoringSisaTkdController::class);
+
+
+
+
+Route::resource('monitoringDataUmumTkds', App\Http\Controllers\DataUmumMonitoringController::class);
+Route::resource('evaluasiDataUmumTkds', App\Http\Controllers\DataUmumEvaluasiController::class);
