@@ -21,6 +21,7 @@ use App\Models\MonitoringTl;
 use App\Models\ParameterTkd;
 use App\Models\PPBR;
 use App\Models\SuratTugas;
+use EvaluasiKontrak;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -401,29 +402,27 @@ class PPBRController extends AppBaseController
         // }
 
         $fieldsToUpdate = [
-            'nilai_target',
-            'unit_target',
-            'nilai_pad',
-            'unit_pad',
-            'nilai_dau',
-            'unit_dau',
-            'nilai_dbh',
-            'unit_dbh',
-            'nilai_dak',
-            'unit_dak',
-            'nilai_otsus',
-            'unit_otsus',
-            'unit_selesai',
-            'unit_tidak_selesai',
-            'unit_tidak_dilaksanakan',
-            'unit_tahun_selanjutnya',
+            'masalah1',
+            'masalah2',
+            'masalah3',
+            'masalah4',
+            'masalah5',
+            'masalah6',
+            'masalah7',
+            'masalah8',
+            'manfaat1',
+            'manfaat2',
+            'manfaat3',
+            'manfaat4',
+            'manfaat5',
+            'manfaat6',
+            'manfaat7',
+            'manfaat8',
         ];
 
         foreach ($fieldsToUpdate as $field) {
-            EvaluasiKebutuhan::whereNull($field)->update([$field => 0]);
+            EvaluasiKontrak::whereNull($field)->update([$field => 0]);
         }
-
-        EvaluasiKebutuhan::whereNull('jenis_tkd')->update(['jenis_tkd' => 'Dana Alokasi Umum']);
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home
         // return redirect(route('ppbrs.create'));
