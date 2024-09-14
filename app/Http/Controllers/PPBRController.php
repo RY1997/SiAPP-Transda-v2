@@ -555,29 +555,33 @@ class PPBRController extends AppBaseController
         //     ['tahun' => 2024, 'tipe_tkd' => 'DAK Non Fisik', 'bidang_tkd' => 'Dana Penguatan Kapasitas Kelembagaan Sentra IKM'],
         // ];
 
-        $dataTkd = [
-            ['tahun' => 2023, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Pendidikan'],
-            ['tahun' => 2023, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Kesehatan'],
-            ['tahun' => 2024, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Pendidikan'],
-            ['tahun' => 2024, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Kesehatan'],
-        ];
-
         foreach ($pemdas as $pemda) {
-            foreach ($dataTkd as $tkd) {
-                DataUmumTkd::create([
-                    'tahun' => $tkd['tahun'],
-                    'kode_pwk' => $pemda->kode_pwk,
-                    'nama_pemda' => $pemda->nama_pemda,
-                    'jenis_tkd' => 'Dana Alokasi Khusus',
-                    'tipe_tkd' => $tkd['tipe_tkd'],
-                    'bidang_tkd' => $tkd['bidang_tkd'],
-                    'subbidang_tkd' => $tkd['bidang_tkd'],
-                    'uraian' => $tkd['bidang_tkd']
-                ]);
-            }
-
-            $pemda->update(['antrian' => 3]);
+            $pemda->update(['antrian' => 1]);
         }
+
+        // $dataTkd = [
+        //     ['tahun' => 2023, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Pendidikan'],
+        //     ['tahun' => 2023, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Kesehatan'],
+        //     ['tahun' => 2024, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Pendidikan'],
+        //     ['tahun' => 2024, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Kesehatan'],
+        // ];
+
+        // foreach ($pemdas as $pemda) {
+        //     foreach ($dataTkd as $tkd) {
+        //         DataUmumTkd::create([
+        //             'tahun' => $tkd['tahun'],
+        //             'kode_pwk' => $pemda->kode_pwk,
+        //             'nama_pemda' => $pemda->nama_pemda,
+        //             'jenis_tkd' => 'Dana Alokasi Khusus',
+        //             'tipe_tkd' => $tkd['tipe_tkd'],
+        //             'bidang_tkd' => $tkd['bidang_tkd'],
+        //             'subbidang_tkd' => $tkd['bidang_tkd'],
+        //             'uraian' => $tkd['bidang_tkd']
+        //         ]);
+        //     }
+
+        //     $pemda->update(['antrian' => 3]);
+        // }
 
         // Jika tidak ada pemda dengan antrian null, redirect ke home
         // return redirect(route('ppbrs.create'));
