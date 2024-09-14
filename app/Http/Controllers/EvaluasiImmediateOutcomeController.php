@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateEvaluasiImmediateOutcomeRequest;
 use App\Repositories\EvaluasiImmediateOutcomeRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
+use App\Models\EvaluasiImmediateOutcome;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,11 @@ class EvaluasiImmediateOutcomeController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $evaluasiImmediateOutcomes = $this->evaluasiImmediateOutcomeRepository->paginate(20);
+        if (Auth::user()->role == 'Admin') {
+            $evaluasiImmediateOutcomes = EvaluasiImmediateOutcome::orderBy('nama_pemda')->paginate(20);
+        } else {
+            $evaluasiImmediateOutcomes = EvaluasiImmediateOutcome::where('kode_pwk', Auth::user()->kode_pwk)->orderBy('nama_pemda')->paginate(20);
+        }
 
         return view('evaluasi_immediate_outcomes.index')
             ->with('evaluasiImmediateOutcomes', $evaluasiImmediateOutcomes);

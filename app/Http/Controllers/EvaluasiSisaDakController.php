@@ -6,8 +6,10 @@ use App\Http\Requests\CreateEvaluasiSisaDakRequest;
 use App\Http\Requests\UpdateEvaluasiSisaDakRequest;
 use App\Repositories\EvaluasiSisaDakRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\EvaluasiSisaDak;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class EvaluasiSisaDakController extends AppBaseController
@@ -30,7 +32,11 @@ class EvaluasiSisaDakController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $evaluasiSisaDaks = $this->evaluasiSisaDakRepository->all();
+        if (Auth::user()->role == 'Admin') {
+            $evaluasiSisaDaks = EvaluasiSisaDak::orderBy('nama_pemda')->paginate(20);
+        } else {
+            $evaluasiSisaDaks = EvaluasiSisaDak::where('kode_pwk', Auth::user()->kode_pwk)->orderBy('nama_pemda')->paginate(20);
+        }
 
         return view('evaluasi_sisa_daks.index')
             ->with('evaluasiSisaDaks', $evaluasiSisaDaks);

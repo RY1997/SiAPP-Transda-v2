@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateEvaluasiKebijakanAlokasiRequest;
 use App\Repositories\EvaluasiKebijakanAlokasiRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
+use App\Models\EvaluasiKebijakanAlokasi;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
 use Flash;
@@ -33,7 +34,11 @@ class EvaluasiKebijakanAlokasiController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $evaluasiKebijakanAlokasis = $this->evaluasiKebijakanAlokasiRepository->all();
+        if (Auth::user()->role == 'Admin') {
+            $evaluasiKebijakanAlokasis = EvaluasiKebijakanAlokasi::orderBy('nama_pemda')->paginate(20);
+        } else {
+            $evaluasiKebijakanAlokasis = EvaluasiKebijakanAlokasi::where('kode_pwk', Auth::user()->kode_pwk)->orderBy('nama_pemda')->paginate(20);
+        }
 
         return view('evaluasi_kebijakan_alokasis.index')
             ->with('evaluasiKebijakanAlokasis', $evaluasiKebijakanAlokasis);
