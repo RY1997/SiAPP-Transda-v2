@@ -47,6 +47,7 @@ class EvaluasiImmediateOutcome extends Model
         'uraian_indikator',
         'target',
         'capaian',
+        'capaian_auditor',
         'satuan',
         'keterangan',
         'kendala'
@@ -68,6 +69,7 @@ class EvaluasiImmediateOutcome extends Model
         'uraian_indikator' => 'string',
         'target' => 'decimal:2',
         'capaian' => 'decimal:2',
+        'capaian_auditor' => 'decimal:2',
         'satuan' => 'string',
         'keterangan' => 'string',
         'kendala' => 'string'
@@ -88,6 +90,7 @@ class EvaluasiImmediateOutcome extends Model
         'uraian_indikator' => 'nullable|string',
         'target' => 'nullable|numeric',
         'capaian' => 'nullable|numeric',
+        'capaian_auditor' => 'nullable|numeric',
         'satuan' => 'nullable|string|max:255',
         'keterangan' => 'nullable|string',
         'kendala' => 'nullable|string',

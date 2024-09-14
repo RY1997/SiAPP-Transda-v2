@@ -18,15 +18,15 @@
 <div class="form-group col-sm-9 mb-3">
     <select class="form-control custom-select" id="bidang_tkd" name="bidang_tkd">
         <option value="" selected>Pilih</option>
-        <option value="Air Minum" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->subbidang_tkd == 'Air Minum' ? 'selected' : '' }}>Air Minum</option>
-        <option value="Sanitasi" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->subbidang_tkd == 'Sanitasi' ? 'selected' : '' }}>Sanitasi</option>
-        <option value="Irigasi" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->subbidang_tkd == 'Irigasi' ? 'selected' : '' }}>Irigasi</option>
-        <option value="Pertanian" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->subbidang_tkd == 'Pertanian' ? 'selected' : '' }}>Pertanian</option>
-        <option value="Kelautan dan Perikanan" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->subbidang_tkd == 'Kelautan dan Perikanan' ? 'selected' : '' }}>Kelautan dan Perikanan</option>
-        <option value="Jalan" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->subbidang_tkd == 'Jalan' ? 'selected' : '' }}>Jalan</option>
-        <option value="Kehutanan" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->subbidang_tkd == 'Kehutanan' ? 'selected' : '' }}>Kehutanan</option>
-        <option value="Pendidikan" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->subbidang_tkd == 'Pendidikan' ? 'selected' : '' }}>Pendidikan</option>
-        <option value="Kesehatan" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->subbidang_tkd == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
+        <option value="Air Minum" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->bidang_tkd == 'Air Minum' ? 'selected' : '' }}>Air Minum</option>
+        <option value="Sanitasi" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->bidang_tkd == 'Sanitasi' ? 'selected' : '' }}>Sanitasi</option>
+        <option value="Irigasi" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->bidang_tkd == 'Irigasi' ? 'selected' : '' }}>Irigasi</option>
+        <option value="Pertanian" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->bidang_tkd == 'Pertanian' ? 'selected' : '' }}>Pertanian</option>
+        <option value="Kelautan dan Perikanan" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->bidang_tkd == 'Kelautan dan Perikanan' ? 'selected' : '' }}>Kelautan dan Perikanan</option>
+        <option value="Jalan" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->bidang_tkd == 'Jalan' ? 'selected' : '' }}>Jalan</option>
+        <option value="Kehutanan" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->bidang_tkd == 'Kehutanan' ? 'selected' : '' }}>Kehutanan</option>
+        <option value="Pendidikan" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->bidang_tkd == 'Pendidikan' ? 'selected' : '' }}>Pendidikan</option>
+        <option value="Kesehatan" {{ !empty($evaluasiImmediateOutcome) && $evaluasiImmediateOutcome->bidang_tkd == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
     </select>
 </div>
 
@@ -81,7 +81,14 @@
     {!! Form::label('capaian', 'Capaian') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('capaian', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::text('capaian', null, ['class' => 'form-control','step' => '0.01']) !!}
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('capaian_auditor', 'Capaian Menurut Hasil Evaluasi') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    {!! Form::number('capaian_auditor', null, ['class' => 'form-control','step' => '0.01']) !!}
 </div>
 
 <!-- Satuan Field -->
@@ -89,7 +96,7 @@
     {!! Form::label('satuan', 'Satuan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('satuan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::number('satuan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
 <!-- Keterangan Field -->
