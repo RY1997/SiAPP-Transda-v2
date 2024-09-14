@@ -19,6 +19,7 @@ class DataUmumEvaluasiController extends AppBaseController
 
     public function __construct(DataUmumTkdRepository $dataUmumTkdRepo)
     {
+        $this->middleware('auth');
         $this->dataUmumTkdRepository = $dataUmumTkdRepo;
     }
 
