@@ -32,7 +32,7 @@ class DataUmumEvaluasiController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $dataUmumTkds = DataUmumTkd::whereIn('tahun', [2023, 2024])->where('jenis_tkd', session('jenis_tkd'))->whereHas('st', function ($query) {
+        $dataUmumTkds = DataUmumTkd::where('jenis_tkd', session('jenis_tkd'))->whereHas('st', function ($query) {
             $query->where('jenis_tkd', session('jenis_tkd'))->where('jenis_penugasan', 'Evaluasi');
         })->where('nama_pemda', 'like', '%' . $request->nama_pemda . '%');
 

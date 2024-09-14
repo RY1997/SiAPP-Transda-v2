@@ -25,7 +25,7 @@
                 <td>{{ $evaluasiImmediateOutcome->subbidang_tkd }}</td>
                 <td>{{ $evaluasiImmediateOutcome->uraian_indikator }}</td>
                 <td>{{ number_format($evaluasiImmediateOutcome->target,2,',','.') }}</td>
-                <td>{{ number_format($evaluasiImmediateOutcome->capaian,2,',','.') }}</td>
+                <td>{{ number_format($evaluasiImmediateOutcome->capaian_auditor,2,',','.') }}</td>
                 <td>{{ $evaluasiImmediateOutcome->satuan }}</td>
                 <td>{{ $evaluasiImmediateOutcome->keterangan }}</td>
                 <td>{{ $evaluasiImmediateOutcome->kendala }}</td>
