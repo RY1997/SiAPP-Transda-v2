@@ -402,7 +402,7 @@ class PPBRController extends AppBaseController
         //     ]);
         // }
 
-        $pemdas = DaftarPemda::where('antrian', 2)->get();
+        $pemdas = DaftarPemda::all();
 
         // $dataTkd = [
         //     ['tahun' => 2020, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Pendidikan'],
