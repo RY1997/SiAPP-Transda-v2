@@ -81,7 +81,7 @@
     {!! Form::label('capaian', 'Capaian') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('capaian', null, ['class' => 'form-control','step' => '0.01']) !!}
+    {!! Form::number('capaian', null, ['class' => 'form-control','step' => '0.01']) !!}
 </div>
 
 <div class="form-group col-sm-3 mb-3">
@@ -96,7 +96,7 @@
     {!! Form::label('satuan', 'Satuan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('satuan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::text('satuan', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
 <!-- Keterangan Field -->
