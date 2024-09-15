@@ -579,6 +579,30 @@ class PPBRController extends AppBaseController
         //     $pemda->update(['antrian' => 3]);
         // }
 
+        $fieldsToUpdate = [
+            'masalah1',
+            'masalah2',
+            'masalah3',
+            'masalah4',
+            'masalah5',
+            'masalah6',
+            'masalah7',
+            'masalah8',
+            'manfaat1',
+            'manfaat2',
+            'manfaat3',
+            'manfaat4',
+            'manfaat5',
+            'manfaat6',
+            'manfaat7',
+            'manfaat8',
+        ];
+        
+        foreach ($fieldsToUpdate as $field) {
+            EvaluasiKontrak::whereNull($field)->update([$field => 0]);
+        }
+        
+
         // Jika tidak ada pemda dengan antrian null, redirect ke home
         // return redirect(route('ppbrs.create'));
     }
