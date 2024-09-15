@@ -22,11 +22,11 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $monitoringIndikatorMakro->nama_pemda }}</td>
                 <td>{{ $monitoringIndikatorMakro->uraian_indikator }}</td>
-                <td>{{ $monitoringIndikatorMakros->where('tahun', '2020')->first()->capaian_4 }}</td>
-                <td>{{ $monitoringIndikatorMakros->where('tahun', '2021')->first()->capaian_4 }}</td>
-                <td>{{ $monitoringIndikatorMakros->where('tahun', '2022')->first()->capaian_4 }}</td>
-                <td>{{ $monitoringIndikatorMakros->where('tahun', '2023')->first()->capaian_4 }}</td>
-                <td>{{ $monitoringIndikatorMakros->where('tahun', '2024')->first()->capaian_4 }}</td>
+                <td>{{ $monitoringIndikatorMakros->where('tahun', '2020')->where('nama_pemda', $monitoringIndikatorMakro->nama_pemda)->where('uraian_indikator', $monitoringIndikatorMakro->uraian_indikator)->first()->capaian_4 }}</td>
+                <td>{{ $monitoringIndikatorMakros->where('tahun', '2021')->where('nama_pemda', $monitoringIndikatorMakro->nama_pemda)->where('uraian_indikator', $monitoringIndikatorMakro->uraian_indikator)->first()->capaian_4 }}</td>
+                <td>{{ $monitoringIndikatorMakros->where('tahun', '2022')->where('nama_pemda', $monitoringIndikatorMakro->nama_pemda)->where('uraian_indikator', $monitoringIndikatorMakro->uraian_indikator)->first()->capaian_4 }}</td>
+                <td>{{ $monitoringIndikatorMakros->where('tahun', '2023')->where('nama_pemda', $monitoringIndikatorMakro->nama_pemda)->where('uraian_indikator', $monitoringIndikatorMakro->uraian_indikator)->first()->capaian_4 }}</td>
+                <td>{{ $monitoringIndikatorMakros->where('tahun', '2024')->where('nama_pemda', $monitoringIndikatorMakro->nama_pemda)->where('uraian_indikator', $monitoringIndikatorMakro->uraian_indikator)->first()->capaian_4 }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('monitoringIndikatorMakros.edit', [$monitoringIndikatorMakro->id]) }}"

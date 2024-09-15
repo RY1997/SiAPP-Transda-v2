@@ -66,7 +66,7 @@ class MonitoringIndikatorMakroController extends AppBaseController
             $monitoringIndikatorMakrosIndex = MonitoringIndikatorMakro::where('kode_pwk', Auth::user()->kode_pwk);
         }
 
-        $monitoringIndikatorMakrosIndex = $monitoringIndikatorMakrosIndex->where('tahun', '2020')->where('nama_pemda', 'like', '%' . $nama_pemda . '%')
+        $monitoringIndikatorMakrosIndex = $monitoringIndikatorMakrosIndex->where('nama_pemda', 'like', '%' . $nama_pemda . '%')->where('tahun', '2020')
             ->orderBy('nama_pemda')->orderBy('tahun')->orderBy('uraian_indikator')->paginate(20);
         
         $monitoringIndikatorMakros = $monitoringIndikatorMakros->whereIn('nama_pemda', $monitoringIndikatorMakrosIndex->pluck('nama_pemda'))
