@@ -46,10 +46,10 @@ class EvaluasiNonfisikController extends AppBaseController
         $suratTugas = $suratTugas->where('nama_pemda', 'like', '%' . $nama_pemda . '%')->where('jenis_tkd', session('jenis_tkd'))
             ->where('jenis_penugasan', 'Evaluasi')
             ->withCount(['nonfisik as nonfisik2023' => function ($query) {
-                $query->where('tahun', '2023');
+                $query->where('tahun', '2023')->where('jenis_tkd', session('jenis_tkd'));
             }])
             ->withCount(['nonfisik as nonfisik2024' => function ($query) {
-                $query->where('tahun', '2024');
+                $query->where('tahun', '2024')->where('jenis_tkd', session('jenis_tkd'));
             }])
             ->withSum([
                 'nonfisik as nilai_nonfisik2023' => function ($query) {
