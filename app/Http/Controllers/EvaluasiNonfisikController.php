@@ -35,13 +35,15 @@ class EvaluasiNonfisikController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $nama_pemda = $request->nama_pemda;
+
         if (Auth::user()->role == 'Admin') {
             $suratTugas = SuratTugas::query();
         } else {
             $suratTugas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk);
         }
 
-        $suratTugas = $suratTugas->where('jenis_tkd', session('jenis_tkd'))
+        $suratTugas = $suratTugas->where('nama_pemda', 'like', '%' . $nama_pemda . '%')->where('jenis_tkd', session('jenis_tkd'))
             ->where('jenis_penugasan', 'Evaluasi')
             ->withCount(['nonfisik as nonfisik2023' => function ($query) {
                 $query->where('tahun', '2023');
@@ -92,7 +94,8 @@ class EvaluasiNonfisikController extends AppBaseController
 
         return view('evaluasi_nonfisiks.index')
             ->with([
-                'suratTugas' => $suratTugas
+                'suratTugas' => $suratTugas,
+                'nama_pemda' => $nama_pemda
             ]);
     }
 
