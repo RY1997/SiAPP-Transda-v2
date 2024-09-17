@@ -74,8 +74,8 @@ class EvaluasiSisaDak extends Model
      */
     public static $rules = [
         'tahun' => 'nullable|string|max:255',
-        'kode_pwk' => 'required|string|max:255',
-        'nama_pemda' => 'required|string|max:255',
+        'kode_pwk' => 'nullable|string|max:255',
+        'nama_pemda' => 'nullable|string|max:255',
         'jenis_tkd' => 'nullable|string|max:255',
         'bidang_tkd' => 'nullable|string|max:255',
         'nilai_penyaluran' => 'nullable|numeric',

@@ -6,6 +6,7 @@ use App\Http\Requests\CreateEvaluasiSisaDakRequest;
 use App\Http\Requests\UpdateEvaluasiSisaDakRequest;
 use App\Repositories\EvaluasiSisaDakRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DaftarPemda;
 use App\Models\EvaluasiSisaDak;
 use Illuminate\Http\Request;
 use Flash;
@@ -62,6 +63,7 @@ class EvaluasiSisaDakController extends AppBaseController
     public function store(CreateEvaluasiSisaDakRequest $request)
     {
         $input = $request->all();
+        $input['kode_pwk'] = DaftarPemda::where('nama_pemda', $request->nama_pemda)->first()->kode_pwk;
 
         $evaluasiSisaDak = $this->evaluasiSisaDakRepository->create($input);
 
