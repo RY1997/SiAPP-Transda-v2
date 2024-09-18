@@ -178,7 +178,7 @@
     {!! Form::label('nilai_kontrak', 'Anggaran Kegiatan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+    {!! Form::number('nilai_kontrak', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}
 </div>
 
 <!-- <div class="col-sm-12 mb-3">
@@ -201,7 +201,7 @@
             <tbody>
                 <tr>
                     <td>{!! Form::number('target_output', null, ['class' => 'form-control', 'readonly']) !!}</td>
-                    <td>{!! Form::number('realisasi_bast', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('realisasi_bast', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                     <td>{!! Form::number('persen_fisik', null, ['class' => 'form-control', 'readonly']) !!}</td>
                 </tr>
             </tbody>
@@ -299,37 +299,37 @@
                 <tr>
                     <td>P1</td>
                     <td>Ketidaktepatan Sasaran Penerima Manfaat</td>
-                    <td>{!! Form::number('masalah1', $evaluasiNonfisik->masalah1 ?? 0, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('masalah1', $evaluasiNonfisik->masalah1 ?? 0, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                     <td>{!! Form::textarea('uraian_masalah1', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
                 </tr>
                 <tr>
                     <td>P2</td>
                     <td>Kegiatan Fiktif</td>
-                    <td>{!! Form::number('masalah2', $evaluasiNonfisik->masalah2 ?? 0, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('masalah2', $evaluasiNonfisik->masalah2 ?? 0, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                     <td>{!! Form::textarea('uraian_masalah2', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
                 </tr>
                 <tr>
                     <td>P3</td>
                     <td>Ketidaktepatan Jumlah</td>
-                    <td>{!! Form::number('masalah3', $evaluasiNonfisik->masalah3 ?? 0, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('masalah3', $evaluasiNonfisik->masalah3 ?? 0, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                     <td>{!! Form::textarea('uraian_masalah3', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
                 </tr>
                 <tr>
                     <td>P4</td>
                     <td>Pungutan/Pemotongan Nilai Kegiatan</td>
-                    <td>{!! Form::number('masalah4', $evaluasiNonfisik->masalah4 ?? 0, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('masalah4', $evaluasiNonfisik->masalah4 ?? 0, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                     <td>{!! Form::textarea('uraian_masalah4', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
                 </tr>
                 <tr>
                     <td>P5</td>
                     <td>Kewajiban pajak/retribusi yang belum dipungut dan/atau disetor ke Kas Daerah/Negara</td>
-                    <td>{!! Form::number('masalah5', $evaluasiNonfisik->masalah5 ?? 0, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('masalah5', $evaluasiNonfisik->masalah5 ?? 0, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                     <td>{!! Form::textarea('uraian_masalah5', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
                 </tr>
                 <tr>
                     <td>P6</td>
                     <td>Permasalahan Lainnya</td>
-                    <td>{!! Form::number('masalah6', $evaluasiNonfisik->masalah6 ?? 0, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('masalah6', $evaluasiNonfisik->masalah6 ?? 0, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                     <td>{!! Form::textarea('uraian_masalah6', null, ['class' => 'form-control', 'rows' => '3']) !!}</td>
                 </tr>
             </tbody>

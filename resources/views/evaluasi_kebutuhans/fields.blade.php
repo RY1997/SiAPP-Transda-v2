@@ -115,14 +115,14 @@
     {!! Form::label('target', 'Target') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::number('unit_target', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit']) !!}
+    {!! Form::number('unit_target', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit', 'required']) !!}
 </div>
 <div class="form-group col-sm-6 mb-3">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_target">Rp</span>
         </div>
-        <input class="form-control" name="nilai_target" type="number" id="nilai_target" placeholder="Nilai Kebutuhan" aria-describedby="nilai_target">
+        <input class="form-control" name="nilai_target" type="number" id="nilai_target" placeholder="Nilai Kebutuhan" aria-describedby="nilai_target" required>
     </div>
 </div>
 
@@ -135,14 +135,14 @@
     {!! Form::label('pad', 'Pendapatan Asli Daerah') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::number('unit_pad', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit']) !!}
+    {!! Form::number('unit_pad', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit', 'required']) !!}
 </div>
 <div class="form-group col-sm-6 mb-3">
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_pad">Rp</span>
         </div>
-        <input class="form-control" name="nilai_pad" type="number" id="nilai_pad" placeholder="Nilai Kebutuhan" aria-describedby="nilai_pad">
+        <input class="form-control" name="nilai_pad" type="number" id="nilai_pad" placeholder="Nilai Kebutuhan" aria-describedby="nilai_pad" required>
     </div>
 </div>
 
@@ -150,14 +150,14 @@
     {!! Form::label('dau', 'TKD - DAU') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::number('unit_dau', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit']) !!}
+    {!! Form::number('unit_dau', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit', 'required']) !!}
 </div>
 <div class="form-group col-sm-6 mb-3">
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_dau">Rp</span>
         </div>
-        <input class="form-control" name="nilai_dau" type="number" id="nilai_dau" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dau">
+        <input class="form-control" name="nilai_dau" type="number" id="nilai_dau" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dau" required>
     </div>
 </div>
 
@@ -165,14 +165,14 @@
     {!! Form::label('dbh', 'TKD - DBH') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::number('unit_dbh', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit']) !!}
+    {!! Form::number('unit_dbh', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit', 'required']) !!}
 </div>
 <div class="form-group col-sm-6 mb-3">
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_dbh">Rp</span>
         </div>
-        <input class="form-control" name="nilai_dbh" type="number" id="nilai_dbh" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dbh">
+        <input class="form-control" name="nilai_dbh" type="number" id="nilai_dbh" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dbh" required>
     </div>
 </div>
 
@@ -180,14 +180,14 @@
     {!! Form::label('dak', 'TKD - DAK') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::number('unit_dak', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit']) !!}
+    {!! Form::number('unit_dak', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit', 'required']) !!}
 </div>
 <div class="form-group col-sm-6 mb-3">
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_dak">Rp</span>
         </div>
-        <input class="form-control" name="nilai_dak" type="number" id="nilai_dak" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dak">
+        <input class="form-control" name="nilai_dak" type="number" id="nilai_dak" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dak" required>
     </div>
 </div>
 
@@ -195,14 +195,14 @@
     {!! Form::label('otsus', 'TKD - Otsus') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::number('unit_otsus', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit']) !!}
+    {!! Form::number('unit_otsus', null, ['class' => 'form-control', 'placeholder' => 'Jumlah Unit', 'required']) !!}
 </div>
 <div class="form-group col-sm-6 mb-3">
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_otsus">Rp</span>
         </div>
-        <input class="form-control" name="nilai_otsus" type="number" id="nilai_otsus" placeholder="Nilai Kebutuhan" aria-describedby="nilai_otsus">
+        <input class="form-control" name="nilai_otsus" type="number" id="nilai_otsus" placeholder="Nilai Kebutuhan" aria-describedby="nilai_otsus" required>
     </div>
 </div>
 
@@ -210,7 +210,7 @@
     {!! Form::label('unit_selesai', 'Jumlah Unit Selesai') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::number('unit_selesai', null, ['class' => 'form-control']) !!}
+    {!! Form::number('unit_selesai', null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <div class="col-sm-12 mb-3">
@@ -221,21 +221,21 @@
     {!! Form::label('unit_tidak_selesai', 'Jumlah Unit Tidak Selesai') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::number('unit_tidak_selesai', null, ['class' => 'form-control']) !!}
+    {!! Form::number('unit_tidak_selesai', null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('unit_tidak_dilaksanakan', 'Jumlah Unit Tidak Dilaksanakan') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::number('unit_tidak_dilaksanakan', null, ['class' => 'form-control']) !!}
+    {!! Form::number('unit_tidak_dilaksanakan', null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('unit_tahun_selanjutnya', 'Jumlah Unit Dilaksanakan pada Tahun Berikutnya') !!}
 </div>
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::number('unit_tahun_selanjutnya', null, ['class' => 'form-control']) !!}
+    {!! Form::number('unit_tahun_selanjutnya', null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <div class="col-sm-12 mb-3">
@@ -246,7 +246,7 @@
     {!! Form::label('simpulan_ketuntasan', 'Simpulan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <select class="form-control custom-select" id="simpulan_ketuntasan" name="simpulan_ketuntasan">
+    <select class="form-control custom-select" id="simpulan_ketuntasan" name="simpulan_ketuntasan" required>
         <option value="" selected="selected">Pilih</option>
         <option value="Tuntas" {{ !empty($evaluasiKebutuhan) && $evaluasiKebutuhan->simpulan_ketuntasan == 'Tuntas' ? 'selected' : '' }}>Tuntas</option>
         <option value="Tidak Tuntas" {{ !empty($evaluasiKebutuhan) && $evaluasiKebutuhan->simpulan_ketuntasan == 'Tidak Tuntas' ? 'selected' : '' }}>Tidak Tuntas</option>

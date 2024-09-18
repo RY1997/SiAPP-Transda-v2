@@ -48,7 +48,7 @@
     {!! Form::label('perhitungan_realisasi', 'Perhitungan Realisasi') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('perhitungan_realisasi', null, ['class' => 'form-control','step' => '0.01']) !!}
+    {!! Form::number('perhitungan_realisasi', null, ['class' => 'form-control','step' => '0.01', 'required']) !!}
 </div>
 
 <!-- Rekonsiliasi Triwulanan Field -->

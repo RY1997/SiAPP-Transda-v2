@@ -73,7 +73,7 @@
     {!! Form::label('target', 'Target') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('target', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::number('target', null, ['class' => 'form-control','step' => '0.01', 'required']) !!}
 </div>
 
 <!-- Capaian Field -->
@@ -81,14 +81,14 @@
     {!! Form::label('capaian', 'Capaian') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('capaian', null, ['class' => 'form-control','step' => '0.01']) !!}
+    {!! Form::number('capaian', null, ['class' => 'form-control','step' => '0.01', 'required']) !!}
 </div>
 
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('capaian_auditor', 'Capaian Menurut Hasil Evaluasi') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('capaian_auditor', null, ['class' => 'form-control','step' => '0.01']) !!}
+    {!! Form::number('capaian_auditor', null, ['class' => 'form-control','step' => '0.01', 'required']) !!}
 </div>
 
 <!-- Satuan Field -->

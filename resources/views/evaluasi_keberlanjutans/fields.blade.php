@@ -54,7 +54,7 @@
     {!! Form::label('nama_skpd', 'Nama OPD/SKPD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::textarea('nama_skpd', null, ['class' => 'form-control', 'rows' => '3']) !!}
+    {!! Form::textarea('nama_skpd', null, ['class' => 'form-control', 'rows' => '3', 'required']) !!}
 </div>
 
 <!-- Nama Program Field -->
@@ -62,7 +62,7 @@
     {!! Form::label('nama_program', 'Nama Program') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::textarea('nama_program', null, ['class' => 'form-control', 'rows' => '3']) !!}
+    {!! Form::textarea('nama_program', null, ['class' => 'form-control', 'rows' => '3', 'required']) !!}
 </div>
 
 <!-- Nama Kegiatan Field -->
@@ -70,7 +70,7 @@
     {!! Form::label('nama_kegiatan', 'Nama Kegiatan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::textarea('nama_kegiatan', null, ['class' => 'form-control', 'rows' => '3']) !!}
+    {!! Form::textarea('nama_kegiatan', null, ['class' => 'form-control', 'rows' => '3', 'required']) !!}
 </div>
 
 <!-- Nilai Anggaran Field -->
@@ -78,7 +78,7 @@
     {!! Form::label('nilai_anggaran', 'Nilai Anggaran') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('nilai_anggaran', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+    {!! Form::number('nilai_anggaran', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}
 </div>
 
 <!-- Nilai Realisasi Field -->
@@ -86,7 +86,7 @@
     {!! Form::label('nilai_realisasi', 'Nilai Realisasi') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('nilai_realisasi', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+    {!! Form::number('nilai_realisasi', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}
 </div>
 
 <!-- Prioritas Penggunaan Field -->

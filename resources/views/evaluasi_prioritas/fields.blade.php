@@ -71,7 +71,7 @@
     {!! Form::label('nilai_anggaran', 'Nilai Anggaran') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('nilai_anggaran', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+    {!! Form::number('nilai_anggaran', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}
 </div>
 
 <!-- Nilai Realisasi Field -->
@@ -79,7 +79,7 @@
     {!! Form::label('nilai_realisasi', 'Nilai Realisasi') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('nilai_realisasi', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+    {!! Form::number('nilai_realisasi', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}
 </div>
 
 <!-- Prioritas Kegiatan Field -->

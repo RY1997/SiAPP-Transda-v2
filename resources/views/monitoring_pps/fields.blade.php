@@ -19,7 +19,7 @@
     {!! Form::label('evaluasi_upp_1', 'Rerata Hasil Evaluasi UPP menurut Pedoman Permenpan RB Nomor 38 Tahun 2012') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('evaluasi_upp_1', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+    {!! Form::number('evaluasi_upp_1', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}
 </div> -->
 
 <!-- Evaluasi Upp 2 Penerima Field -->
@@ -27,7 +27,7 @@
     {!! Form::label('evaluasi_upp_2', 'Rerata Hasil Evaluasi UPP menurut Pedoman Menpan RB Nomor 3 Tahun 2023') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('evaluasi_upp_2', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+    {!! Form::number('evaluasi_upp_2', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}
 </div>
 
 <div class="col-sm-12 mb-3">

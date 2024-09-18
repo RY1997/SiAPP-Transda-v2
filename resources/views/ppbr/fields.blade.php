@@ -67,7 +67,7 @@
     {!! Form::label('nilai_tl', 'Nilai TL') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('nilai_tl', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+    {!! Form::number('nilai_tl', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}
 </div> -->
 
 <!-- Simpulan Tl Field -->

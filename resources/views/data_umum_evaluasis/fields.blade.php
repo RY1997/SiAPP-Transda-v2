@@ -39,19 +39,19 @@
                     <td rowspan="4">{{ $dataUmumTkd->tipe_tkd }}</td>
                     <td rowspan="4">{{ $dataUmumTkd->bidang_tkd }}</td>
                     <td>Alokasi</td>
-                    <td><input class="form-control" step="0.01" name="alokasi_tkd_{{ $dataUmumTkd->id }}" type="number" value="{{ $dataUmumTkds->where('id', $dataUmumTkd->id)->first()->alokasi_tkd }}"></td>
+                    <td><input class="form-control" step="0.01" name="alokasi_tkd_{{ $dataUmumTkd->id }}" type="number" value="{{ $dataUmumTkds->where('id', $dataUmumTkd->id)->first()->alokasi_tkd }}" required></td>
                 </tr>
                 <tr>
                     <td>Penyaluran (Net)</td>
-                    <td><input class="form-control" step="0.01" name="penyaluran_tkd_{{ $dataUmumTkd->id }}" type="number" value="{{ $dataUmumTkds->where('id', $dataUmumTkd->id)->first()->penyaluran_tkd }}"></td>
+                    <td><input class="form-control" step="0.01" name="penyaluran_tkd_{{ $dataUmumTkd->id }}" type="number" value="{{ $dataUmumTkds->where('id', $dataUmumTkd->id)->first()->penyaluran_tkd }}" required></td>
                 </tr>
                 <tr>
                     <td>Penganggaran</td>
-                    <td><input class="form-control" step="0.01" name="penganggaran_tkd_{{ $dataUmumTkd->id }}" type="number" value="{{ $dataUmumTkds->where('id', $dataUmumTkd->id)->first()->penganggaran_tkd }}"></td>
+                    <td><input class="form-control" step="0.01" name="penganggaran_tkd_{{ $dataUmumTkd->id }}" type="number" value="{{ $dataUmumTkds->where('id', $dataUmumTkd->id)->first()->penganggaran_tkd }}" required></td>
                 </tr>
                 <tr>
                     <td>Penggunaan</td>
-                    <td><input class="form-control" step="0.01" name="penggunaan_tkd_{{ $dataUmumTkd->id }}" type="number" value="{{ $dataUmumTkds->where('id', $dataUmumTkd->id)->first()->penggunaan_tkd }}"></td>
+                    <td><input class="form-control" step="0.01" name="penggunaan_tkd_{{ $dataUmumTkd->id }}" type="number" value="{{ $dataUmumTkds->where('id', $dataUmumTkd->id)->first()->penggunaan_tkd }}" required></td>
                 </tr>
 
                 @endforeach

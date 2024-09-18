@@ -31,18 +31,18 @@
             <tbody>
                 <tr>
                     <td>{!! Form::label('pendapatan_pad', 'Pendapatan PAD') !!}</td>
-                    <td>{!! Form::number('pendapatan_pad', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rpendapatan_pad', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('pendapatan_pad', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rpendapatan_pad', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
                 <tr>
                     <td>{!! Form::label('pendapatan_transfer', 'Pendapatan Transfer') !!}</td>
-                    <td>{!! Form::number('pendapatan_transfer', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rpendapatan_transfer', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('pendapatan_transfer', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rpendapatan_transfer', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
                 <tr>
                     <td>{!! Form::label('pendapatan_lainnya', 'Pendapatan Lainnya') !!}</td>
-                    <td>{!! Form::number('pendapatan_lainnya', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rpendapatan_lainnya', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('pendapatan_lainnya', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rpendapatan_lainnya', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
             </tbody>
         </table>
@@ -66,28 +66,28 @@
             <tbody>
                 <tr>
                     <td>{!! Form::label('belanja_pegawai', 'Belanja Pegawai') !!}</td>
-                    <td>{!! Form::number('belanja_pegawai', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rbelanja_pegawai', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('belanja_pegawai', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rbelanja_pegawai', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
                 <tr>
                     <td>{!! Form::label('belanja_barjas', 'Belanja Barang dan Jasa') !!}</td>
-                    <td>{!! Form::number('belanja_barjas', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rbelanja_barjas', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('belanja_barjas', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rbelanja_barjas', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
                 <tr>
                     <td>{!! Form::label('belanja_modal', 'Belanja Modal') !!}</td>
-                    <td>{!! Form::number('belanja_modal', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rbelanja_modal', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('belanja_modal', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rbelanja_modal', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
                 <tr>
                     <td>{!! Form::label('belanja_hibah', 'Belanja Hibah') !!}</td>
-                    <td>{!! Form::number('belanja_hibah', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rbelanja_hibah', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('belanja_hibah', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rbelanja_hibah', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
                 <tr>
                     <td>{!! Form::label('belanja_lainnya', 'Belanja Lainnya') !!}</td>
-                    <td>{!! Form::number('belanja_lainnya', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rbelanja_lainnya', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('belanja_lainnya', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rbelanja_lainnya', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
             </tbody>
         </table>
@@ -111,18 +111,18 @@
             <tbody>
                 <tr>
                     <td>{!! Form::label('belanja_modal_jalan', 'Belanja Modal (Bidang Jalan)') !!}</td>
-                    <td>{!! Form::number('belanja_modal_jalan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rbelanja_modal_jalan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('belanja_modal_jalan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rbelanja_modal_jalan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
                 <tr>
                     <td>{!! Form::label('belanja_pendidikan', 'Belanja Urusan Pendidikan') !!}</td>
-                    <td>{!! Form::number('belanja_pendidikan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rbelanja_pendidikan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('belanja_pendidikan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rbelanja_pendidikan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
                 <tr>
                     <td>{!! Form::label('belanja_kesehatan', 'Belanja Urusan Kesehatan') !!}</td>
-                    <td>{!! Form::number('belanja_kesehatan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rbelanja_kesehatan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('belanja_kesehatan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rbelanja_kesehatan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
             </tbody>
         </table>
@@ -146,18 +146,18 @@
             <tbody>
                 <tr>
                     <td>{!! Form::label('penerimaan_pembiayaan', 'Penerimaan Pembiayaan') !!}</td>
-                    <td>{!! Form::number('penerimaan_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rpenerimaan_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('penerimaan_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rpenerimaan_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
                 <tr>
                     <td>{!! Form::label('pengeluaran_pembiayaan', 'Pengeluaran Pembiayaan') !!}</td>
-                    <td>{!! Form::number('pengeluaran_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rpengeluaran_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('pengeluaran_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rpengeluaran_pembiayaan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
                 <tr>
                     <td>{!! Form::label('silpa', 'SiLPA') !!}</td>
-                    <td>{!! Form::number('silpa', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
-                    <td>{!! Form::number('rsilpa', null, ['class' => 'form-control', 'step' => '0.01']) !!}</td>
+                    <td>{!! Form::number('silpa', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
+                    <td>{!! Form::number('rsilpa', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}</td>
                 </tr>
             </tbody>
         </table>
