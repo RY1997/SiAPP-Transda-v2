@@ -82,15 +82,10 @@
 <div class="form-group col-sm-9 mb-3">
     <select class="form-control custom-select" id="bidang_tkd" name="bidang_tkd">
         <option value="" selected>Pilih</option>
-        <option value="Air Minum" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Air Minum' ? 'selected' : '' }}>Air Minum</option>
-        <option value="Sanitasi" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Sanitasi' ? 'selected' : '' }}>Sanitasi</option>
-        <option value="Irigasi" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Irigasi' ? 'selected' : '' }}>Irigasi</option>
-        <option value="Pertanian" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Pertanian' ? 'selected' : '' }}>Pertanian</option>
-        <option value="Kelautan dan Perikanan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Kelautan dan Perikanan' ? 'selected' : '' }}>Kelautan dan Perikanan</option>
-        <option value="Jalan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Jalan' ? 'selected' : '' }}>Jalan</option>
-        <option value="Kehutanan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Kehutanan' ? 'selected' : '' }}>Kehutanan</option>
-        <option value="Pendidikan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Pendidikan' ? 'selected' : '' }}>Pendidikan</option>
-        <option value="Kesehatan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
+        <option value="Bantuan Operasional Satuan Pendidikan (BOSP)" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Bantuan Operasional Satuan Pendidikan (BOSP)' ? 'selected' : '' }}>Bantuan Operasional Satuan Pendidikan (BOSP)</option>
+        <option value="Tunjangan Guru ASN Daerah" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Tunjangan Guru ASN Daerah' ? 'selected' : '' }}>Tunjangan Guru ASN Daerah</option>
+        <option value="Bantuan Operasional Kesehatan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Bantuan Operasional Kesehatan' ? 'selected' : '' }}>Bantuan Operasional Kesehatan</option>
+        <option value="Bantuan Operasional Keluarga Berencana" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Bantuan Operasional Keluarga Berencana' ? 'selected' : '' }}>Bantuan Operasional Keluarga Berencana</option>
     </select>
 </div>
 
@@ -101,26 +96,17 @@
 <div class="form-group col-sm-9 mb-3">
     <select class="form-control custom-select" id="subbidang_tkd" name="subbidang_tkd">
         <option value="" selected>Pilih</option>
-        <option value="Air Minum Mendukung Peningkatan Kualitas SDM" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Air Minum Mendukung Peningkatan Kualitas SDM' ? 'selected' : '' }}>Air Minum Mendukung Peningkatan Kualitas SDM</option>
-        <option value="Tematik Pengentasan Permukiman Kumuh Terpadu" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Tematik Pengentasan Permukiman Kumuh Terpadu' ? 'selected' : '' }}>Tematik Pengentasan Permukiman Kumuh Terpadu</option>
-        <option value="Tematik Pengembangan Food Estate" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Tematik Pengembangan Food Estate' ? 'selected' : '' }}>Tematik Pengembangan Food Estate</option>
-        <option value="Tematik Penguatan Kawasan Sentra Produksi Pangan (Pertanian, Perikanan, dan Hewani)" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Tematik Penguatan Kawasan Sentra Produksi Pangan (Pertanian, Perikanan, dan Hewani)' ? 'selected' : '' }}>Tematik Penguatan Kawasan Sentra Produksi Pangan (Pertanian, Perikanan, dan Hewani)</option>
-        <option value="Kelautan dan Perikanan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Kelautan dan Perikanan' ? 'selected' : '' }}>Kelautan dan Perikanan</option>
-        <option value="Jalan Mendukung Konektivitas Daerah" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Jalan Mendukung Konektivitas Daerah' ? 'selected' : '' }}>Jalan Mendukung Konektivitas Daerah</option>
-        <option value="Tematik Penguatan Destinasi Pariwisata Prioritas" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Tematik Penguatan Destinasi Pariwisata Prioritas' ? 'selected' : '' }}>Tematik Penguatan Destinasi Pariwisata Prioritas</option>
-        <option value="Tematik Peningkatan Konektivitas dan Elektrifikasi di Daerah Afirmasi" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Tematik Peningkatan Konektivitas dan Elektrifikasi di Daerah Afirmasi' ? 'selected' : '' }}>Tematik Peningkatan Konektivitas dan Elektrifikasi di Daerah Afirmasi</option>
-        <option value="PAUD" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'PAUD' ? 'selected' : '' }}>PAUD</option>
-        <option value="SD" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'SD' ? 'selected' : '' }}>SD</option>
-        <option value="SMP" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'SMP' ? 'selected' : '' }}>SMP</option>
-        <option value="SKB" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'SKB' ? 'selected' : '' }}>SKB</option>
-        <option value="SMA" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'SMA' ? 'selected' : '' }}>SMA</option>
-        <option value="SLB" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'SLB' ? 'selected' : '' }}>SLB</option>
-        <option value="SMK" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'SMK' ? 'selected' : '' }}>SMK</option>
-        <option value="Perpustakaan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Perpustakaan' ? 'selected' : '' }}>Perpustakaan</option>
-        <option value="Penguatan Penurunan Angka Kematian Ibu, Bayi, dan Intervensi Stunting" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Penguatan Penurunan Angka Kematian Ibu, Bayi, dan Intervensi Stunting' ? 'selected' : '' }}>Penguatan Penurunan Angka Kematian Ibu, Bayi, dan Intervensi Stunting</option>
-        <option value="Pengendalian Penyakit" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Pengendalian Penyakit' ? 'selected' : '' }}>Pengendalian Penyakit</option>
-        <option value="Penguatan Sistem Kesehatan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Penguatan Sistem Kesehatan' ? 'selected' : '' }}>Penguatan Sistem Kesehatan</option>
-        <option value="Keluarga Berencana" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Keluarga Berencana' ? 'selected' : '' }}>Keluarga Berencana</option>
+        <option value="Bantuan Operasional Sekolah (BOS)" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Bantuan Operasional Sekolah (BOS)' ? 'selected' : '' }}>Bantuan Operasional Sekolah (BOS)</option>
+        <option value="Bantuan Operasional Penyelenggaraan PAUD" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Bantuan Operasional Penyelenggaraan PAUD' ? 'selected' : '' }}>Bantuan Operasional Penyelenggaraan PAUD</option>
+        <option value="Bantuan Operasional Penyelenggaraan Penyetaraan Pendidikan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Bantuan Operasional Penyelenggaraan Penyetaraan Pendidikan' ? 'selected' : '' }}>Bantuan Operasional Penyelenggaraan Penyetaraan Pendidikan</option>
+        <option value="Tunjangan profesi guru" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Tunjangan profesi guru' ? 'selected' : '' }}>Tunjangan profesi guru</option>
+        <option value="Tambahan penghasilan guru" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Tambahan penghasilan guru' ? 'selected' : '' }}>Tambahan penghasilan guru</option>
+        <option value="Tunjangan khusus guru" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Tunjangan khusus guru' ? 'selected' : '' }}>Tunjangan khusus guru</option>
+        <option value="BOK Provinsi" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'BOK Provinsi' ? 'selected' : '' }}>BOK Provinsi</option>
+        <option value="BOK Kabupaten/Kota" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'BOK Kabupaten/Kota' ? 'selected' : '' }}>BOK Kabupaten/Kota</option>
+        <option value="BOK Pengawasan Obat dan Makanan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'BOK Pengawasan Obat dan Makanan' ? 'selected' : '' }}>BOK Pengawasan Obat dan Makanan</option>
+        <option value="BOK Puskesmas" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'BOK Puskesmas' ? 'selected' : '' }}>BOK Puskesmas</option>
+        <option value="Bantuan operasional keluarga berencana" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->subbidang_tkd == 'Bantuan operasional keluarga berencana' ? 'selected' : '' }}>Bantuan operasional keluarga berencana</option>
     </select>
 </div>
 @endif
