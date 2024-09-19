@@ -81,16 +81,28 @@ class EvaluasiKeberlanjutanController extends AppBaseController
                     $query->where('tahun', '2023')->where('jenis_tkd', session('jenis_tkd'));
                 }
             ], 'nilai_realisasi')
-            ->withCount(['prioritas as jumlah_pemanfaatan2020' => function ($query) {
+            ->withCount(['prioritas as jumlah_permasalahan2020' => function ($query) {
                 $query->where('tahun', '2020')->where('jenis_tkd', session('jenis_tkd'))->whereNotNull('pemanfaatan_kegiatan');
             }])
-            ->withCount(['prioritas as jumlah_pemanfaatan2021' => function ($query) {
+            ->withCount(['prioritas as jumlah_permasalahan2021' => function ($query) {
                 $query->where('tahun', '2021')->where('jenis_tkd', session('jenis_tkd'))->whereNotNull('pemanfaatan_kegiatan');
             }])
-            ->withCount(['prioritas as jumlah_pemanfaatan2022' => function ($query) {
+            ->withCount(['prioritas as jumlah_permasalahan2022' => function ($query) {
                 $query->where('tahun', '2022')->where('jenis_tkd', session('jenis_tkd'))->whereNotNull('pemanfaatan_kegiatan');
             }])
-            ->withCount(['prioritas as jumlah_pemanfaatan2023' => function ($query) {
+            ->withCount(['prioritas as jumlah_permasalahan2023' => function ($query) {
+                $query->where('tahun', '2023')->where('jenis_tkd', session('jenis_tkd'))->whereNotNull('pemanfaatan_kegiatan');
+            }])
+            ->withCount(['prioritas as nilai_permasalahan2020' => function ($query) {
+                $query->where('tahun', '2020')->where('jenis_tkd', session('jenis_tkd'))->whereNotNull('pemanfaatan_kegiatan');
+            }])
+            ->withCount(['prioritas as nilai_permasalahan2021' => function ($query) {
+                $query->where('tahun', '2021')->where('jenis_tkd', session('jenis_tkd'))->whereNotNull('pemanfaatan_kegiatan');
+            }])
+            ->withCount(['prioritas as nilai_permasalahan2022' => function ($query) {
+                $query->where('tahun', '2022')->where('jenis_tkd', session('jenis_tkd'))->whereNotNull('pemanfaatan_kegiatan');
+            }])
+            ->withCount(['prioritas as nilai_permasalahan2023' => function ($query) {
                 $query->where('tahun', '2023')->where('jenis_tkd', session('jenis_tkd'))->whereNotNull('pemanfaatan_kegiatan');
             }])
             ->paginate(20);

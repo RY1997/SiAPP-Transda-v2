@@ -7,7 +7,8 @@
                 <th>Tahun</th>
                 <th>Nilai Anggaran</th>
                 <th>Nilai Realisasi</th>
-                <th>Jumlah Pemanfaatan</th>
+                <th>Jumlah Permasalahan</th>
+                <th>Nilai Permasalahan</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -21,7 +22,8 @@
                 <td>{{ $tahun }}</td>
                 <td class="text-right">{{ number_format($item->{"nilai_anggaran{$tahun}"}, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($item->{"nilai_realisasi{$tahun}"}, 2, ',', '.') }}</td>
-                <td>{{ number_format($item->{"nilai_pemanfaatan{$tahun}"}, 0, ',', '.') }}</td>
+                <td>{{ number_format($item->{"jumlah_permasalahan{$tahun}"}, 0, ',', '.') }}</td>
+                <td class="text-right">{{ number_format($item->{"nilai_permasalahan{$tahun}"}, 2, ',', '.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ url('evaluasiKeberlanjutans/'.$item->id.'?tahun='.$tahun) }}" class='btn btn-sm btn-warning'>
@@ -34,7 +36,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="7" class="text-center">Surat Tugas belum diinput</td>
+                <td colspan="8" class="text-center">Surat Tugas belum diinput</td>
             </tr>
             @endif
         </tbody>
