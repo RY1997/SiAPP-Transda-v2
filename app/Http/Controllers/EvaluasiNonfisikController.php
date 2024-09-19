@@ -152,7 +152,7 @@ class EvaluasiNonfisikController extends AppBaseController
     public function show($st_id, $tahun)
     {
         $suratTugas = SuratTugas::find($st_id);
-        $evaluasiNonfisiks = EvaluasiNonfisik::where('nama_pemda', $suratTugas->nama_pemda)
+        $evaluasiNonfisiks = EvaluasiNonfisik::where('nama_pemda', $suratTugas->nama_pemda)->where('jenis_tkd', $suratTugas->jenis_tkd)
             ->where('tahun', $tahun)
             ->selectRaw('*, 
         COALESCE(masalah1, 0) + COALESCE(masalah2, 0) + COALESCE(masalah3, 0) + COALESCE(masalah4, 0) + COALESCE(masalah5, 0) + COALESCE(masalah6, 0) + COALESCE(masalah7, 0) + COALESCE(masalah8, 0) as nilai_masalah, 

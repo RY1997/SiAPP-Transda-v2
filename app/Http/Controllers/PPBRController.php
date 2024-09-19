@@ -402,7 +402,7 @@ class PPBRController extends AppBaseController
         //     ]);
         // }
 
-        // $pemdas = DaftarPemda::where('antrian', 2)->get();
+        // $pemdas = DaftarPemda::where('antrian', 3)->get();
 
         // $dataTkd = [
         //     ['tahun' => 2020, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Pendidikan'],
@@ -556,10 +556,9 @@ class PPBRController extends AppBaseController
         // ];
 
         // $dataTkd = [
-        //     ['tahun' => 2023, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Pendidikan'],
-        //     ['tahun' => 2023, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Kesehatan'],
-        //     ['tahun' => 2024, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Pendidikan'],
-        //     ['tahun' => 2024, 'tipe_tkd' => 'DAK Fisik', 'bidang_tkd' => 'Kesehatan'],
+        //     ['tahun' => 2021, 'tipe_tkd' => 'DAK Non Fisik', 'bidang_tkd' => 'Dana Pelayanan Perlindungan Perempuan dan Anak'],
+        //     ['tahun' => 2021, 'tipe_tkd' => 'DAK Non Fisik', 'bidang_tkd' => 'Dana Fasilitasi Penanaman Modal'],
+        //     ['tahun' => 2021, 'tipe_tkd' => 'DAK Non Fisik', 'bidang_tkd' => 'Dana Ketahanan Pangan dan Pertanian'],
         // ];
 
         // foreach ($pemdas as $pemda) {
@@ -576,7 +575,7 @@ class PPBRController extends AppBaseController
         //         ]);
         //     }
 
-        //     $pemda->update(['antrian' => 3]);
+        //     $pemda->update(['antrian' => 1]);
         // }
 
         // $fieldsToUpdate = [
@@ -597,7 +596,7 @@ class PPBRController extends AppBaseController
         //     'manfaat7',
         //     'manfaat8',
         // ];
-        
+
         // foreach ($fieldsToUpdate as $field) {
         //     EvaluasiKontrak::whereNull($field)->update([$field => 0]);
         // }        
