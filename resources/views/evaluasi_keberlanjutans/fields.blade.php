@@ -89,14 +89,31 @@
     {!! Form::number('nilai_realisasi', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}
 </div>
 
+<div class="form-group col-sm-3">
+    {!! Form::label('sampling', 'Sampling Pengujian Pemanfaatan') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    {!! Form::select('sampling', ['' => 'Pilih', 'Ya' => 'Ya', 'Tidak' => 'Tidak'], null, ['class' => 'form-control custom-select']) !!}
+</div>
+
 <!-- Prioritas Penggunaan Field -->
 <div class="form-group col-sm-3">
     {!! Form::label('pemanfaatan_kegiatan', 'Status Pemanfaatan') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-<select class="form-control custom-select" id="pemanfaatan_kegiatan" name="pemanfaatan_kegiatan">
-        <option value="" selected>Pilih</option>
-        <option value="Dimanfaatkan" {{ !empty($evaluasiPrioritas) && $evaluasiPrioritas->pemanfaatan_kegiatan == 'Dimanfaatkan' ? 'selected' : '' }}>Dimanfaatkan</option>
-        <option value="Tidak Dimanfaatkan" {{ !empty($evaluasiPrioritas) && $evaluasiPrioritas->pemanfaatan_kegiatan == 'Tidak Dimanfaatkan' ? 'selected' : '' }}>Tidak Dimanfaatkan</option>
-    </select>
+    {!! Form::select('pemanfaatan_kegiatan', ['' => 'Pilih', 'Telah Dimanfaatkan' => 'Telah Dimanfaatkan', 'Belum Dimanfaatkan' => 'Belum Dimanfaatkan'], null, ['class' => 'form-control custom-select']) !!}
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('uraian_permasalahan', 'Uraian Permasalahan') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    {!! Form::textarea('uraian_permasalahan', null, ['class' => 'form-control', 'rows' => '3']) !!}
+</div>
+
+<div class="form-group col-sm-3">
+    {!! Form::label('nilai_permasalahan', 'Nilai Permasalahan') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    {!! Form::number('nilai_permasalahan', null, ['class' => 'form-control', 'step' => '0.01', 'required']) !!}
 </div>

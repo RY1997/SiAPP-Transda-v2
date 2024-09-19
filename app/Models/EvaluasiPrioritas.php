@@ -53,9 +53,12 @@ class EvaluasiPrioritas extends Model
         'nama_kegiatan',
         'nilai_anggaran',
         'nilai_realisasi',
+        'sampling',
         'prioritas_kegiatan',
         'prioritas_penggunaan',
-        'pemanfaatan_kegiatan'
+        'pemanfaatan_kegiatan',
+        'uraian_permasalahan',
+        'nilai_permasalahan'
     ];
 
     /**
@@ -77,9 +80,12 @@ class EvaluasiPrioritas extends Model
         'nama_kegiatan' => 'string',
         'nilai_anggaran' => 'decimal:2',
         'nilai_realisasi' => 'decimal:2',
+        'sampling' => 'string',
         'prioritas_kegiatan' => 'string',
         'prioritas_penggunaan' => 'string',
-        'pemanfaatan_kegiatan' => 'string'
+        'pemanfaatan_kegiatan' => 'string',
+        'uraian_permasalahan' => 'string',
+        'nilai_permasalahan' => 'decimal:2'
     ];
 
     /**
@@ -100,9 +106,12 @@ class EvaluasiPrioritas extends Model
         'nama_kegiatan' => 'nullable|string',
         'nilai_anggaran' => 'nullable|numeric',
         'nilai_realisasi' => 'nullable|numeric',
+        'sampling' => 'nullable|string|max:255',
         'prioritas_kegiatan' => 'nullable|string|max:255',
         'prioritas_penggunaan' => 'nullable|string|max:255',
         'pemanfaatan_kegiatan' => 'nullable|string|max:255',
+        'uraian_permasalahan' => 'nullable|string',
+        'nilai_permasalahan' => 'nullable|numeric',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
