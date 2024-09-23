@@ -196,7 +196,12 @@ class EvaluasiKeberlanjutanController extends AppBaseController
             return redirect(route('evaluasiKeberlanjutans.index'));
         }
 
-        return view('evaluasi_keberlanjutans.edit')->with('evaluasiPrioritas', $evaluasiPrioritas);
+        $suratTugas = SuratTugas::where('nama_pemda', $evaluasiPrioritas->nama_pemda)->where('jenis_tkd', $evaluasiPrioritas->jenis_tkd)->where('jenis_penugasan', 'Evaluasi')->first();
+
+        return view('evaluasi_keberlanjutans.edit')->with([
+            'evaluasiPrioritas' => $evaluasiPrioritas,
+            'suratTugas' => $suratTugas
+        ]);
     }
 
     /**

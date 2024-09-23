@@ -11,7 +11,7 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="nama_pemda" id="nama_pemda" value="{{ $suratTugas->nama_pemda ?? $evaluasiPrioritas->nama_pemda }}" class="form-control" readonly>
+    <input type="text" name="nama_pemda" id="nama_pemda" value="{{ $suratTugas->nama_pemda }}" class="form-control" readonly>
 </div>
 
 <!-- Jenis Tkd Field -->
@@ -19,7 +19,7 @@
     {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="jenis_tkd" id="jenis_tkd" value="{{ $suratTugas->jenis_tkd ?? $evaluasiPrioritas->jenis_tkd }}" class="form-control" readonly>
+    <input type="text" name="jenis_tkd" id="jenis_tkd" value="{{ $suratTugas->jenis_tkd }}" class="form-control" readonly>
 </div>
 
 <!-- Subbidang Tkd Field -->
