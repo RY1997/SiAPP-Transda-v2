@@ -51,6 +51,7 @@
         <option value="Pekerjaan Umum" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Pekerjaan Umum' ? 'selected' : '' }}>Pekerjaan Umum</option>
         <option value="Pendanaan Kelurahan" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Pendanaan Kelurahan' ? 'selected' : '' }}>Pendanaan Kelurahan</option>
         <option value="Penggajian PPPK" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Penggajian PPPK' ? 'selected' : '' }}>Penggajian PPPK</option>
+        <option value="Bidang Lainnya" {{ !empty($evaluasiNonfisik) && $evaluasiNonfisik->bidang_tkd == 'Bidang Lainnya' ? 'selected' : '' }}>Bidang Lainnya</option>
     </select>
 </div>
 @elseif (session('jenis_tkd') == 'Dana Bagi Hasil')
