@@ -201,7 +201,7 @@ class EvaluasiKeberlanjutanController extends AppBaseController
         return view('evaluasi_keberlanjutans.edit')->with([
             'evaluasiPrioritas' => $evaluasiPrioritas,
             'suratTugas' => $suratTugas,
-            'tahun' => $suratTugas->tahun
+            'tahun' => $evaluasiPrioritas->tahun
         ]);
     }
 
