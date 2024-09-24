@@ -149,7 +149,6 @@ class EvaluasiKebutuhanController extends AppBaseController
 
         if (empty($evaluasiKebutuhan)) {
             Flash::error('Evaluasi Kebutuhan not found');
-
             return redirect(route('evaluasiKebutuhans.index'));
         }
 
@@ -179,7 +178,6 @@ class EvaluasiKebutuhanController extends AppBaseController
 
         if (empty($evaluasiKebutuhan)) {
             Flash::error('Evaluasi Kebutuhan not found');
-
             return redirect(route('evaluasiKebutuhans.index'));
         }
 

@@ -142,7 +142,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_pad">Rp</span>
         </div>
-        <input class="form-control" name="nilai_pad" type="number" id="nilai_pad" placeholder="Nilai Kebutuhan" aria-describedby="nilai_pad" required>
+        <input class="form-control" name="nilai_pad" type="number" id="nilai_pad" placeholder="Nilai Kebutuhan" aria-describedby="nilai_pad" value="{{ $evaluasiKebutuhan->nilai_pad ?? NULL }}" required>
     </div>
 </div>
 
@@ -157,7 +157,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_dau">Rp</span>
         </div>
-        <input class="form-control" name="nilai_dau" type="number" id="nilai_dau" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dau" required>
+        <input class="form-control" name="nilai_dau" type="number" id="nilai_dau" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dau" value="{{ $evaluasiKebutuhan->nilai_dau ?? NULL }}" required>
     </div>
 </div>
 
@@ -172,7 +172,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_dbh">Rp</span>
         </div>
-        <input class="form-control" name="nilai_dbh" type="number" id="nilai_dbh" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dbh" required>
+        <input class="form-control" name="nilai_dbh" type="number" id="nilai_dbh" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dbh" value="{{ $evaluasiKebutuhan->nilai_dbh ?? NULL }}" required>
     </div>
 </div>
 
@@ -187,7 +187,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_dak">Rp</span>
         </div>
-        <input class="form-control" name="nilai_dak" type="number" id="nilai_dak" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dak" required>
+        <input class="form-control" name="nilai_dak" type="number" id="nilai_dak" placeholder="Nilai Kebutuhan" aria-describedby="nilai_dak" value="{{ $evaluasiKebutuhan->nilai_dak ?? NULL }}" required>
     </div>
 </div>
 
@@ -202,7 +202,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_otsus">Rp</span>
         </div>
-        <input class="form-control" name="nilai_otsus" type="number" id="nilai_otsus" placeholder="Nilai Kebutuhan" aria-describedby="nilai_otsus" required>
+        <input class="form-control" name="nilai_otsus" type="number" id="nilai_otsus" placeholder="Nilai Kebutuhan" aria-describedby="nilai_otsus" value="{{ $evaluasiKebutuhan->nilai_otsus ?? NULL }}" required>
     </div>
 </div>
 
