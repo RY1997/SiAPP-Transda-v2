@@ -122,7 +122,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="nilai_target">Rp</span>
         </div>
-        <input class="form-control" name="nilai_target" type="number" id="nilai_target" placeholder="Nilai Kebutuhan" aria-describedby="nilai_target" required>
+        <input class="form-control" name="nilai_target" type="number" id="nilai_target" placeholder="Nilai Kebutuhan" aria-describedby="nilai_target" value="{{ $evaluasiKebutuhan->nilai_target ?? NULL }}" required>
     </div>
 </div>
 
