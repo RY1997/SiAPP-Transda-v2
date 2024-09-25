@@ -240,16 +240,16 @@
 
     @if (session('jenis_tkd') == 'Dana Alokasi Khusus')
     <li class="nav-item">
-        <a class="nav-link {{ Request::is('evaluasiKeberlanjutans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKeberlanjutans.index') }}">
-            <i class="ri-contract-right-line"></i>
-            <span class="nav-link-text">Keberlanjutan Kegiatan</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link {{ Request::is('evaluasiSisaDaks*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiSisaDaks.index') }}">
             <i class="ri-coin-line"></i>
             <span class="nav-link-text">Sisa Dana DAK</span>
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('evaluasiKeberlanjutans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiKeberlanjutans.index') }}">
+            <i class="ri-contract-right-line"></i>
+            <span class="nav-link-text">Keberlanjutan Kegiatan</span>
         </a>
     </li>
 
