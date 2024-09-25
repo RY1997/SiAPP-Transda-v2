@@ -61,15 +61,15 @@
                 @foreach($monitoringAlokasis as $monitoringAlokasi)
                 <tr>
                     <td>{{ $monitoringAlokasi->uraian }}</td>
-                    <td>
+                    <!-- <td>
                         <select class="form-control custom-select" id="status_pemda" name="status_pemda_{{ $monitoringAlokasi->id }}">
                             <option value="" selected>Pilih</option>
                             <option value="Daerah Penghasil" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Daerah Penghasil' ? 'selected' : '' }}>Daerah Penghasil</option>
                             <option value="Daerah Non Penghasil" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Daerah Non Penghasil' ? 'selected' : '' }}>Daerah Non Penghasil</option>
                             <option value="Daerah Lainnya" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Daerah Lainnya' ? 'selected' : '' }}>Daerah Lainnya</option>
                         </select>
-                    </td>
-                    <td><input class="form-control" step="0.01" name="alokasi_tkd_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->alokasi_tkd }}"></td>
+                    </td> -->
+                    <td colspan="2"><input class="form-control" step="0.01" name="alokasi_tkd_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->alokasi_tkd }}"></td>
                 </tr>
                 @endforeach
             </tbody>
