@@ -8,8 +8,8 @@ use App\Repositories\MonitoringAlokasiRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
 use App\Models\MonitoringAlokasi;
-use App\Models\MonitoringPenggunaan;
-use App\Models\MonitoringPenyaluran;
+use App\Models\EvaluasiPenggunaan;
+use App\Models\EvaluasiPenyaluran;
 use App\Models\ParameterTkd;
 use App\Models\SuratTugas;
 use Illuminate\Http\Request;
@@ -57,10 +57,10 @@ class EvaluasiTrenController extends AppBaseController
             ->orderBy('nama_pemda')
             ->orderBy('tahun')
             ->paginate(50);
-        $monitoringPenyalurans = MonitoringPenyaluran::whereIn('nama_pemda', $monitoringTrens->pluck('nama_pemda'))->selectRaw('*, SUM(penyaluran_tkd) as total_penyaluran')->where('jenis_tkd', session('jenis_tkd'))
+        $monitoringPenyalurans = EvaluasiPenyaluran::whereIn('nama_pemda', $monitoringTrens->pluck('nama_pemda'))->selectRaw('*, SUM(penyaluran_tkd) as total_penyaluran')->where('jenis_tkd', session('jenis_tkd'))
             ->groupBy('nama_pemda')->groupBy('tahun')->get();
 
-        $monitoringPenggunaans = MonitoringPenggunaan::whereIn('nama_pemda', $monitoringTrens->pluck('nama_pemda'))->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
+        $monitoringPenggunaans = EvaluasiPenggunaan::whereIn('nama_pemda', $monitoringTrens->pluck('nama_pemda'))->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
             ->where('jenis_tkd', session('jenis_tkd'))
             ->groupBy('nama_pemda')->groupBy('tahun')->get();
 
@@ -113,59 +113,59 @@ class EvaluasiTrenController extends AppBaseController
             return redirect(route('evaluasiTrens.index'));
         }
 
-        if (MonitoringPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->count() == 0) {
-            $pemdas = DaftarPemda::where('nama_pemda', $pemda->nama_pemda)->first();
-            $bidangs = ParameterTkd::where('jenis_tkd', $pemda->jenis_tkd)->get();
-            $monitoringTahuns = [
-                ['tahun' => '2020'],
-                ['tahun' => '2021'],
-                ['tahun' => '2022'],
-                ['tahun' => '2023'],
-                ['tahun' => '2024'],
-            ];
+        // if (EvaluasiPenggunaan::where('tahun', $pemda->tahun)->where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->count() == 0) {
+        //     $pemdas = DaftarPemda::where('nama_pemda', $pemda->nama_pemda)->first();
+        //     $bidangs = ParameterTkd::where('jenis_tkd', $pemda->jenis_tkd)->get();
+        //     $monitoringTahuns = [
+        //         ['tahun' => '2020'],
+        //         ['tahun' => '2021'],
+        //         ['tahun' => '2022'],
+        //         ['tahun' => '2023'],
+        //         ['tahun' => '2024'],
+        //     ];
 
-            // Lakukan pemrosesan untuk setiap tahun dan bidang
-            foreach ($monitoringTahuns as $tahun) {
-                foreach ($bidangs as $bidang) {
-                    // Cek kondisi uji petik
-                    if ($pemdas->uji_petik == 'Ya' && ($tahun['tahun'] == '2023' || $tahun['tahun'] == '2024')) {
-                        // Proses eva_penggunaan
-                        if (!empty($bidang->eva_penggunaan)) {
-                            $uraianGunas = explode(';', $bidang->eva_penggunaan);
-                            foreach ($uraianGunas as $item) {
-                                MonitoringPenggunaan::updateOrCreate([
-                                    'tahun' => $tahun['tahun'],
-                                    'kode_pwk' => $pemdas->kode_pwk,
-                                    'nama_pemda' => $pemdas->nama_pemda,
-                                    'jenis_tkd' => $bidang->jenis_tkd,
-                                    'tipe_tkd' => $bidang->tipe_tkd,
-                                    'bidang_tkd' => $bidang->bidang_tkd,
-                                    'subbidang_tkd' => $bidang->subbidang_tkd,
-                                    'uraian' => $item,
-                                ]);
-                            }
-                        }
-                    } else {
-                        // Proses mon_penggunaan
-                        if (!empty($bidang->mon_penggunaan)) {
-                            $uraianGunas = explode(';', $bidang->mon_penggunaan);
-                            foreach ($uraianGunas as $item) {
-                                MonitoringPenggunaan::updateOrCreate([
-                                    'tahun' => $tahun['tahun'],
-                                    'kode_pwk' => $pemdas->kode_pwk,
-                                    'nama_pemda' => $pemdas->nama_pemda,
-                                    'jenis_tkd' => $bidang->jenis_tkd,
-                                    'tipe_tkd' => $bidang->tipe_tkd,
-                                    'bidang_tkd' => $bidang->bidang_tkd,
-                                    'subbidang_tkd' => $bidang->subbidang_tkd,
-                                    'uraian' => $item,
-                                ]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        //     // Lakukan pemrosesan untuk setiap tahun dan bidang
+        //     foreach ($monitoringTahuns as $tahun) {
+        //         foreach ($bidangs as $bidang) {
+        //             // Cek kondisi uji petik
+        //             if ($pemdas->uji_petik == 'Ya' && ($tahun['tahun'] == '2023' || $tahun['tahun'] == '2024')) {
+        //                 // Proses eva_penggunaan
+        //                 if (!empty($bidang->eva_penggunaan)) {
+        //                     $uraianGunas = explode(';', $bidang->eva_penggunaan);
+        //                     foreach ($uraianGunas as $item) {
+        //                         EvaluasiPenggunaan::updateOrCreate([
+        //                             'tahun' => $tahun['tahun'],
+        //                             'kode_pwk' => $pemdas->kode_pwk,
+        //                             'nama_pemda' => $pemdas->nama_pemda,
+        //                             'jenis_tkd' => $bidang->jenis_tkd,
+        //                             'tipe_tkd' => $bidang->tipe_tkd,
+        //                             'bidang_tkd' => $bidang->bidang_tkd,
+        //                             'subbidang_tkd' => $bidang->subbidang_tkd,
+        //                             'uraian' => $item,
+        //                         ]);
+        //                     }
+        //                 }
+        //             } else {
+        //                 // Proses mon_penggunaan
+        //                 if (!empty($bidang->mon_penggunaan)) {
+        //                     $uraianGunas = explode(';', $bidang->mon_penggunaan);
+        //                     foreach ($uraianGunas as $item) {
+        //                         EvaluasiPenggunaan::updateOrCreate([
+        //                             'tahun' => $tahun['tahun'],
+        //                             'kode_pwk' => $pemdas->kode_pwk,
+        //                             'nama_pemda' => $pemdas->nama_pemda,
+        //                             'jenis_tkd' => $bidang->jenis_tkd,
+        //                             'tipe_tkd' => $bidang->tipe_tkd,
+        //                             'bidang_tkd' => $bidang->bidang_tkd,
+        //                             'subbidang_tkd' => $bidang->subbidang_tkd,
+        //                             'uraian' => $item,
+        //                         ]);
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
 
         $monitoringAlokasis = MonitoringAlokasi::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
@@ -173,13 +173,13 @@ class EvaluasiTrenController extends AppBaseController
             ->selectRaw('*, SUM(alokasi_tkd) as total_alokasi, SUM(rk_usulan) as total_rk_usulan, SUM(rk_disetujui) as total_rk_disetujui')
             ->groupBy('bidang_tkd', 'subbidang_tkd')->orderBy('tipe_tkd')->get();
 
-        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $pemda->tahun)
+        $monitoringPenyalurans = EvaluasiPenyaluran::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
             ->selectRaw('*, SUM(penyaluran_tkd) as total_penyaluran, SUM(potong_salur) as total_potong_salur, SUM(tunda_salur) as total_tunda_salur')
             ->groupBy('bidang_tkd', 'subbidang_tkd')->get();
 
-        $monitoringPenggunaans = MonitoringPenggunaan::where('tahun', $pemda->tahun)
+        $monitoringPenggunaans = EvaluasiPenggunaan::where('tahun', $pemda->tahun)
             ->where('nama_pemda', $pemda->nama_pemda)
             ->where('jenis_tkd', session('jenis_tkd'))
             ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')

@@ -77,7 +77,11 @@ class EvaluasiPenggunaanController extends AppBaseController
                 'realisasi_modal' => $request->{'realisasi_modal_' . $monitoringPenggunaan->id},
                 'realisasi_hibah' => $request->{'realisasi_hibah_' . $monitoringPenggunaan->id},
                 'realisasi_lainnya' => $request->{'realisasi_lainnya_' . $monitoringPenggunaan->id},
-                'realisasi_na' => $request->{'realisasi_na_' . $monitoringPenggunaan->id}
+                'realisasi_na' => $request->{'realisasi_na_' . $monitoringPenggunaan->id},
+                'target_output' => $request->{'target_output_' . $monitoringPenggunaan->id},
+                'capaian_output' => $request->{'capaian_output_' . $monitoringPenggunaan->id},
+                'jenis_eksternalitas' => $request->{'jenis_eksternalitas_' . $monitoringPenggunaan->id},
+                'dampak_eksternalitas' => $request->{'dampak_eksternalitas_' . $monitoringPenggunaan->id}
             ]);
         }
 

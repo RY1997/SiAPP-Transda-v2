@@ -63,13 +63,58 @@
             </thead>
             <tbody>
                 @foreach($monitoringPenggunaans as $monitoringPenggunaan)
-                @if ($monitoringPenggunaan->jenis_tkd == 'Dana Bagi Hasil' && $monitoringPenggunaan->uraian != 'Belanja Perlindungan Lingkungan Hidup')
+                @if ($monitoringPenggunaan->jenis_tkd == 'Dana Bagi Hasil')
+                @if ($monitoringPenggunaan->uraian != 'Belanja Perlindungan Lingkungan Hidup')
                 <tr>
                     <td>{{ $monitoringPenggunaan->uraian }}</td>
                     <td>{{ $monitoringPenggunaan->uraian }}</td>
                     <td><input class="form-control" step="0.01" name="anggaran_na_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_na }}"></td>
                     <td><input class="form-control" step="0.01" name="realisasi_na_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_na }}"></td>
                 </tr>
+                @else
+                <tr>
+                    <td rowspan="5">{{ $monitoringPenggunaan->uraian }}</td>
+                    <td>Belanja Barang dan Jasa</td>
+                    <td><input class="form-control" step="0.01" name="anggaran_barjas_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_barjas }}"></td>
+                    <td><input class="form-control" step="0.01" name="realisasi_barjas_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_barjas }}"></td>
+                </tr>
+                <tr>
+                    <td>Belanja Pegawai</td>
+                    <td><input class="form-control" step="0.01" name="anggaran_pegawai_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_pegawai }}"></td>
+                    <td><input class="form-control" step="0.01" name="realisasi_pegawai_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_pegawai }}"></td>
+                </tr>
+                <tr>
+                    <td>Belanja Modal</td>
+                    <td><input class="form-control" step="0.01" name="anggaran_modal_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_modal }}"></td>
+                    <td><input class="form-control" step="0.01" name="realisasi_modal_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_modal }}"></td>
+                </tr>
+                <tr>
+                    <td>Belanja Hibah</td>
+                    <td><input class="form-control" step="0.01" name="anggaran_hibah_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_hibah }}"></td>
+                    <td><input class="form-control" step="0.01" name="realisasi_hibah_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_hibah }}"></td>
+                </tr>
+                <tr>
+                    <td>Belanja Lainnya</td>
+                    <td><input class="form-control" step="0.01" name="anggaran_lainnya_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_lainnya }}"></td>
+                    <td><input class="form-control" step="0.01" name="realisasi_lainnya_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_lainnya }}"></td>
+                </tr>
+                <tr>
+                    <td>Target Output</td>
+                    <td colspan="2"><input class="form-control" step="0.01" name="target_output_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->target_output }}"></td>
+                </tr>
+                <tr>
+                    <td>Capaian Output</td>
+                    <td colspan="2"><input class="form-control" step="0.01" name="capaian_output_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->capaian_output }}"></td>
+                </tr>
+                <tr>
+                    <td>Jenis Eksternalitas</td>
+                    <td colspan="2"><textarea class="form-control" rows="3" name="jenis_eksternalitas_{{ $monitoringPenggunaan->id }}">{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->jenis_eksternalitas }}</textarea></td>
+                </tr>
+                <tr>
+                    <td>Dampak Eksternalitas</td>
+                    <td colspan="2"><textarea class="form-control" rows="3" name="dampak_eksternalitas_{{ $monitoringPenggunaan->id }}">{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->dampak_eksternalitas }}</textarea></td>
+                </tr>
+                @endif
                 @elseif ($monitoringPenggunaan->jenis_tkd == 'Dana Alokasi Khusus')
                 <tr>
                     <td rowspan="2">{{ $monitoringPenggunaan->uraian }}</td>
