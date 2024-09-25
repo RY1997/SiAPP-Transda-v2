@@ -154,13 +154,17 @@ class EvaluasiPrioritasController extends AppBaseController
     {
         $evaluasiPrioritas = $this->evaluasiPrioritasRepository->find($id);
 
+        $suratTugas = SuratTugas::where('nama_pemda', $evaluasiPrioritas->nama_pemda)->where('jenis_tkd', $evaluasiPrioritas->jenis_tkd)->where('jenis_penugasan', 'Evaluasi')->first();
+
         if (empty($evaluasiPrioritas)) {
             Flash::error('Evaluasi Prioritas not found');
-
             return redirect(route('evaluasiPrioritas.index'));
         }
 
-        return view('evaluasi_prioritas.edit')->with('evaluasiPrioritas', $evaluasiPrioritas);
+        return view('evaluasi_prioritas.edit')->with([
+            'evaluasiPrioritas' => $evaluasiPrioritas,
+            'suratTugas' => $suratTugas
+        ]);
     }
 
     /**
