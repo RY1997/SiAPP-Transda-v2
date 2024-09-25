@@ -8,6 +8,7 @@
                 <th rowspan="2" style="min-width: 100px;">Subbidang</th>
                 <!-- <th rowspan="2" style="min-width: 100px;">Alokasi</th> -->
                 <th colspan="2">Penggunaan TKD</th>
+                <th rowspan="2" style="min-width: 100px;">Capaian Output</th>
                 <!-- <th rowspan="2" style="min-width: 250px;">Penyebab Realisasi Rendah</th> -->
                 <th rowspan="2">Aksi</th>
             </tr>
@@ -27,6 +28,7 @@
                 <!-- <td>Alokasi</td> -->
                 <td class="text-right">{{ number_format($monitoringPenggunaan->total_anggaran, 2, ',', '.') }}</td>
                 <td class="text-right">{{ number_format($monitoringPenggunaan->total_realisasi, 2, ',', '.') }}</td>
+                <td>{{ number_format($monitoringPenggunaan->rerata_capaian, 2, ',', '.') }}%</td>
                 <!-- <td>{{ $monitoringPenggunaan->penyebab_kurang_guna }}</td> -->
                 <td width="120">
                     <div class='btn-group'>

@@ -60,7 +60,7 @@ class EvaluasiTrenController extends AppBaseController
         $monitoringPenyalurans = EvaluasiPenyaluran::whereIn('nama_pemda', $monitoringTrens->pluck('nama_pemda'))->selectRaw('*, SUM(penyaluran_tkd) as total_penyaluran')->where('jenis_tkd', session('jenis_tkd'))
             ->groupBy('nama_pemda')->groupBy('tahun')->get();
 
-        $monitoringPenggunaans = EvaluasiPenggunaan::whereIn('nama_pemda', $monitoringTrens->pluck('nama_pemda'))->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
+        $monitoringPenggunaans = EvaluasiPenggunaan::whereIn('nama_pemda', $monitoringTrens->pluck('nama_pemda'))->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi, AVG(CASE WHEN target_output != 0 THEN capaian_output / target ELSE 0 END) as rerata_capaian')
             ->where('jenis_tkd', session('jenis_tkd'))
             ->groupBy('nama_pemda')->groupBy('tahun')->get();
 
