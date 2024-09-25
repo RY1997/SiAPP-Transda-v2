@@ -6,10 +6,10 @@ use App\Http\Requests\CreateMonitoringSisaTkdRequest;
 use App\Http\Requests\UpdateMonitoringSisaTkdRequest;
 use App\Repositories\MonitoringSisaTkdRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\MonitoringAlokasi;
 use App\Models\MonitoringSisaTkd;
 use Illuminate\Http\Request;
 use Flash;
-use MonitoringAlokasi;
 use Response;
 
 class MonitoringSisaTkdController extends AppBaseController
