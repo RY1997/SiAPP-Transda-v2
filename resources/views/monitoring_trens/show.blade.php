@@ -85,7 +85,7 @@ Pengelolaan TKD
                     <p class="text-danger">Catatan : Jumlah Penggunaan melebihi Jumlah Penyaluran. Silahkan periksa kembali.</p>
                     @endif
                 </div>
-                @if ($monitoringAlokasi->jenis_tkd == 'Dana Alokasi Khusus')
+                @if ($monitoringAlokasis->first()->jenis_tkd == 'Dana Alokasi Khusus')
                 <div class="col-sm-12 mb-3">
                     <h5>D. Sisa Dana Transfer ke Daerah</h5>
                 </div>
