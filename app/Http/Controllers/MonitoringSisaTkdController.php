@@ -111,7 +111,7 @@ class MonitoringSisaTkdController extends AppBaseController
 
         return view('monitoring_sisa_tkds.edit')->with([
             'monitoringSisaTkds' => $monitoringSisaTkds,
-            'sisa_id' => $sisa_id,
+            'alokasi_id' => $alokasi_id,
         ]);
     }
 
