@@ -87,7 +87,7 @@ Pengelolaan TKD
                 </div>
                 @if ($monitoringAlokasi->jenis_tkd == 'Dana Alokasi Khusus')
                 <div class="col-sm-12 mb-3">
-                    <h5>D. Penggunaan Transfer ke Daerah</h5>
+                    <h5>D. Sisa Dana Transfer ke Daerah</h5>
                 </div>
                 <div class="col-sm-12 mb-3">
                     @include('monitoring_trens.table_sisa_dana')
