@@ -3,7 +3,7 @@
     {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $monitoringPenyalurans->first()->tahun }}" readonly>
+    <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $monitoringSisaTkds->first()->tahun }}" readonly>
 </div>
 
 <!-- Nama Pemda Field -->
