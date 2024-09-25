@@ -163,7 +163,8 @@ class EvaluasiPrioritasController extends AppBaseController
 
         return view('evaluasi_prioritas.edit')->with([
             'evaluasiPrioritas' => $evaluasiPrioritas,
-            'suratTugas' => $suratTugas
+            'suratTugas' => $suratTugas,
+            'tahun' => $evaluasiPrioritas->tahun
         ]);
     }
 
