@@ -3,7 +3,7 @@
     {!! Form::label('tahun', 'Tahun') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('tahun', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'readonly']) !!}
+    <input type="text" name="tahun" id="tahun" class="form-control" value="{{ $monitoringPenyalurans->first()->tahun }}" readonly>
 </div>
 
 <!-- Nama Pemda Field -->
@@ -11,23 +11,28 @@
     {!! Form::label('nama_pemda', 'Nama Pemda') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('nama_pemda', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'readonly']) !!}
+    <input type="text" name="nama_pemda" id="nama_pemda" class="form-control" value="{{ $monitoringSisaTkds->first()->nama_pemda }}" readonly>
 </div>
 
-<!-- Jenis Tkd Field -->
 <div class="form-group col-sm-3 mb-3">
     {!! Form::label('jenis_tkd', 'Jenis TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('jenis_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'readonly']) !!}
+    <input type="text" name="jenis_tkd" id="jenis_tkd" class="form-control" value="{{ $monitoringSisaTkds->first()->jenis_tkd }}" readonly>
 </div>
 
-<!-- Bidang Tkd Field -->
 <div class="form-group col-sm-3 mb-3">
-    {!! Form::label('bidang_tkd', 'Bidang DAK') !!}
+    {!! Form::label('tipe_tkd', 'Sifat TKD') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::text('bidang_tkd', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'readonly']) !!}
+    <input type="text" name="tipe_tkd" id="tipe_tkd" class="form-control" value="{{ $monitoringSisaTkds->first()->tipe_tkd }}" readonly>
+</div>
+
+<div class="form-group col-sm-3 mb-3">
+    {!! Form::label('bidang_tkd', 'Bidang TKD') !!}
+</div>
+<div class="form-group col-sm-9 mb-3">
+    <input type="text" name="bidang_tkd" id="bidang_tkd" class="form-control" value="{{ $monitoringSisaTkds->first()->bidang_tkd }}" readonly>
 </div>
 
 <div class="form-group col-sm-12 mb-3">
