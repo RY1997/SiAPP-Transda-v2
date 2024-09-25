@@ -114,7 +114,7 @@ class EvaluasiPenggunaanController extends AppBaseController
      */
     public function edit($id)
     {
-        $penggunaan_id = $this->monitoringPenggunaanRepository->find($id);
+        $penggunaan_id = EvaluasiPenggunaan::find($id);
 
         if (empty($penggunaan_id)) {
             Flash::error('Penggunaan not found');

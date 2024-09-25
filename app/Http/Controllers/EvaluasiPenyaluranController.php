@@ -104,7 +104,7 @@ class EvaluasiPenyaluranController extends AppBaseController
      */
     public function edit($id)
     {
-        $penyaluran_id = $this->monitoringPenyaluranRepository->find($id);
+        $penyaluran_id = EvaluasiPenyaluran::find($id);
 
         if (empty($penyaluran_id)) {
             Flash::error('Penyaluran not found');
