@@ -41,33 +41,7 @@
 <div class="form-group col-sm-12 mb-3">
     <div class="table-responsive card mb-0">
         <table id="realisasiCapaian" class="table text-center m-0">
-            @if ($monitoringAlokasis->first()->jenis_tkd == 'Dana Bagi Hasil')
-            <thead class="thead-light">
-                <tr>
-                    <th width="100">Uraian</th>
-                    <th width="200">Status Pemda</th>
-                    <th width="200">Alokasi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($monitoringAlokasis as $monitoringAlokasi)
-                <tr>
-                    <td>{{ $monitoringAlokasi->subb }}</td>
-                    <td>
-                        <select class="form-control custom-select" id="status_pemda" name="status_pemda_{{ $monitoringAlokasi->id }}">
-                            <option value="" selected>Pilih</option>
-                            <option value="Daerah Penghasil" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Daerah Penghasil' ? 'selected' : '' }}>Daerah Penghasil</option>
-                            <option value="Pengolah" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Pengolah' ? 'selected' : '' }}>Pengolah</option>
-                            <option value="Berbatasan Langsung" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Berbatasan Langsung' ? 'selected' : '' }}>Berbatasan Langsung</option>
-                            <option value="Pemerataan (SDA Migas) atau Daerah Penghasil" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Pemerataan (SDA Migas) atau Daerah Penghasil' ? 'selected' : '' }}>Pemerataan (SDA Migas) atau Daerah Penghasil</option>
-                            <option value="Berbatasan Langsung (Sawit)" {{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->status_pemda == 'Berbatasan Langsung (Sawit)' ? 'selected' : '' }}>Berbatasan Langsung (Sawit)</option>
-                        </select>
-                    </td>
-                    <td><input class="form-control" step="0.01" name="alokasi_tkd_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->alokasi_tkd }}"></td>
-                </tr>
-                @endforeach
-            </tbody>
-            @elseif ($monitoringAlokasis->first()->jenis_tkd == 'Dana Alokasi Khusus')
+            @if ($monitoringAlokasis->first()->jenis_tkd == 'Dana Alokasi Khusus')
             <thead class="thead-light">
                 <tr>
                     <th rowspan="2" width="100">Uraian</th>

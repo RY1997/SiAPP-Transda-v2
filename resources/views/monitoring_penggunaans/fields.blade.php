@@ -55,14 +55,7 @@
             </thead>
             <tbody>
                 @foreach($monitoringPenggunaans as $monitoringPenggunaan)
-                @if ($monitoringPenggunaan->jenis_tkd == 'Dana Bagi Hasil' && $monitoringPenggunaan->uraian != 'Belanja Perlindungan Lingkungan Hidup')
-                <tr>
-                    <td>{{ $monitoringPenggunaan->uraian }}</td>
-                    <td>{{ $monitoringPenggunaan->uraian }}</td>
-                    <td><input class="form-control" step="0.01" name="anggaran_na_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_na }}"></td>
-                    <td><input class="form-control" step="0.01" name="realisasi_na_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_na }}"></td>
-                </tr>
-                @elseif ($monitoringPenggunaan->jenis_tkd == 'Dana Alokasi Khusus')
+                @if ($monitoringPenggunaan->jenis_tkd == 'Dana Alokasi Khusus')
                 <tr>
                     <td rowspan="2">{{ $monitoringPenggunaan->uraian }}</td>
                     <td>Jumlah Kontrak</td>
