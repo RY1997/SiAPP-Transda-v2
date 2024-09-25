@@ -111,12 +111,12 @@
         </a>
     </li>
 
-    <!-- <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link {{ Request::is('monitoringTrens*') || Request::is('monitoringPenyalurans*') || Request::is('monitoringPenggunaans*') ? 'active text-primary' : '' }}" href="{{ route('monitoringTrens.index') }}">
             <i class="ri-links-line"></i>
             <span class="nav-link-text">Pengelolaan TKD</span>
         </a>
-    </li> -->
+    </li>
 
     @if (session('jenis_tkd') == 'Dana Alokasi Khusus')
     <li class="nav-item">
