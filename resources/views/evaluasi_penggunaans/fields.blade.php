@@ -73,7 +73,7 @@
                 </tr>
                 @else
                 <tr>
-                    <td rowspan="5">{{ $monitoringPenggunaan->uraian }}</td>
+                    <td rowspan="9">{{ $monitoringPenggunaan->uraian }}</td>
                     <td>Belanja Barang dan Jasa</td>
                     <td><input class="form-control" step="0.01" name="anggaran_barjas_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_barjas }}"></td>
                     <td><input class="form-control" step="0.01" name="realisasi_barjas_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_barjas }}"></td>
