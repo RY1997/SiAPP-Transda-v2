@@ -114,7 +114,7 @@
     <li class="nav-item">
         <a class="nav-link {{ Request::is('monitoringTrens*') || Request::is('monitoringPenyalurans*') || Request::is('monitoringPenggunaans*') ? 'active text-primary' : '' }}" href="{{ route('monitoringTrens.index') }}">
             <i class="ri-links-line"></i>
-            <span class="nav-link-text">Pengelolaan TKD</span>
+            <span class="nav-link-text">Akuntabilitas TKD</span>
         </a>
     </li>
 
@@ -206,12 +206,12 @@
         </a>
     </li>
     
-    <!-- <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link {{ Request::is('evaluasiTrens*') || Request::is('evaluasiPenyalurans*') || Request::is('evaluasiPenggunaans*') ? 'active text-primary' : '' }}" href="{{ route('evaluasiTrens.index') }}">
             <i class="ri-links-line"></i>
-            <span class="nav-link-text">Pengelolaan TKD</span>
+            <span class="nav-link-text">Akuntabilitas TKD</span>
         </a>
-    </li> -->
+    </li>
 
     @if (session('jenis_tkd') == 'Dana Alokasi Umum')
     <li class="nav-item">
