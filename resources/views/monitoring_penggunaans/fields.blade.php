@@ -69,7 +69,7 @@
                 </tr>
                 @else
                 <tr>
-                    <td rowspan="5">{{ $monitoringPenggunaan->uraian }}</td>
+                    <td rowspan="6">{{ $monitoringPenggunaan->uraian }}</td>
                     <td>Belanja Barang dan Jasa</td>
                     <td><input class="form-control" step="0.01" name="anggaran_barjas_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_barjas }}"></td>
                     <td><input class="form-control" step="0.01" name="realisasi_barjas_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_barjas }}"></td>
@@ -93,6 +93,11 @@
                     <td>Belanja Lainnya</td>
                     <td><input class="form-control" step="0.01" name="anggaran_lainnya_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_lainnya }}"></td>
                     <td><input class="form-control" step="0.01" name="realisasi_lainnya_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_lainnya }}"></td>
+                </tr>
+                <tr>
+                    <td>Tidak Dapat Dipisahkan Penggunaannya</td>
+                    <td><input class="form-control" step="0.01" name="anggaran_na_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->anggaran_na }}"></td>
+                    <td><input class="form-control" step="0.01" name="realisasi_na_{{ $monitoringPenggunaan->id }}" type="number" value="{{ $monitoringPenggunaans->where('id', $monitoringPenggunaan->id)->first()->realisasi_na }}"></td>
                 </tr>
                 @endif
                 @endforeach
