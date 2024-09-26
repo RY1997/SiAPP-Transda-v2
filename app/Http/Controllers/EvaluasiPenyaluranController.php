@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class MonitoringPenyaluranController extends AppBaseController
+class EvaluasiPenyaluranController extends AppBaseController
 {
     /** @var MonitoringPenyaluranRepository $monitoringPenyaluranRepository*/
     private $monitoringPenyaluranRepository;

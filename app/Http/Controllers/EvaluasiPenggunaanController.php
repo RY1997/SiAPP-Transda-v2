@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class MonitoringPenggunaanController extends AppBaseController
+class EvaluasiPenggunaanController extends AppBaseController
 {
     /** @var MonitoringPenggunaanRepository $monitoringPenggunaanRepository*/
     private $monitoringPenggunaanRepository;
