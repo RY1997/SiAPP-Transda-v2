@@ -29,7 +29,7 @@ Keberlanjutan Kegiatan
         {!! Form::model($evaluasiPrioritas, ['route' => ['evaluasiKeberlanjutans.update', $evaluasiPrioritas->id], 'method' => 'patch']) !!}
         <div class="card-body">
             <div class="row">
-                @include('evaluasi_prioritas.fields')
+                @include('evaluasi_keberlanjutans.fields')
             </div>
         </div>
         <div class="card-footer text-right">
