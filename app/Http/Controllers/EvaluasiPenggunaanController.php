@@ -9,7 +9,6 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
 use App\Models\MonitoringPenggunaan;
 use App\Models\MonitoringAlokasi;
-use App\Models\MonitoringPenggunaan;
 use App\Models\ParameterTkd;
 use Illuminate\Http\Request;
 use Flash;

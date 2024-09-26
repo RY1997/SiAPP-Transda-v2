@@ -9,7 +9,6 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
 use App\Models\MonitoringPenyaluran;
 use App\Models\MonitoringAlokasi;
-use App\Models\MonitoringPenyaluran;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
