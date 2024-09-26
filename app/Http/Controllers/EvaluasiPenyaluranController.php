@@ -7,14 +7,14 @@ use App\Http\Requests\UpdateMonitoringPenyaluranRequest;
 use App\Repositories\MonitoringPenyaluranRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DaftarPemda;
-use App\Models\EvaluasiPenyaluran;
+use App\Models\MonitoringPenyaluran;
 use App\Models\MonitoringAlokasi;
 use App\Models\MonitoringPenyaluran;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class EvaluasiPenyaluranController extends AppBaseController
+class MonitoringPenyaluranController extends AppBaseController
 {
     /** @var MonitoringPenyaluranRepository $monitoringPenyaluranRepository*/
     private $monitoringPenyaluranRepository;
@@ -56,7 +56,7 @@ class EvaluasiPenyaluranController extends AppBaseController
      */
     public function store(CreateMonitoringPenyaluranRequest $request)
     {
-        $monitoringPenyalurans = EvaluasiPenyaluran::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('tipe_tkd', $request->tipe_tkd)->where('bidang_tkd', $request->bidang_tkd)->where('subbidang_tkd', $request->subbidang_tkd)->get();
+        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $request->tahun)->where('nama_pemda', $request->nama_pemda)->where('jenis_tkd', $request->jenis_tkd)->where('tipe_tkd', $request->tipe_tkd)->where('bidang_tkd', $request->bidang_tkd)->where('subbidang_tkd', $request->subbidang_tkd)->get();
 
         if (empty($monitoringPenyalurans)) {
             Flash::error('Penyaluran not found');
@@ -64,7 +64,7 @@ class EvaluasiPenyaluranController extends AppBaseController
         }
 
         foreach ($monitoringPenyalurans as $monitoringPenyaluran) {
-            EvaluasiPenyaluran::where('id', $monitoringPenyaluran->id)->update([
+            MonitoringPenyaluran::where('id', $monitoringPenyaluran->id)->update([
                 'tgl_salur' => $request->{'tgl_salur_' . $monitoringPenyaluran->id},
                 'saldo_rkud' => $request->{'saldo_rkud_' . $monitoringPenyaluran->id},
                 'saldo_pokok' => $request->{'saldo_pokok_' . $monitoringPenyaluran->id},
@@ -104,14 +104,14 @@ class EvaluasiPenyaluranController extends AppBaseController
      */
     public function edit($id)
     {
-        $penyaluran_id = EvaluasiPenyaluran::find($id);
+        $penyaluran_id = MonitoringPenyaluran::find($id);
 
         if (empty($penyaluran_id)) {
             Flash::error('Penyaluran not found');
             return redirect()->back();
         }
 
-        $monitoringPenyalurans = EvaluasiPenyaluran::where('tahun', $penyaluran_id->tahun)->where('nama_pemda', $penyaluran_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('tipe_tkd', $penyaluran_id->tipe_tkd)->where('bidang_tkd', $penyaluran_id->bidang_tkd)->where('subbidang_tkd', $penyaluran_id->subbidang_tkd)->get();
+        $monitoringPenyalurans = MonitoringPenyaluran::where('tahun', $penyaluran_id->tahun)->where('nama_pemda', $penyaluran_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->where('tipe_tkd', $penyaluran_id->tipe_tkd)->where('bidang_tkd', $penyaluran_id->bidang_tkd)->where('subbidang_tkd', $penyaluran_id->subbidang_tkd)->get();
 
         $alokasi_id = MonitoringAlokasi::where('tahun', $penyaluran_id->tahun)->where('nama_pemda', $penyaluran_id->nama_pemda)->where('jenis_tkd', session('jenis_tkd'))->first();
 
