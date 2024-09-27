@@ -66,6 +66,7 @@ class EvaluasiPenggunaanController extends AppBaseController
         foreach ($monitoringPenggunaans as $monitoringPenggunaan) {
             MonitoringPenggunaan::where('id', $monitoringPenggunaan->id)->update([
                 'jml_kontrak' => $request->{'jml_kontrak_' . $monitoringPenggunaan->id},
+                'nilai_kontrak' => $request->{'nilai_kontrak_' . $monitoringPenggunaan->id},
                 'anggaran_barjas' => $request->{'anggaran_barjas_' . $monitoringPenggunaan->id},
                 'anggaran_pegawai' => $request->{'anggaran_pegawai_' . $monitoringPenggunaan->id},
                 'anggaran_modal' => $request->{'anggaran_modal_' . $monitoringPenggunaan->id},
