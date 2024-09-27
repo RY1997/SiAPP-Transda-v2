@@ -66,16 +66,19 @@ class MonitoringPenggunaanController extends AppBaseController
         foreach ($monitoringPenggunaans as $monitoringPenggunaan) {
             MonitoringPenggunaan::where('id', $monitoringPenggunaan->id)->update([
                 'jml_kontrak' => $request->{'jml_kontrak_' . $monitoringPenggunaan->id},
+                'nilai_kontrak' => $request->{'nilai_kontrak_' . $monitoringPenggunaan->id},
                 'anggaran_barjas' => $request->{'anggaran_barjas_' . $monitoringPenggunaan->id},
                 'anggaran_pegawai' => $request->{'anggaran_pegawai_' . $monitoringPenggunaan->id},
                 'anggaran_modal' => $request->{'anggaran_modal_' . $monitoringPenggunaan->id},
                 'anggaran_hibah' => $request->{'anggaran_hibah_' . $monitoringPenggunaan->id},
                 'anggaran_lainnya' => $request->{'anggaran_lainnya_' . $monitoringPenggunaan->id},
+                'anggaran_na' => $request->{'anggaran_na_' . $monitoringPenggunaan->id},
                 'realisasi_barjas' => $request->{'realisasi_barjas_' . $monitoringPenggunaan->id},
                 'realisasi_pegawai' => $request->{'realisasi_pegawai_' . $monitoringPenggunaan->id},
                 'realisasi_modal' => $request->{'realisasi_modal_' . $monitoringPenggunaan->id},
                 'realisasi_hibah' => $request->{'realisasi_hibah_' . $monitoringPenggunaan->id},
-                'realisasi_lainnya' => $request->{'realisasi_lainnya_' . $monitoringPenggunaan->id}
+                'realisasi_lainnya' => $request->{'realisasi_lainnya_' . $monitoringPenggunaan->id},
+                'realisasi_na' => $request->{'realisasi_na_' . $monitoringPenggunaan->id}
             ]);
         }
 
