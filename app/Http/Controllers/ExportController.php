@@ -253,20 +253,9 @@ class ExportController extends AppBaseController
             $sheet->setCellValue('J' . $rowIndex, (MonitoringAlokasi::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Alokasi Umum')
                 ->where('alokasi_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenyaluran::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Alokasi Umum')
                 ->where('penyaluran_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenggunaan::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Alokasi Umum')
-                ->where(function ($q) {
-                    $q->where('anggaran_barjas', '>', 0)
-                        ->orWhere('anggaran_pegawai', '>', 0)
-                        ->orWhere('anggaran_modal', '>', 0)
-                        ->orWhere('anggaran_hibah', '>', 0)
-                        ->orWhere('anggaran_lainnya', '>', 0)
-                        ->orWhere('anggaran_na', '>', 0)
-                        ->orWhere('realisasi_barjas', '>', 0)
-                        ->orWhere('realisasi_pegawai', '>', 0)
-                        ->orWhere('realisasi_modal', '>', 0)
-                        ->orWhere('realisasi_hibah', '>', 0)
-                        ->orWhere('realisasi_lainnya', '>', 0)
-                        ->orWhere('realisasi_na', '>', 0);
-                })->groupBy(['tahun', 'nama_pemda'])->count()) / 15);
+                ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
+                ->groupBy(['tahun', 'nama_pemda'])
+                ->havingRaw('total_anggaran != 0 AND total_realisasi != 0')->count()) / 15);
             $sheet->setCellValue('L' . $rowIndex, DataUmumTkd::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Bagi Hasil')->where(function ($q) {
                 $q->where('alokasi_tkd', '>', 0)
                     ->where('penyaluran_tkd', '>', 0)
@@ -276,20 +265,9 @@ class ExportController extends AppBaseController
             $sheet->setCellValue('N' . $rowIndex, (MonitoringAlokasi::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Bagi Hasil')
                 ->where('alokasi_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenyaluran::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Bagi Hasil')
                 ->where('penyaluran_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenggunaan::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Bagi Hasil')
-                ->where(function ($q) {
-                    $q->where('anggaran_barjas', '>', 0)
-                        ->orWhere('anggaran_pegawai', '>', 0)
-                        ->orWhere('anggaran_modal', '>', 0)
-                        ->orWhere('anggaran_hibah', '>', 0)
-                        ->orWhere('anggaran_lainnya', '>', 0)
-                        ->orWhere('anggaran_na', '>', 0)
-                        ->orWhere('realisasi_barjas', '>', 0)
-                        ->orWhere('realisasi_pegawai', '>', 0)
-                        ->orWhere('realisasi_modal', '>', 0)
-                        ->orWhere('realisasi_hibah', '>', 0)
-                        ->orWhere('realisasi_lainnya', '>', 0)
-                        ->orWhere('realisasi_na', '>', 0);
-                })->groupBy(['tahun', 'nama_pemda'])->count()) / 15);
+                ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
+                ->groupBy(['tahun', 'nama_pemda'])
+                ->havingRaw('total_anggaran != 0 AND total_realisasi != 0')->count()) / 15);
             $sheet->setCellValue('P' . $rowIndex, DataUmumTkd::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Alokasi Khusus')->where(function ($q) {
                 $q->where('alokasi_tkd', '>', 0)
                     ->where('penyaluran_tkd', '>', 0)
@@ -299,7 +277,9 @@ class ExportController extends AppBaseController
             $sheet->setCellValue('R' . $rowIndex, (MonitoringAlokasi::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Alokasi Khusus')
                 ->where('alokasi_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenyaluran::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Alokasi Khusus')
                 ->where('penyaluran_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenggunaan::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Alokasi Khusus')
-                ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')->groupBy(['tahun', 'nama_pemda'])->havingRaw('total_anggaran != 0 , total_realisasi != 0')->count()) / 15);
+                ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
+                ->groupBy(['tahun', 'nama_pemda'])
+                ->havingRaw('total_anggaran != 0 AND total_realisasi != 0')->count()) / 15);
             $sheet->setCellValue('T' . $rowIndex, MonitoringSisaTkd::where('kode_pwk', $pwk->kode_pwk)
                 ->selectRaw('*, SUM(sisa_dana_tkd - dianggarkan_kembali) as total_sisa_dana')->groupBy(['tahun', 'nama_pemda'])->havingRaw('total_sisa_dana != 0')->count() / 15);
             $sheet->setCellValue('V' . $rowIndex, MonitoringImmediateOutcome::where('kode_pwk', $pwk->kode_pwk)
@@ -314,21 +294,10 @@ class ExportController extends AppBaseController
             $sheet->setCellValue('AB' . $rowIndex, (MonitoringAlokasi::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Otonomi Khusus')
                 ->where('alokasi_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenyaluran::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Otonomi Khusus')
                 ->where('penyaluran_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenggunaan::where('kode_pwk', $pwk->kode_pwk)->where('jenis_tkd', 'Dana Otonomi Khusus')
-                ->where(function ($q) {
-                    $q->where('anggaran_barjas', '>', 0)
-                        ->orWhere('anggaran_pegawai', '>', 0)
-                        ->orWhere('anggaran_modal', '>', 0)
-                        ->orWhere('anggaran_hibah', '>', 0)
-                        ->orWhere('anggaran_lainnya', '>', 0)
-                        ->orWhere('anggaran_na', '>', 0)
-                        ->orWhere('realisasi_barjas', '>', 0)
-                        ->orWhere('realisasi_pegawai', '>', 0)
-                        ->orWhere('realisasi_modal', '>', 0)
-                        ->orWhere('realisasi_hibah', '>', 0)
-                        ->orWhere('realisasi_lainnya', '>', 0)
-                        ->orWhere('realisasi_na', '>', 0);
-                })->groupBy(['tahun', 'nama_pemda'])->count()) / 15);
-                $sheet->setCellValue('AD' . $rowIndex, DaftarPemda::where('kode_pwk', $pwk->kode_pwk)->count());
+                ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
+                ->groupBy(['tahun', 'nama_pemda'])
+                ->havingRaw('total_anggaran != 0 AND total_realisasi != 0')->count()) / 15);
+            $sheet->setCellValue('AD' . $rowIndex, DaftarPemda::where('kode_pwk', $pwk->kode_pwk)->count());
             $rowIndex++;
         }
 
