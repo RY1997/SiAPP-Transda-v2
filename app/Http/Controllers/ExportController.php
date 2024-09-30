@@ -422,8 +422,8 @@ class ExportController extends AppBaseController
         $rowIndex = 10;
 
         $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd)
-            ->orderBy('bidang_tkd')
             ->orderBy('tahun')
+            ->orderBy('bidang_tkd')
             ->get();
 
         foreach ($dataUmumTkds as $dataUmumTkd) {
