@@ -415,7 +415,7 @@ class ExportController extends AppBaseController
 
         $st = SuratTugas::where('id', $request->id_st)->first();
 
-        $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . DaftarPemda::where('nama_pemda', $st->nama_pemda)->first()->pluck('nama_provinsi'));
+        $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . DaftarPemda::where('nama_pemda', $st->nama_pemda)->first()->value('nama_provinsi'));
 
         $rowIndex = 10;
 
