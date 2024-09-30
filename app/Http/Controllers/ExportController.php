@@ -415,6 +415,8 @@ class ExportController extends AppBaseController
 
         $st = SuratTugas::where('id', $request->id_st)->first();
 
+        dd($st);
+
         $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . DaftarPemda::where('nama_pemda', $st->nama_pemda)->first()->value('nama_provinsi'));
 
         $rowIndex = 10;
@@ -422,7 +424,7 @@ class ExportController extends AppBaseController
         $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd)->orderBy(['kode_pwk','nama_pemda','jenis_tkd','bidang_tkd','tahun'])->get();
 
         foreach ($dataUmumTkds as $dataUmumTkd) {
-            $sheet->setCellValue('A' . $rowIndex, $loop->iteration);
+            $sheet->setCellValue('A' . $rowIndex, $rowIndex - 9);
             $sheet->setCellValue('B' . $rowIndex, $dataUmumTkd->kode_pwk);
             $sheet->setCellValue('C' . $rowIndex, $dataUmumTkd->nama_pemda);
             $sheet->setCellValue('D' . $rowIndex, $dataUmumTkd->jenis_tkd);
