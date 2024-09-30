@@ -52,7 +52,7 @@ class EvaluasiPrioritasController extends AppBaseController
                 }
             ], 'nilai_anggaran')
             ->withSum([
-                'rengar as nilai_realisasi2023' => function ($query) {
+                'prioritas as nilai_realisasi2023' => function ($query) {
                     $query->where('tahun', '2023')->where('jenis_tkd', session('jenis_tkd'));
                 }
             ], 'nilai_realisasi')
