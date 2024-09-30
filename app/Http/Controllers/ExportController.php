@@ -430,10 +430,10 @@ class ExportController extends AppBaseController
             $sheet->setCellValue('F' . $rowIndex, $dataUmumTkd->tahun);
             $sheet->setCellValue('G' . $rowIndex, $dataUmumTkd->alokasi_tkd);
             $sheet->setCellValue('H' . $rowIndex, $dataUmumTkd->penyaluran_tkd);
-            $sheet->setCellValue('I' . $rowIndex, $dataUmumTkd->alokasi_tkd > 0 ? $dataUmumTkd->penyaluran_tkd / $dataUmumTkd->alokasi_tkd : 0);
+            $sheet->setCellValue('I' . $rowIndex, $dataUmumTkd->alokasi_tkd > 0 ? ($dataUmumTkd->penyaluran_tkd / $dataUmumTkd->alokasi_tkd) : '0');
             $sheet->setCellValue('J' . $rowIndex, $dataUmumTkd->penganggaran_tkd);
             $sheet->setCellValue('K' . $rowIndex, $dataUmumTkd->penggunaan_tkd);
-            $sheet->setCellValue('L' . $rowIndex, $dataUmumTkd->penganggaran_tkd > 0 ? $dataUmumTkd->penggunaan_tkd / $dataUmumTkd->penganggaran_tkd : 0);
+            $sheet->setCellValue('L' . $rowIndex, $dataUmumTkd->penganggaran_tkd > 0 ? ($dataUmumTkd->penggunaan_tkd / $dataUmumTkd->penganggaran_tkd) : '0');
             $rowIndex++;
         }
 
