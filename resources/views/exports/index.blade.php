@@ -25,7 +25,17 @@ Progres dan Hasil Pengawasan
         </form>
     </div>
     <div class="col-lg-1 col-1 text-right">
-        <a class="btn btn-success float-right" href="{{ route('kertasKerja.progresST') }}">Progres</a>
+        <div class="dropdown">
+            <button class="btn btn-success float-right dropdown-toggle" type="button" id="dropdownProgres" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Progres
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownProgres">
+                <a class="dropdown-item" href="{{ route('kertasKerja.progresST') }}">Input ST</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ route('kertasKerja.progresMonitoring') }}">Isian Monitoring</a>
+                <a class="dropdown-item" href="#">Isian Evaluasi</a>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
