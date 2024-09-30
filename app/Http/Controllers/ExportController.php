@@ -207,7 +207,7 @@ class ExportController extends AppBaseController
         // Baca template
         $spreadsheet = IOFactory::load($templatePath);
 
-        $sheet = $spreadsheet->getSheetByName('Progres Isian');
+        $sheet = $spreadsheet->getActiveSheet();
 
         $sheet->setCellValue('C3', 'Per ' . now()->format('d M Y H:i'));
 
