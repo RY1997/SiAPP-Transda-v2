@@ -100,6 +100,7 @@ Route::get('kertasKerja/progresMonitoring', [App\Http\Controllers\ExportControll
 Route::get('kertasKerja/evaDataUmum', [App\Http\Controllers\ExportController::class, 'evaDataUmum'])->name('kertasKerja.evaDataUmum');
 
 
+
 Route::resource('pelaporans', App\Http\Controllers\PelaporanController::class);
 
 Route::resource('ppbrs', App\Http\Controllers\PPBRController::class);
