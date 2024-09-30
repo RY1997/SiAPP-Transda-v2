@@ -97,6 +97,7 @@ Route::get('kertasKerja', [App\Http\Controllers\ExportController::class, 'index'
 Route::get('kertasKerja/progresIsian', [App\Http\Controllers\ExportController::class, 'progres'])->name('kertasKerja.progres');
 Route::get('kertasKerja/progresST', [App\Http\Controllers\ExportController::class, 'progresST'])->name('kertasKerja.progresST');
 Route::get('kertasKerja/progresMonitoring', [App\Http\Controllers\ExportController::class, 'progresMonitoring'])->name('kertasKerja.progresMonitoring');
+Route::get('kertasKerja/evaDataUmum', [App\Http\Controllers\ExportController::class, 'evaDataUmum'])->name('kertasKerja.evaDataUmum');
 
 
 Route::resource('pelaporans', App\Http\Controllers\PelaporanController::class);

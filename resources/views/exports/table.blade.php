@@ -6,8 +6,6 @@
                 <th width="50">Kode Perwakilan</th>
                 <th width="100">Nama Pemda</th>
                 <th width="300">Nama Penugasan</th>
-                <th width="100">Progres Monitoring</th>
-                <th width="100">Progres Evaluasi</th>
                 <th width="150">Aksi</th>
             </tr>
         </thead>
@@ -19,22 +17,22 @@
                 <td>{{ $st->kode_pwk }}</td>
                 <td>{{ $st->nama_pemda }}</td>
                 <td>{{ $st->nama_penugasan }}</td>
-                <td> XX,XX %</td>
-                <td> XX,XX %</td>
                 <td>
+                    @if ($st->jenis_penugasan == 'Evaluasi')
                     <div class="btn-group" role="group">
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Kertas Kerja
+                                Download
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Data Umum</a>
+                                <a class="dropdown-item" href="{{ url('/kertasKerja/evaDataUmum?id_st='.$st->id) }}">Data Umum TKD</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Tren Pengelolaan TKD</a>
                                 <a class="dropdown-item" href="#">Capaian Indikator Makro</a>
                             </div>
                         </div>
                     </div>
+                    @endif
                 </td>
             </tr>
             @endforeach

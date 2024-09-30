@@ -403,4 +403,46 @@ class ExportController extends AppBaseController
 
         return response()->download($excelFilePath)->deleteFileAfterSend(true);
     }
+
+    public function evaDataUmum(Request $request)
+    {
+        $templatePath = 'templates/Evaluasi Data Umum.xlsx';
+
+        // Baca template
+        $spreadsheet = IOFactory::load($templatePath);
+
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $st = SuratTugas::where('id', $request->id_st)->first();
+
+        $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . DaftarPemda::where('nama_pemda', $st->nama_pemda)->first()->pluck('nama_provinsi'));
+
+        $rowIndex = 10;
+
+        $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd)->orderBy(['kode_pwk','nama_pemda','jenis_tkd','bidang_tkd','tahun'])->get();
+
+        foreach ($dataUmumTkds as $dataUmumTkd) {
+            $sheet->setCellValue('A' . $rowIndex, $loop->iteration);
+            $sheet->setCellValue('B' . $rowIndex, $dataUmumTkd->kode_pwk);
+            $sheet->setCellValue('C' . $rowIndex, $dataUmumTkd->nama_pemda);
+            $sheet->setCellValue('D' . $rowIndex, $dataUmumTkd->jenis_tkd);
+            $sheet->setCellValue('E' . $rowIndex, $dataUmumTkd->bidang_tkd);
+            $sheet->setCellValue('F' . $rowIndex, $dataUmumTkd->tahun);
+            $sheet->setCellValue('G' . $rowIndex, $dataUmumTkd->alokasi_tkd);
+            $sheet->setCellValue('H' . $rowIndex, $dataUmumTkd->penyaluran_tkd);
+            $sheet->setCellValue('I' . $rowIndex, $dataUmumTkd->alokasi_tkd > 0 ? $dataUmumTkd->penyaluran_tkd / $dataUmumTkd->alokasi_tkd : 0);
+            $sheet->setCellValue('J' . $rowIndex, $dataUmumTkd->penganggaran_tkd);
+            $sheet->setCellValue('K' . $rowIndex, $dataUmumTkd->penggunaan_tkd);
+            $sheet->setCellValue('L' . $rowIndex, $dataUmumTkd->penganggaran_tkd > 0 ? $dataUmumTkd->penggunaan_tkd / $dataUmumTkd->penganggaran_tkd : 0);
+            $rowIndex++;
+        }
+
+        $excelFilePath = 'exports/Evaluasi Data Umum ' . $st->jenis_tkd . ' - ' . $st->nama_pemda . '.xlsx';
+
+        // Save as Excel file
+        $excelWriter = new Xlsx($spreadsheet);
+        $excelWriter->save($excelFilePath);
+
+        return response()->download($excelFilePath)->deleteFileAfterSend(true);
+    }
 }
