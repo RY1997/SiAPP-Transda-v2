@@ -26,7 +26,7 @@ Progres dan Hasil Pengawasan
     </div>
     <div class="col-lg-1 col-1 text-right">
         <div class="dropdown">
-            <button class="btn btn-success float-right dropdown-toggle" type="button" id="dropdownProgres" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownProgres" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Progres
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownProgres">
