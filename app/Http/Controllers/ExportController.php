@@ -421,7 +421,7 @@ class ExportController extends AppBaseController
 
         $rowIndex = 10;
 
-        $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd)->orderBy(['kode_pwk','nama_pemda','jenis_tkd','bidang_tkd','tahun'])->get();
+        $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd)->orderBy('kode_pwk','nama_pemda','jenis_tkd','bidang_tkd','tahun')->get();
 
         foreach ($dataUmumTkds as $dataUmumTkd) {
             $sheet->setCellValue('A' . $rowIndex, $rowIndex - 9);
