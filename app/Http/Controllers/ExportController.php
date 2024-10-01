@@ -486,6 +486,7 @@ class ExportController extends AppBaseController
             $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
 
             dd($st);
+            
 
             $monitoringAlokasis = MonitoringAlokasi::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd);
 

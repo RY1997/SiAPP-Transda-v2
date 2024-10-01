@@ -101,7 +101,6 @@ Route::get('kertasKerja/evaDataUmum', [App\Http\Controllers\ExportController::cl
 Route::get('kertasKerja/evaAlokasi', [App\Http\Controllers\ExportController::class, 'evaAlokasi'])->name('kertasKerja.evaAlokasi');
 
 
-
 Route::resource('pelaporans', App\Http\Controllers\PelaporanController::class);
 
 Route::resource('ppbrs', App\Http\Controllers\PPBRController::class);
