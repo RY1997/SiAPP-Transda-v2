@@ -319,6 +319,8 @@ class ExportController extends AppBaseController
 
         $st = SuratTugas::where('id', $request->id_st)->first();
 
+        dd($st);
+
         if (empty($st)) {
             Flash::error('Surat Tugas not found');
             return redirect(route('kertasKerja.index'));
