@@ -357,13 +357,11 @@ class ExportController extends AppBaseController
             $rowIndex++;
         }
 
-        $excelFilePath = 'exports/Evaluasi Data Umum ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : session('jenis_tkd') . ' - Data Nasional') . '.xlsx';
-
-        // Save as Excel file
-        $excelWriter = new Xlsx($spreadsheet);
-        $excelWriter->save($excelFilePath);
-
-        return response()->download($excelFilePath)->deleteFileAfterSend(true);
+        // Gunakan StreamedResponse untuk streaming Excel ke browser
+        return response()->streamDownload(function () use ($spreadsheet) {
+            $writer = new Xlsx($spreadsheet);
+            $writer->save('php://output');  // Menulis langsung ke output
+        }, 'exports/Evaluasi Data Umum ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : session('jenis_tkd') . ' - Data Nasional') . '.xlsx');
     }
 
     public function evaAlokasi(Request $request)
@@ -417,12 +415,10 @@ class ExportController extends AppBaseController
             $rowIndex++;
         }
 
-        $excelFilePath = 'exports/Evaluasi Alokasi ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : session('jenis_tkd') . ' - Data Nasional') . '.xlsx';
-
-        // Save as Excel file
-        $excelWriter = new Xlsx($spreadsheet);
-        $excelWriter->save($excelFilePath);
-
-        return response()->download($excelFilePath)->deleteFileAfterSend(true);
+        // Gunakan StreamedResponse untuk streaming Excel ke browser
+        return response()->streamDownload(function () use ($spreadsheet) {
+            $writer = new Xlsx($spreadsheet);
+            $writer->save('php://output');  // Menulis langsung ke output
+        }, 'exports/Evaluasi Alokasi ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : session('jenis_tkd') . ' - Data Nasional') . '.xlsx');
     }
 }
