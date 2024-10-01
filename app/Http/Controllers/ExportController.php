@@ -310,8 +310,6 @@ class ExportController extends AppBaseController
 
     public function evaDataUmum(Request $request)
     {
-        dd($request->id_st);
-        
         $templatePath = 'templates/Evaluasi Data Umum.xlsx';
 
         // Baca template
@@ -321,23 +319,19 @@ class ExportController extends AppBaseController
 
         $st = SuratTugas::where('id', $request->id_st)->first();
 
-        dd($st);
-
         if (empty($st)) {
             Flash::error('Surat Tugas not found');
             return redirect(route('kertasKerja.index'));
         }
 
         $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
-        $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd);
+        $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd)->orderBy('tahun')
+        ->orderBy('bidang_tkd')
+        ->get();
 
         $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
 
         $rowIndex = 10;
-
-        $dataUmumTkds = $dataUmumTkds->orderBy('tahun')
-            ->orderBy('bidang_tkd')
-            ->get();
 
         foreach ($dataUmumTkds as $dataUmumTkd) {
             $sheet->setCellValue('A' . $rowIndex, $rowIndex - 9);
