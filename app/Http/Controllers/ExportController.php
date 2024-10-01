@@ -497,6 +497,8 @@ class ExportController extends AppBaseController
             ->orderBy('nama_pemda')
             ->get();
 
+            dd($monitoringAlokasis->count());
+
         foreach ($monitoringAlokasis as $monitoringAlokasi) {
             $sheet->setCellValue('A' . $rowIndex, $rowIndex - 8);
             $sheet->setCellValue('B' . $rowIndex, $monitoringAlokasi->kode_pwk);
