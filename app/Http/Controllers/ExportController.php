@@ -317,42 +317,40 @@ class ExportController extends AppBaseController
 
         $sheet = $spreadsheet->getActiveSheet();
 
-        $st = SuratTugas::where('id', $request->id_st)->first();
-
+        $st = SuratTugas::find($request->id_st);
         $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
-
-        dd($pemda);
-        
-        $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd)->orderBy('tahun')
-        ->orderBy('subbidang_tkd')
-        ->orderBy('bidang_tkd')
-        ->get();
 
         $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
 
         $rowIndex = 10;
 
-        foreach ($dataUmumTkds as $dataUmumTkd) {
-            $sheet->setCellValue('A' . $rowIndex, $rowIndex - 9);
-            $sheet->setCellValue('B' . $rowIndex, $dataUmumTkd->kode_pwk);
-            $sheet->setCellValue('C' . $rowIndex, $dataUmumTkd->nama_pemda);
-            $sheet->setCellValue('D' . $rowIndex, $dataUmumTkd->jenis_tkd);
-            $sheet->setCellValue('E' . $rowIndex, $dataUmumTkd->bidang_tkd);
-            $sheet->setCellValue('F' . $rowIndex, $dataUmumTkd->tahun);
-            $sheet->setCellValue('G' . $rowIndex, $dataUmumTkd->alokasi_tkd);
-            $sheet->setCellValue('H' . $rowIndex, $dataUmumTkd->penyaluran_tkd);
-            $sheet->setCellValue('I' . $rowIndex, $dataUmumTkd->alokasi_tkd > 0 ? ($dataUmumTkd->penyaluran_tkd / $dataUmumTkd->alokasi_tkd) : '0');
-            $sheet->setCellValue('J' . $rowIndex, $dataUmumTkd->penganggaran_tkd);
-            $sheet->setCellValue('K' . $rowIndex, $dataUmumTkd->penggunaan_tkd);
-            $sheet->setCellValue('L' . $rowIndex, $dataUmumTkd->penganggaran_tkd > 0 ? ($dataUmumTkd->penggunaan_tkd / $dataUmumTkd->penganggaran_tkd) : '0');
-            $rowIndex++;
-        }
+        // Streaming data dari DB dengan chunking
+        DataUmumTkd::where('kode_pwk', $st->kode_pwk)
+            ->where('nama_pemda', $st->nama_pemda)
+            ->where('jenis_tkd', $st->jenis_tkd)
+            ->chunk(100, function ($dataUmumTkds) use ($sheet, &$rowIndex) {
+                foreach ($dataUmumTkds as $dataUmumTkd) {
+                    $sheet->setCellValue('A' . $rowIndex, $rowIndex - 9);
+                    $sheet->setCellValue('B' . $rowIndex, $dataUmumTkd->kode_pwk);
+                    $sheet->setCellValue('C' . $rowIndex, $dataUmumTkd->nama_pemda);
+                    $sheet->setCellValue('D' . $rowIndex, $dataUmumTkd->jenis_tkd);
+                    $sheet->setCellValue('E' . $rowIndex, $dataUmumTkd->bidang_tkd);
+                    $sheet->setCellValue('F' . $rowIndex, $dataUmumTkd->tahun);
+                    $sheet->setCellValue('G' . $rowIndex, $dataUmumTkd->alokasi_tkd);
+                    $sheet->setCellValue('H' . $rowIndex, $dataUmumTkd->penyaluran_tkd);
+                    $sheet->setCellValue('I' . $rowIndex, $dataUmumTkd->alokasi_tkd > 0 ? ($dataUmumTkd->penyaluran_tkd / $dataUmumTkd->alokasi_tkd) : '0');
+                    $sheet->setCellValue('J' . $rowIndex, $dataUmumTkd->penganggaran_tkd);
+                    $sheet->setCellValue('K' . $rowIndex, $dataUmumTkd->penggunaan_tkd);
+                    $sheet->setCellValue('L' . $rowIndex, $dataUmumTkd->penganggaran_tkd > 0 ? ($dataUmumTkd->penggunaan_tkd / $dataUmumTkd->penganggaran_tkd) : '0');
+                    $rowIndex++;
+                }
+            });
 
-        // Gunakan StreamedResponse untuk streaming Excel ke browser
+        // Streaming Excel output agar tidak menumpuk semua data di memori
         return response()->streamDownload(function () use ($spreadsheet) {
-            $writer = new Xlsx($spreadsheet);
-            $writer->save('php://output');  // Menulis langsung ke output
-        }, 'exports/Evaluasi Data Umum ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : session('jenis_tkd') . ' - Data Nasional') . '.xlsx');
+            $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+            $writer->save('php://output');  // Streaming langsung ke output, tidak disimpan di memori
+        }, 'Evaluasi Data Umum ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : 'Data Nasional') . '.xlsx');
     }
 
     public function evaAlokasi(Request $request)
@@ -364,52 +362,38 @@ class ExportController extends AppBaseController
 
         $sheet = $spreadsheet->getActiveSheet();
 
-        if ($request->id_st == 'All') {
-            $monitoringAlokasis = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'));
+        $st = SuratTugas::find($request->id_st);
+        $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
 
-            $sheet->setCellValue('C2', 'Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral dan Pembangunan Daerah');
-        } else {
-            $st = SuratTugas::where('id', $request->id_st)->first();
+        $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
 
-            if (empty($st)) {
-                Flash::error('Surat Tugas not found');
-                return redirect(route('kertasKerja.index'));
-            }
+        $rowIndex = 10;
 
-            $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
+        // Streaming data dari DB dengan chunking
+        MonitoringAlokasi::where('kode_pwk', $st->kode_pwk)
+            ->where('nama_pemda', $st->nama_pemda)
+            ->where('jenis_tkd', $st->jenis_tkd)
+            ->chunk(100, function ($monitoringAlokasis) use ($sheet, &$rowIndex) {
+                foreach ($monitoringAlokasis as $monitoringAlokasi) {
+                    $sheet->setCellValue('A' . $rowIndex, $rowIndex - 8);
+                    $sheet->setCellValue('B' . $rowIndex, $monitoringAlokasi->kode_pwk);
+                    $sheet->setCellValue('C' . $rowIndex, $monitoringAlokasi->nama_pemda);
+                    $sheet->setCellValue('D' . $rowIndex, $monitoringAlokasi->jenis_tkd);
+                    $sheet->setCellValue('E' . $rowIndex, $monitoringAlokasi->bidang_tkd);
+                    $sheet->setCellValue('F' . $rowIndex, $monitoringAlokasi->subbidang_tkd);
+                    $sheet->setCellValue('G' . $rowIndex, $monitoringAlokasi->tahun);
+                    $sheet->setCellValue('H' . $rowIndex, $monitoringAlokasi->rk_usulan);
+                    $sheet->setCellValue('I' . $rowIndex, $monitoringAlokasi->rk_disetujui);
+                    $sheet->setCellValue('J' . $rowIndex, $monitoringAlokasi->tgl_juknis);
+                    $sheet->setCellValue('K' . $rowIndex, $monitoringAlokasi->alokasi_tkd);
+                    $rowIndex++;
+                }
+            });
 
-            $monitoringAlokasis = MonitoringAlokasi::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd);
-
-            $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
-        }
-
-        $rowIndex = 9;
-
-        $monitoringAlokasis = $monitoringAlokasis->orderBy('tahun')
-            ->orderBy('subbidang_tkd')
-            ->orderBy('bidang_tkd')
-            ->orderBy('nama_pemda')
-            ->get();
-
-        foreach ($monitoringAlokasis as $monitoringAlokasi) {
-            $sheet->setCellValue('A' . $rowIndex, $rowIndex - 8);
-            $sheet->setCellValue('B' . $rowIndex, $monitoringAlokasi->kode_pwk);
-            $sheet->setCellValue('C' . $rowIndex, $monitoringAlokasi->nama_pemda);
-            $sheet->setCellValue('D' . $rowIndex, $monitoringAlokasi->jenis_tkd);
-            $sheet->setCellValue('E' . $rowIndex, $monitoringAlokasi->bidang_tkd);
-            $sheet->setCellValue('F' . $rowIndex, $monitoringAlokasi->subbidang_tkd);
-            $sheet->setCellValue('G' . $rowIndex, $monitoringAlokasi->tahun);
-            $sheet->setCellValue('H' . $rowIndex, $monitoringAlokasi->rk_usulan);
-            $sheet->setCellValue('I' . $rowIndex, $monitoringAlokasi->rk_disetujui);
-            $sheet->setCellValue('J' . $rowIndex, $monitoringAlokasi->tgl_juknis);
-            $sheet->setCellValue('K' . $rowIndex, $monitoringAlokasi->alokasi_tkd);
-            $rowIndex++;
-        }
-
-        // Gunakan StreamedResponse untuk streaming Excel ke browser
+        // Streaming Excel output agar tidak menumpuk semua data di memori
         return response()->streamDownload(function () use ($spreadsheet) {
-            $writer = new Xlsx($spreadsheet);
-            $writer->save('php://output');  // Menulis langsung ke output
+            $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+            $writer->save('php://output');  // Streaming langsung ke output, tidak disimpan di memori
         }, 'exports/Evaluasi Alokasi ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : session('jenis_tkd') . ' - Data Nasional') . '.xlsx');
     }
 }
