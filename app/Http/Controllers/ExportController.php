@@ -319,15 +319,9 @@ class ExportController extends AppBaseController
 
         $st = SuratTugas::where('id', $request->id_st)->first();
 
-        dd($st);
-
-        if (empty($st)) {
-            Flash::error('Surat Tugas not found');
-            return redirect(route('kertasKerja.index'));
-        }
-
         $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
         $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd)->orderBy('tahun')
+        ->orderBy('subbidang_tkd')
         ->orderBy('bidang_tkd')
         ->get();
 
