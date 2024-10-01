@@ -6,7 +6,7 @@ Progres dan Hasil Pengawasan
 
 @section('header')
 <div class="row align-items-center py-4">
-    <div class="col-lg-8 col-7">
+    <div class="col-lg-7 col-7">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark bg-white">
                 <li class="breadcrumb-item"><a href="/home"><i class="fas fa-home"></i></a></li>
@@ -14,7 +14,7 @@ Progres dan Hasil Pengawasan
             </ol>
         </nav>
     </div>
-    <div class="col-lg-3 col-4 text-right">
+    <div class="col-lg-3 col-3 text-right">
         <form class="input-group float-right p-2">
             <div class="input-group input-group-alternative input-group-merge">
                 <div class="input-group-prepend">
@@ -24,7 +24,7 @@ Progres dan Hasil Pengawasan
             </div>
         </form>
     </div>
-    <div class="col-lg-1 col-1 text-right">
+    <div class="col-lg-2 col-2 text-right">
         <div class="dropdown">
             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownProgres" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Progres
