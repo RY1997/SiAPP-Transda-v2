@@ -466,8 +466,6 @@ class ExportController extends AppBaseController
     {
         $templatePath = 'templates/Evaluasi Alokasi.xlsx';
 
-        dd($request);
-
         // Baca template
         $spreadsheet = IOFactory::load($templatePath);
 
@@ -479,6 +477,8 @@ class ExportController extends AppBaseController
             $sheet->setCellValue('C2', 'Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral dan Pembangunan Daerah');
         } else {
             $st = SuratTugas::where('id', $request->id_st)->first();
+
+            dd($st);
 
             if (empty($st)) {
                 Flash::error('Surat Tugas not found');
