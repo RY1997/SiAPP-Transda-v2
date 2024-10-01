@@ -479,10 +479,22 @@ class ExportController extends AppBaseController
                 ->orderBy('nama_pemda')
                 ->chunk(100, function ($monitoringAlokasis) use (&$sheet, &$rowIndex) {
                     foreach ($monitoringAlokasis as $monitoringAlokasi) {
-                        $this->fillEvaAlokasi($sheet, $rowIndex, $monitoringAlokasi);
+                        // Mengisi data pada baris
+                        $sheet->setCellValue('A' . $rowIndex, $rowIndex - 8);
+                        $sheet->setCellValue('B' . $rowIndex, $monitoringAlokasi->kode_pwk);
+                        $sheet->setCellValue('C' . $rowIndex, $monitoringAlokasi->nama_pemda);
+                        $sheet->setCellValue('D' . $rowIndex, $monitoringAlokasi->jenis_tkd);
+                        $sheet->setCellValue('E' . $rowIndex, $monitoringAlokasi->bidang_tkd);
+                        $sheet->setCellValue('F' . $rowIndex, $monitoringAlokasi->subbidang_tkd);
+                        $sheet->setCellValue('G' . $rowIndex, $monitoringAlokasi->tahun);
+                        $sheet->setCellValue('H' . $rowIndex, $monitoringAlokasi->rk_usulan);
+                        $sheet->setCellValue('I' . $rowIndex, $monitoringAlokasi->rk_disetujui);
+                        $sheet->setCellValue('J' . $rowIndex, $monitoringAlokasi->tgl_juknis);
+                        $sheet->setCellValue('K' . $rowIndex, $monitoringAlokasi->alokasi_tkd);
                         $rowIndex++;
                     }
                 });
+
             $sheet->setCellValue('C2', 'Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral dan Pembangunan Daerah');
         } else {
             $st = SuratTugas::find($request->id_st);
@@ -501,33 +513,32 @@ class ExportController extends AppBaseController
                 ->orderBy('nama_pemda')
                 ->chunk(100, function ($monitoringAlokasis) use (&$sheet, &$rowIndex) {
                     foreach ($monitoringAlokasis as $monitoringAlokasi) {
-                        $this->fillEvaAlokasi($sheet, $rowIndex, $monitoringAlokasi);
+                        // Mengisi data pada baris
+                        $sheet->setCellValue('A' . $rowIndex, $rowIndex - 8);
+                        $sheet->setCellValue('B' . $rowIndex, $monitoringAlokasi->kode_pwk);
+                        $sheet->setCellValue('C' . $rowIndex, $monitoringAlokasi->nama_pemda);
+                        $sheet->setCellValue('D' . $rowIndex, $monitoringAlokasi->jenis_tkd);
+                        $sheet->setCellValue('E' . $rowIndex, $monitoringAlokasi->bidang_tkd);
+                        $sheet->setCellValue('F' . $rowIndex, $monitoringAlokasi->subbidang_tkd);
+                        $sheet->setCellValue('G' . $rowIndex, $monitoringAlokasi->tahun);
+                        $sheet->setCellValue('H' . $rowIndex, $monitoringAlokasi->rk_usulan);
+                        $sheet->setCellValue('I' . $rowIndex, $monitoringAlokasi->rk_disetujui);
+                        $sheet->setCellValue('J' . $rowIndex, $monitoringAlokasi->tgl_juknis);
+                        $sheet->setCellValue('K' . $rowIndex, $monitoringAlokasi->alokasi_tkd);
                         $rowIndex++;
                     }
                 });
+
             $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
         }
 
         $excelFilePath = 'exports/Evaluasi Alokasi ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : $jenisTkd . ' - Data Nasional') . '.xlsx';
 
+        // Save as Excel file
         $excelWriter = new Xlsx($spreadsheet);
         $excelWriter->save($excelFilePath);
 
+        // Return file download response
         return response()->download($excelFilePath)->deleteFileAfterSend(true);
-    }
-
-    private function fillEvaAlokasi(&$sheet, $rowIndex, $monitoringAlokasi)
-    {
-        $sheet->setCellValue('A' . $rowIndex, $rowIndex - 8);
-        $sheet->setCellValue('B' . $rowIndex, $monitoringAlokasi->kode_pwk);
-        $sheet->setCellValue('C' . $rowIndex, $monitoringAlokasi->nama_pemda);
-        $sheet->setCellValue('D' . $rowIndex, $monitoringAlokasi->jenis_tkd);
-        $sheet->setCellValue('E' . $rowIndex, $monitoringAlokasi->bidang_tkd);
-        $sheet->setCellValue('F' . $rowIndex, $monitoringAlokasi->subbidang_tkd);
-        $sheet->setCellValue('G' . $rowIndex, $monitoringAlokasi->tahun);
-        $sheet->setCellValue('H' . $rowIndex, $monitoringAlokasi->rk_usulan);
-        $sheet->setCellValue('I' . $rowIndex, $monitoringAlokasi->rk_disetujui);
-        $sheet->setCellValue('J' . $rowIndex, $monitoringAlokasi->tgl_juknis);
-        $sheet->setCellValue('K' . $rowIndex, $monitoringAlokasi->alokasi_tkd);
     }
 }
