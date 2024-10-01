@@ -301,107 +301,11 @@ class ExportController extends AppBaseController
             $rowIndex++;
         }
 
-        // $sheet2 = $spreadsheet->getSheetByName('Daftar Pemda');
-
-        // $sheet2->setCellValue('C3', 'Per ' . now()->format('d M Y H:i'));
-
-        // $rowIndex = 8;
-
-        // $pemdas = DaftarPemda::orderBy('kode_pwk')->get();
-
-        // foreach ($pemdas as $pemda) {
-        //     $sheet2->setCellValue('B' . $rowIndex, $pemda->kode_pwk);
-        //     $sheet2->setCellValue('C' . $rowIndex, 'Perwakilan BPKP ' . $pemda->nama_provinsi);
-        //     $sheet2->setCellValue('D' . $rowIndex, $pemda->nama_pemda);
-        //     $sheet2->setCellValue('F' . $rowIndex, MonitoringApbd::where('nama_pemda', $pemda->nama_pemda)
-        //         ->where(function ($q) {
-        //             $q->where('belanja_barjas', '>', 0)
-        //                 ->where('belanja_pegawai', '>', 0)
-        //                 ->where('belanja_modal', '>', 0)
-        //                 ->where('belanja_hibah', '>', 0)
-        //                 ->where('belanja_lainnya', '>', 0)
-        //                 ->where('belanja_modal_jalan', '>', 0)
-        //                 ->where('belanja_pendidikan', '>', 0)
-        //                 ->where('belanja_kesehatan', '>', 0)
-        //                 ->where('pendapatan_pad', '>', 0)
-        //                 ->where('pendapatan_transfer', '>', 0)
-        //                 ->where('pendapatan_lainnya', '>', 0)
-        //                 ->where('rbelanja_barjas', '>', 0)
-        //                 ->where('rbelanja_pegawai', '>', 0)
-        //                 ->where('rbelanja_modal', '>', 0)
-        //                 ->where('rbelanja_hibah', '>', 0)
-        //                 ->where('rbelanja_lainnya', '>', 0)
-        //                 ->where('rbelanja_modal_jalan', '>', 0)
-        //                 ->where('rbelanja_pendidikan', '>', 0)
-        //                 ->where('rbelanja_kesehatan', '>', 0)
-        //                 ->where('rpendapatan_pad', '>', 0)
-        //                 ->where('rpendapatan_transfer', '>', 0)
-        //                 ->where('rpendapatan_lainnya', '>', 0);
-        //         })->count() / 5);
-        //     $sheet2->setCellValue('G' . $rowIndex, DataUmumTkd::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Alokasi Umum')->where(function ($q) {
-        //         $q->where('alokasi_tkd', '>', 0)
-        //             ->where('penyaluran_tkd', '>', 0)
-        //             ->where('penganggaran_tkd', '>', 0)
-        //             ->where('penggunaan_tkd', '>', 0);
-        //     })->groupBy(['tahun', 'nama_pemda'])->count() / 5);
-        //     $sheet2->setCellValue('H' . $rowIndex, (MonitoringAlokasi::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Alokasi Umum')
-        //         ->where('alokasi_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenyaluran::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Alokasi Umum')
-        //         ->where('penyaluran_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenggunaan::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Alokasi Umum')
-        //         ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
-        //         ->groupBy(['tahun', 'nama_pemda'])
-        //         ->havingRaw('total_anggaran != 0 AND total_realisasi != 0')->count()) / 15);
-        //     $sheet2->setCellValue('I' . $rowIndex, DataUmumTkd::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Bagi Hasil')->where(function ($q) {
-        //         $q->where('alokasi_tkd', '>', 0)
-        //             ->where('penyaluran_tkd', '>', 0)
-        //             ->where('penganggaran_tkd', '>', 0)
-        //             ->where('penggunaan_tkd', '>', 0);
-        //     })->groupBy(['tahun', 'nama_pemda'])->count() / 5);
-        //     $sheet2->setCellValue('J' . $rowIndex, (MonitoringAlokasi::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Bagi Hasil')
-        //         ->where('alokasi_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenyaluran::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Bagi Hasil')
-        //         ->where('penyaluran_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenggunaan::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Bagi Hasil')
-        //         ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
-        //         ->groupBy(['tahun', 'nama_pemda'])
-        //         ->havingRaw('total_anggaran != 0 AND total_realisasi != 0')->count()) / 15);
-        //     $sheet2->setCellValue('K' . $rowIndex, DataUmumTkd::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Alokasi Khusus')->where(function ($q) {
-        //         $q->where('alokasi_tkd', '>', 0)
-        //             ->where('penyaluran_tkd', '>', 0)
-        //             ->where('penganggaran_tkd', '>', 0)
-        //             ->where('penggunaan_tkd', '>', 0);
-        //     })->groupBy(['tahun', 'nama_pemda'])->count() / 5);
-        //     $sheet2->setCellValue('L' . $rowIndex, (MonitoringAlokasi::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Alokasi Khusus')
-        //         ->where('alokasi_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenyaluran::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Alokasi Khusus')
-        //         ->where('penyaluran_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenggunaan::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Alokasi Khusus')
-        //         ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
-        //         ->groupBy(['tahun', 'nama_pemda'])
-        //         ->havingRaw('total_anggaran != 0 AND total_realisasi != 0')->count()) / 15);
-        //     $sheet2->setCellValue('M' . $rowIndex, MonitoringSisaTkd::where('nama_pemda', $pemda->nama_pemda)
-        //         ->selectRaw('*, SUM(sisa_dana_tkd - dianggarkan_kembali) as total_sisa_dana')->groupBy(['tahun', 'nama_pemda'])->havingRaw('total_sisa_dana != 0')->count() / 15);
-        //     $sheet2->setCellValue('N' . $rowIndex, MonitoringImmediateOutcome::where('nama_pemda', $pemda->nama_pemda)
-        //         ->whereNotNull('keberadaan_io')->groupBy(['tahun', 'nama_pemda'])->count() / 5);
-        //     $sheet2->setCellValue('O' . $rowIndex, '1');
-        //     $sheet2->setCellValue('P' . $rowIndex, DataUmumTkd::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Otonomi Khusus')->where(function ($q) {
-        //         $q->where('alokasi_tkd', '>', 0)
-        //             ->where('penyaluran_tkd', '>', 0)
-        //             ->where('penganggaran_tkd', '>', 0)
-        //             ->where('penggunaan_tkd', '>', 0);
-        //     })->groupBy(['tahun', 'nama_pemda'])->count() / 5);
-        //     $sheet2->setCellValue('Q' . $rowIndex, (MonitoringAlokasi::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Otonomi Khusus')
-        //         ->where('alokasi_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenyaluran::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Otonomi Khusus')
-        //         ->where('penyaluran_tkd', '>', 0)->groupBy(['tahun', 'nama_pemda'])->count() + MonitoringPenggunaan::where('nama_pemda', $pemda->nama_pemda)->where('jenis_tkd', 'Dana Otonomi Khusus')
-        //         ->selectRaw('*, SUM(anggaran_barjas + anggaran_pegawai + anggaran_modal + anggaran_hibah + anggaran_lainnya + anggaran_na) as total_anggaran, SUM(realisasi_barjas + realisasi_pegawai + realisasi_modal + realisasi_hibah + realisasi_lainnya + realisasi_na) as total_realisasi')
-        //         ->groupBy(['tahun', 'nama_pemda'])
-        //         ->havingRaw('total_anggaran != 0 AND total_realisasi != 0')->count()) / 15);
-        //     $sheet2->setCellValue('R' . $rowIndex, '1');
-        //     $rowIndex++;
-        // }
-
-        $excelFilePath = 'exports/Progres Monitoring per ' . now()->format('d M Y H:i') . '.xlsx';
-
-        // Save as Excel file
-        $excelWriter = new Xlsx($spreadsheet);
-        $excelWriter->save($excelFilePath);
-
-        return response()->download($excelFilePath)->deleteFileAfterSend(true);
+        // Gunakan StreamedResponse untuk streaming Excel ke browser
+        return response()->streamDownload(function () use ($spreadsheet) {
+            $writer = new Xlsx($spreadsheet);
+            $writer->save('php://output');  // Menulis langsung ke output
+        }, 'Progres Monitoring per ' . now()->format('d M Y H:i') . '.xlsx');
     }
 
     public function evaDataUmum(Request $request)
@@ -477,8 +381,6 @@ class ExportController extends AppBaseController
             $sheet->setCellValue('C2', 'Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral dan Pembangunan Daerah');
         } else {
             $st = SuratTugas::where('id', $request->id_st)->first();
-
-            dd($st);
 
             if (empty($st)) {
                 Flash::error('Surat Tugas not found');
