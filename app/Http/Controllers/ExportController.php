@@ -472,7 +472,7 @@ class ExportController extends AppBaseController
         $sheet = $spreadsheet->getActiveSheet();
 
         if ($request->id_st == 'All') {
-            $dataUmumTkds = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'));
+            $monitoringAlokasis = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'));
 
             $sheet->setCellValue('C2', 'Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral dan Pembangunan Daerah');
         } else {
