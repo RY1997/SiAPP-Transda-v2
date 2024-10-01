@@ -317,25 +317,19 @@ class ExportController extends AppBaseController
 
         $sheet = $spreadsheet->getActiveSheet();
 
-        if ($request->id_st == 'All') {
-            $dataUmumTkds = DataUmumTkd::where('jenis_tkd', session('jenis_tkd'));
+        $st = SuratTugas::where('id', $request->id_st)->first();
 
-            $sheet->setCellValue('C2', 'Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral dan Pembangunan Daerah');
-        } else {
-            $st = SuratTugas::where('id', $request->id_st)->first();
+        dd($st);
 
-            dd($st);
-
-            if (empty($st)) {
-                Flash::error('Surat Tugas not found');
-                return redirect(route('kertasKerja.index'));
-            }
-
-            $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
-            $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd);
-
-            $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
+        if (empty($st)) {
+            Flash::error('Surat Tugas not found');
+            return redirect(route('kertasKerja.index'));
         }
+
+        $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
+        $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd);
+
+        $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
 
         $rowIndex = 10;
 
