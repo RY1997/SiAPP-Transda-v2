@@ -413,16 +413,27 @@ class ExportController extends AppBaseController
 
         $sheet = $spreadsheet->getActiveSheet();
 
-        $st = SuratTugas::where('id', $request->id_st)->first();
+        if ($request->id_st == 'All') {
+            $dataUmumTkds = DataUmumTkd::where('jenis_tkd', session('jenis_tkd'));
 
-        $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
+            $sheet->setCellValue('C2', 'Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral dan Pembangunan Daerah');
+        } else {
+            $st = SuratTugas::where('id', $request->id_st)->first();
 
-        $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
+            if (empty($st)) {
+                Flash::error('Surat Tugas not found');
+                return redirect(route('kertasKerja.index'));
+            }
+
+            $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
+            $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd);
+
+            $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
+        }
 
         $rowIndex = 10;
 
-        $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd)
-            ->orderBy('tahun')
+        $dataUmumTkds = $dataUmumTkds->orderBy('tahun')
             ->orderBy('bidang_tkd')
             ->get();
 
@@ -442,7 +453,66 @@ class ExportController extends AppBaseController
             $rowIndex++;
         }
 
-        $excelFilePath = 'exports/Evaluasi Data Umum ' . $st->jenis_tkd . ' - ' . $st->nama_pemda . '.xlsx';
+        $excelFilePath = 'exports/Evaluasi Data Umum ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : session('jenis_tkd') . ' - Data Nasional') . '.xlsx';
+
+        // Save as Excel file
+        $excelWriter = new Xlsx($spreadsheet);
+        $excelWriter->save($excelFilePath);
+
+        return response()->download($excelFilePath)->deleteFileAfterSend(true);
+    }
+
+    public function evaAlokasi(Request $request)
+    {
+        $templatePath = 'templates/Evaluasi Alokasi.xlsx';
+
+        // Baca template
+        $spreadsheet = IOFactory::load($templatePath);
+
+        $sheet = $spreadsheet->getActiveSheet();
+
+        if ($request->id_st == 'All') {
+            $dataUmumTkds = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'));
+
+            $sheet->setCellValue('C2', 'Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral dan Pembangunan Daerah');
+        } else {
+            $st = SuratTugas::where('id', $request->id_st)->first();
+
+            if (empty($st)) {
+                Flash::error('Surat Tugas not found');
+                return redirect(route('kertasKerja.index'));
+            }
+
+            $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
+            $monitoringAlokasis = MonitoringAlokasi::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd);
+
+            $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
+        }
+
+        $rowIndex = 9;
+
+        $monitoringAlokasis = $monitoringAlokasis->orderBy('tahun')
+        ->orderBy('subbidang_tkd')
+        ->orderBy('bidang_tkd')
+        ->orderBy('nama_pemda')
+            ->get();
+
+        foreach ($monitoringAlokasis as $monitoringAlokasi) {
+            $sheet->setCellValue('A' . $rowIndex, $rowIndex - 8);
+            $sheet->setCellValue('B' . $rowIndex, $monitoringAlokasi->kode_pwk);
+            $sheet->setCellValue('C' . $rowIndex, $monitoringAlokasi->nama_pemda);
+            $sheet->setCellValue('D' . $rowIndex, $monitoringAlokasi->jenis_tkd);
+            $sheet->setCellValue('E' . $rowIndex, $monitoringAlokasi->bidang_tkd);
+            $sheet->setCellValue('F' . $rowIndex, $monitoringAlokasi->subbidang_tkd);
+            $sheet->setCellValue('G' . $rowIndex, $monitoringAlokasi->tahun);
+            $sheet->setCellValue('H' . $rowIndex, $monitoringAlokasi->rk_usulan);
+            $sheet->setCellValue('I' . $rowIndex, $monitoringAlokasi->rk_disetujui);
+            $sheet->setCellValue('J' . $rowIndex, $monitoringAlokasi->tgl_juknis);
+            $sheet->setCellValue('K' . $rowIndex, $monitoringAlokasi->alokasi_tkd);
+            $rowIndex++;
+        }
+
+        $excelFilePath = 'exports/Evaluasi Alokasi ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : session('jenis_tkd') . ' - Data Nasional') . '.xlsx';
 
         // Save as Excel file
         $excelWriter = new Xlsx($spreadsheet);
