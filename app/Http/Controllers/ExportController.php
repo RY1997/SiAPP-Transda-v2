@@ -310,6 +310,8 @@ class ExportController extends AppBaseController
 
     public function evaDataUmum(Request $request)
     {
+        dd($request->id_st);
+        
         $templatePath = 'templates/Evaluasi Data Umum.xlsx';
 
         // Baca template
