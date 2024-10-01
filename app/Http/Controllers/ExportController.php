@@ -407,18 +407,19 @@ class ExportController extends AppBaseController
     public function evaDataUmum(Request $request)
     {
         $templatePath = 'templates/Evaluasi Data Umum.xlsx';
-
-        // Baca template
         $spreadsheet = IOFactory::load($templatePath);
-
         $sheet = $spreadsheet->getActiveSheet();
 
+        $jenisTkd = session('jenis_tkd');
+        $rowIndex = 10; // Start at row 10 for data insertion
+
+        // Query for 'All' or specific Surat Tugas
         if ($request->id_st == 'All') {
-            $dataUmumTkds = DataUmumTkd::where('jenis_tkd', session('jenis_tkd'));
+            $dataUmumTkds = DataUmumTkd::where('jenis_tkd', $jenisTkd);
 
             $sheet->setCellValue('C2', 'Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral dan Pembangunan Daerah');
         } else {
-            $st = SuratTugas::where('id', $request->id_st)->first();
+            $st = SuratTugas::find($request->id_st);
 
             if (empty($st)) {
                 Flash::error('Surat Tugas not found');
@@ -426,39 +427,49 @@ class ExportController extends AppBaseController
             }
 
             $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
-            $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd);
+            $dataUmumTkds = DataUmumTkd::where('nama_pemda', $st->nama_pemda)
+                ->where('jenis_tkd', $st->jenis_tkd);
 
             $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
         }
 
-        $rowIndex = 10;
-
-        $dataUmumTkds = $dataUmumTkds->orderBy('tahun')
+        // Efficient data retrieval using chunk
+        $dataUmumTkds->orderBy('tahun')
             ->orderBy('bidang_tkd')
-            ->get();
+            ->chunk(100, function ($dataUmumTkds) use (&$sheet, &$rowIndex) {
+                foreach ($dataUmumTkds as $dataUmumTkd) {
+                    // Populate the Excel sheet
+                    $sheet->setCellValue('A' . $rowIndex, $rowIndex - 9);
+                    $sheet->setCellValue('B' . $rowIndex, $dataUmumTkd->kode_pwk);
+                    $sheet->setCellValue('C' . $rowIndex, $dataUmumTkd->nama_pemda);
+                    $sheet->setCellValue('D' . $rowIndex, $dataUmumTkd->jenis_tkd);
+                    $sheet->setCellValue('E' . $rowIndex, $dataUmumTkd->bidang_tkd);
+                    $sheet->setCellValue('F' . $rowIndex, $dataUmumTkd->tahun);
+                    $sheet->setCellValue('G' . $rowIndex, $dataUmumTkd->alokasi_tkd);
+                    $sheet->setCellValue('H' . $rowIndex, $dataUmumTkd->penyaluran_tkd);
 
-        foreach ($dataUmumTkds as $dataUmumTkd) {
-            $sheet->setCellValue('A' . $rowIndex, $rowIndex - 9);
-            $sheet->setCellValue('B' . $rowIndex, $dataUmumTkd->kode_pwk);
-            $sheet->setCellValue('C' . $rowIndex, $dataUmumTkd->nama_pemda);
-            $sheet->setCellValue('D' . $rowIndex, $dataUmumTkd->jenis_tkd);
-            $sheet->setCellValue('E' . $rowIndex, $dataUmumTkd->bidang_tkd);
-            $sheet->setCellValue('F' . $rowIndex, $dataUmumTkd->tahun);
-            $sheet->setCellValue('G' . $rowIndex, $dataUmumTkd->alokasi_tkd);
-            $sheet->setCellValue('H' . $rowIndex, $dataUmumTkd->penyaluran_tkd);
-            $sheet->setCellValue('I' . $rowIndex, $dataUmumTkd->alokasi_tkd > 0 ? ($dataUmumTkd->penyaluran_tkd / $dataUmumTkd->alokasi_tkd) : '0');
-            $sheet->setCellValue('J' . $rowIndex, $dataUmumTkd->penganggaran_tkd);
-            $sheet->setCellValue('K' . $rowIndex, $dataUmumTkd->penggunaan_tkd);
-            $sheet->setCellValue('L' . $rowIndex, $dataUmumTkd->penganggaran_tkd > 0 ? ($dataUmumTkd->penggunaan_tkd / $dataUmumTkd->penganggaran_tkd) : '0');
-            $rowIndex++;
-        }
+                    // Calculate the ratio for penyaluran/alokasi
+                    $alokasiRatio = $dataUmumTkd->alokasi_tkd > 0 ? ($dataUmumTkd->penyaluran_tkd / $dataUmumTkd->alokasi_tkd) : 0;
+                    $sheet->setCellValue('I' . $rowIndex, $alokasiRatio);
 
-        $excelFilePath = 'exports/Evaluasi Data Umum ' . (!empty($st) ? $st->jenis_tkd . ' - ' . $st->nama_pemda : session('jenis_tkd') . ' - Data Nasional') . '.xlsx';
+                    $sheet->setCellValue('J' . $rowIndex, $dataUmumTkd->penganggaran_tkd);
+                    $sheet->setCellValue('K' . $rowIndex, $dataUmumTkd->penggunaan_tkd);
 
-        // Save as Excel file
+                    // Calculate the ratio for penggunaan/penganggaran
+                    $penggunaanRatio = $dataUmumTkd->penganggaran_tkd > 0 ? ($dataUmumTkd->penggunaan_tkd / $dataUmumTkd->penganggaran_tkd) : 0;
+                    $sheet->setCellValue('L' . $rowIndex, $penggunaanRatio);
+
+                    $rowIndex++;
+                }
+            });
+
+        $excelFilePath = 'exports/Evaluasi Data Umum ' . ($request->id_st == 'All' ? $jenisTkd . ' - Data Nasional' : $st->jenis_tkd . ' - ' . $st->nama_pemda) . '.xlsx';
+
+        // Save the Excel file
         $excelWriter = new Xlsx($spreadsheet);
         $excelWriter->save($excelFilePath);
 
+        // Return file download response and delete after sending
         return response()->download($excelFilePath)->deleteFileAfterSend(true);
     }
 
