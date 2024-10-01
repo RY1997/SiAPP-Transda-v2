@@ -27,7 +27,7 @@ Progres dan Hasil Pengawasan
     <div class="col-lg-2 col-2">
         <div class="dropdown">
             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownProgres" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Progres
+                Nasional
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownProgres">
                 <a class="dropdown-item" href="{{ route('kertasKerja.progresST') }}">Input ST</a>
