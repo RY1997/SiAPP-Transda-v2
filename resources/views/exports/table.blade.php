@@ -5,6 +5,8 @@
                 <th width="50">#</th>
                 <th width="50">Kode Perwakilan</th>
                 <th width="100">Nama Pemda</th>
+                <th width="100">Jenis TKD</th>
+                <th width="100">Jenis Penugasan</th>
                 <th width="300">Nama Penugasan</th>
                 <th width="150">Aksi</th>
             </tr>
@@ -16,6 +18,8 @@
                 <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $st->kode_pwk }}</td>
                 <td>{{ $st->nama_pemda }}</td>
+                <td>{{ $st->jenis_tkd }}</td>
+                <td>{{ $st->jenis_penugasan }}</td>
                 <td>{{ $st->nama_penugasan }}</td>
                 <td>
                     @if ($st->jenis_penugasan == 'Evaluasi')
