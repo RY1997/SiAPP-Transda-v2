@@ -149,7 +149,7 @@
     {!! Form::label('target_output', 'Target Output') !!}
 </div>
 <div class="form-group col-sm-9 mb-3">
-    {!! Form::number('target_output', null, ['class' => 'form-control']) !!}
+    {!! Form::number('target_output', null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <!-- Satuan Output Field -->
