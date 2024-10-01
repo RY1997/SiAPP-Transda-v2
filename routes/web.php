@@ -98,6 +98,7 @@ Route::get('kertasKerja/progresIsian', [App\Http\Controllers\ExportController::c
 Route::get('kertasKerja/progresST', [App\Http\Controllers\ExportController::class, 'progresST'])->name('kertasKerja.progresST');
 Route::get('kertasKerja/progresMonitoring', [App\Http\Controllers\ExportController::class, 'progresMonitoring'])->name('kertasKerja.progresMonitoring');
 Route::get('kertasKerja/evaDataUmum', [App\Http\Controllers\ExportController::class, 'evaDataUmum'])->name('kertasKerja.evaDataUmum');
+Route::get('kertasKerja/evaAlokasi', [App\Http\Controllers\ExportController::class, 'evaAlokasi'])->name('kertasKerja.evaAlokasi');
 
 
 

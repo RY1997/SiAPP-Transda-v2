@@ -27,6 +27,7 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="{{ url('/kertasKerja/evaDataUmum?id_st='.$st->id) }}">Data Umum TKD</a>
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url('/kertasKerja/evaAlokasi?id_st='.$st->id) }}">Alokasi TKD</a>
                                 <a class="dropdown-item" href="#">Tren Pengelolaan TKD</a>
                                 <a class="dropdown-item" href="#">Capaian Indikator Makro</a>
                             </div>
