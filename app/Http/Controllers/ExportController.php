@@ -484,6 +484,9 @@ class ExportController extends AppBaseController
             }
 
             $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
+
+            dd($st);
+
             $monitoringAlokasis = MonitoringAlokasi::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd);
 
             $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
@@ -496,8 +499,6 @@ class ExportController extends AppBaseController
             ->orderBy('bidang_tkd')
             ->orderBy('nama_pemda')
             ->get();
-
-            dd($monitoringAlokasis->count());
 
         foreach ($monitoringAlokasis as $monitoringAlokasi) {
             $sheet->setCellValue('A' . $rowIndex, $rowIndex - 8);
