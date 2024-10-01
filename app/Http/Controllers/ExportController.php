@@ -472,7 +472,12 @@ class ExportController extends AppBaseController
         $sheet = $spreadsheet->getActiveSheet();
 
         if ($request->id_st == 'All') {
-            $monitoringAlokasis = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'));
+            $monitoringAlokasis = MonitoringAlokasi::where('jenis_tkd', session('jenis_tkd'))
+                ->orderBy('tahun')
+                ->orderBy('subbidang_tkd')
+                ->orderBy('bidang_tkd')
+                ->orderBy('nama_pemda')
+                ->get();
 
             $sheet->setCellValue('C2', 'Direktorat Pengawasan Akuntabilitas Program Lintas Sektoral dan Pembangunan Daerah');
         } else {
@@ -484,18 +489,17 @@ class ExportController extends AppBaseController
             }
 
             $pemda = DaftarPemda::where('nama_pemda', $st->nama_pemda)->first();
-            $monitoringAlokasis = MonitoringAlokasi::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd);
+            $monitoringAlokasis = MonitoringAlokasi::where('nama_pemda', $st->nama_pemda)->where('jenis_tkd', $st->jenis_tkd)
+                ->orderBy('tahun')
+                ->orderBy('subbidang_tkd')
+                ->orderBy('bidang_tkd')
+                ->orderBy('nama_pemda')
+                ->get();
 
             $sheet->setCellValue('C2', 'Perwakilan BPKP Provinsi ' . $pemda->nama_provinsi);
         }
 
         $rowIndex = 9;
-
-        $monitoringAlokasis = $monitoringAlokasis->orderBy('tahun')
-        ->orderBy('subbidang_tkd')
-        ->orderBy('bidang_tkd')
-        ->orderBy('nama_pemda')
-            ->get();
 
         foreach ($monitoringAlokasis as $monitoringAlokasi) {
             $sheet->setCellValue('A' . $rowIndex, $rowIndex - 8);
