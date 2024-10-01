@@ -33,7 +33,7 @@ Progres dan Hasil Pengawasan
                 <a class="dropdown-item" href="{{ route('kertasKerja.progresST') }}">Input ST</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('kertasKerja.progresMonitoring') }}">Isian Monitoring</a>
-                <a class="dropdown-item" href="#">Isian Evaluasi</a>
+                <!-- <a class="dropdown-item" href="#">Isian Evaluasi</a> -->
             </div>
         </div>
     </div>
