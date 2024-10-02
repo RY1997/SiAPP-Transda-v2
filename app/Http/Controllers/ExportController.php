@@ -331,6 +331,8 @@ class ExportController extends AppBaseController
             ->where('jenis_tkd', $st->jenis_tkd)
             ->cursor();
 
+        dd($dataUmumTkds);
+
         foreach ($dataUmumTkds as $dataUmumTkd) {
             $sheet->setCellValue('A' . $rowIndex, $rowIndex - 9);
             $sheet->setCellValue('B' . $rowIndex, $dataUmumTkd->kode_pwk);
