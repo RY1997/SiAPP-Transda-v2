@@ -70,6 +70,8 @@ class EvaluasiPenyaluranController extends AppBaseController
                 'remunerasi' => $request->{'remunerasi_' . $monitoringPenyaluran->id},
                 'penarikan_seluruhnya' => $request->{'penarikan_seluruhnya_' . $monitoringPenyaluran->id},
                 'penyaluran_tkd' => session('jenis_tkd') == 'Dana Bagi Hasil' ? ($request->{'saldo_rkud_' . $monitoringPenyaluran->id} + $request->{'saldo_pokok_' . $monitoringPenyaluran->id} + $request->{'remunerasi_' . $monitoringPenyaluran->id} - $request->{'penarikan_seluruhnya_' . $monitoringPenyaluran->id} - $request->{'potong_salur_' . $monitoringPenyaluran->id} - $request->{'tunda_salur_' . $monitoringPenyaluran->id}) : $request->{'penyaluran_tkd_' . $monitoringPenyaluran->id},
+                'penyaluran_tkd_sebelumnya' => $request->{'penyaluran_tkd_sebelumnya_' . $monitoringPenyaluran->id},
+                'penyebab_tidak_tepat_jumlah' => $request->{'penyebab_tidak_tepat_jumlah_' . $monitoringPenyaluran->id},
                 'potong_salur' => $request->{'potong_salur_' . $monitoringPenyaluran->id},
                 'tunda_salur' => $request->{'tunda_salur_' . $monitoringPenyaluran->id}
             ]);

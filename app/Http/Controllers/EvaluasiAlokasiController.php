@@ -67,7 +67,9 @@ class EvaluasiAlokasiController extends AppBaseController
                 'rk_usulan' => $request->{'rk_usulan_' . $monitoringAlokasi->id},
                 'rk_disetujui' => $request->{'rk_disetujui_' . $monitoringAlokasi->id},
                 'tgl_juknis' => $request->{'tgl_juknis_' . $monitoringAlokasi->id},
-                'alokasi_tkd' => $request->{'alokasi_tkd_' . $monitoringAlokasi->id}
+                'alokasi_tkd' => $request->{'alokasi_tkd_' . $monitoringAlokasi->id},
+                'alokasi_tkd_sebelumnya' => $request->{'alokasi_tkd_sebelumnya_' . $monitoringAlokasi->id},
+                'penyebab_tidak_tepat_jumlah' => $request->{'penyebab_tidak_tepat_jumlah_' . $monitoringAlokasi->id}
             ]);
         }
 
