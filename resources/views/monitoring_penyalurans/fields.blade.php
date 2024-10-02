@@ -62,7 +62,7 @@
                 @foreach($monitoringPenyalurans as $monitoringPenyaluran)
                 @if ($monitoringPenyaluran->jenis_tkd == 'Dana Bagi Hasil')
                 <tr>
-                    <td rowspan="6">{{ $monitoringPenyaluran->uraian }}</td>
+                    <td rowspan="7">{{ $monitoringPenyaluran->uraian }}</td>
                     <td>Saldo RKUD</td>
                     <td><input class="form-control" step="0.01" name="saldo_rkud_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->saldo_rkud }}"></td>
                 </tr>
@@ -86,9 +86,13 @@
                     <td>Penundaan Penyaluran</td>
                     <td><input class="form-control" step="0.01" name="tunda_salur_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->tunda_salur }}"></td>
                 </tr>
+                <tr>
+                    <td>Keterangan Penyaluran</td>
+                    <td><textarea class="form-control" rows="3" name="penyebab_tidak_tepat_jumlah_{{ $monitoringPenyaluran->id }}">{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyebab_tidak_tepat_jumlah }}</textarea></td>
+                </tr>
                 @elseif ($monitoringPenyaluran->jenis_tkd == 'Dana Alokasi Umum')
                 <tr>
-                    <td rowspan="3">{{ $monitoringPenyaluran->uraian }}</td>
+                    <td rowspan="5">{{ $monitoringPenyaluran->uraian }}</td>
                     <td>Pemotongan Penyaluran</td>
                     <td><input class="form-control" step="0.01" name="potong_salur_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->potong_salur }}"></td>
                 </tr>
@@ -100,11 +104,27 @@
                     <td>Nilai Penyaluran (Net)</td>
                     <td><input class="form-control" step="0.01" name="penyaluran_tkd_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyaluran_tkd }}"></td>
                 </tr>
+                <tr>
+                    <td>Nilai Penyaluran Periode Sebelumnya</td>
+                    <td><input class="form-control" step="0.01" name="penyaluran_tkd_sebelumnya_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyaluran_tkd_sebelumnya }}"></td>
+                </tr>
+                <tr>
+                    <td>Keterangan Penyaluran</td>
+                    <td><textarea class="form-control" rows="3" name="penyebab_tidak_tepat_jumlah_{{ $monitoringPenyaluran->id }}">{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyebab_tidak_tepat_jumlah }}</textarea></td>
+                </tr>
                 @else
                 <tr>
-                    <td>{{ $monitoringPenyaluran->uraian }}</td>
+                    <td colspan="3">{{ $monitoringPenyaluran->uraian }}</td>
                     <td>Nilai Penyaluran (Net)</td>
                     <td><input class="form-control" step="0.01" name="penyaluran_tkd_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyaluran_tkd }}"></td>
+                </tr>
+                <tr>
+                    <td>Nilai Penyaluran Periode Sebelumnya</td>
+                    <td><input class="form-control" step="0.01" name="penyaluran_tkd_sebelumnya_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyaluran_tkd_sebelumnya }}"></td>
+                </tr>
+                <tr>
+                    <td>Keterangan Penyaluran</td>
+                    <td><textarea class="form-control" rows="3" name="penyebab_tidak_tepat_jumlah_{{ $monitoringPenyaluran->id }}">{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyebab_tidak_tepat_jumlah }}</textarea></td>
                 </tr>
                 @endif
                 @endforeach

@@ -44,37 +44,58 @@
             @if ($monitoringAlokasis->first()->jenis_tkd == 'Dana Alokasi Khusus')
             <thead class="thead-light">
                 <tr>
-                    <th rowspan="2" width="100">Uraian</th>
-                    <th colspan="2">Perencanaan</th>
-                    <th rowspan="2" width="200">Alokasi</th>
-                </tr>
-                <tr>
-                    <th width="200">Nilai Usulan Rencana Kegiatan (RK) (Rp)</th>
-                    <th width="200">Rencana Kegiatan (RK) yang disetujui (Rp)</th>
+                    <th width="100">Subbidang TKD</th>
+                    <th width="100">Uraian</th>
+                    <th width="200">Nilai</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($monitoringAlokasis as $monitoringAlokasi)
                 <tr>
-                    <td>{{ $monitoringAlokasi->uraian }}</td>
+                    <td rowspan="5">{{ $monitoringAlokasi->uraian }}</td>
+                    <td>Nilai Usulan Rencana Kegiatan (RK) (Rp)</td>
                     <td><input class="form-control" step="0.01" name="rk_usulan_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->rk_usulan }}"></td>
+                </tr>
+                <tr>
+                    <td>Rencana Kegiatan (RK) yang disetujui (Rp)</td>
                     <td><input class="form-control" step="0.01" name="rk_disetujui_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->rk_disetujui }}"></td>
+                </tr>
+                <tr>
+                    <td>Nilai Alokasi</td>
                     <td><input class="form-control" step="0.01" name="alokasi_tkd_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->alokasi_tkd }}"></td>
+                </tr>
+                <tr>
+                    <td>Nilai Alokasi Periode Sebelumnya yang Disalurkan pada Periode Ini</td>
+                    <td><input class="form-control" step="0.01" name="alokasi_tkd_sebelumnya_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->alokasi_tkd_sebelumnya }}"></td>
+                </tr>
+                <tr>
+                    <td>Keterangan Alokasi</td>
+                    <td><textarea class="form-control" rows="3" name="penyebab_tidak_tepat_jumlah_{{ $monitoringAlokasi->id }}">{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->penyebab_tidak_tepat_jumlah }}</textarea></td>
                 </tr>
                 @endforeach
             </tbody>
             @else
             <thead class="thead-light">
                 <tr>
+                    <th width="100">Subbidang TKD</th>
                     <th width="100">Uraian</th>
-                    <th width="200">Alokasi</th>
+                    <th width="200">Nilai</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($monitoringAlokasis as $monitoringAlokasi)
                 <tr>
-                    <td>{{ $monitoringAlokasi->uraian }}</td>
+                    <td colspan="3">{{ $monitoringAlokasi->uraian }}</td>
+                    <td>Nilai Alokasi</td>
                     <td><input class="form-control" step="0.01" name="alokasi_tkd_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->alokasi_tkd }}"></td>
+                </tr>
+                <tr>
+                    <td>Nilai Alokasi Periode Sebelumnya yang Disalurkan pada Periode Ini</td>
+                    <td><input class="form-control" step="0.01" name="alokasi_tkd_sebelumnya_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->alokasi_tkd_sebelumnya }}"></td>
+                </tr>
+                <tr>
+                    <td>Keterangan Alokasi</td>
+                    <td><textarea class="form-control" rows="3" name="penyebab_tidak_tepat_jumlah_{{ $monitoringAlokasi->id }}">{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->penyebab_tidak_tepat_jumlah }}</textarea></td>
                 </tr>
                 @endforeach
             </tbody>

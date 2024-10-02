@@ -45,7 +45,9 @@ class MonitoringAlokasi extends Model
         'rk_usulan',
         'rk_disetujui',
         'tgl_juknis',
-        'alokasi_tkd'
+        'alokasi_tkd',
+        'alokasi_tkd_sebelumnya',
+        'penyebab_tidak_tepat_jumlah'
     ];
 
     /**
@@ -67,7 +69,9 @@ class MonitoringAlokasi extends Model
         'rk_usulan' => 'decimal:2',
         'rk_disetujui' => 'decimal:2',
         'tgl_juknis' => 'date',
-        'alokasi_tkd' => 'decimal:2'
+        'alokasi_tkd' => 'decimal:2',
+        'alokasi_tkd_sebelumnya' => 'decimal:2',
+        'penyebab_tidak_tepat_jumlah' => 'string',
     ];
 
     /**
@@ -89,6 +93,8 @@ class MonitoringAlokasi extends Model
         'rk_disetujui' => 'nullable|numeric',
         'tgl_juknis' => 'nullable',
         'alokasi_tkd' => 'nullable|numeric',
+        'alokasi_tkd_sebelumnya' => 'nullable|numeric',
+        'penyebab_tidak_tepat_jumlah' => 'nullable|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
