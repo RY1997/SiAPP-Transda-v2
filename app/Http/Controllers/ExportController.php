@@ -329,7 +329,7 @@ class ExportController extends AppBaseController
             ->where('kode_pwk', $st->kode_pwk)
             ->where('nama_pemda', $st->nama_pemda)
             ->where('jenis_tkd', $st->jenis_tkd)
-            ->take(100);
+            ->first();
 
         dd($dataUmumTkds);
 
