@@ -86,7 +86,7 @@ class EvaluasiPrioritasController extends AppBaseController
             Flash::error('Pemda not found');
             return redirect()->back();
         }
-        
+
         return view('evaluasi_prioritas.create')->with([
             'suratTugas' => $suratTugas,
             'tahun' => $request->tahun
@@ -135,6 +135,8 @@ class EvaluasiPrioritasController extends AppBaseController
             ->where('tahun', $request->tahun)
             ->where('jenis_tkd', session('jenis_tkd'))
             ->paginate(20);
+
+        $evaluasiPrioritas->appends(['tahun' => $request->tahun]);
 
         return view('evaluasi_prioritas.show')->with([
             'evaluasiPrioritas' => $evaluasiPrioritas,
