@@ -325,28 +325,28 @@ class ExportController extends AppBaseController
         $rowIndex = 10;
 
         // Streaming data dari DB dengan chunking
-        DataUmumTkd::select('kode_pwk', 'nama_pemda', 'jenis_tkd', 'bidang_tkd', 'subbidang_tkd', 'tahun', 'alokasi_tkd', 'penyaluran_tkd', 'penganggaran_tkd', 'penggunaan_tkd')
-        ->where('kode_pwk', $st->kode_pwk)
+        $dataUmumTkds = DataUmumTkd::select('kode_pwk', 'nama_pemda', 'jenis_tkd', 'bidang_tkd', 'subbidang_tkd', 'tahun', 'alokasi_tkd', 'penyaluran_tkd', 'penganggaran_tkd', 'penggunaan_tkd')
+            ->where('kode_pwk', $st->kode_pwk)
             ->where('nama_pemda', $st->nama_pemda)
             ->where('jenis_tkd', $st->jenis_tkd)
-            ->chunk(1000, function ($dataUmumTkds) use ($rowIndex, $sheet) {
-                foreach ($dataUmumTkds as $dataUmumTkd) {
-                    $sheet->setCellValue('A' . $rowIndex, $rowIndex - 9);
-                    $sheet->setCellValue('B' . $rowIndex, $dataUmumTkd->kode_pwk);
-                    $sheet->setCellValue('C' . $rowIndex, $dataUmumTkd->nama_pemda);
-                    $sheet->setCellValue('D' . $rowIndex, $dataUmumTkd->jenis_tkd);
-                    $sheet->setCellValue('E' . $rowIndex, $dataUmumTkd->bidang_tkd);
-                    $sheet->setCellValue('F' . $rowIndex, $dataUmumTkd->subbidang_tkd);
-                    $sheet->setCellValue('G' . $rowIndex, $dataUmumTkd->tahun);
-                    $sheet->setCellValue('H' . $rowIndex, $dataUmumTkd->alokasi_tkd);
-                    $sheet->setCellValue('I' . $rowIndex, $dataUmumTkd->penyaluran_tkd);
-                    $sheet->setCellValue('J' . $rowIndex, $dataUmumTkd->alokasi_tkd > 0 ? ($dataUmumTkd->penyaluran_tkd / $dataUmumTkd->alokasi_tkd) : '0');
-                    $sheet->setCellValue('K' . $rowIndex, $dataUmumTkd->penganggaran_tkd);
-                    $sheet->setCellValue('L' . $rowIndex, $dataUmumTkd->penggunaan_tkd);
-                    $sheet->setCellValue('M' . $rowIndex, $dataUmumTkd->penganggaran_tkd > 0 ? ($dataUmumTkd->penggunaan_tkd / $dataUmumTkd->penganggaran_tkd) : '0');
-                    $rowIndex++;
-                }
-            });
+            ->cursor();
+
+        foreach ($dataUmumTkds as $dataUmumTkd) {
+            $sheet->setCellValue('A' . $rowIndex, $rowIndex - 9);
+            $sheet->setCellValue('B' . $rowIndex, $dataUmumTkd->kode_pwk);
+            $sheet->setCellValue('C' . $rowIndex, $dataUmumTkd->nama_pemda);
+            $sheet->setCellValue('D' . $rowIndex, $dataUmumTkd->jenis_tkd);
+            $sheet->setCellValue('E' . $rowIndex, $dataUmumTkd->bidang_tkd);
+            $sheet->setCellValue('F' . $rowIndex, $dataUmumTkd->subbidang_tkd);
+            $sheet->setCellValue('G' . $rowIndex, $dataUmumTkd->tahun);
+            $sheet->setCellValue('H' . $rowIndex, $dataUmumTkd->alokasi_tkd);
+            $sheet->setCellValue('I' . $rowIndex, $dataUmumTkd->penyaluran_tkd);
+            $sheet->setCellValue('J' . $rowIndex, $dataUmumTkd->alokasi_tkd > 0 ? ($dataUmumTkd->penyaluran_tkd / $dataUmumTkd->alokasi_tkd) : '0');
+            $sheet->setCellValue('K' . $rowIndex, $dataUmumTkd->penganggaran_tkd);
+            $sheet->setCellValue('L' . $rowIndex, $dataUmumTkd->penggunaan_tkd);
+            $sheet->setCellValue('M' . $rowIndex, $dataUmumTkd->penganggaran_tkd > 0 ? ($dataUmumTkd->penggunaan_tkd / $dataUmumTkd->penganggaran_tkd) : '0');
+            $rowIndex++;
+        }
 
         // Streaming Excel output agar tidak menumpuk semua data di memori
         return response()->streamDownload(function () use ($spreadsheet) {
