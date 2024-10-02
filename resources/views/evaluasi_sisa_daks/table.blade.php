@@ -36,7 +36,7 @@
                 <td>{{ number_format($evaluasiSisaDak->penganggaran_bidang_sama,2,',','.') }}</td>
                 <td>{{ number_format($evaluasiSisaDak->penganggaran_bidang_lainnya,2,',','.') }}</td>
                 <td>{{ number_format($evaluasiSisaDak->penganggaran_bidang_sama + $evaluasiSisaDak->penganggaran_bidang_lainnya,2,',','.') }}</td>
-                <td>{{ number_format($evaluasiSisaDak->nilai_penyaluran - $evaluasiSisaDak->nilai_penggunaan + $evaluasiSisaDak->sisa_dak_sebelumnya - $evaluasiSisaDak->penganggaran_bidang_sama + $evaluasiSisaDak->penganggaran_bidang_lainnya,2,',','.') }}</td>
+                <td>{{ number_format($evaluasiSisaDak->nilai_penyaluran - $evaluasiSisaDak->nilai_penggunaan + $evaluasiSisaDak->sisa_dak_sebelumnya - $evaluasiSisaDak->penganggaran_bidang_sama - $evaluasiSisaDak->penganggaran_bidang_lainnya,2,',','.') }}</td>
                 <td width="120">
                     <div class='btn-group'>
                         <a href="{{ route('evaluasiSisaDaks.edit', [$evaluasiSisaDak->id]) }}"
