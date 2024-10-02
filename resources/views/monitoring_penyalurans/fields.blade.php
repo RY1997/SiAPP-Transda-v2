@@ -87,6 +87,10 @@
                     <td><input class="form-control" step="0.01" name="tunda_salur_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->tunda_salur }}"></td>
                 </tr>
                 <tr>
+                    <td>Nilai Penyaluran Periode Sebelumnya yang Disalurkan pada Periode Ini</td>
+                    <td><input class="form-control" step="0.01" name="penyaluran_tkd_sebelumnya_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyaluran_tkd_sebelumnya }}"></td>
+                </tr>
+                <tr>
                     <td>Keterangan Penyaluran</td>
                     <td><textarea class="form-control" rows="3" name="penyebab_tidak_tepat_jumlah_{{ $monitoringPenyaluran->id }}">{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyebab_tidak_tepat_jumlah }}</textarea></td>
                 </tr>
@@ -105,7 +109,7 @@
                     <td><input class="form-control" step="0.01" name="penyaluran_tkd_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyaluran_tkd }}"></td>
                 </tr>
                 <tr>
-                    <td>Nilai Penyaluran Periode Sebelumnya</td>
+                    <td>Nilai Penyaluran Periode Sebelumnya yang Disalurkan pada Periode Ini</td>
                     <td><input class="form-control" step="0.01" name="penyaluran_tkd_sebelumnya_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyaluran_tkd_sebelumnya }}"></td>
                 </tr>
                 <tr>
@@ -119,7 +123,7 @@
                     <td><input class="form-control" step="0.01" name="penyaluran_tkd_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyaluran_tkd }}"></td>
                 </tr>
                 <tr>
-                    <td>Nilai Penyaluran Periode Sebelumnya</td>
+                    <td>Nilai Penyaluran Periode Sebelumnya yang Disalurkan pada Periode Ini</td>
                     <td><input class="form-control" step="0.01" name="penyaluran_tkd_sebelumnya_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyaluran_tkd_sebelumnya }}"></td>
                 </tr>
                 <tr>
