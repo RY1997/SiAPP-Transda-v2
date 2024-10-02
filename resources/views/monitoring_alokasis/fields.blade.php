@@ -85,7 +85,7 @@
             <tbody>
                 @foreach($monitoringAlokasis as $monitoringAlokasi)
                 <tr>
-                    <td colspan="3">{{ $monitoringAlokasi->uraian }}</td>
+                    <td rowspan="3">{{ $monitoringAlokasi->uraian }}</td>
                     <td>Nilai Alokasi</td>
                     <td><input class="form-control" step="0.01" name="alokasi_tkd_{{ $monitoringAlokasi->id }}" type="number" value="{{ $monitoringAlokasis->where('id', $monitoringAlokasi->id)->first()->alokasi_tkd }}"></td>
                 </tr>

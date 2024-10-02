@@ -114,7 +114,7 @@
                 </tr>
                 @else
                 <tr>
-                    <td colspan="3">{{ $monitoringPenyaluran->uraian }}</td>
+                    <td rowspan="3">{{ $monitoringPenyaluran->uraian }}</td>
                     <td>Nilai Penyaluran (Net)</td>
                     <td><input class="form-control" step="0.01" name="penyaluran_tkd_{{ $monitoringPenyaluran->id }}" type="number" value="{{ $monitoringPenyalurans->where('id', $monitoringPenyaluran->id)->first()->penyaluran_tkd }}"></td>
                 </tr>
