@@ -13,6 +13,7 @@ use App\Models\MonitoringImmediateOutcome;
 use App\Models\MonitoringPenggunaan;
 use App\Models\MonitoringPenyaluran;
 use App\Models\MonitoringSisaTkd;
+use App\Models\Pelaporan;
 use App\Models\SuratTugas;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -188,6 +189,18 @@ class ExportController extends AppBaseController
             $sheet->setCellValue('E' . $rowIndex, SuratTugas::where('kode_pwk', $pwk->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Alokasi Umum')->count());
             $sheet->setCellValue('F' . $rowIndex, SuratTugas::where('kode_pwk', $pwk->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Bagi Hasil')->count());
             $sheet->setCellValue('G' . $rowIndex, SuratTugas::where('kode_pwk', $pwk->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Alokasi Khusus')->count());
+            $sheet->setCellValue('H' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->whereHas('st', function ($query) {
+                $query->where('jenis_penugasan', 'Monitoring');
+            })->count());
+            $sheet->setCellValue('I' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->whereHas('st', function ($query) {
+                $query->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Alokasi Umum');
+            })->count());
+            $sheet->setCellValue('J' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->whereHas('st', function ($query) {
+                $query->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Bagi Hasil');
+            })->count());
+            $sheet->setCellValue('K' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->whereHas('st', function ($query) {
+                $query->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Alokasi Khusus');
+            })->count());
             $rowIndex++;
         }
 
