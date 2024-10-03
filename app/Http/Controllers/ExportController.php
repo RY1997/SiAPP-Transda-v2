@@ -189,16 +189,16 @@ class ExportController extends AppBaseController
             $sheet->setCellValue('E' . $rowIndex, SuratTugas::where('kode_pwk', $pwk->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Alokasi Umum')->count());
             $sheet->setCellValue('F' . $rowIndex, SuratTugas::where('kode_pwk', $pwk->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Bagi Hasil')->count());
             $sheet->setCellValue('G' . $rowIndex, SuratTugas::where('kode_pwk', $pwk->kode_pwk)->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Alokasi Khusus')->count());
-            $sheet->setCellValue('H' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->whereNotNull('file_laporan')->whereHas('st', function ($query) {
+            $sheet->setCellValue('H' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->where('file_laporan', '<>', '')->whereHas('st', function ($query) {
                 $query->where('jenis_penugasan', 'Monitoring');
             })->count());
-            $sheet->setCellValue('I' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->whereNotNull('file_laporan')->whereHas('st', function ($query) {
+            $sheet->setCellValue('I' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->where('file_laporan', '<>', '')->whereHas('st', function ($query) {
                 $query->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Alokasi Umum');
             })->count());
-            $sheet->setCellValue('J' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->whereNotNull('file_laporan')->whereHas('st', function ($query) {
+            $sheet->setCellValue('J' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->where('file_laporan', '<>', '')->whereHas('st', function ($query) {
                 $query->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Bagi Hasil');
             })->count());
-            $sheet->setCellValue('K' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->whereNotNull('file_laporan')->whereHas('st', function ($query) {
+            $sheet->setCellValue('K' . $rowIndex, Pelaporan::where('kode_pwk', $pwk->kode_pwk)->where('file_laporan', '<>', '')->whereHas('st', function ($query) {
                 $query->where('jenis_penugasan', 'Evaluasi')->where('jenis_tkd', 'Dana Alokasi Khusus');
             })->count());
             $rowIndex++;
