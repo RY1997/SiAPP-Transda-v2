@@ -62,12 +62,12 @@ class PPBRController extends AppBaseController
      */
     public function create(Request $request)
     {
-        $alokasis = MonitoringAlokasi::where('tahun', 2021)->where('jenis_tkd', 'Dana Alokasi Khusus')->where('bidang_tkd', 'Kelautan dan Perikanan')->whereNull('updated_at')->get();
-        foreach ($alokasis as $alokasi) {
-            $alokasi->update([
-                'alokasi_tkd' => $alokasi->alokasi_tkd * 1000
-            ]);
-        }
+        // $alokasis = MonitoringAlokasi::where('tahun', 2021)->where('jenis_tkd', 'Dana Alokasi Khusus')->where('bidang_tkd', 'Kelautan dan Perikanan')->whereNull('updated_at')->get();
+        // foreach ($alokasis as $alokasi) {
+        //     $alokasi->update([
+        //         'alokasi_tkd' => $alokasi->alokasi_tkd * 1000
+        //     ]);
+        // }
         // Otsus
         // $pemdas = DaftarPemda::whereIn('kode_pwk', ['PW01', 'PW26', 'PW27'])->get();
 
