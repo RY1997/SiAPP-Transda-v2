@@ -42,11 +42,10 @@ class SuratTugasController extends AppBaseController
     public function index(Request $request)
     {
         if (Auth::user()->role == 'Admin') {
-            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))
-                ->where('nama_pemda', 'like', '%' . $request->nama_pemda . '%')
+            $suratTugas = SuratTugas::where('nama_pemda', 'like', '%' . $request->nama_pemda . '%')
                 ->paginate(20);
         } else {
-            $suratTugas = SuratTugas::where('jenis_tkd', session('jenis_tkd'))->where('kode_pwk', Auth::user()->kode_pwk)
+            $suratTugas = SuratTugas::where('kode_pwk', Auth::user()->kode_pwk)
                 ->where('nama_pemda', 'like', '%' . $request->nama_pemda . '%')
                 ->paginate(20);
         }
