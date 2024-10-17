@@ -125,7 +125,7 @@ Dashboard
         </div>
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header border-0">
@@ -180,7 +180,7 @@ Dashboard
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <div class="row">
     <div class="col-xl-6">
         <div class="card">
