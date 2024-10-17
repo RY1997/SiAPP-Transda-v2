@@ -305,7 +305,7 @@ Dashboard
                         <h3 class="mb-0">Permasalahan Pemanfaatan</h3>
                     </div>
                     <div class="col-sm-2 text-right">
-                        <a href="{{ route('evaluasiKontraks.index') }}" class="btn btn-sm btn-primary">Detil</a>
+                        <a href="{{ route('evaluasiNonfisiks.index') }}" class="btn btn-sm btn-primary">Detil</a>
                     </div>
                 </div>
             </div>
